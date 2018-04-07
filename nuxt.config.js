@@ -58,6 +58,7 @@ module.exports = {
     // ['@nuxtjs/google-analytics', {
     //   id: ''
     // }],
+    ['@nuxtjs/pwa', { icon: false }]
   ],
 
   /*

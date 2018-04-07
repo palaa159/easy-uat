@@ -3,9 +3,17 @@ node_modules
 
 # logs
 npm-debug.log
+yarn-error.log
+firebase-debug.log
+
+# Yarn cache
+yarn.lock
 
 # Nuxt build
 .nuxt
 
 # Nuxt generate
 dist
+
+# PWA
+sw.*

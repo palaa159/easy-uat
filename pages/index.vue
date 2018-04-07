@@ -8,7 +8,7 @@
 
 <script>
   import Page from '~/components/layout/Page'
-  import WooCommerce from 'woocommerce'
+  // import WooCommerce from 'woocommerce'
   export default {
     components: {
       Page
