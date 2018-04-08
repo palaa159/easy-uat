@@ -1,9 +1,16 @@
 export const actions = {
   async nuxtServerInit ({ commit }, { app, req }) {
+  },
+  async login () {
+  },
+  async logout () {
   }
 }
 
 export const mutations = {
+  SET_MOBILE_MENU (state, bool) {
+    state.menu.isShowing = bool
+  },
   SET_CART_SHOW (state, bool) {
     state.purchase.isCartShowing = bool
   },

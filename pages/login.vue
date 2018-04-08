@@ -1,0 +1,23 @@
+<template>
+  <div class="container">
+    <div class="row _jtfct-ct">
+      <div class="col-12 col-md-5 _mgv-16px _bgcl-tpr _bgcl-white-md _pdh-32px-md _pdv-24px-md">
+        <Login />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Login from '~/components/forms/Login'
+export default {
+  components: {
+    Login
+  },
+  fetch ({ store, redirect }) {
+    if (store.authUser) {
+      return redirect('/')
+    }
+  }
+}
+</script>

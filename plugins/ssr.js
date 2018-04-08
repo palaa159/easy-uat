@@ -3,7 +3,7 @@ import VueLazyload from 'vue-lazyload'
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 // import brands from '@fortawesome/fontawesome-free-brands'
-import { faSpinner, faSearch, faShoppingCart, faShoppingBag, faTimes, faMinus, faPlus } from '@fortawesome/fontawesome-free-solid'
+import { faSpinner, faSearch, faShoppingCart, faShoppingBag, faTimes, faMinus, faPlus, faHome, faUserCircle } from '@fortawesome/fontawesome-free-solid'
 import { faFrown } from '@fortawesome/fontawesome-free-regular'
 import VeeValidate from 'vee-validate'
 import VueScrollTo from 'vue-scrollto'
@@ -26,5 +26,5 @@ Vue.use(require('vue-moment'), {
 })
 Vue.use(VModal)
 Vue.use(Transitions)
-fontawesome.library.add(faSpinner, faSearch, faShoppingCart, faShoppingBag, faFrown, faTimes, faMinus, faPlus)
+fontawesome.library.add(faSpinner, faSearch, faShoppingCart, faShoppingBag, faFrown, faTimes, faMinus, faPlus, faHome, faUserCircle)
 Vue.component(FontAwesomeIcon.name, FontAwesomeIcon)

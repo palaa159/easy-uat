@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="cart">
     <!-- Cart Slide-in -->
     <slide-x-right-transition>
       <div 
         v-show="$store.state.purchase.isCartShowing"
-        class="cart-panel-container _ovfy-hd _pst-asl _t-48px _r-0px _w-100pct _w-40pct-sm _bgcl-white _zid-1"> 
+        class="cart-panel-container _ovfy-hd _pst-asl _r-0px _w-100pct _w-40pct-sm _bgcl-white _zid-1"> 
         <div class="cart-panel _dp-f _fdrt-cl">
           <!-- Main -->
           <div 
@@ -78,12 +78,12 @@
     </slide-x-right-transition>
     <!-- Cart Button -->
     <div
-      class="_dp-f _alit-ct _cs-pt" 
+      class="_dp-f _alit-ct _cs-pt _cl-white" 
       @click="$store.commit('SET_CART_SHOW', !$store.state.purchase.isCartShowing)">
       <font-awesome-icon 
         class="_mgr-8px"
         icon="shopping-cart" 
-        size="lg"/>
+      />
       <!-- Badge -->
       <Badge 
         :number="$store.state.purchase.items.length"
@@ -121,10 +121,11 @@
 
 <style lang="scss" scoped>
   .cart-panel-container {
+    top: 40px;
     box-shadow: -1px 0px 40px -10px rgba(0, 0, 0, 0.1);
   }
   .cart-panel {
-    height: calc(100vh - 48px);
+    height: calc(100vh - 40px);
   }
   .summary {
     border-top: 1px dashed rgba(0, 0, 0, 0.1);

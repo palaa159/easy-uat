@@ -71,7 +71,7 @@ module.exports = {
     https: true,
     port: 443,
     host: 'makerstation.in.th',
-    prefix: '/wp-json/api/v1',
+    // prefix: '/wp-json/api/v1',
   },
 
   /*
