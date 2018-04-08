@@ -1,16 +1,18 @@
 <template>
   <div class="_pdv-16px">
     <div class="container">
+      <!-- Desktop Menu -->
       <div class="row _dp-n _dp-f-md">
-        <div 
+        <nuxt-link 
           v-for="(x, i) in items" 
           :key="i"
+          :to="x.path"
           class="col _tal-ct" 
         >
           <h6>{{ x.title }}</h6>
-        </div>
+        </nuxt-link>
       </div>
-      <!-- Mobile -->
+      <!-- Mobile Menu -->
       <div class="row _dp-n-md">
         <div class="col">
           x

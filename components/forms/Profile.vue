@@ -54,7 +54,7 @@
         <button 
           :class="{'-loading -disabled': isBtnLoading}"
           type="submit" 
-          class="bio-button -positive -outline _w-100pct _mgv-24px">
+          class="bio-button -info -outline _w-100pct _mgv-24px">
           <h5>
             อัพเดทข้อมูล
             <font-awesome-icon icon="long-arrow-alt-right"/>
@@ -63,8 +63,61 @@
       </form>
     </no-ssr>
     <no-ssr>
-      <form @submit.stop.prevent="updatePassword">
+      <form 
+        class="_mgt-32px" 
+        @submit.stop.prevent="updatePassword">
         <h5>เปลี่ยนรหัสผ่าน</h5>
+        <float-label class="_mgbt-16px">
+          <input 
+            v-validate="{required: true}"
+            v-model="currentPassword"
+            name="currentPassword"
+            class="_bgcl-tpr"
+            type="password" 
+            data-vv-delay="500"
+            placeholder="🔒 รหัสผ่านเดิม">
+          <small 
+            v-show="errors.has('currentPassword')"
+            class="_cl-negative" 
+          >กรุณาใส่ Password</small>
+        </float-label>
+        <float-label class="_mgbt-16px">
+          <input 
+            v-validate="{required: true}"
+            v-model="newPassword"
+            name="newPassword"
+            class="_bgcl-tpr"
+            type="password" 
+            data-vv-delay="500"
+            placeholder="🔒 รหัสผ่านใหม่">
+          <small 
+            v-show="errors.has('newPassword')"
+            class="_cl-negative" 
+          >กรุณาใส่ Password</small>
+        </float-label>
+        <float-label class="_mgbt-16px">
+          <input 
+            v-validate="{required: true}"
+            v-model="confirmNewPassword"
+            name="confirmNewPassword"
+            class="_bgcl-tpr"
+            type="password" 
+            data-vv-delay="500"
+            placeholder="🔒 ยืนยันรหัสผ่านใหม่">
+          <small 
+            v-show="errors.has('confirmNewPassword')"
+            class="_cl-negative" 
+          >กรุณาใส่ Password</small>
+        </float-label>
+        <button 
+          :class="{'-loading -disabled': isBtnLoading}"
+          type="submit" 
+          class="bio-button -info -outline _w-100pct _mgv-24px">
+          <h5>
+            เปลี่ยนแปลงรหัสผ่าน
+            <font-awesome-icon icon="long-arrow-alt-right"/>
+          </h5>
+        </button>
       </form>
     </no-ssr>
   </div>

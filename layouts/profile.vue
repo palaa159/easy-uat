@@ -2,8 +2,8 @@
   <div>
     <Header/>
     <!-- Content -->
-    <main class="min-height-100vh _dp-f _alit-ct">
-      <div class="container">
+    <main class="min-height-100vh _dp-f _alit-fst">
+      <div class="container _mgv-32px">
         <!-- <div class="row">
           <div class="col">
             <h4 class="_tal-ct _mgv-16px">ข้อมูลบัญชีของคุณ</h4>

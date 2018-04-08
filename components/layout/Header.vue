@@ -21,16 +21,20 @@
     </div>
     <!-- Menu -->
     <MenuNav />
+    <!-- Breadcrumb -->
+    <Breadcrumbs />
   </header>
 </template>
 
 <script>
   import Cart from '~/components/purchase/Cart'
   import MenuNav from '~/components/navigations/MenuNav'
+  import Breadcrumbs from '~/components/navigations/Breadcrumbs'
   export default {
     components: {
       Cart,
-      MenuNav
+      MenuNav,
+      Breadcrumbs
     },
     data: () => ({
       menuItems: []
