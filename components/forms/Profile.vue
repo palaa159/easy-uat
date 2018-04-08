@@ -130,7 +130,9 @@ export default {
     email: '',
     firstName: '',
     lastName: '',
-    password: '',
+    currentPassword: '',
+    newPassword: '',
+    confirmNewPassword: '',
     errorMsg: 'x'
   }),
   methods: {

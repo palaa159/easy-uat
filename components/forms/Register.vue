@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h3 class="_tal-ct _mgbt-32px">
+    <h4 class="_tal-ct _mgbt-32px">
       ลงทะเบียนสมาชิก
-    </h3>
+    </h4>
     <no-ssr>
       <form @submit.stop.prevent="submit">
         <float-label>

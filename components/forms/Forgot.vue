@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h3 class="_tal-ct">
+    <h4 class="_tal-ct">
       ลืมรหัสผ่าน
-    </h3>
+    </h4>
     <p class="_tal-ct _mgbt-32px">คุณสามารถทำการ Reset รหัสผ่านได้ทางอีเมล</p>
     <no-ssr>
       <form @submit.stop.prevent="submit">

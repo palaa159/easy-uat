@@ -1,8 +1,8 @@
 <template>
   <slide-y-down-transition>
     <div 
-      v-show="crumbs.length > 1" 
-      class="breadcrumbs container">
+      v-if="crumbs.length > 1" 
+      class="breadcrumbs">
       <div class="row">
         <div class="col">
           <ul class="_dp-f _pdv-12px _jtfct-ct _fs-7">
@@ -38,9 +38,10 @@
 
 <script>
 export default {
-  computed: {
-    crumbs () {
-      return this.$route.matched[0].path.split('/')
+  props: {
+    crumbs: {
+      type: Array,
+      default: () => ([])
     }
   }
 }

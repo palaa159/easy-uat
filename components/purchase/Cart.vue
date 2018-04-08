@@ -4,7 +4,7 @@
     <slide-x-right-transition>
       <div 
         v-show="$store.state.purchase.isCartShowing"
-        class="cart-panel-container _ovfy-hd _pst-asl _r-0px _w-100pct _w-40pct-sm _bgcl-white _zid-1"> 
+        class="cart-panel-container _ovfy-hd _pst-f _r-0px _w-100pct _w-40pct-sm _bgcl-white _zid-1"> 
         <div class="cart-panel _dp-f _fdrt-cl">
           <!-- Main -->
           <div 
@@ -19,14 +19,14 @@
                 :icon="['far', 'frown']"
                 size="6x"
               />
-              <p class="_tal-ct _mgt-12px">
+              <p class="_tal-ct _mgt-12px _cl-dark">
                 ยังไม่มีสินค้าในตะกร้า
               </p>
             </div>
             <!-- If have item -->
             <div 
               v-else
-              class="container _w-100pct" 
+              class="container _w-100pct _cl-dark" 
             >
               <!-- Purchase Item -->
               <PurchaseItem 
@@ -55,7 +55,7 @@
               >
                 <!-- Total -->
                 <div>
-                  <p class="_lh-100pct">
+                  <p class="_lh-100pct _cl-dark">
                     สินค้า {{ $store.state.purchase.items.length }} รายการ<br>รวมเป็นเงิน
                   </p>
                   <h4 class="_cl-dark _lh-100pct">
@@ -121,11 +121,11 @@
 
 <style lang="scss" scoped>
   .cart-panel-container {
-    top: 40px;
+    top: 0px;
     box-shadow: -1px 0px 40px -10px rgba(0, 0, 0, 0.1);
   }
   .cart-panel {
-    height: calc(100vh - 40px);
+    height: calc(100vh);
   }
   .summary {
     border-top: 1px dashed rgba(0, 0, 0, 0.1);
