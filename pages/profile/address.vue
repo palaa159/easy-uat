@@ -25,6 +25,12 @@
 <script>
 import DeliveryAddress from '~/components/forms/DeliveryAddress'
 export default {
+  head () {
+    const siteTitle = this.$store.state.site.title
+    return { 
+      title: `ที่อยู่ในการจัดส่ง ${siteTitle}`
+    }
+  },
   components: {
     DeliveryAddress
   },

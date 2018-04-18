@@ -1,7 +1,9 @@
 <template>
   <div class="_mgt-16px">
     <!-- Items -->
-    <slide-y-down-transition group>
+    <slide-y-down-transition 
+      class="_dp-n _dp-b-sm" 
+      group>
       <div 
         v-for="(x, i) in items"
         :key="i"
@@ -15,11 +17,22 @@
             <span>
               {{ x.title }}
             </span>
-            <font-awesome-icon :icon="x.icon"/>
+            <fa-icon :icon="x.icon"/>
           </div>
         </nuxt-link>
       </div>
+      <!-- Mobile Dropdown -->
     </slide-y-down-transition>
+    <div class="_dp-b _dp-n-sm bio-select">
+      <select @change="navigate">
+        <option 
+          v-for="(x, i) in items"
+          :value="x.path" 
+          :key="i"
+          :checked="$route.path === x.path"
+        >{{ x.title }}</option>
+      </select>
+    </div>
   </div>
 </template>
 
@@ -54,6 +67,12 @@ export default {
       title: 'ออกจากระบบ',
       icon: 'sign-out-alt'
     }]
-  }
+  },
+  methods: {
+    navigate (e) {
+      const path = e.target.value
+      this.$router.push({ path })
+    }
+  },
 }
 </script>

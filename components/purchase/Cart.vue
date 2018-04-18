@@ -6,16 +6,63 @@
         v-show="$store.state.purchase.isCartShowing"
         class="cart-panel-container _ovfy-hd _pst-f _r-0px _w-100pct _w-40pct-sm _bgcl-white _zid-1"> 
         <div class="cart-panel _dp-f _fdrt-cl">
+          <!-- Header -->
+          <div class="_f-1 _dp-f _jtfct-spbtw container _alit-ct">
+            <div class="_cl-dark">
+              <h4>ตะกร้าสินค้า</h4>
+            </div>
+            <div 
+              class="_cl-dark _cs-pt" 
+              @click="$store.commit('purchase/SET_CART_SHOW', false)">
+              <span class="_fs-2 _lh-100pct">✕</span>
+            </div>
+          </div>
+          <!-- Bottom -->
+          <div class="_f-1 summary _dp-f _alit-ct _jtfct-ct _bgcl-white">
+            <div class="container">
+              <!-- If no item -->
+              <button
+                v-if="!$store.state.purchase.items.length" 
+                class="bio-button -dark -outline _mgh-at"
+                @click="$store.commit('purchase/SET_CART_SHOW', !$store.state.purchase.isCartShowing)" 
+              >
+                เลือกซื้อของต่อ
+              </button>
+              <!-- If has item -->
+              <div 
+                v-else
+                class="_dp-f _jtfct-spbtw _alit-ct" 
+              >
+                <!-- Total -->
+                <div>
+                  <p class="_lh-100pct _cl-dark">
+                    สินค้า {{ $store.state.purchase.items.length }} รายการ รวมเป็นเงิน
+                  </p>
+                  <h4 class="_cl-dark _lh-100pct">
+                    THB {{ totalPrice }}
+                  </h4>
+                </div>
+                <!-- Pay -->
+                <div>
+                  <button 
+                    class="bio-button -info" 
+                    @click="proceed()">
+                    <h6>ดำเนินการชำระเงิน</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Main -->
           <div 
             :class="{'_alit-ct': !$store.state.purchase.items.length}"
-            class="_f-9 _dp-f _jtfct-ct _ovfy-sc" 
+            class="_f-9 _dp-f _jtfct-ct _ovfy-at" 
           >
             <div 
               v-if="!$store.state.purchase.items.length"
-              class="_tal-ct" 
+              class="_tal-ct _cl-dark" 
             >
-              <font-awesome-icon 
+              <fa-icon 
                 :icon="['far', 'frown']"
                 size="6x"
               />
@@ -37,50 +84,14 @@
               />
             </div>
           </div>
-          <!-- Bottom -->
-          <div class="_f-2 summary _dp-f _alit-ct _jtfct-ct _bgcl-white">
-            <div class="container">
-              <!-- If no item -->
-              <button
-                v-if="!$store.state.purchase.items.length" 
-                class="bio-button -dark -outline _mgh-at"
-                @click="$store.commit('SET_CART_SHOW', !$store.state.purchase.isCartShowing)" 
-              >
-                เลือกซื้อของต่อ
-              </button>
-              <!-- If has item -->
-              <div 
-                v-else
-                class="_dp-f _jtfct-spbtw _alit-ct" 
-              >
-                <!-- Total -->
-                <div>
-                  <p class="_lh-100pct _cl-dark">
-                    สินค้า {{ $store.state.purchase.items.length }} รายการ<br>รวมเป็นเงิน
-                  </p>
-                  <h4 class="_cl-dark _lh-100pct">
-                    THB {{ totalPrice }}
-                  </h4>
-                </div>
-                <!-- Pay -->
-                <div>
-                  <button 
-                    class="bio-button -dark" 
-                    @click="proceed()">
-                    <h6>ดำเนินการชำระเงิน</h6>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </slide-x-right-transition>
     <!-- Cart Button -->
     <div
       class="_dp-f _alit-ct _cs-pt _cl-white" 
-      @click="$store.commit('SET_CART_SHOW', !$store.state.purchase.isCartShowing)">
-      <font-awesome-icon 
+      @click="$store.commit('purchase/SET_CART_SHOW', !$store.state.purchase.isCartShowing)">
+      <fa-icon 
         class="_mgr-8px"
         icon="shopping-cart" 
       />
@@ -112,7 +123,7 @@
     },
     methods: {
       proceed () {
-        this.$store.commit('SET_CART_SHOW', false)
+        this.$store.commit('purchase/SET_CART_SHOW', false)
         this.$router.replace({ path: '/checkout' })
       }
     }
@@ -129,6 +140,6 @@
   }
   .summary {
     border-top: 1px dashed rgba(0, 0, 0, 0.1);
-    min-height: 72px;
+    min-height: 84px;
   }
 </style>

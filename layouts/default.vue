@@ -10,7 +10,7 @@
       <div 
         v-if="$store.state.purchase.isCartShowing"
         class="curtain _pst-asl _t-0px _l-0px _w-100pct _h-100pct _zid-0"
-        @click="$store.commit('SET_CART_SHOW', false)"
+        @click="$store.commit('purchase/SET_CART_SHOW', false)"
       />
     </fade-transition>
     <Footer/>

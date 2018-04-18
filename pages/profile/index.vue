@@ -11,6 +11,12 @@
 <script>
 import Profile from '~/components/forms/Profile'
 export default {
+  head () {
+    const siteTitle = this.$store.state.site.title
+    return { 
+      title: `Profile ${siteTitle}`
+    }
+  },
   components: {
     Profile
   },

@@ -6,7 +6,6 @@ const path = require('path')
 
 module.exports = {
   mode: 'universal',
-
   /*
   ** Headers of the page
   */
@@ -15,7 +14,15 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
+      { hid: 'fbapp', property: 'fb:app_id', content: '1479784165441633' },
+      { hid: 'og:url', property: 'og:url', content: pkg.url },
+      { hid: 'og:site_name', property: 'og:site_name', content: pkg.url },
+      { hid: 'og:locale', property: 'og:locale', content: 'th_TH' },
+      { hid: 'og:title', property: 'og:title', content: 'ตลาดไท – ตลาดกลางค้าส่งสินค้าเกษตรครบวงจร ใหญ่ที่สุดในอาเซียน' },
+      { hid: 'og:description', name: 'og:description', content: 'ตลาดกลางค้าส่งสินค้าเกษตรครบวงจร ใหญ่ที่สุดในอาเซียน' },
+      { hid: 'og:image', property: 'og:image', content: '/images/image-placeholder.jpg' },
+      { hid: 'theme-color', name: 'theme-color', content: '#00A550' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -58,7 +65,8 @@ module.exports = {
     // ['@nuxtjs/google-analytics', {
     //   id: ''
     // }],
-    ['@nuxtjs/pwa', { icon: false }]
+    ['@nuxtjs/pwa', { icon: false }],
+    '@nuxtjs/component-cache'
   ],
 
   /*
@@ -67,11 +75,11 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
     credentials: true,
-    debug: true,
+    debug: false,
     https: true,
     port: 443,
-    host: 'makerstation.in.th',
-    // prefix: '/wp-json/api/v1',
+    host: 'cms.maplelife.co.th',
+    // prefix: '/wp-json/api/v1', moved to apiUrl.js
   },
 
   /*
@@ -113,8 +121,6 @@ module.exports = {
         })
       }
       if (!ctx.dev) {
-        // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
-        // for more information about purgecss.
         config.plugins.push(
           new PurgecssPlugin({
             paths: glob.sync([

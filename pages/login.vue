@@ -11,6 +11,12 @@
 <script>
 import Login from '~/components/forms/Login'
 export default {
+  head () {
+    const siteTitle = this.$store.state.site.title
+    return { 
+      title: `Login ${siteTitle}`
+    }
+  },
   components: {
     Login
   },

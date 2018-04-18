@@ -2,7 +2,9 @@
   <div class="_pdv-16px">
     <div class="container">
       <!-- Desktop Menu -->
-      <div class="row _dp-n _dp-f-md">
+      <div 
+        v-if="items.length" 
+        class="row _dp-n _dp-f-md">
         <nuxt-link 
           v-for="(x, i) in items" 
           :key="i"
@@ -15,12 +17,12 @@
       <!-- Mobile Menu -->
       <div class="row _dp-n-md">
         <div class="col">
-          x
+          logo
         </div>
         <div class="col _dp-f _jtfct-fe">
           <div 
             class="_dp-ilb hbg-container _pdv-8px _pdh-24px _cs-pt" 
-            @click="$store.commit('SET_MOBILE_MENU', !$store.state.menu.isShowing)">
+            @click="$store.commit('menu/SET_MOBILE_MENU', !$store.state.menu.isShowing)">
             <div>
               <div 
                 :class="{menu: !$store.state.menu.isShowing, close: $store.state.menu.isShowing}"
@@ -36,9 +38,11 @@
       origin="top right">
       <div 
         v-show="$store.state.menu.isShowing" 
-        class="mobile-menu _bgcl-white _bdrd-4px" 
+        class="mobile-menu _bgcl-white" 
       >
-        <div class="_h-100pct _dp-f _jtfct-spbtw _fdrt-cl _pdt-24px _pdbt-128px">
+        <div 
+          v-if="items.length" 
+          class="_h-100pct _dp-f _jtfct-spbtw _fdrt-cl _pdt-24px _pdbt-128px">
           <div 
             v-for="(x, i) in items" 
             :key="i"
@@ -73,7 +77,7 @@ export default {
       },
       {
         title: 'สินค้า',
-        path: '/'
+        path: '/products'
       },
       {
         title: 'แพ็ครายเดือน',
@@ -81,7 +85,7 @@ export default {
       },
       {
         title: 'แจ้งชำระเงิน',
-        path: '/'
+        path: '/profile/orders'
       },
       {
         title: 'ติดต่อเจ้าหน้าที่',
@@ -97,8 +101,8 @@ export default {
   @import 'assets/styles/variables';
 
   .mobile-menu {
-    top: 90px;
-    height: calc(100vh - 90px);
+    top: 50px;
+    height: calc(100vh - 50px);
     z-index: 9;
   }
 

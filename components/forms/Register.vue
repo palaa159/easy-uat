@@ -72,7 +72,7 @@
           class="bio-button -positive -outline _w-100pct _mgv-32px">
           <h4>
             ลงทะเบียน
-            <font-awesome-icon icon="long-arrow-alt-right"/>
+            <fa-icon icon="long-arrow-alt-right"/>
           </h4>
         </button>
       </form>

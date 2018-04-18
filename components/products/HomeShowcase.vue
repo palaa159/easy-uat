@@ -17,7 +17,7 @@
             :to="url" 
             class="link">
             <div class="hexagon _pst-asl _bt-0px _r-0px _dp-f _jtfct-ct _alit-ct">
-              <font-awesome-icon 
+              <fa-icon 
                 class="_cl-white"
                 size="lg" 
                 icon="search"/>

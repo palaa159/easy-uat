@@ -8,8 +8,10 @@ h1, h2, h3, h4, h5, h6, button {
 }
 
 .page-enter-active, .page-leave-active {
-  transition: opacity .25s;
+  transition: .2s;
+  margin-top: 0px;
 }
 .page-enter, .page-leave-to {
   opacity: 0;
+  margin-top: 20px;
 }

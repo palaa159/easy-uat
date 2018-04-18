@@ -12,10 +12,9 @@ export default {
     if (process.browser) {
       let c = window.confirm('คุณแน่ในว่าต้องออกแบบจากระบบ?')
       if (c === true) {
-        const res = this.$axios.$post(this.$store.state.api.logout)
-        if (res) {
-          window.location.href = '/'
-        }
+        this.$store.dispatch('auth/logout')
+      } else {
+        this.$router.replace('/profile')
       }
     }
   }

@@ -1,26 +1,37 @@
 <template>
-  <div class="user-bar _bgcl-blue _pst-rlt _dp-f _alit-ct">
+  <div  
+    class="user-bar _bgcl-blue _pst-rlt _dp-f _alit-ct">
     <div class="container">
       <div 
-        :class="{'_jtfct-fe': crumbs.length === 1, '_jtfct-spbtw-md': crumbs.length > 1}"
-        class="_dp-f _alit-ct user-control" 
+        class="_dp-f _alit-ct user-control _jtfct-fe _jtfct-spbtw-md" 
       >
         <!-- Breadcrumb -->
         <Breadcrumbs 
           :crumbs="crumbs"
           class="_dp-n _dp-b-md"
         />
-        <div class="_dp-f _alit-ct">
+        <div 
+          v-if="$store.state.menu.isUserMenuShowing" 
+          class="_dp-f _alit-ct">
           <!-- User Control -->
-          <nuxt-link to="/login">
+          <nuxt-link 
+            v-if="$store.state.auth.user === null"
+            to="/login" 
+          >
             <span>เข้าสู่ระบบ</span>
           </nuxt-link>
-          <nuxt-link to="/register">
+          <nuxt-link 
+            v-if="$store.state.auth.user === null"
+            to="/register" 
+          >
             <span>ลงทะเบียน</span>
           </nuxt-link>
-          <nuxt-link to="/profile">
-            <font-awesome-icon icon="user-circle" />
-            <span>Nithi</span>
+          <nuxt-link 
+            v-if="$store.state.auth.user"
+            to="/profile" 
+          >
+            <fa-icon icon="user-circle" />
+            <span>{{ $store.state.auth.user.email }}</span>
           </nuxt-link>
           <!-- Shopping cart with badge -->
           <Cart />
@@ -39,7 +50,18 @@ export default {
   },
   computed: {
     crumbs () {
-      return this.$route.matched[0].path.split('/')
+      const c = this.$route.path && this.$route.path.split('/')
+      // console.log(c)
+      let crumbs = []
+      if (c && c.length) {
+        for (let i = 1; i < c.length; i++) {
+          crumbs.push({ 
+            path: `${c[i-2]?c[i-2]: ''}${c[i-2]? '/': ''}${c[i-1]}${c[i-1]? '/': ''}${c[i]}`,
+            title: c[i]
+          })
+        }
+      }
+      return crumbs
     }
   }
 }

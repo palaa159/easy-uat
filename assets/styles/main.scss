@@ -42,6 +42,10 @@
   flex-direction: row-reverse !important;
 }
 
+._fdrt-clr {
+  flex-direction: column-reverse !important;
+}
+
 ._ratio {
   background: #333;
   width: 50%;
@@ -140,4 +144,18 @@
   transform: rotate(-45deg) translate(0, calc(-50% - 4px));
   z-index: 4;
   pointer-events: none;
+}
+
+// Modal
+.v--modal-overlay {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-fixed {
+  position: fixed !important;
+  background: #fff;
+}
+
+.bio-accordion.-has-icon>label:before, .bio-select:not(.-multiple):after {
+  z-index: 0;
 }

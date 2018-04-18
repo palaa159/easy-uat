@@ -1,7 +1,7 @@
 <template>
-  <slide-y-down-transition>
+  <no-ssr>
     <div 
-      v-if="crumbs.length > 1" 
+      v-show="crumbs && crumbs.length" 
       class="breadcrumbs">
       <div class="row">
         <div class="col">
@@ -10,7 +10,7 @@
               <nuxt-link 
                 to="/" 
                 class="_cl-primary-300">
-                หน้าแรก
+                Home
               </nuxt-link>
             </li>
             <li 
@@ -18,22 +18,22 @@
               :key="i"
               class="_dp-f _alit-ct _cl-primary-300"
             >
-              <font-awesome-icon 
-                v-if="i" 
+              <fa-icon 
                 icon="chevron-right"
                 class="_mgh-8px"
               />
               <nuxt-link 
-                :to="x" 
-                class="_cl-primary-300">
-                {{ x }}
+                :to="`/${x.path}`" 
+                class="_cl-primary-300 _ttf-cptl">
+                <span v-if="x.title.indexOf(':') > -1">{{ $route.params[x.title.substring(1)] }}</span>
+                <span v-else>{{ x.title }}</span>
               </nuxt-link>
             </li>
           </ul>
         </div>
       </div>
     </div>
-  </slide-y-down-transition>
+  </no-ssr>
 </template>
 
 <script>

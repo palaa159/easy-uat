@@ -35,7 +35,7 @@
           class="bio-button -positive -outline _w-100pct _mgv-16px">
           <h4>
             ส่งขั้นตอนไปทางอีเมล
-            <font-awesome-icon icon="long-arrow-alt-right"/>
+            <fa-icon icon="long-arrow-alt-right"/>
           </h4>
         </button>
       </form>

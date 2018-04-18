@@ -1,33 +1,25 @@
-export const actions = {
-  async nuxtServerInit ({ commit }, { app, req }) {
-  },
-  async login () {
-  },
-  async logout () {
-  }
-}
+import JSCookie from 'js-cookie'
+import Cookie from 'cookie'
+import urls from '~/services/apiUrl'
 
-export const mutations = {
-  SET_MOBILE_MENU (state, bool) {
-    state.menu.isShowing = bool
-  },
-  SET_CART_SHOW (state, bool) {
-    state.purchase.isCartShowing = bool
-  },
-  SET_PROD_CART_AMT (state, obj = {
-    amount: 1,
-    id: 1
-  }) { // n = 1, -1
-    let clonedItems = state.purchase.items
-    // Find item by obj.id
-    const i = clonedItems.findIndex(x => x.id === obj.id)
-    clonedItems[i].amount = obj.amount
-    state.purchase.items = clonedItems
-  },
-  REMOVE_PROD (state, id) {
-    if (id) {
-      let clonedItems = state.purchase.items.filter(x => x.id !== id)
-      state.purchase.items = clonedItems
+export const actions = {
+  async nuxtServerInit ({ commit, dispatch }, { app, req }) {
+    let accessToken = null
+    if (req && req.headers && req.headers.cookie) {
+      let { token } = Cookie.parse(req.headers.cookie)
+      accessToken = token
+    }
+    if (accessToken) {
+      // console.log(accessToken)
+      await commit('auth/SET_TOKEN', accessToken)
+      await app.$axios.$get(urls.getUserMe)
+        .then((x) => {
+          commit('auth/SET_USER', x)
+        })
+        .catch((err) => {
+          // Clear Cookie
+          JSCookie.remove('token')
+        })
     }
   }
 }

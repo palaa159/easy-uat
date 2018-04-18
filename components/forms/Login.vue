@@ -46,7 +46,7 @@
           class="bio-button -positive -outline _w-100pct _mgv-16px">
           <h4>
             เข้าสู่ระบบ
-            <font-awesome-icon icon="long-arrow-alt-right"/>
+            <fa-icon icon="long-arrow-alt-right"/>
           </h4>
         </button>
       </form>
@@ -76,26 +76,28 @@ export default {
     isBtnLoading: false,
     email: '',
     password: '',
-    errorMsg: 'x'
+    errorMsg: ''
   }),
   methods: {
     async login () {
-      const redirect = this.$route.query.redirect
-      const res = await this.$store.dispatch('login', {
+      const redirect = this.$route.query.redirect || ''
+      const res = await this.$store.dispatch('auth/login', {
         email: this.email,
         password: this.password
       })
-      if (res) {
-        return this.$router.replace(`/${redirect}`)
+      if (res.token) {
+        // return this.$router.replace(`/${redirect}`)
+        return window.location.href = `/${redirect}`
       }
-      return this.$router.replace('/')
     },
     async submit () {
+      this.isBtnLoading = true
       const isValid = await this.$validator.validateAll()
       if (isValid) {
-        this.login()
+        await this.login()
           .catch(err => this.errorMsg = 'เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
       }
+      return this.isBtnLoading = false
     }
   }
 }

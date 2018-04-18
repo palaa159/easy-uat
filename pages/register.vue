@@ -11,6 +11,12 @@
 <script>
 import Register from '~/components/forms/Register'
 export default {
+  head () {
+    const siteTitle = this.$store.state.site.title
+    return { 
+      title: `Register ${siteTitle}`
+    }
+  },
   components: {
     Register
   },

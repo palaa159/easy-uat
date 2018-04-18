@@ -11,6 +11,12 @@
 <script>
 import Forgot from '~/components/forms/Forgot'
 export default {
+  head () {
+    const siteTitle = this.$store.state.site.title
+    return { 
+      title: `ลืมรหัสผ่าน ${siteTitle}`
+    }
+  },
   components: {
     Forgot
   },

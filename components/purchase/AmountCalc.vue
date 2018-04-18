@@ -1,24 +1,31 @@
 <template>
-  <div class="_dp-f _jtfct-spbtw _alit-ct">
+  <div class="_dp-f _jtfct-spbtw _alit-fe">
     <!-- Amount -->
     <div class="_dp-f ctn _bdrd-4px _ovf-hd">
       <!-- - -->
       <div 
-        class="minus _bgcl-neutral _cs-pt _pd-8px"
+        v-if="editable"
+        class="minus _bgcl-neutral-300 _cs-pt _pd-8px"
         @click="amount > 1 && $emit('adjust-item', -1)" 
       >
-        <font-awesome-icon icon="minus"/>
+        <fa-icon :icon="['far', 'minus']"/>
       </div>
       <!-- Num -->
-      <div class="number _pdh-12px _dp-f _alit-ct _bgcl-neutral-100">
-        {{ amount }}
+      <div class="number _pdh-12px _h-32px _dp-f _alit-ct _bgcl-neutral-100">
+        <span 
+          v-if="!editable" 
+          class="_mgr-8px">จำนวน:</span>
+        <span>
+          {{ amount }}
+        </span>
       </div>
       <!-- + -->
       <div 
-        class="plus _bgcl-neutral _cs-pt _pd-8px"
+        v-if="editable"
+        class="plus _bgcl-neutral-300 _cs-pt _pd-8px"
         @click="amount <= 19 && $emit('adjust-item', 1)"
       >
-        <font-awesome-icon icon="plus"/>
+        <fa-icon :icon="['far', 'plus']"/>
       </div>
     </div>
     <!-- Total price -->
@@ -32,6 +39,10 @@
 <script>
   export default {
     props: {
+      editable: {
+        type: Boolean,
+        default: true
+      },
       price: {
         type: Number,
         default: 0

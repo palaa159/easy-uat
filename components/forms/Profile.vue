@@ -47,9 +47,9 @@
           >กรุณาใส่นามสกุล</small>
         </float-label>
         <div 
-          v-if="errorMsg" 
+          v-if="errorMsgBasic" 
           class="bio-message -negative">
-          {{ errorMsg }}
+          {{ errorMsgBasic }}
         </div>
         <button 
           :class="{'-loading -disabled': isBtnLoading}"
@@ -57,7 +57,7 @@
           class="bio-button -info -outline _w-100pct _mgv-24px">
           <h5>
             อัพเดทข้อมูล
-            <font-awesome-icon icon="long-arrow-alt-right"/>
+            <fa-icon icon="long-arrow-alt-right"/>
           </h5>
         </button>
       </form>
@@ -109,13 +109,18 @@
             class="_cl-negative" 
           >กรุณาใส่ Password</small>
         </float-label>
+        <div 
+          v-if="errorMsgPassword" 
+          class="bio-message -negative">
+          {{ errorMsgPassword }}
+        </div>
         <button 
           :class="{'-loading -disabled': isBtnLoading}"
           type="submit" 
           class="bio-button -info -outline _w-100pct _mgv-24px">
           <h5>
             เปลี่ยนแปลงรหัสผ่าน
-            <font-awesome-icon icon="long-arrow-alt-right"/>
+            <fa-icon icon="long-arrow-alt-right"/>
           </h5>
         </button>
       </form>
@@ -133,7 +138,8 @@ export default {
     currentPassword: '',
     newPassword: '',
     confirmNewPassword: '',
-    errorMsg: 'x'
+    errorMsgBasic: 'x',
+    errorMsgPassword: 'x'
   }),
   methods: {
     async submitProfile () {

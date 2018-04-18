@@ -3,7 +3,7 @@
     <div class="_mgv-32px container">
       <div class="row">
         <!-- ชื่อ -->
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-sm-6 _pdh-0px _pdh-16px-sm">
           <float-label>
             <input 
               type="email" 
@@ -31,7 +31,7 @@
           </float-label>
         </div>
         <!-- ที่อยู่ -->
-        <div class="col-12 col-sm-6 _mgt-32px _mgt-0px-sm">
+        <div class="col-12 col-sm-6 _mgt-32px _mgt-0px-sm _pdh-0px _pdh-16px-sm">
           <float-label>
             <input 
               type="text" 
