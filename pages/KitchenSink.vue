@@ -1,6 +1,6 @@
 <template>
   <Page>
-    <h1>Component Kitchensink</h1>
+    <!-- <h1>Component Kitchensink</h1> -->
     <div style="width: 600px;">
       <HomeShowcase
         :left-image="false"
