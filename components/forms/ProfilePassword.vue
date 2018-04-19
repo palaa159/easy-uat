@@ -1,7 +1,7 @@
 <template>
   <form 
     class="_mgt-32px"
-    @submit.stop.prevent="submitPassword">
+    @submit.stop.prevent="submit">
     <h5>เปลี่ยนรหัสผ่าน</h5>
     <float-label class="_mgbt-16px">
       <input 
@@ -89,7 +89,7 @@ export default {
     errorMsg: ''
   }),
   methods: {
-    async submitPassword () {
+    async submit () {
       this.isBtnLoading = true
       this.errorMsg = ''
       this.successMsg = ''
@@ -106,9 +106,6 @@ export default {
       if (!isChanged) {
         return this.errorMsg = 'เกิดความผิดพลาด กรุณาลองใหม่อีกครั้ง'
       }
-      // this.currentPassword = ''
-      // this.newPassword = ''
-      // this.confirmNewPassword = ''
       this.successMsg = 'เปลี่ยนรหัสผ่านสำเร็จ'
       return
     }

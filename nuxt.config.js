@@ -85,10 +85,12 @@ module.exports = {
   /*
   ** Build configuration
   */
+  // buildDir: 'functions/nuxt',
   build: {
     // cache: true,
     // parallel: true,
     // analyze: true,
+    // publicPath: '/',
     plugins: [
       new MomentLocalesPlugin({
         localesToKeep: ['en', 'th'],

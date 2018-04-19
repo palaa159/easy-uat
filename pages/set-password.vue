@@ -20,10 +20,14 @@ export default {
   components: {
     ResetPassword
   },
-  fetch ({ store, redirect }) {
-    if (store.state.auth.user) {
-      return redirect('/')
+  validate ({ query }) {
+    if (query && query.id && query.login) {
+      return true
     }
-  }
+    return false
+  },
+  fetch ({ store, redirect }) {
+    if (store.state.auth.user) return redirect('/')
+  },
 }
 </script>
