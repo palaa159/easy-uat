@@ -6,7 +6,7 @@
     <p class="_tal-ct _mgbt-32px">คุณสามารถทำการ Reset รหัสผ่านได้ทางอีเมล</p>
     <no-ssr>
       <form @submit.stop.prevent="submit">
-        <float-label>
+        <float-label v-if="!isSent">
           <input 
             v-validate="{required: true, email: true}"
             v-model="email"
@@ -26,10 +26,19 @@
           class="bio-message -negative">
           {{ errorMsg }}
         </div>
-        <div class="bio-message -positive _mgv-12px">
-          ขั้นตอนถูกส่งแล้ว กรุณาเช็คอีเมล
+        <div 
+          v-if="isSent"
+          class="bio-message -positive _mgv-12px" 
+        >
+          <div>
+            <fa-icon 
+              icon="check" 
+              class="_mgr-8px" />
+            ขั้นตอนถูกส่งแล้ว กรุณาเช็คอีเมล
+          </div>
         </div>
         <button 
+          v-if="!isSent"
           :class="{'-loading -disabled': isBtnLoading}"
           type="submit" 
           class="bio-button -positive -outline _w-100pct _mgv-16px">
@@ -52,23 +61,31 @@
 </template>
 
 <script>
+import urls from '~/services/apiUrl'
 export default {
   data: () => ({
     isBtnLoading: false,
+    isSent: false,
     email: '',
     password: '',
     errorMsg: null
   }),
   methods: {
     async forgot () {
-
+      const isSent = await this.$axios.$post(urls.forgotPassword, {
+        email: this.email
+      })
+      this.isBtnLoading = false
+      return this.isSent = true
     },
     async submit () {
+      this.isBtnLoading = true
       const isValid = await this.$validator.validateAll()
       if (isValid) {
-        this.forgot()
+        await this.forgot()
           .catch(err => this.errorMsg = 'เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
       }
+      return this.isBtnLoading = false
     }
   }
 }

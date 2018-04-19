@@ -57,12 +57,7 @@
             data-vv-delay="250"
             placeholder="🔒 รหัสผ่าน">
         </float-label>
-        <div 
-          v-show="errors.has('password')" 
-          class="bio-message -warning -has-icon _alit-ct">
-          <fa-icon icon="lock"/> 
-          <small class="_mgl-12px">กรุณาตั้งรหัสผ่าน 8 - 16 ตัวอักษร โดยมีตัวหนังสือภาษาอังกฤษ ตัวเลข และอักขระพิเศษเป็นส่วนประกอบ</small>
-        </div>
+        <InvalidPassword v-show="errors.has('password')" />
         <div 
           v-if="errorMsg" 
           class="bio-message -negative">
@@ -99,7 +94,11 @@
 </template>
 
 <script>
+import InvalidPassword from '~/components/messages/invalid-password'
 export default {
+  components: {
+    InvalidPassword
+  },
   data: () => ({
     isBtnLoading: false,
     isLoggingIn: false,

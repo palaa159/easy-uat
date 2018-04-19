@@ -1,4 +1,5 @@
-export default function ({ $axios, redirect }) {
+export default ({ $axios, redirect, store }) => {
+  if (store.state.auth.token) $axios.setToken(store.state.auth.token, 'Bearer')
   $axios.onRequest(config => {
     console.log('Making request to ' + config.url)
   })
