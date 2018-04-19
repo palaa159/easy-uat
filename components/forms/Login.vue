@@ -89,6 +89,7 @@ export default {
         // return this.$router.replace(`/${redirect}`)
         return window.location.href = `/${redirect}`
       }
+      return this.errorMsg = 'เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง'
     },
     async submit () {
       this.isBtnLoading = true

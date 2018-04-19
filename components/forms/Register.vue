@@ -12,7 +12,7 @@
             name="email"
             class="_bgcl-tpr"
             type="email" 
-            data-vv-delay="500"
+            data-vv-delay="250"
             placeholder="✉️ อีเมลที่จะใช้ลงทะเบียน">
           <small 
             v-show="errors.has('email')"
@@ -21,12 +21,12 @@
         </float-label>
         <float-label class="_mgbt-16px">
           <input 
-            v-validate="{required: true}"
+            v-validate="{required: true, max: 20}"
             v-model="firstName"
             name="firstName"
             class="_bgcl-tpr"
             type="text" 
-            data-vv-delay="500"
+            data-vv-delay="250"
             placeholder="ชื่อ">
           <small 
             v-show="errors.has('firstName')"
@@ -35,12 +35,12 @@
         </float-label>
         <float-label class="_mgbt-16px">
           <input 
-            v-validate="{required: true}"
+            v-validate="{required: true, max: 20}"
             v-model="lastName"
             name="lastName"
             class="_bgcl-tpr"
             type="text" 
-            data-vv-delay="500"
+            data-vv-delay="250"
             placeholder="นามสกุล">
           <small 
             v-show="errors.has('lastName')"
@@ -49,22 +49,32 @@
         </float-label>
         <float-label class="_mgbt-16px">
           <input 
-            v-validate="{required: true}"
+            v-validate="{required: true, min: 8, max: 16, regex: $store.state.passwordRegex}"
             v-model="password"
             name="password"
             class="_bgcl-tpr"
             type="password" 
-            data-vv-delay="500"
+            data-vv-delay="250"
             placeholder="🔒 รหัสผ่าน">
-          <small 
-            v-show="errors.has('password')"
-            class="_cl-negative" 
-          >กรุณาใส่ Password</small>
         </float-label>
+        <div 
+          v-show="errors.has('password')" 
+          class="bio-message -warning -has-icon _alit-ct">
+          <fa-icon icon="lock"/> 
+          <small class="_mgl-12px">กรุณาตั้งรหัสผ่าน 8 - 16 ตัวอักษร โดยมีตัวหนังสือภาษาอังกฤษ ตัวเลข และอักขระพิเศษเป็นส่วนประกอบ</small>
+        </div>
         <div 
           v-if="errorMsg" 
           class="bio-message -negative">
           {{ errorMsg }}
+        </div>
+        <div 
+          v-if="isLoggingIn" 
+          class="bio-message -positive">
+          <div>
+            <fa-icon icon="check"/>
+            <span class="_mgl-12px">สมัครสมาชิกสำเร็จ กำลังนำคุณเข้าสู่ระบบ</span>
+          </div>
         </div>
         <button 
           :class="{'-loading -disabled': isBtnLoading}"
@@ -92,30 +102,43 @@
 export default {
   data: () => ({
     isBtnLoading: false,
+    isLoggingIn: false,
     email: '',
     firstName: '',
     lastName: '',
     password: '',
-    errorMsg: 'x'
+    errorMsg: '',
   }),
   methods: {
-    async login () {
-      const redirect = this.$route.query.redirect
-      const res = await this.$store.dispatch('login', {
+    async register () {
+      const redirect = this.$route.query.redirect || ''
+      const register = await this.$store.dispatch('auth/register', {
         email: this.email,
-        password: this.password
+        password: this.password,
+        firstName: this.firstName,
+        lastName: this.lastName
       })
-      if (res) {
-        return this.$router.replace(`/${redirect}`)
+      if (register) {
+        this.isLoggingIn = true
+        const res = await this.$store.dispatch('auth/login', {
+          email: this.email,
+          password: this.password
+        })
+        if (res.token) return window.location.href = `/${redirect}`
+        this.isLoggingIn = false
+        return this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง'
       }
-      return this.$router.replace('/')
+      return this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง'
     },
     async submit () {
+      this.isBtnLoading = true
+      this.errorMsg = ''
       const isValid = await this.$validator.validateAll()
       if (isValid) {
-        this.login()
-          .catch(err => this.errorMsg = 'เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
+        await this.register()
+          .catch(err => this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
       }
+      return this.isBtnLoading = false
     }
   }
 }

@@ -3,7 +3,8 @@ import urls from '~/services/apiUrl'
 
 export const state = () => ({
   user: null,
-  token: null
+  token: null,
+  passwordRegex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%-_*#?&])[A-Za-z\d$@$!%-_*#?&]{8,}$/
 })
 
 export const mutations = {
@@ -18,6 +19,15 @@ export const mutations = {
 }
 
 export const actions = {
+  async register ({ commit }, { email, password, firstName, lastName }) {
+    const res = await this.$axios.$post(urls.emailRegister, {
+      email,
+      password,
+      firstName,
+      lastName
+    })
+    return res
+  },
   async login ({ state, dispatch, commit }, { email, password }) {
     // load axios
     const res = await this.$axios.$post(urls.getToken, {
