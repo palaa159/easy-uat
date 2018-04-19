@@ -30,7 +30,11 @@
             v-if="$store.state.auth.user"
             to="/profile" 
           >
-            <fa-icon icon="user-circle" />
+            <img 
+              :src="$store.state.auth.user.avatar_urls['24']" 
+              class="_bdrd-50pct _mgr-4px"
+              style="vertical-align: middle;"
+              alt="avatar">
             <span>{{ $store.state.auth.user.email }}</span>
           </nuxt-link>
           <!-- Shopping cart with badge -->

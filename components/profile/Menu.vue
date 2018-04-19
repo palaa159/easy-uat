@@ -11,7 +11,8 @@
         <nuxt-link 
           :to="x.path"
           class="bio-link" 
-          active-class="-active"
+          active-class="active"
+          exact
         >
           <div class="_dp-f _alit-ct _jtfct-spbtw _pdv-4px _mgv-8px">
             <span>
@@ -76,3 +77,14 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+  .active {
+    div {
+      span {
+        font-weight: 800;
+        color: darken(#1f9eff, 20%);
+      }
+    }
+  }
+</style>

@@ -56,7 +56,7 @@
           type="submit" 
           class="bio-button -info -outline _w-100pct _mgv-24px">
           <h5>
-            อัพเดทข้อมูล
+            อัพเดทข้อมูลส่วนตัว
             <fa-icon icon="long-arrow-alt-right"/>
           </h5>
         </button>
@@ -141,6 +141,12 @@ export default {
     errorMsgBasic: 'x',
     errorMsgPassword: 'x'
   }),
+  created () {
+    // Init data values
+    this.email = this.$store.state.auth.user.email
+    this.firstName = this.$store.state.auth.user.first_name
+    this.lastName = this.$store.state.auth.user.last_name
+  },
   methods: {
     async submitProfile () {
       const redirect = this.$route.query.redirect
