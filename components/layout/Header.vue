@@ -1,9 +1,9 @@
 <template>
   <header class="_zid-1">
-    <!-- Menu -->
-    <MenuNav />
     <!-- Bread, User, Cart -->
     <UserNav />
+    <!-- Menu -->
+    <MenuNav />
   </header>
 </template>
 
