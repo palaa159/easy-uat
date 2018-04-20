@@ -49,7 +49,7 @@ module.exports = {
   */
   plugins: [
     '~/plugins/ssr.js',
-    // '~/plugins/persistedstate.js',
+    '~/plugins/persistedstate.js',
     '~/plugins/axios.js',
     { src: '~/plugins/no-ssr.js', ssr: false }
   ],

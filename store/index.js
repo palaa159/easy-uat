@@ -7,7 +7,7 @@ export const actions = {
     let accessToken = null
     if (req && req.headers && req.headers.cookie) {
       let { __session } = Cookie.parse(req.headers.cookie)
-      console.log(__session)
+      // console.log(__session)
       if (__session) {
         accessToken = JSON.parse(__session)
         accessToken = accessToken.token

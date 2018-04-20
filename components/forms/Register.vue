@@ -49,7 +49,7 @@
         </float-label>
         <float-label class="_mgbt-16px">
           <input 
-            v-validate="{required: true, min: 8, max: 16, regex: $store.state.passwordRegex}"
+            v-validate="{required: true, regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%-_*#?&])[A-Za-z\d$@$!%-_*#?&]{8,}$/}"
             v-model="password"
             name="password"
             class="_bgcl-tpr"
@@ -119,12 +119,11 @@ export default {
       })
       if (register) {
         this.isLoggingIn = true
-        const res = await this.$store.dispatch('auth/login', {
+        const token = await this.$store.dispatch('auth/login', {
           email: this.email,
           password: this.password
         })
-        console.log(res)
-        if (res.token) return window.location.href = `/${redirect}`
+        if (token) return window.location.href = `/${redirect}`
         this.isLoggingIn = false
         return this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง'
       }

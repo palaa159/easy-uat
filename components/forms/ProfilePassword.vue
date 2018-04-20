@@ -19,7 +19,7 @@
     </float-label>
     <float-label class="_mgbt-16px">
       <input 
-        v-validate="{required: true, min: 8, max: 16, regex: $store.state.passwordRegex}"
+        v-validate="{required: true, regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%-_*#?&])[A-Za-z\d$@$!%-_*#?&]{8,}$/}"
         v-model="newPassword"
         name="newPassword"
         class="_bgcl-tpr"

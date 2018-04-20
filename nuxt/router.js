@@ -6,7 +6,7 @@ Vue.use(Router)
 const _faf19f2c = () => import('../pages/set-password.vue' /* webpackChunkName: "pages/set-password" */).then(m => m.default || m)
 const _9d9e8232 = () => import('../pages/register.vue' /* webpackChunkName: "pages/register" */).then(m => m.default || m)
 const _3e5be5d8 = () => import('../pages/profile/index.vue' /* webpackChunkName: "pages/profile/index" */).then(m => m.default || m)
-const _390e86ba = () => import('../pages/kitchensink.vue' /* webpackChunkName: "pages/kitchensink" */).then(m => m.default || m)
+const _a8344eba = () => import('../pages/KitchenSink.vue' /* webpackChunkName: "pages/KitchenSink" */).then(m => m.default || m)
 const _3945ab0d = () => import('../pages/checkout/index.vue' /* webpackChunkName: "pages/checkout/index" */).then(m => m.default || m)
 const _e663bcaa = () => import('../pages/products/index.vue' /* webpackChunkName: "pages/products/index" */).then(m => m.default || m)
 const _4b2a0dd5 = () => import('../pages/login.vue' /* webpackChunkName: "pages/login" */).then(m => m.default || m)
@@ -95,9 +95,9 @@ export function createRouter () {
 			name: "profile"
 		},
 		{
-			path: "/kitchensink",
-			component: _390e86ba,
-			name: "kitchensink"
+			path: "/KitchenSink",
+			component: _a8344eba,
+			name: "KitchenSink"
 		},
 		{
 			path: "/checkout",
