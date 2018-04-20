@@ -49,7 +49,7 @@ module.exports = {
   */
   plugins: [
     '~/plugins/ssr.js',
-    '~/plugins/persistedstate.js',
+    // '~/plugins/persistedstate.js',
     '~/plugins/axios.js',
     { src: '~/plugins/no-ssr.js', ssr: false }
   ],
@@ -65,10 +65,8 @@ module.exports = {
     // ['@nuxtjs/google-analytics', {
     //   id: ''
     // }],
-    ['@nuxtjs/pwa', { icon: false }],
-    '@nuxtjs/component-cache'
+    ['@nuxtjs/pwa', { icon: false }] // doesn't work in firebase functions
   ],
-
   /*
   ** Axios module configuration
   */
@@ -85,12 +83,15 @@ module.exports = {
   /*
   ** Build configuration
   */
-  // buildDir: 'functions/nuxt',
+  buildDir: 'nuxt',
   build: {
     // cache: true,
     // parallel: true,
     // analyze: true,
-    // publicPath: '/',
+    vendors: [
+      'axios', 'moment'
+    ],
+    publicPath: '/',
     plugins: [
       new MomentLocalesPlugin({
         localesToKeep: ['en', 'th'],

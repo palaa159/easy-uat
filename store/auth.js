@@ -10,7 +10,6 @@ export const state = () => ({
 export const mutations = {
   SET_TOKEN (state, token) {
     this.$axios.setToken(token, 'Bearer')
-    JSCookie.set('token', token)
     state.token = token
   },
   SET_USER (state, user) {
@@ -30,18 +29,17 @@ export const actions = {
   },
   async login ({ state, dispatch, commit }, { email, password }) {
     // load axios
-    const res = await this.$axios.$post(urls.getToken, {
+    const { token } = await this.$axios.$post(urls.getToken, {
       username: email,
       password
     })
-    // console.log(token)
-    if (res.token) {
-      await commit('SET_TOKEN', res.token)
+    if (token) {
+      JSCookie.set('__session', { token })
     }
-    return res
+    return token
   },
   async logout ({ dispatch, commit }) {
-    JSCookie.remove('token')
+    JSCookie.remove('__session')
     await commit('SET_TOKEN', null)
     return window.location.href = '/'
   }

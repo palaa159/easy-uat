@@ -98,7 +98,6 @@ export default {
     async updateProfile () {
       this.errorMsg = ''
       this.successMsg = ''
-      const redirect = this.$route.query.redirect
       const res = await this.$store.dispatch('user/updateBasicProfile', {
         firstName: this.firstName,
         lastName: this.lastName

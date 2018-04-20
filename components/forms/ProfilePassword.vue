@@ -95,19 +95,30 @@ export default {
       this.successMsg = ''
       const isValid = await this.$validator.validateAll()
       // if 
-      if (isValid) await this.changePassword().catch(err => this.errorMsg = 'เกิดความผิดพลาด กรุณาลองใหม่อีกครั้ง')
+      if (isValid) {
+        await this.changePassword()
+          .catch(err => this.errorMsg = 'เกิดความผิดพลาด กรุณาลองใหม่อีกครั้ง')
+      }
       return this.isBtnLoading = false
     },
     async changePassword () {
-      const isChanged = await this.$axios.$put(urls.changePassword, {
+      // console.log('change password')
+      // const isChanged = await this.$axios.$put(urls.changePassword, {
+      //   currentPassword: this.currentPassword,
+      //   newPassword: this.newPassword
+      // }).catch(err => this.errorMsg = 'เกิดความผิดพลาด กรุณาลองใหม่อีกครั้ง')
+      // if (!isChanged) {
+      //   return this.errorMsg = 'เกิดความผิดพลาด กรุณาลองใหม่อีกครั้ง'
+      // }
+      // return this.successMsg = 'เปลี่ยนรหัสผ่านสำเร็จ'
+      this.errorMsg = ''
+      this.successMsg = ''
+      const res = await this.$store.dispatch('user/updatePassword', {
         currentPassword: this.currentPassword,
         newPassword: this.newPassword
       })
-      if (!isChanged) {
-        return this.errorMsg = 'เกิดความผิดพลาด กรุณาลองใหม่อีกครั้ง'
-      }
-      this.successMsg = 'เปลี่ยนรหัสผ่านสำเร็จ'
-      return
+      if (res) return this.successMsg = 'สำเร็จ'
+      return this.errorMsg = 'กรุณาลองใหม่อีกครั้ง'
     }
   }
 }

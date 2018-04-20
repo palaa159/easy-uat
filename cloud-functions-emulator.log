@@ -1,0 +1,249 @@
+2018-04-19T12:17:00.551Z - info: User function triggered, starting execution
+2018-04-19T12:17:01.231Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T12:17:01.286Z - info: Execution took 738 ms, user function completed successfully
+2018-04-19T12:17:01.922Z - info: User function triggered, starting execution
+2018-04-19T12:17:01.942Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T12:17:01.967Z - info: Execution took 45 ms, user function completed successfully
+2018-04-19T12:17:02.002Z - info: User function triggered, starting execution
+2018-04-19T12:17:02.021Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T12:17:02.048Z - info: Execution took 50 ms, user function completed successfully
+2018-04-19T12:17:05.236Z - info: User function triggered, starting execution
+2018-04-19T12:17:05.250Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T12:17:05.280Z - info: Execution took 44 ms, user function completed successfully
+2018-04-19T12:17:05.883Z - info: User function triggered, starting execution
+2018-04-19T12:17:05.901Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T12:17:05.931Z - info: Execution took 47 ms, user function completed successfully
+2018-04-19T12:17:06.047Z - info: User function triggered, starting execution
+2018-04-19T12:17:06.067Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T12:17:06.093Z - info: Execution took 47 ms, user function completed successfully
+2018-04-19T12:17:13.835Z - info: User function triggered, starting execution
+2018-04-19T12:17:13.859Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T12:17:13.895Z - info: Execution took 61 ms, user function completed successfully
+2018-04-19T12:17:13.910Z - info: User function triggered, starting execution
+2018-04-19T12:17:13.930Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T12:17:13.962Z - info: Execution took 52 ms, user function completed successfully
+2018-04-19T12:17:13.983Z - info: User function triggered, starting execution
+2018-04-19T12:17:13.997Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T12:17:14.030Z - info: Execution took 46 ms, user function completed successfully
+2018-04-19T15:15:41.089Z - info: User function triggered, starting execution
+2018-04-19T15:15:41.594Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:15:41.643Z - info: Execution took 555 ms, user function completed successfully
+2018-04-19T15:15:41.693Z - info: User function triggered, starting execution
+User function triggered, starting execution
+2018-04-19T15:15:41.705Z - info: Execution took 11 ms, user function completed successfully
+2018-04-19T15:15:41.724Z - info: Execution took 32 ms, user function completed successfully
+2018-04-19T15:15:42.385Z - info: User function triggered, starting execution
+2018-04-19T15:15:42.402Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:15:42.505Z - info: Execution took 119 ms, user function completed successfully
+2018-04-19T15:15:42.518Z - info: User function triggered, starting execution
+2018-04-19T15:15:42.537Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:15:42.566Z - info: Execution took 49 ms, user function completed successfully
+2018-04-19T15:15:42.628Z - info: User function triggered, starting execution
+2018-04-19T15:15:42.654Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:15:42.686Z - info: Execution took 58 ms, user function completed successfully
+2018-04-19T15:15:54.895Z - info: User function triggered, starting execution
+2018-04-19T15:15:54.917Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:15:54.947Z - info: Execution took 53 ms, user function completed successfully
+2018-04-19T15:15:54.953Z - info: User function triggered, starting execution
+2018-04-19T15:15:54.972Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:15:54.995Z - info: Execution took 42 ms, user function completed successfully
+2018-04-19T15:15:55.001Z - info: User function triggered, starting execution
+2018-04-19T15:15:55.018Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:15:55.047Z - info: Execution took 46 ms, user function completed successfully
+2018-04-19T15:15:59.634Z - info: User function triggered, starting execution
+2018-04-19T15:15:59.638Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:00.013Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:00.048Z - info: Execution took 412 ms, user function completed successfully
+2018-04-19T15:16:00.080Z - info: User function triggered, starting execution
+2018-04-19T15:16:00.087Z - info: User function triggered, starting execution
+2018-04-19T15:16:00.097Z - info: Execution took 17 ms, user function completed successfully
+2018-04-19T15:16:00.126Z - info: Execution took 39 ms, user function completed successfully
+2018-04-19T15:16:00.651Z - info: User function triggered, starting execution
+2018-04-19T15:16:00.654Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:00.710Z - info: User function triggered, starting execution
+2018-04-19T15:16:00.712Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:00.938Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:00.972Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:00.996Z - info: Execution took 344 ms, user function completed successfully
+2018-04-19T15:16:01.000Z - info: Execution took 290 ms, user function completed successfully
+2018-04-19T15:16:42.928Z - info: User function triggered, starting execution
+2018-04-19T15:16:43.403Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:43.786Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:43.841Z - info: Execution took 913 ms, user function completed successfully
+2018-04-19T15:16:43.905Z - info: User function triggered, starting execution
+2018-04-19T15:16:43.907Z - info: User function triggered, starting execution
+2018-04-19T15:16:43.924Z - info: Execution took 18 ms, user function completed successfully
+2018-04-19T15:16:43.955Z - info: Execution took 49 ms, user function completed successfully
+2018-04-19T15:16:44.344Z - info: User function triggered, starting execution
+2018-04-19T15:16:44.351Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:44.447Z - info: User function triggered, starting execution
+2018-04-19T15:16:44.452Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:44.662Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:44.701Z - info: Execution took 356 ms, user function completed successfully
+2018-04-19T15:16:44.747Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:44.781Z - info: Execution took 335 ms, user function completed successfully
+2018-04-19T15:16:45.439Z - error: Function worker killed by signal: SIGTERM
+2018-04-19T15:16:49.858Z - info: User function triggered, starting execution
+2018-04-19T15:16:50.552Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:50.934Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:50.991Z - info: Execution took 1134 ms, user function completed successfully
+2018-04-19T15:16:51.044Z - info: User function triggered, starting execution
+2018-04-19T15:16:51.048Z - info: User function triggered, starting execution
+2018-04-19T15:16:51.061Z - info: Execution took 16 ms, user function completed successfully
+2018-04-19T15:16:51.080Z - info: Execution took 31 ms, user function completed successfully
+2018-04-19T15:16:51.293Z - info: User function triggered, starting execution
+2018-04-19T15:16:51.301Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:51.336Z - info: User function triggered, starting execution
+2018-04-19T15:16:51.343Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:51.690Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:51.732Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:51.763Z - info: Execution took 426 ms, user function completed successfully
+2018-04-19T15:16:51.772Z - info: Execution took 478 ms, user function completed successfully
+2018-04-19T15:16:55.155Z - info: User function triggered, starting execution
+2018-04-19T15:16:55.178Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:55.563Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:55.594Z - info: Execution took 439 ms, user function completed successfully
+2018-04-19T15:16:57.312Z - info: User function triggered, starting execution
+2018-04-19T15:16:57.317Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:57.525Z - info: User function triggered, starting execution
+2018-04-19T15:16:57.536Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:57.655Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:57.681Z - info: Execution took 369 ms, user function completed successfully
+2018-04-19T15:16:57.882Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:57.912Z - info: Execution took 389 ms, user function completed successfully
+2018-04-19T15:16:57.952Z - info: User function triggered, starting execution
+2018-04-19T15:16:57.957Z - info: User function triggered, starting execution
+2018-04-19T15:16:57.959Z - info: Execution took 6 ms, user function completed successfully
+2018-04-19T15:16:57.982Z - info: Execution took 26 ms, user function completed successfully
+2018-04-19T15:16:58.158Z - info: User function triggered, starting execution
+2018-04-19T15:16:58.163Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:58.217Z - info: User function triggered, starting execution
+2018-04-19T15:16:58.249Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:16:58.665Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:58.698Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:16:58.718Z - info: Execution took 500 ms, user function completed successfully
+2018-04-19T15:16:58.729Z - info: Execution took 569 ms, user function completed successfully
+2018-04-19T15:17:02.773Z - info: User function triggered, starting execution
+2018-04-19T15:17:02.797Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:17:03.374Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:17:03.404Z - info: Execution took 631 ms, user function completed successfully
+2018-04-19T15:17:03.448Z - info: User function triggered, starting execution
+2018-04-19T15:17:03.450Z - info: User function triggered, starting execution
+2018-04-19T15:17:03.460Z - info: Execution took 8 ms, user function completed successfully
+2018-04-19T15:17:03.478Z - info: Execution took 27 ms, user function completed successfully
+2018-04-19T15:17:03.650Z - info: User function triggered, starting execution
+2018-04-19T15:17:03.654Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:17:03.700Z - info: User function triggered, starting execution
+2018-04-19T15:17:03.702Z - info: Making request to /wp-json/wp/v2/users/me?context=edit
+2018-04-19T15:17:03.979Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:17:04.011Z - error: 
+[31m[vue-server-renderer] Component PurchaseItem implemented serverCacheKey, but no cache was provided to the renderer.[39m
+
+2018-04-19T15:17:04.035Z - info: Execution took 384 ms, user function completed successfully
+2018-04-19T15:17:04.036Z - info: Execution took 337 ms, user function completed successfully
+2018-04-20T01:48:32.421Z - info: User function triggered, starting execution
+2018-04-20T01:48:33.643Z - info: Execution took 1224 ms, user function completed successfully
+2018-04-20T01:48:40.768Z - info: User function triggered, starting execution
+2018-04-20T01:48:40.831Z - info: Execution took 69 ms, user function completed successfully
+2018-04-20T01:48:49.018Z - info: User function triggered, starting execution
+2018-04-20T01:48:49.322Z - info: Execution took 304 ms, user function completed successfully
+2018-04-20T02:27:18.672Z - info: User function triggered, starting execution
+2018-04-20T02:27:19.874Z - info: here now
+2018-04-20T02:27:19.945Z - info: Execution took 1277 ms, user function completed successfully
+2018-04-20T02:27:22.079Z - info: User function triggered, starting execution
+2018-04-20T02:27:22.321Z - info: here now
+2018-04-20T02:27:22.358Z - info: Execution took 279 ms, user function completed successfully
+2018-04-20T02:29:07.200Z - info: User function triggered, starting execution
+2018-04-20T02:29:08.134Z - info: here now
+2018-04-20T02:29:08.283Z - info: Execution took 1085 ms, user function completed successfully
+2018-04-20T02:29:10.160Z - info: User function triggered, starting execution
+2018-04-20T02:29:10.408Z - info: here now
+2018-04-20T02:29:10.458Z - info: Execution took 299 ms, user function completed successfully
+2018-04-20T02:29:11.616Z - info: User function triggered, starting execution
+2018-04-20T02:29:11.887Z - info: here now
+2018-04-20T02:29:11.936Z - info: Execution took 320 ms, user function completed successfully
+2018-04-20T02:29:15.248Z - info: User function triggered, starting execution
+2018-04-20T02:29:15.318Z - info: Execution took 71 ms, user function completed successfully
+2018-04-20T02:29:19.082Z - info: User function triggered, starting execution
+2018-04-20T02:29:19.315Z - info: here now
+2018-04-20T02:29:19.358Z - info: Execution took 276 ms, user function completed successfully
+2018-04-20T03:37:48.509Z - info: User function triggered, starting execution
+2018-04-20T03:37:49.220Z - info: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvY21zLm1hcGxlbGlmZS5jby50aCIsImlhdCI6MTUyNDE5MTM1OCwibmJmIjoxNTI0MTkxMzU4LCJleHAiOjE1MjQ3OTYxNTgsImRhdGEiOnsidXNlciI6eyJpZCI6IjIifX19.HlyDHbRLFIpmOE5WK3vIGA2_eVPo6scLWtaoCo27rFE
+2018-04-20T03:37:49.822Z - info: here now
+2018-04-20T03:37:49.889Z - info: Execution took 1382 ms, user function completed successfully
+2018-04-20T03:37:55.087Z - info: User function triggered, starting execution
+2018-04-20T03:37:55.091Z - info: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvY21zLm1hcGxlbGlmZS5jby50aCIsImlhdCI6MTUyNDE5MTM1OCwibmJmIjoxNTI0MTkxMzU4LCJleHAiOjE1MjQ3OTYxNTgsImRhdGEiOnsidXNlciI6eyJpZCI6IjIifX19.HlyDHbRLFIpmOE5WK3vIGA2_eVPo6scLWtaoCo27rFE
+2018-04-20T03:37:55.432Z - info: here now
+2018-04-20T03:37:55.484Z - info: Execution took 399 ms, user function completed successfully
+2018-04-20T03:37:56.629Z - info: User function triggered, starting execution
+2018-04-20T03:37:56.635Z - info: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvY21zLm1hcGxlbGlmZS5jby50aCIsImlhdCI6MTUyNDE5MTM1OCwibmJmIjoxNTI0MTkxMzU4LCJleHAiOjE1MjQ3OTYxNTgsImRhdGEiOnsidXNlciI6eyJpZCI6IjIifX19.HlyDHbRLFIpmOE5WK3vIGA2_eVPo6scLWtaoCo27rFE
+2018-04-20T03:37:56.972Z - info: here now
+2018-04-20T03:37:57.014Z - info: Execution took 385 ms, user function completed successfully
+2018-04-20T03:38:04.525Z - info: User function triggered, starting execution
+2018-04-20T03:38:04.532Z - info: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvY21zLm1hcGxlbGlmZS5jby50aCIsImlhdCI6MTUyNDE5MTM1OCwibmJmIjoxNTI0MTkxMzU4LCJleHAiOjE1MjQ3OTYxNTgsImRhdGEiOnsidXNlciI6eyJpZCI6IjIifX19.HlyDHbRLFIpmOE5WK3vIGA2_eVPo6scLWtaoCo27rFE
+2018-04-20T03:38:04.974Z - info: here now
+2018-04-20T03:38:05.016Z - info: Execution took 492 ms, user function completed successfully

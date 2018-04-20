@@ -123,6 +123,7 @@ export default {
           email: this.email,
           password: this.password
         })
+        console.log(res)
         if (res.token) return window.location.href = `/${redirect}`
         this.isLoggingIn = false
         return this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง'

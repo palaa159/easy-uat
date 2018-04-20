@@ -89,7 +89,10 @@ export default {
       this.successMsg = ''
       const isValid = await this.$validator.validateAll()
       // if 
-      if (isValid) await this.resetPassword().catch(err => this.errorMsg = 'เกิดความผิดพลาด กรุณาลองใหม่อีกครั้ง')
+      if (isValid) { 
+        await this.resetPassword()
+          .catch(err => this.errorMsg = 'เกิดความผิดพลาด กรุณาลองใหม่อีกครั้ง')
+      }
       return this.isBtnLoading = false
     },
     async resetPassword () {

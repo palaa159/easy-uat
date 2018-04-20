@@ -3,6 +3,7 @@
     <nuxt-link to="/kitchensink">
       kitchensink
     </nuxt-link>
+    {{ $store.state }}
   </div>
 </template>
 

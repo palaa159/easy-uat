@@ -1,30 +1,38 @@
 const functions = require('firebase-functions')
-const { Nuxt } = require('nuxt')
+const { Nuxt } = require('nuxtjs-node6')
 const express = require('express')
-const config = require('../nuxt.config')
+// const config = require('../nuxt.config')
 
 const app = express()
-
+const config = {
+  dev: false,
+  buildDir: 'nuxt',
+  build: {
+    publicPath: '/'
+  },
+  axios: {
+    // See https://github.com/nuxt-community/axios-module#options
+    credentials: true,
+    debug: true,
+    https: true,
+    port: 443,
+    host: 'cms.maplelife.co.th',
+    // prefix: '/wp-json/api/v1', moved to apiUrl.js
+  },
+}
 const nuxt = new Nuxt(config)
 
-function handleRequest(req, res) {
-  nuxt.renderRoute('/')
+function handleAppRequest(req, res) {
+  res.set('Cache-Control', 'public, max-age=600, s-maxage=1200')
+  return nuxt.renderRoute('/')
     .then(result => {
       return res.send(result.html)
-    })
-    .catch(err => {
+    }).catch(err => {
       res.send(err)
     })
 }
 
 app.use(nuxt.render)
-app.get('*', handleRequest)
+app.get('*', handleAppRequest)
 
 exports.ssrapp = functions.https.onRequest(app)
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });

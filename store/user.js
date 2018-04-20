@@ -7,5 +7,12 @@ export const actions = {
       lastName
     })
     return res
+  },
+  async updatePassword ({}, { currentPassword, newPassword }) {
+    const res = await this.$axios.$put(urls.changePassword, {
+      currentPassword,
+      newPassword
+    })
+    return res
   }
 }

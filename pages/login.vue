@@ -21,8 +21,8 @@ export default {
     Login
   },
   fetch ({ store, redirect }) {
-    if (store.authUser) {
-      return redirect('/')
+    if (store.state.auth.user) {
+      return redirect('/profile')
     }
   }
 }

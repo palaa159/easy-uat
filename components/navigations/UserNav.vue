@@ -47,6 +47,7 @@
 <script>
 import Cart from '~/components/purchase/Cart'
 import Breadcrumbs from '~/components/navigations/Breadcrumbs'
+import urls from '~/services/apiUrl'
 export default {
   components: {
     Cart,
