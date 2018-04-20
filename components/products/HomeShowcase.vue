@@ -2,9 +2,9 @@
   <div class="container">
     <div 
       :class="{'_fdrt-rrv': !leftImage}"
-      class="row" 
+      class="row _alit-ct" 
     >
-      <div class="col">
+      <div class="col-12 col-sm-5">
         <!-- Image container -->
         <div class="_pst-rlt">
           <!-- Image -->
@@ -25,8 +25,8 @@
           </nuxt-link>
         </div>
       </div>
-      <div class="col">
-        <h2 v-html="heading" /> 
+      <div class="col-12 col-sm-7">
+        <h2 class="_lh-100pct" v-html="heading" /> 
         <ul class="_pdh-16px">
           <li 
             v-for="(li, i) in list" 

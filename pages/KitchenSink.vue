@@ -5,17 +5,26 @@
       <HomeShowcase
         :left-image="false"
       />
+      <PageHeading />
+      <ProductThumb />
+      <ProductList />
     </div>
   </Page>
 </template>
 
 <script>
   import HomeShowcase from '~/components/products/HomeShowcase'
+  import ProductThumb from '~/components/products/ProductThumb'
+  import ProductList from '~/components/products/ProductList'
+  import PageHeading from '~/components/text/PageHeading'
   import Page from '~/components/layout/Page'
   export default {
     components: {
       Page,
-      HomeShowcase
+      HomeShowcase,
+      PageHeading,
+      ProductThumb,
+      ProductList
     }
   }
 </script>
