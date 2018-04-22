@@ -19,6 +19,9 @@
     },
     components: {
       Page
+    },
+    mounted () {
+      // Get featured product
     }
   }
 </script>

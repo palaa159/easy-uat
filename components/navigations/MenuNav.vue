@@ -25,8 +25,7 @@
             @click="$store.commit('menu/SET_MOBILE_MENU', !$store.state.menu.isShowing)">
             <div>
               <div 
-                :class="{menu: !$store.state.menu.isShowing, close: $store.state.menu.isShowing}"
-                class="icon" />
+                class="menu icon" />
             </div>
           </div>
         </div>
@@ -40,9 +39,20 @@
         v-show="$store.state.menu.isShowing" 
         class="mobile-menu _bgcl-white" 
       >
+        <div class="_dp-f _jtfct-fe _pdv-8px _pdh-16px">
+          <div 
+            class="_dp-ilb hbg-container _pdv-8px _pdh-24px _cs-pt" 
+            @click="$store.commit('menu/SET_MOBILE_MENU', !$store.state.menu.isShowing)">
+            <div>
+              <div 
+                :class="{menu: !$store.state.menu.isShowing, close: $store.state.menu.isShowing}"
+                class="icon" />
+            </div>
+          </div>
+        </div>
         <div 
           v-if="items.length" 
-          class="_h-100pct _dp-f _jtfct-spbtw _fdrt-cl _pdt-24px _pdbt-128px">
+          class="_h-100pct _dp-f _jtfct-spbtw _fdrt-cl _pdt-16px _pdbt-128px">
           <div 
             v-for="(x, i) in items" 
             :key="i"
