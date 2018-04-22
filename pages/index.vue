@@ -28,9 +28,9 @@
 
     <div class="row _jtfct-ct">
       <div 
-v-for="(item, i) in mockProducts" 
-           :key="i" 
-class="col-12 col-lg-10 _mgv-16px">
+        v-for="(item, i) in mockProducts" 
+        :key="i" 
+        class="col-12 col-lg-10 _mgv-16px">
         <HomeShowcase 
           :left-image="(i + 1) % 2 != 0"
           :image="item.image"
