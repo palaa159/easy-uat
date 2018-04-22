@@ -65,10 +65,8 @@ module.exports = {
     // ['@nuxtjs/google-analytics', {
     //   id: ''
     // }],
-    ['@nuxtjs/pwa', { icon: false }],
-    '@nuxtjs/component-cache'
+    // ['@nuxtjs/pwa', { icon: false }] // doesn't work in firebase functions
   ],
-
   /*
   ** Axios module configuration
   */
@@ -85,10 +83,15 @@ module.exports = {
   /*
   ** Build configuration
   */
+  buildDir: 'nuxt',
   build: {
     // cache: true,
     // parallel: true,
     // analyze: true,
+    vendors: [
+      'axios', 'moment'
+    ],
+    publicPath: '/',
     plugins: [
       new MomentLocalesPlugin({
         localesToKeep: ['en', 'th'],

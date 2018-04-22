@@ -21,7 +21,7 @@ export default {
     Register
   },
   fetch ({ store, redirect }) {
-    if (store.authUser) {
+    if (store.state.auth.user) {
       return redirect('/')
     }
   }

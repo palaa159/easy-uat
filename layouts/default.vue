@@ -33,6 +33,7 @@
   .min-height-100vh {
     min-height: calc(100vh - 100px);
     background: rgba(0, 0, 0, 0.02);
+    padding-bottom: 100px;
   }
   .curtain {
     @include breakpoint(mobile) {

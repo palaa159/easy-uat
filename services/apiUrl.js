@@ -10,6 +10,7 @@ export default {
   forgotPassword: `${prefix}/api/v1/auth/forgot_password`, // POST,
   forgotSetPassword: `${prefix}/api/v1/auth/forgot_password`, // PUT
   /* User */
+  updateBasicProfile: `${prefix}/api/v1/user/me`, // PUT
   getUserMe: `${prefix}/wp/v2/users/me?context=edit`, // PUT
   /* Categories with subcats */
   catData: `${prefix}/api/v1/cat`, // GET

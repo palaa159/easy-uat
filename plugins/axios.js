@@ -1,6 +1,7 @@
-export default function ({ $axios, redirect }) {
+export default ({ $axios, redirect, store }) => {
+  if (store.state.auth.token && store.state.auth.token.length > 10) $axios.setToken(store.state.auth.token, 'Bearer')
   $axios.onRequest(config => {
-    console.log('Making request to ' + config.url)
+    // console.log('Making request to ' + config.url)
   })
 
   $axios.onError(error => {

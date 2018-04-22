@@ -81,11 +81,11 @@ export default {
   methods: {
     async login () {
       const redirect = this.$route.query.redirect || ''
-      const res = await this.$store.dispatch('auth/login', {
+      const token = await this.$store.dispatch('auth/login', {
         email: this.email,
         password: this.password
       })
-      if (res.token) {
+      if (token) {
         // return this.$router.replace(`/${redirect}`)
         return window.location.href = `/${redirect}`
       }

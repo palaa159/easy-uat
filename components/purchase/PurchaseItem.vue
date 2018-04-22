@@ -61,7 +61,7 @@
         })
       }
     },
-    serverCacheKey: props => props.index,
+    // serverCacheKey: props => props.index,
     methods: {
       onAdjust (n) {
         console.log(`on adjust: ${n}`)

@@ -27,9 +27,9 @@
     </div>
 
     <div class="row _jtfct-ct">
-      <div class="col-12 col-lg-10 _mgv-16px" v-for="(item, i) in mockProducts" :key="i">
+      <div v-for="(item, i) in mockProducts" class="col-12 col-lg-10 _mgv-16px" :key="i">
         <HomeShowcase 
-          :leftImage="(i + 1) % 2 != 0"
+          :left-image="(i + 1) % 2 != 0"
           :image="item.image"
           :heading="item.heading"
           :list="item.list"
@@ -43,6 +43,9 @@
   import HomeShowcase from '~/components/products/HomeShowcase'
   // import WooCommerce from 'woocommerce'
   export default {
+    components: {
+      HomeShowcase
+    },
     data: () => ({
       mockProducts: 
       [{
@@ -109,8 +112,5 @@
         title: `Home ${siteTitle}`
       }
     },
-    components: {
-      HomeShowcase
-    }
   }
 </script>
