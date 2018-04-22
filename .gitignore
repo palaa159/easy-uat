@@ -2,9 +2,7 @@
 node_modules
 
 # logs
-npm-debug.log
-yarn-error.log
-firebase-debug.log
+*.log
 
 # Yarn cache
 yarn.lock
@@ -14,6 +12,7 @@ yarn.lock
 
 # Nuxt generate
 dist
+nuxt
 
 # PWA
 sw.*

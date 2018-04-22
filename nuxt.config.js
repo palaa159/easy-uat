@@ -65,7 +65,7 @@ module.exports = {
     // ['@nuxtjs/google-analytics', {
     //   id: ''
     // }],
-    ['@nuxtjs/pwa', { icon: false }] // doesn't work in firebase functions
+    // ['@nuxtjs/pwa', { icon: false }] // doesn't work in firebase functions
   ],
   /*
   ** Axios module configuration

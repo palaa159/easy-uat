@@ -39,39 +39,39 @@
           </float-label>
           <float-label
             label="รหัสไปรษณีย์">
-            <thai-address-input 
+            <!-- <thai-address-input 
               v-model="postalCode"
               placeholder="เลือกรหัสไปรษณีย์"
               type="postalCode"
               input-class="thai-addr"
-              @selected="onSelected"/>
+              @selected="onSelected"/> -->
           </float-label>
           <float-label
             label="จังหวัด">
-            <thai-address-input
+            <!-- <thai-address-input
               v-model="province"
               placeholder="เลือกจังหวัด"
               type="province"
               input-class="thai-addr"
-              @selected="onSelected"/>
+              @selected="onSelected"/> -->
           </float-label>
           <float-label
             label="อำเภอ/เขต">
-            <thai-address-input 
+            <!-- <thai-address-input 
               v-model="district"
               placeholder="เลือกอำเภอ/เขต"
               type="district"
               input-class="thai-addr"
-              @selected="onSelected"/>
+              @selected="onSelected"/> -->
           </float-label>
           <float-label
             label="แขวง/ตำบล">
-            <thai-address-input 
+            <!-- <thai-address-input 
               v-model="subdistrict"
               placeholder="เลือกแขวง/ตำบล"
               type="subdistrict"
               input-class="thai-addr"
-              @selected="onSelected"/>
+              @selected="onSelected"/> -->
           </float-label>
         </div>
       </div>
