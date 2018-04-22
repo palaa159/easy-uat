@@ -1,0 +1,161 @@
+@import 'node_modules/biomatic/dist/biomatic.full.min.css';
+@import 'node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
+@import 'node_modules/bootstrap/scss/utilities/_embed.scss';
+// เพิ่ม stylesheet ของ Vue Thailand Address เข้าไป
+@import 'modules/vue-thai-address-input/dist/vue-thai-address-input.css';
+@import 'assets/styles/variables';
+@import 'assets/styles/default';
+
+/* Begin your default styles here */
+
+._cl-blue {
+  color: $blue !important;
+}
+
+._bgcl-blue {
+  background-color: $blue !important;
+}
+
+.hv-anim {
+  display: inline-block;
+  position: relative;
+  color: $purple;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: $purple;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}
+
+._fdrt-rrv {
+  flex-direction: row-reverse !important;
+}
+
+._fdrt-clr {
+  flex-direction: column-reverse !important;
+}
+
+._ratio {
+  background: #333;
+  width: 50%;
+  &::before {
+    content: '';
+    padding-top: 100%;
+    float: left;
+  }
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+// Float input
+.vfl-label {
+  text-transform: uppercase;
+  padding: 8px 0px;
+}
+
+.vfl-has-label {
+  &:not(:first-child) {
+    margin-top: 30px;
+  }
+  input {
+    margin: 4px 0px;
+    padding: 0px 4px;
+  }
+}
+
+.vfl-label-on-input {
+  top: -1.5em !important;
+  left: 4px !important;
+}
+
+.vfl-label-on-focus {
+  color: #ff851b;
+}
+
+.vfl-label + input, .vfl-label + .thai-address-input input {
+  height: 2em;
+  font-size: 1rem;
+  border: 0;
+  border-bottom: 2px solid rgb(215, 215, 215);
+  transition: border 0.2s;
+  width: 100%;
+}
+
+.thai-address-input {
+  .suggestion-list {
+    top: 24px;
+    height: 220px;
+    overflow-y: scroll;
+    // border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+.vfl-label-on-focus + input  {
+  border-bottom: 2px solid #ff851b;
+}
+
+// Custom select
+.custom-select {
+  // height: 36px;
+  margin-bottom: 36px;
+}
+
+.custom-select>select {
+  height: 1.7em;
+  padding-bottom: 4px;
+  background-color: #fff;
+  color: rgba(57, 59, 70, .9);
+  width: 100%;
+  // vertical-align: top;
+  padding-left: 0px;
+  padding-right: 12px;
+  border-radius: 0px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid rgb(215, 215, 215);
+  transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.custom-select:not(.-multiple):after {
+  content: " ";
+  border: 2px solid rgba(57,59,70,0.9);
+  border-right-width: 0px;
+  border-top-width: 0px;
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  right: 8px;
+  top: 35%;
+  border-color: rgba(217,217,217,0.8);
+  transform: rotate(-45deg) translate(0, calc(-50% - 4px));
+  z-index: 4;
+  pointer-events: none;
+}
+
+// Modal
+.v--modal-overlay {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-fixed {
+  position: fixed !important;
+  background: #fff;
+}
+
+.bio-accordion.-has-icon>label:before, .bio-select:not(.-multiple):after {
+  z-index: 0;
+}
