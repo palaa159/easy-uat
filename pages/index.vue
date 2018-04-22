@@ -6,28 +6,31 @@
 
     <div class="row">
       <div class="col">
-        <h2 v-html="heading" /> 
+        <h2 v-html="`heading`" /> 
         <ul class="_pdh-16px">
-          <li 
+          <!-- <li 
             v-for="(li, i) in list" 
             :key="i" 
-            v-html="li" />
+            v-html="li" /> -->
         </ul>
       </div>
       <div class="col">
         <!-- Image container -->
         <div class="_pst-rlt">
           <!-- Image -->
-          <div 
+          <!-- <div 
             v-lazy:background-image="image" 
             class="image _ratio" 
-          />
+          /> -->
         </div>
       </div>
     </div>
 
     <div class="row _jtfct-ct">
-      <div v-for="(item, i) in mockProducts" class="col-12 col-lg-10 _mgv-16px" :key="i">
+      <div 
+v-for="(item, i) in mockProducts" 
+           :key="i" 
+class="col-12 col-lg-10 _mgv-16px">
         <HomeShowcase 
           :left-image="(i + 1) % 2 != 0"
           :image="item.image"
