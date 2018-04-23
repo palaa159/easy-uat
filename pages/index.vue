@@ -46,6 +46,13 @@
   import HomeShowcase from '~/components/products/HomeShowcase'
   // import WooCommerce from 'woocommerce'
   export default {
+    async asyncData ({ store }) {
+      const featuredProducts = await store.dispatch('product/getFeaturedProducts')
+      // console.log(featured)
+      return {
+        featuredProducts
+      }
+    },
     components: {
       HomeShowcase
     },
@@ -113,12 +120,6 @@
       return { 
         title: `Home ${siteTitle}`
       }
-    },
-    async mounted () {
-      //Get featured products
-      const featured = await this.$store.dispatch('product/getFeaturedProducts')
-      // console.log(featured)
-      this.featuredProducts = featured
     }
   }
 </script>
