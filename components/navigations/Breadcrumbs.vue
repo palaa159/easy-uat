@@ -9,7 +9,7 @@
             <li>
               <nuxt-link 
                 to="/" 
-                class="_cl-primary-300">
+                class="_cl-primary-300 _ttf-upc">
                 Home
               </nuxt-link>
             </li>
@@ -24,9 +24,13 @@
               />
               <nuxt-link 
                 :to="`/${x.path}`" 
-                class="_cl-primary-300 _ttf-cptl">
-                <span v-if="x.title.indexOf(':') > -1">{{ $route.params[x.title.substring(1)] }}</span>
-                <span v-else>{{ decodeURI(x.title) }}</span>
+                class="_cl-primary-300 _ttf-upc">
+                <span 
+                  v-if="x.title.indexOf(':') > -1" 
+                >{{ $route.params[x.title.substring(1)] }}</span>
+                <span 
+                  v-else 
+                >{{ decodeURI(x.title) }}</span>
               </nuxt-link>
             </li>
           </ul>

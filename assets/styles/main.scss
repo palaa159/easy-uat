@@ -159,3 +159,17 @@
 .bio-accordion.-has-icon>label:before, .bio-select:not(.-multiple):after {
   z-index: 0;
 }
+
+.product-description-list ul {
+  margin-left: 16px;
+  list-style-image: url(~/assets/images/icons/hexagon-bullet.svg);
+  li {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    // font-family: Kanit;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 160%;
+  }
+}

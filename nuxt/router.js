@@ -17,7 +17,7 @@ const _101b8f4a = () => import('../pages/profile/refund.vue' /* webpackChunkName
 const _b78cd792 = () => import('../pages/profile/orders.vue' /* webpackChunkName: "pages/profile/orders" */).then(m => m.default || m)
 const _06463adc = () => import('../pages/profile/address.vue' /* webpackChunkName: "pages/profile/address" */).then(m => m.default || m)
 const _61c7a7f7 = () => import('../pages/checkout/_payment/index.vue' /* webpackChunkName: "pages/checkout/_payment/index" */).then(m => m.default || m)
-const _c411616a = () => import('../pages/products/_slug.vue' /* webpackChunkName: "pages/products/_slug" */).then(m => m.default || m)
+const _efc8e218 = () => import('../pages/products/_catSlug/index.vue' /* webpackChunkName: "pages/products/_catSlug/index" */).then(m => m.default || m)
 const _4c3d3c1f = () => import('../pages/checkout/_payment/_id.vue' /* webpackChunkName: "pages/checkout/_payment/_id" */).then(m => m.default || m)
 const _63ca9254 = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 
@@ -150,9 +150,9 @@ export function createRouter () {
 			name: "checkout-payment"
 		},
 		{
-			path: "/products/:slug",
-			component: _c411616a,
-			name: "products-slug"
+			path: "/products/:catSlug",
+			component: _efc8e218,
+			name: "products-catSlug"
 		},
 		{
 			path: "/checkout/:payment/:id",

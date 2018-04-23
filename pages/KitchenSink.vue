@@ -7,7 +7,7 @@
       />
       <PageHeading />
       <ProductThumb />
-      <ProductList />
+      <ProductWithPurchase />
     </div>
   </Page>
 </template>
@@ -15,7 +15,7 @@
 <script>
   import HomeShowcase from '~/components/products/HomeShowcase'
   import ProductThumb from '~/components/products/ProductThumb'
-  import ProductList from '~/components/products/ProductList'
+  import ProductWithPurchase from '~/components/products/ProductWithPurchase'
   import PageHeading from '~/components/text/PageHeading'
   import Page from '~/components/layout/Page'
   export default {
@@ -24,7 +24,7 @@
       HomeShowcase,
       PageHeading,
       ProductThumb,
-      ProductList
+      ProductWithPurchase
     }
   }
 </script>
