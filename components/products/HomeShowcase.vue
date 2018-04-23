@@ -26,10 +26,9 @@
         </div>
       </div>
       <div class="col-12 col-sm-7">
-        <h2 
-          class="_lh-100pct" 
+        <h2  
           v-html="heading" /> 
-        <ul class="_pdh-16px">
+        <ul class="_pdt-48px _pdbt-16px _mgl-16px home-list">
           <li 
             v-for="(li, i) in list" 
             :key="i" 
@@ -72,7 +71,7 @@
     width: 100%;
     // height: 300px;
     background-color: transparent;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
   }
@@ -93,5 +92,23 @@
   }
   ul {
     list-style-image: url(~/assets/images/icons/hexagon-bullet.svg);
+    li{
+      padding-left: 8px; 
+    }
+  }
+  h2{
+    font-family: 'Mitr', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    line-height: 3rem;
+    letter-spacing: 2px;
+    color: #182F69;
+  }
+  .home-list{
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 200;
+    line-height: 1.8rem;
+    color: #4F4F4F;
   }
 </style>
