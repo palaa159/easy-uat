@@ -9,6 +9,7 @@ yarn.lock
 
 # Nuxt build
 .nuxt
+nuxt
 
 # Nuxt generate
 dist
