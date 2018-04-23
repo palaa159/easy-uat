@@ -1,12 +1,7 @@
 <template>
   <div class="container">
-    <nuxt-link to="/kitchensink">
-      kitchensink
-    </nuxt-link>
-
     <div 
-      :class="{'_fdrt-rrv': !leftImage}"
-      class="row _alit-ct" 
+      class="row _alit-ct _fdrt-rrv _pdv-48px" 
     >
       <div class="col-12 col-sm-5">
         <!-- Image container -->
@@ -113,20 +108,13 @@
           'บริการให้คำปรึกษาการใช้งานเครื่อง โดยผู้เชี่ยวชาญผลิตภัณฑ์'
           ],
         url: ''
-      }],
-      featuredProducts: []
+      }]
     }),
     head () {
       const siteTitle = this.$store.state.site.title
       return { 
         title: `Home ${siteTitle}`
       }
-    },
-    async created () {
-      //Get featured products
-      const featured = await this.$store.dispatch('product/getFeaturedProducts')
-      // console.log(featured)
-      this.featuredProducts = featured
     }
   }
 </script>
