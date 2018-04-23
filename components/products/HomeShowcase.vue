@@ -26,7 +26,9 @@
         </div>
       </div>
       <div class="col-12 col-sm-7">
-        <h2 class="_lh-100pct" v-html="heading" /> 
+        <h2 
+          class="_lh-100pct" 
+          v-html="heading" /> 
         <ul class="_pdh-16px">
           <li 
             v-for="(li, i) in list" 
@@ -51,7 +53,7 @@
       },
       heading: {
         type: String,
-        default: 'เฮด'
+        default: 'test title'
       },
       list: {
         type: Array,
