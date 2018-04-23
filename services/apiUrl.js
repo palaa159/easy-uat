@@ -13,7 +13,7 @@ export default {
   updateBasicProfile: `${prefix}/api/v1/user/me`, // PUT
   getUserMe: `${prefix}/wp/v2/users/me?context=edit`, // PUT
   /* Categories with subcats */
-  catData: `${prefix}/api/v1/cat`, // GET
+  catData: `${prefix}/api/v1/wc/cat`, // GET
   /* Product */
-  getProductByAttr: `${prefix}/api/v1/product`, // GET
+  getProductByAttr: `${prefix}/api/v1/wc/product`, // GET
 }
