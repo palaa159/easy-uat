@@ -15,5 +15,5 @@ export default {
   /* Categories with subcats */
   catData: `${prefix}/api/v1/cat`, // GET
   /* Product */
-  getProductByAttr: `${prefix}/api/v1/product`, // GET
+  getProductByAttr: `${prefix}/api/v1/wc/product`, // GET
 }

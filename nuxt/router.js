@@ -3,23 +3,23 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const _1d44cd5c = () => import('../pages/set-password.vue' /* webpackChunkName: "pages/set-password" */).then(m => m.default || m)
-const _202fdbcf = () => import('../pages/register.vue' /* webpackChunkName: "pages/register" */).then(m => m.default || m)
-const _ab5acc20 = () => import('../pages/profile/index.vue' /* webpackChunkName: "pages/profile/index" */).then(m => m.default || m)
-const _75aab2bb = () => import('../pages/KitchenSink.vue' /* webpackChunkName: "pages/KitchenSink" */).then(m => m.default || m)
-const _4c2579f5 = () => import('../pages/checkout/index.vue' /* webpackChunkName: "pages/checkout/index" */).then(m => m.default || m)
-const _c0a41eda = () => import('../pages/products/index.vue' /* webpackChunkName: "pages/products/index" */).then(m => m.default || m)
-const _d07b4c26 = () => import('../pages/login.vue' /* webpackChunkName: "pages/login" */).then(m => m.default || m)
-const _fc8150ee = () => import('../pages/forgot-password.vue' /* webpackChunkName: "pages/forgot-password" */).then(m => m.default || m)
-const _585e6c5c = () => import('../pages/profile/logout.vue' /* webpackChunkName: "pages/profile/logout" */).then(m => m.default || m)
-const _1b148102 = () => import('../pages/profile/credit-card.vue' /* webpackChunkName: "pages/profile/credit-card" */).then(m => m.default || m)
-const _101b8f4a = () => import('../pages/profile/refund.vue' /* webpackChunkName: "pages/profile/refund" */).then(m => m.default || m)
-const _b78cd792 = () => import('../pages/profile/orders.vue' /* webpackChunkName: "pages/profile/orders" */).then(m => m.default || m)
-const _06463adc = () => import('../pages/profile/address.vue' /* webpackChunkName: "pages/profile/address" */).then(m => m.default || m)
-const _61c7a7f7 = () => import('../pages/checkout/_payment/index.vue' /* webpackChunkName: "pages/checkout/_payment/index" */).then(m => m.default || m)
-const _c411616a = () => import('../pages/products/_slug.vue' /* webpackChunkName: "pages/products/_slug" */).then(m => m.default || m)
-const _4c3d3c1f = () => import('../pages/checkout/_payment/_id.vue' /* webpackChunkName: "pages/checkout/_payment/_id" */).then(m => m.default || m)
-const _63ca9254 = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
+const _54e05ee9 = () => import('../pages/set-password.vue' /* webpackChunkName: "pages/set-password" */).then(m => m.default || m)
+const _93a9f634 = () => import('../pages/register.vue' /* webpackChunkName: "pages/register" */).then(m => m.default || m)
+const _91aef18e = () => import('../pages/profile/index.vue' /* webpackChunkName: "pages/profile/index" */).then(m => m.default || m)
+const _27054378 = () => import('../pages/KitchenSink.vue' /* webpackChunkName: "pages/KitchenSink" */).then(m => m.default || m)
+const _4be59468 = () => import('../pages/checkout/index.vue' /* webpackChunkName: "pages/checkout/index" */).then(m => m.default || m)
+const _2d95ac6a = () => import('../pages/products/index.vue' /* webpackChunkName: "pages/products/index" */).then(m => m.default || m)
+const _1ebaa036 = () => import('../pages/login.vue' /* webpackChunkName: "pages/login" */).then(m => m.default || m)
+const _9e61d2dc = () => import('../pages/forgot-password.vue' /* webpackChunkName: "pages/forgot-password" */).then(m => m.default || m)
+const _3373af9a = () => import('../pages/profile/logout.vue' /* webpackChunkName: "pages/profile/logout" */).then(m => m.default || m)
+const _a2a8d8ea = () => import('../pages/profile/credit-card.vue' /* webpackChunkName: "pages/profile/credit-card" */).then(m => m.default || m)
+const _c3f969be = () => import('../pages/profile/refund.vue' /* webpackChunkName: "pages/profile/refund" */).then(m => m.default || m)
+const _3221500e = () => import('../pages/profile/orders.vue' /* webpackChunkName: "pages/profile/orders" */).then(m => m.default || m)
+const _2beca19b = () => import('../pages/profile/address.vue' /* webpackChunkName: "pages/profile/address" */).then(m => m.default || m)
+const _57104e00 = () => import('../pages/checkout/_payment/index.vue' /* webpackChunkName: "pages/checkout/_payment/index" */).then(m => m.default || m)
+const _2bdf0b22 = () => import('../pages/products/_slug.vue' /* webpackChunkName: "pages/products/_slug" */).then(m => m.default || m)
+const _5659d068 = () => import('../pages/checkout/_payment/_id.vue' /* webpackChunkName: "pages/checkout/_payment/_id" */).then(m => m.default || m)
+const _5512fd1f = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 
 
 
@@ -81,87 +81,87 @@ export function createRouter () {
     routes: [
 		{
 			path: "/set-password",
-			component: _1d44cd5c,
+			component: _54e05ee9,
 			name: "set-password"
 		},
 		{
 			path: "/register",
-			component: _202fdbcf,
+			component: _93a9f634,
 			name: "register"
 		},
 		{
 			path: "/profile",
-			component: _ab5acc20,
+			component: _91aef18e,
 			name: "profile"
 		},
 		{
 			path: "/KitchenSink",
-			component: _75aab2bb,
+			component: _27054378,
 			name: "KitchenSink"
 		},
 		{
 			path: "/checkout",
-			component: _4c2579f5,
+			component: _4be59468,
 			name: "checkout"
 		},
 		{
 			path: "/products",
-			component: _c0a41eda,
+			component: _2d95ac6a,
 			name: "products"
 		},
 		{
 			path: "/login",
-			component: _d07b4c26,
+			component: _1ebaa036,
 			name: "login"
 		},
 		{
 			path: "/forgot-password",
-			component: _fc8150ee,
+			component: _9e61d2dc,
 			name: "forgot-password"
 		},
 		{
 			path: "/profile/logout",
-			component: _585e6c5c,
+			component: _3373af9a,
 			name: "profile-logout"
 		},
 		{
 			path: "/profile/credit-card",
-			component: _1b148102,
+			component: _a2a8d8ea,
 			name: "profile-credit-card"
 		},
 		{
 			path: "/profile/refund",
-			component: _101b8f4a,
+			component: _c3f969be,
 			name: "profile-refund"
 		},
 		{
 			path: "/profile/orders",
-			component: _b78cd792,
+			component: _3221500e,
 			name: "profile-orders"
 		},
 		{
 			path: "/profile/address",
-			component: _06463adc,
+			component: _2beca19b,
 			name: "profile-address"
 		},
 		{
 			path: "/checkout/:payment",
-			component: _61c7a7f7,
+			component: _57104e00,
 			name: "checkout-payment"
 		},
 		{
 			path: "/products/:slug",
-			component: _c411616a,
+			component: _2bdf0b22,
 			name: "products-slug"
 		},
 		{
 			path: "/checkout/:payment/:id",
-			component: _4c3d3c1f,
+			component: _5659d068,
 			name: "checkout-payment-id"
 		},
 		{
 			path: "/",
-			component: _63ca9254,
+			component: _5512fd1f,
 			name: "index"
 		}
     ],
