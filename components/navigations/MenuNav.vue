@@ -4,15 +4,25 @@
       <!-- Desktop Menu -->
       <div 
         v-if="items.length" 
-        class="row _dp-n _dp-f-md">
+        class="row _dp-n _dp-f-md _alit-ct">
         <nuxt-link 
-          v-for="(x, i) in items" 
+          v-for="(x, i) in items.slice(0,3)" 
           :key="i"
           :to="x.path"
-          class="col _tal-ct" 
+          class="col _tal-ct menu-link" 
         >
           <h6>{{ x.title }}</h6>
         </nuxt-link>
+        <div class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"></div>
+         <nuxt-link 
+          v-for="(x, i) in items.slice(3,6)" 
+          :key="i"
+          :to="x.path"
+          class="col _tal-ct menu-link" 
+        >
+          <h6>{{ x.title }}</h6>
+        </nuxt-link>
+
       </div>
       <!-- Mobile Menu -->
       <div class="row _dp-n-md">
@@ -183,6 +193,19 @@ export default {
       line-height: 2.5rem;
       // border-bottom: 2.5px solid $purple;
     }
+  }
+  .menu-link{
+    transition: 0.15s;
+    h6{
+      font-family: 'Mitr', sans-serif;
+      font-size: 1rem;
+      color: #787878;
+    }
+  }
+  .logo {
+    background-image: url('~/assets/images/logo.png');
+    height: 48px;
+    margin: 0 auto;
   }
   .gradient-text {
     background: linear-gradient($magenta, $purple);

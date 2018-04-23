@@ -76,6 +76,7 @@ export default {
 <style lang="scss" scoped>
   // User Controls
   .user-bar {
+    background-image: linear-gradient(140deg, #4BBFEC 0%, #81A5FF 100%);
     height: 42px;
   }
   .user-control {
