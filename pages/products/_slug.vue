@@ -7,7 +7,7 @@
 <script>
 export default {
   async asyncData ({ app, store, params, error }) {
-    const product = await store.dispatch('product/getProductByAttr', params.slug)
+    const product = await store.dispatch('product/getProductsByCatSlug', params.slug)
     return { product }
   }
 }

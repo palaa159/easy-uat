@@ -8,5 +8,13 @@ export const actions = {
   async getFeaturedProducts () {
     const prod = await this.$axios.$get(`${urls.getProductByAttr}?featured=true`)
     return prod
+  },
+  async getCategories () {
+    const cats = await this.$axios.$get(`${urls.getCategories}`)
+    return cats
+  },
+  async getProductsByCatSlug ({}, catSlug) {
+    const products = await this.$axios.$get(`${urls.getProductsByCatSlug}?catSlug=${encodeURI(catSlug)}`)
+    return products
   }
 }
