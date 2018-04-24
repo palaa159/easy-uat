@@ -14,7 +14,7 @@
           <h6>{{ x.title }}</h6>
         </nuxt-link>
         <div class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"></div>
-         <nuxt-link 
+        <nuxt-link 
           v-for="(x, i) in items.slice(3,6)" 
           :key="i"
           :to="x.path"
@@ -26,9 +26,7 @@
       </div>
       <!-- Mobile Menu -->
       <div class="row _dp-n-md">
-        <div class="col">
-          logo
-        </div>
+       <div class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"></div>
         <div class="col _dp-f _jtfct-fe">
           <div 
             class="_dp-ilb hbg-container _pdv-8px _pdh-24px _cs-pt" 

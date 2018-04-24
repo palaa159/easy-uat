@@ -10,12 +10,12 @@
           <!-- Image -->
           <div 
             v-lazy:background-image="image" 
-            class="image _ratio" 
+            class="image _ratio _mgbt-24px" 
           />
           <!-- Button -->
           <nuxt-link 
             :to="url" 
-            class="link">
+            class="link _dp-n _dp-b-md ">
             <div class="hexagon _pst-asl _bt-0px _r-0px _dp-f _jtfct-ct _alit-ct">
               <fa-icon 
                 class="_cl-white"
@@ -27,13 +27,28 @@
       </div>
       <div class="col-12 col-sm-7">
         <h2  
+          class="_fs-3 _fs-1-md _lh-125pct _fw-300 _cl-blue"
           v-html="heading" /> 
         <ul class="_pdt-48px _pdbt-16px _mgl-16px home-list">
           <li 
             v-for="(li, i) in list" 
             :key="i" 
-            v-html="li" />
+            v-html="li" 
+            class="_fw-300 _lh-150pct"
+          />
         </ul>
+      </div>
+      <div class="col-12 _dp-n-md _dp-f _fdrt-cl _alit-ct _mgt-12px">
+        <nuxt-link 
+            :to="url" 
+            class="link">
+            <div class="hexagon _pst-rlt _dp-f _jtfct-ct _alit-ct">
+              <fa-icon 
+                class="_cl-white"
+                size="lg" 
+                icon="search"/>
+            </div>
+          </nuxt-link>
       </div>
     </div>
   </div>
@@ -96,19 +111,8 @@
       padding-left: 8px; 
     }
   }
-  h2{
-    font-family: 'Kanit', sans-serif;
-    font-size: 2.4rem;
-    font-weight: 300;
-    line-height: 3rem;
-    letter-spacing: 2px;
-    color: #182F69;
-  }
   .home-list{
     font-family: 'Kanit', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 200;
-    line-height: 1.8rem;
     color: #4F4F4F;
   }
 </style>
