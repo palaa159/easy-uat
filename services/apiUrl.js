@@ -7,8 +7,8 @@ export default {
   fbRegister: `${prefix}/api/v1/auth/fb`,
   logout: `${prefix}/api/v1/auth/logout`, // POST
   changePassword: `${prefix}/api/v1/auth/password`, // PUT
-  forgotPassword: `${prefix}/api/v1/auth/forgot_password`, // POST,
-  forgotSetPassword: `${prefix}/api/v1/auth/forgot_password`, // PUT
+  forgotPassword: `${prefix}/api/v1/auth/forgot_password`, // PUT
+  forgotSetPassword: `${prefix}/api/v1/auth/check_password_key`, // PUT
   /* User */
   updateBasicProfile: `${prefix}/api/v1/user/me`, // PUT
   getUserMe: `${prefix}/wp/v2/users/me?context=edit`, // PUT

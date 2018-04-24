@@ -21,7 +21,7 @@ export default {
     ResetPassword
   },
   validate ({ query }) {
-    if (query && query.id && query.login) {
+    if (query && query.key && query.login) {
       return true
     }
     return false

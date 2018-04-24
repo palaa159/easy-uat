@@ -28,6 +28,14 @@ export const actions = {
     })
     return res
   },
+  async forgotSetPassword ({}, { key, login, password }) {
+    const isChanged = await this.$axios.$post(urls.forgotSetPassword, {
+      key,
+      login,
+      password
+    })
+    return isChanged
+  },
   async facebookSignUp ({ dispatch }) {
     const resToken = await Auth.facebookSignIn()
     // console.log(resToken)
