@@ -1,24 +1,22 @@
 <template>
-  <div class="container">
-    <div class="row _jtfct-ct">
-      <div class="col-12 col-sm-4">
-         <!-- Image container -->
-        <div class="_pst-rlt">
-          <!-- Image -->
-          <div 
-            v-lazy:background-image="image" 
-            class="image _ratio" 
-          />
-        </div>
-        <nuxt-link 
-            :to="url" 
-            class="link">
-            <span>{{text}}</span>
-        </nuxt-link>
-      </div>
+    <div >
+      <!-- Image container -->
+    <div class="_pst-rlt">
+      <!-- Image -->
+      
     </div>
+    <nuxt-link 
+        :to="url" 
+        class="link _tal-ct">
+        <div 
+          v-lazy:background-image="image" 
+          class="image _ratio _bgs-ct" 
+        />
+        <h6  
+          class="_fs-3 _fs-4-md _lh-125pct _fw-500 _cl-dark-aqua"
+          v-html="text" />
+    </nuxt-link>
   </div>
-  
 </template>
 
 <script>
@@ -56,4 +54,5 @@
       transform: scale(1.1);
     }
   }
+
 </style>
