@@ -96,20 +96,14 @@ export default {
       return this.isBtnLoading = false
     },
     async resetPassword () {
-      console.log('1')
-      console.log(this.$route.query.key)
       const res = await this.$store.dispatch('auth/forgotSetPassword', {
         key: this.$route.query.key,
         login: this.$route.query.login,
         password: this.newPassword
       })
-      console.log('2')
-      console.log(res)
       if (!res) {
-        console.log('3')
         return this.errorMsg = 'เกิดความผิดพลาด กรุณาลองใหม่อีกครั้ง'
       }
-      console.log('4')
       return this.successMsg = 'เปลี่ยนรหัสผ่านสำเร็จ'
     }
   }

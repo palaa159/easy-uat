@@ -5,12 +5,12 @@ import 'firebase/storage'
 function initFirebase () {
   // Initialize Firebase
   const config = {
-    apiKey: "AIzaSyAi15SE_1oBKi9rc26qa5nhMAnkluu_OPU",
-    authDomain: "nuxt-ecommerce.firebaseapp.com",
-    databaseURL: "https://nuxt-ecommerce.firebaseio.com",
-    projectId: "nuxt-ecommerce",
-    storageBucket: "nuxt-ecommerce.appspot.com",
-    messagingSenderId: "495870615405"
+    apiKey: "AIzaSyDqJ-2F8n0jCaFTVe5VyHsymKHTSJHVgz4",
+    authDomain: "maplelife-co-th.firebaseapp.com",
+    databaseURL: "https://maplelife-co-th.firebaseio.com",
+    projectId: "maplelife-co-th",
+    storageBucket: "maplelife-co-th.appspot.com",
+    messagingSenderId: "293257228830"
   }
   if (!firebase.apps.length) {
     return firebase.initializeApp(config)
