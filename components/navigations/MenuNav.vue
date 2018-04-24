@@ -13,6 +13,7 @@
         >
           <h6>{{ x.title }}</h6>
         </nuxt-link>
+        <!-- Logo -->
         <div class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"/>
         <nuxt-link 
           v-for="(x, i) in items.slice(3, 6)" 
@@ -39,7 +40,7 @@
             </div>
           </div>
         </div>
-      </nuxt-link="></div>
+      </div>
     </div>
     <!-- Mobile Menu -->
     <scale-transition 

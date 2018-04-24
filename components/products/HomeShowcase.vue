@@ -83,12 +83,16 @@
 
 <style lang="scss" scoped>
   .image {
+    transition: 0.25s;
     width: 100%;
     // height: 300px;
     background-color: transparent;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
+    &[lazy=loaded] {
+      opacity: 1;
+    }
   }
   .hexagon {
     background-image: url(~/assets/images/icons/hexagon.svg);

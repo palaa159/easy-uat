@@ -3,13 +3,8 @@
     class="user-bar _bgcl-blue _pst-rlt _dp-f _alit-ct">
     <div class="container">
       <div 
-        class="_dp-f _alit-ct user-control _jtfct-fe _jtfct-spbtw-md" 
+        class="_dp-f _alit-ct user-control _jtfct-fe" 
       >
-        <!-- Breadcrumb -->
-        <Breadcrumbs 
-          :crumbs="crumbs"
-          class="_dp-n _dp-b-md"
-        />
         <div 
           v-if="$store.state.menu.isUserMenuShowing" 
           class="_dp-f _alit-ct">
@@ -35,7 +30,7 @@
               class="_bdrd-50pct _mgr-8px-md"
               style="vertical-align: middle;"
               alt="avatar">
-            <span class="_dp-n _dp-b-md">{{ $store.state.auth.user.email }}</span>
+            <span class="_dp-n _dp-ilb-md">{{ $store.state.auth.user.email }}</span>
           </nuxt-link>
           <!-- Shopping cart with badge -->
           <Cart />
@@ -46,28 +41,10 @@
 </template>
 <script>
 import Cart from '~/components/purchase/Cart'
-import Breadcrumbs from '~/components/navigations/Breadcrumbs'
 import urls from '~/services/apiUrl'
 export default {
   components: {
-    Cart,
-    Breadcrumbs
-  },
-  computed: {
-    crumbs () {
-      const c = this.$route.path && this.$route.path.split('/')
-      // console.log(c)
-      let crumbs = []
-      if (c && c.length) {
-        for (let i = 1; i < c.length; i++) {
-          crumbs.push({ 
-            path: `${c[i-2]?c[i-2]: ''}${c[i-2]? '/': ''}${c[i-1]}${c[i-1]? '/': ''}${c[i]}`,
-            title: c[i]
-          })
-        }
-      }
-      return crumbs
-    }
+    Cart
   }
 }
 </script>

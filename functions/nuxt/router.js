@@ -3,21 +3,22 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+const _262170b4 = () => import('../pages/term-condition.vue' /* webpackChunkName: "pages/term-condition" */).then(m => m.default || m)
 const _1d44cd5c = () => import('../pages/set-password.vue' /* webpackChunkName: "pages/set-password" */).then(m => m.default || m)
 const _202fdbcf = () => import('../pages/register.vue' /* webpackChunkName: "pages/register" */).then(m => m.default || m)
-const _ab5acc20 = () => import('../pages/profile/index.vue' /* webpackChunkName: "pages/profile/index" */).then(m => m.default || m)
 const _75aab2bb = () => import('../pages/KitchenSink.vue' /* webpackChunkName: "pages/KitchenSink" */).then(m => m.default || m)
-const _4c2579f5 = () => import('../pages/checkout/index.vue' /* webpackChunkName: "pages/checkout/index" */).then(m => m.default || m)
-const _c0a41eda = () => import('../pages/products/index.vue' /* webpackChunkName: "pages/products/index" */).then(m => m.default || m)
-const _d07b4c26 = () => import('../pages/login.vue' /* webpackChunkName: "pages/login" */).then(m => m.default || m)
 const _fc8150ee = () => import('../pages/forgot-password.vue' /* webpackChunkName: "pages/forgot-password" */).then(m => m.default || m)
-const _585e6c5c = () => import('../pages/profile/logout.vue' /* webpackChunkName: "pages/profile/logout" */).then(m => m.default || m)
-const _1b148102 = () => import('../pages/profile/credit-card.vue' /* webpackChunkName: "pages/profile/credit-card" */).then(m => m.default || m)
+const _d07b4c26 = () => import('../pages/login.vue' /* webpackChunkName: "pages/login" */).then(m => m.default || m)
+const _c0a41eda = () => import('../pages/products/index.vue' /* webpackChunkName: "pages/products/index" */).then(m => m.default || m)
+const _4c2579f5 = () => import('../pages/checkout/index.vue' /* webpackChunkName: "pages/checkout/index" */).then(m => m.default || m)
+const _ab5acc20 = () => import('../pages/profile/index.vue' /* webpackChunkName: "pages/profile/index" */).then(m => m.default || m)
 const _101b8f4a = () => import('../pages/profile/refund.vue' /* webpackChunkName: "pages/profile/refund" */).then(m => m.default || m)
-const _b78cd792 = () => import('../pages/profile/orders.vue' /* webpackChunkName: "pages/profile/orders" */).then(m => m.default || m)
+const _1b148102 = () => import('../pages/profile/credit-card.vue' /* webpackChunkName: "pages/profile/credit-card" */).then(m => m.default || m)
 const _06463adc = () => import('../pages/profile/address.vue' /* webpackChunkName: "pages/profile/address" */).then(m => m.default || m)
-const _61c7a7f7 = () => import('../pages/checkout/_payment/index.vue' /* webpackChunkName: "pages/checkout/_payment/index" */).then(m => m.default || m)
+const _b78cd792 = () => import('../pages/profile/orders.vue' /* webpackChunkName: "pages/profile/orders" */).then(m => m.default || m)
+const _585e6c5c = () => import('../pages/profile/logout.vue' /* webpackChunkName: "pages/profile/logout" */).then(m => m.default || m)
 const _efc8e218 = () => import('../pages/products/_catSlug/index.vue' /* webpackChunkName: "pages/products/_catSlug/index" */).then(m => m.default || m)
+const _61c7a7f7 = () => import('../pages/checkout/_payment/index.vue' /* webpackChunkName: "pages/checkout/_payment/index" */).then(m => m.default || m)
 const _4c3d3c1f = () => import('../pages/checkout/_payment/_id.vue' /* webpackChunkName: "pages/checkout/_payment/_id" */).then(m => m.default || m)
 const _63ca9254 = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 
@@ -80,6 +81,11 @@ export function createRouter () {
     scrollBehavior,
     routes: [
 		{
+			path: "/term-condition",
+			component: _262170b4,
+			name: "term-condition"
+		},
+		{
 			path: "/set-password",
 			component: _1d44cd5c,
 			name: "set-password"
@@ -90,29 +96,9 @@ export function createRouter () {
 			name: "register"
 		},
 		{
-			path: "/profile",
-			component: _ab5acc20,
-			name: "profile"
-		},
-		{
 			path: "/KitchenSink",
 			component: _75aab2bb,
 			name: "KitchenSink"
-		},
-		{
-			path: "/checkout",
-			component: _4c2579f5,
-			name: "checkout"
-		},
-		{
-			path: "/products",
-			component: _c0a41eda,
-			name: "products"
-		},
-		{
-			path: "/login",
-			component: _d07b4c26,
-			name: "login"
 		},
 		{
 			path: "/forgot-password",
@@ -120,14 +106,24 @@ export function createRouter () {
 			name: "forgot-password"
 		},
 		{
-			path: "/profile/logout",
-			component: _585e6c5c,
-			name: "profile-logout"
+			path: "/login",
+			component: _d07b4c26,
+			name: "login"
 		},
 		{
-			path: "/profile/credit-card",
-			component: _1b148102,
-			name: "profile-credit-card"
+			path: "/products",
+			component: _c0a41eda,
+			name: "products"
+		},
+		{
+			path: "/checkout",
+			component: _4c2579f5,
+			name: "checkout"
+		},
+		{
+			path: "/profile",
+			component: _ab5acc20,
+			name: "profile"
 		},
 		{
 			path: "/profile/refund",
@@ -135,9 +131,9 @@ export function createRouter () {
 			name: "profile-refund"
 		},
 		{
-			path: "/profile/orders",
-			component: _b78cd792,
-			name: "profile-orders"
+			path: "/profile/credit-card",
+			component: _1b148102,
+			name: "profile-credit-card"
 		},
 		{
 			path: "/profile/address",
@@ -145,14 +141,24 @@ export function createRouter () {
 			name: "profile-address"
 		},
 		{
-			path: "/checkout/:payment",
-			component: _61c7a7f7,
-			name: "checkout-payment"
+			path: "/profile/orders",
+			component: _b78cd792,
+			name: "profile-orders"
+		},
+		{
+			path: "/profile/logout",
+			component: _585e6c5c,
+			name: "profile-logout"
 		},
 		{
 			path: "/products/:catSlug",
 			component: _efc8e218,
 			name: "products-catSlug"
+		},
+		{
+			path: "/checkout/:payment",
+			component: _61c7a7f7,
+			name: "checkout-payment"
 		},
 		{
 			path: "/checkout/:payment/:id",

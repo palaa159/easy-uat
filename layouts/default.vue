@@ -1,6 +1,9 @@
 <template>
   <div>
     <Header/>
+    <div class="_bdtw-1px _bdbtw-1px _bdcl-neutral-200">
+      <Breadcrumbs />
+    </div>
     <!-- Content -->
     <main class="min-height-100vh _dp-f _alit-ct">
       <nuxt/>
@@ -20,10 +23,12 @@
 <script>
   import Header from '~/components/layout/Header'
   import Footer from '~/components/layout/Footer'
+  import Breadcrumbs from '~/components/navigations/Breadcrumbs'
   export default {
     components: {
       Header,
-      Footer
+      Footer,
+      Breadcrumbs
     }
   }
 </script>
