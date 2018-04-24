@@ -21,12 +21,12 @@
         />
       </div>
     </div>
-    <div 
+    <!-- <div 
       v-for="(x, i) in products" 
       :key="i">
       {{ x }}
-    </div>
-    {{ products }}
+    </div> -->
+    <!-- {{ products }} -->
   </div>
 </template>
 

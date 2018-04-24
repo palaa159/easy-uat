@@ -1,5 +1,5 @@
 <template>
-  <div class="row _dp-f _jtfct-spbtw _alit-ct">
+  <div class="_dp-f _jtfct-spbtw _alit-ct">
     <!-- Amount -->
     <div class="_dp-f _alit-ct">
       <div class="_dp-f ctn _bdrd-4px _ovf-hd">
@@ -26,17 +26,17 @@
         <div 
           v-if="editable"
           class="plus _bgcl-neutral-300 _cs-pt _pd-16px"
-          @click="amount <= 19 && $emit('adjust-item', 1)"
+          @click="amount < maxAmount && $emit('adjust-item', 1)"
         >
           <fa-icon :icon="['far', 'plus']"/>
         </div>
       </div>
-      <h4 class="_mgl-16px">{{ unit }}</h4>
+      <h5 class="_mgl-16px">{{ unit }}</h5>
     </div>
     <!-- Total price -->
     <div class="_dp-n _dp-b-sm">
-      <div class="_tal-r">THB</div>
-      <h4 class="_lh-100pct">{{ (price * amount).toLocaleString() }}</h4>
+      <div class="_tal-l">THB</div>
+      <div class="_lh-100pct _fs-4">{{ (price * amount).toFixed(2) }}</div>
     </div>
   </div>
 </template>
@@ -59,6 +59,10 @@
       amount: {
         type: Number,
         default: 1
+      },
+      maxAmount: {
+        type: Number,
+        default: 9
       }
     }
   }

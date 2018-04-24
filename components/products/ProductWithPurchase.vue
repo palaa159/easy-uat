@@ -49,22 +49,31 @@
     <div class="p-options">
       <div class="container _pdbt-48px _pdt-32px">
         <div class="row _jtfct-ct">
-          <div class="col-10 _pd-0px _mgbt-4px">
+          <div class="col-12 col-md-9">
             <h6>
               มีในสต็อก: {{ stockQuantity }}
             </h6>
           </div>
         </div>
         <!--  -->
-        <div class="row _jtfct-ct">
-          <div class="col-5">
+        <div class="row _jtfct-ct _alit-ct">
+          <div class="col-7 col-md-5">
             <PurchaseOptions 
+              :amount="amount"
+              :max-amount="stockQuantity"
               :unit="unit"
+              :price="price"
+              @adjust-item="adjustAmount"
             />
           </div>
-          <div class="col-5">
-            <div class="_dp-f _jtfct-fe">
-              x
+          <div class="col-5 col-md-4">
+            <div class="link _cs-pt _dp-f _jtfct-fe">
+              <div class="hexagon _dp-f _jtfct-ct _alit-ct">
+                <fa-icon 
+                  class="_cl-white"
+                  size="lg" 
+                  icon="shopping-cart"/>
+              </div>
             </div>
           </div>
         </div>
@@ -114,7 +123,15 @@
         type: Number,
         default: 1
       }
-    }
+    },
+    data: () => ({
+      amount: 1
+    }),
+    methods: {
+      adjustAmount (x) {
+        this.amount = this.amount + x
+      }
+    },
   }
 </script>
 
@@ -146,6 +163,21 @@
       border-left: 30px solid transparent;
       border-bottom: 30px solid $aqua;
       border-right: 30px solid transparent;
+    }
+  }
+  .hexagon {
+    background-image: url(~/assets/images/icons/hexagon.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100px;
+    height: 100px;
+  }
+  .link div {
+    transition: 0.15s;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.1);
     }
   }
 </style>

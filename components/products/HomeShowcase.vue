@@ -15,7 +15,7 @@
           <!-- Button -->
           <nuxt-link 
             :to="url" 
-            class="link _dp-n _dp-b-md ">
+            class="link _dp-n _dp-b-md">
             <div class="hexagon _pst-asl _bt-0px _r-0px _dp-f _jtfct-ct _alit-ct">
               <fa-icon 
                 class="_cl-white"
@@ -33,22 +33,22 @@
           <li 
             v-for="(li, i) in list" 
             :key="i" 
-            v-html="li" 
-            class="_fw-300 _lh-150pct"
+            class="_fw-300 _lh-150pct" 
+            v-html="li"
           />
         </ul>
       </div>
       <div class="col-12 _dp-n-md _dp-f _fdrt-cl _alit-ct _mgt-12px">
         <nuxt-link 
-            :to="url" 
-            class="link">
-            <div class="hexagon _pst-rlt _dp-f _jtfct-ct _alit-ct">
-              <fa-icon 
-                class="_cl-white"
-                size="lg" 
-                icon="search"/>
-            </div>
-          </nuxt-link>
+          :to="url" 
+          class="link">
+          <div class="hexagon _pst-rlt _dp-f _jtfct-ct _alit-ct">
+            <fa-icon 
+              class="_cl-white"
+              size="lg" 
+              icon="search"/>
+          </div>
+        </nuxt-link>
       </div>
     </div>
   </div>
