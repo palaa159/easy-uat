@@ -51,6 +51,15 @@
         </button>
       </form>
     </no-ssr>
+    <Horiz text="หรือ" />
+    <!-- Facebook Login -->
+    <div>
+      <FacebookButton
+        @success="fbSuccess"
+        @error="fbError"
+      />
+    </div>
+    <!-- No Account -->
     <div class="_tal-ct _mgv-12px">
       <span>ยังไม่ได้เป็นสมาชิก? </span>
       <nuxt-link 
@@ -71,7 +80,13 @@
 </template>
 
 <script>
+import Horiz from '~/components/extras/Horiz'
+import FacebookButton from '~/components/buttons/FacebookButton'
 export default {
+  components: {
+    Horiz,
+    FacebookButton
+  },
   data: () => ({
     isBtnLoading: false,
     email: '',
@@ -79,11 +94,18 @@ export default {
     errorMsg: ''
   }),
   methods: {
-    async login () {
+    async fbSuccess ({ email, password }) { // userData
+      await this.login(email, password)
+      return this.isBtnLoading = false
+    },
+    fbError (res) {
+      return this.errorMsg(res)
+    },
+    async login (email = null, password = null) {
       const redirect = this.$route.query.redirect || ''
       const token = await this.$store.dispatch('auth/login', {
-        email: this.email,
-        password: this.password
+        email: email || this.email,
+        password: password || this.password
       })
       if (token) {
         // return this.$router.replace(`/${redirect}`)

@@ -82,6 +82,14 @@
         </button>
       </form>
     </no-ssr>
+    <Horiz text="หรือ" />
+    <!-- Facebook Login -->
+    <div>
+      <FacebookButton
+        @success="fbSuccess"
+        @error="fbError"
+      />
+    </div>
     <div class="_tal-ct _mgv-12px">
       <span>เป็นสมาชิกอยู่แล้ว? </span>
       <nuxt-link 
@@ -95,9 +103,13 @@
 
 <script>
 import InvalidPassword from '~/components/messages/invalid-password'
+import Horiz from '~/components/extras/Horiz'
+import FacebookButton from '~/components/buttons/FacebookButton'
 export default {
   components: {
-    InvalidPassword
+    InvalidPassword,
+    Horiz,
+    FacebookButton
   },
   data: () => ({
     isBtnLoading: false,
@@ -107,10 +119,28 @@ export default {
     lastName: '',
     password: '',
     errorMsg: '',
+    redirect: ''
   }),
   methods: {
-    async register () {
+    async fbSuccess ({ email, password }) { // userData
+      await this.login(email, password)
+      return this.isBtnLoading = false
+    },
+    fbError (res) {
+      return this.errorMsg(res)
+    },
+    async login (email = null, password = null) {
       const redirect = this.$route.query.redirect || ''
+      this.isLoggingIn = true
+      const token = await this.$store.dispatch('auth/login', {
+        email: email || this.email,
+        password: password || this.password
+      })
+      if (token) return window.location.href = `/${redirect}`
+      this.isLoggingIn = false
+      return this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง'
+    },
+    async register () {
       const register = await this.$store.dispatch('auth/register', {
         email: this.email,
         password: this.password,
@@ -118,14 +148,7 @@ export default {
         lastName: this.lastName
       })
       if (register) {
-        this.isLoggingIn = true
-        const token = await this.$store.dispatch('auth/login', {
-          email: this.email,
-          password: this.password
-        })
-        if (token) return window.location.href = `/${redirect}`
-        this.isLoggingIn = false
-        return this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง'
+        return await this.login()
       }
       return this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง'
     },
