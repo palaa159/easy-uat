@@ -30,10 +30,15 @@
             v-if="shortDescription" 
             class="_pdv-24px _dp-f _alit-ct">
             <div class="_f-2">
-              <h4>สิ่งที่อยู่ในกล่อง</h4>
+              <h4>สิ่งที่อยู่ในชุด</h4>
               <div 
                 class="_fw-300" 
                 v-html="shortDescription"/>
+              <div class="_mgt-24px">
+                <h4>
+                  In Stock: {{ stockQuantity }} {{ unit }}
+                </h4>
+              </div>
             </div>
             <!-- Buy Now -->
             <div class="_dp-n _dp-b-md _f-1 _pdh-12px">
@@ -48,13 +53,6 @@
     <!-- Purchase Options -->
     <div class="p-options">
       <div class="container _pdbt-48px _pdt-32px">
-        <div class="row _jtfct-ct">
-          <div class="col-12 col-md-9">
-            <h6>
-              มีในสต็อก: {{ stockQuantity }}
-            </h6>
-          </div>
-        </div>
         <!--  -->
         <div class="row _jtfct-ct _alit-ct">
           <div class="col-7 col-md-5">
@@ -68,11 +66,14 @@
           </div>
           <div class="col-5 col-md-4">
             <div class="link _cs-pt _dp-f _jtfct-fe">
-              <div class="hexagon _dp-f _jtfct-ct _alit-ct">
-                <fa-icon 
-                  class="_cl-white"
-                  size="lg" 
-                  icon="shopping-cart"/>
+              <div class="_tal-ct">
+                <div class="hexagon _dp-f _jtfct-ct _alit-ct">
+                  <fa-icon 
+                    class="_cl-white"
+                    size="lg" 
+                    icon="shopping-cart"/>
+                </div>
+                <h6 class="_ttf-upc">Add to Cart</h6>
               </div>
             </div>
           </div>
