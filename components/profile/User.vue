@@ -8,7 +8,7 @@
     <!-- Info -->
     <div class="_mgl-12px">
       <h5 class="_lh-100pct _mgv-4px _cl-dark">{{ $store.state.auth.user.first_name || $store.state.auth.user.email }} {{ $store.state.auth.user.last_name }}</h5>
-      <h6 class="_lh-100pct _mgv-4px _cl-neutral">เป็นสมาชิก 1 ปีที่แล้ว</h6>
+      <h6 class="_lh-100pct _mgv-4px _cl-neutral">เป็นสมาชิกเมื่อ {{ $store.state.auth.user.registered_date | moment('from') }}</h6>
     </div>
   </section>
 </template>

@@ -1,22 +1,22 @@
 <template>
-  <div class="_pdv-16px">
+  <div class="_pdv-8px _pdv-16px-md">
     <div class="container">
       <!-- Desktop Menu -->
       <div 
         v-if="items.length" 
         class="row _dp-n _dp-f-md _alit-ct">
         <nuxt-link 
-          v-for="(x, i) in items.slice(0,3)" 
+          v-for="(x, i) in items.slice(0, 3)" 
           :key="i"
           :to="x.path"
           class="col _tal-ct menu-link" 
         >
           <h6>{{ x.title }}</h6>
         </nuxt-link>
-        <div class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"></div>
+        <div class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"/>
         <nuxt-link 
-          v-for="(x, i) in items.slice(3,6)" 
-          :key="i"
+          v-for="(x, i) in items.slice(3, 6)" 
+          :key="i + 4"
           :to="x.path"
           class="col _tal-ct menu-link" 
         >
@@ -26,8 +26,10 @@
       </div>
       <!-- Mobile Menu -->
       <div class="row _dp-n-md">
-       <div class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"></div>
-        <div class="col _dp-f _jtfct-fe">
+        <nuxt-link 
+          to="/" 
+          class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"/>
+        <div class="col _dp-f _jtfct-fe _alit-ct">
           <div 
             class="_dp-ilb hbg-container _pdv-8px _pdh-24px _cs-pt" 
             @click="$store.commit('menu/SET_MOBILE_MENU', !$store.state.menu.isShowing)">
@@ -37,7 +39,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </nuxt-link="></div>
     </div>
     <!-- Mobile Menu -->
     <scale-transition 
@@ -49,13 +51,11 @@
       >
         <div class="_dp-f _jtfct-fe _pdv-8px _pdh-16px">
           <div 
-            class="_dp-ilb hbg-container _pdv-8px _pdh-24px _cs-pt" 
+            class="_dp-ilb hbg-container _pdv-16px _pdh-24px _cs-pt" 
             @click="$store.commit('menu/SET_MOBILE_MENU', !$store.state.menu.isShowing)">
-            <div>
-              <div 
-                :class="{menu: !$store.state.menu.isShowing, close: $store.state.menu.isShowing}"
-                class="icon" />
-            </div>
+            <div 
+              :class="{menu: !$store.state.menu.isShowing, close: $store.state.menu.isShowing}"
+              class="icon" />
           </div>
         </div>
         <div 

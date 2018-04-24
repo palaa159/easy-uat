@@ -13,7 +13,7 @@
               v-for="(item, i) in cats.slice(0,3)" 
               :key="i" 
               class="col-12 col-md-4"
-              >
+            >
               <ProductThumb 
                 :image="item.image.src"
                 :text="item.name"
@@ -26,13 +26,13 @@
       <!-- x -->
       <div class="_w-100pct">
         <div class="container">
-        <!-- Bottom row -->
+          <!-- Bottom row -->
           <div class="row _dp-f _jtfct-ct">
             <div 
               v-for="(item, i) in cats.slice(3,5)" 
               :key="i" 
               class="col-12 col-md-4"
-              >
+            >
               <ProductThumb 
                 :image="item.image.src"
                 :text="item.name"

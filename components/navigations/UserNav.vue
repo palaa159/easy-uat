@@ -32,10 +32,10 @@
           >
             <img 
               :src="$store.state.auth.user.avatar_urls['24']" 
-              class="_bdrd-50pct _mgr-8px"
+              class="_bdrd-50pct _mgr-8px-md"
               style="vertical-align: middle;"
               alt="avatar">
-            <span>{{ $store.state.auth.user.email }}</span>
+            <span class="_dp-n _dp-b-md">{{ $store.state.auth.user.email }}</span>
           </nuxt-link>
           <!-- Shopping cart with badge -->
           <Cart />
