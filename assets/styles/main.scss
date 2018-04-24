@@ -11,9 +11,16 @@
 ._cl-blue {
   color: $blue !important;
 }
+._cl-purple{
+  color: $purple !important;
+}
 
 ._bgcl-blue {
   background-color: $blue !important;
+}
+
+._bgcl_lightgray{
+  background-color: $light-grey !important;
 }
 
 .hv-anim {
