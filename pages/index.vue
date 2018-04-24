@@ -8,15 +8,15 @@
         <div class="_pst-rlt">
           <!-- Image -->
           <div 
-            v-lazy:background-image="require(`~/assets/images/products/home-hero.png`)"
+            v-lazy:background-image="`https://cms.maplelife.co.th/wp-content/uploads/2018/04/PIC2.png`"
             class="hero-image _ratio" 
           />
         </div>
       </div>
       <div class="col-12 col-sm-7 hero-text">
-        <h1 class="">เครื่องตรวจวัดระดับ<span class="_dp-ilb">น้ำตาลในเลือด</span><span class="_dp-ilb">SD GLUCONAVII</span></h1> 
-        <span class="_dp-b _pdt-32px _fw-600">ง่าย สะดวก รวดเร็ว</span>
-        <span class="_dp-b">ด้วยเทคโนโลยีในการดูแลสุขภาพ</span>
+        <h1 class="_fs-3 _fw-400 _fs-1-md _fw-700-md _lh-125pct">เครื่องตรวจวัดระดับ<span class="_dp-ilb">น้ำตาลในเลือด</span><span class="_dp-ilb">SD GLUCONAVII</span></h1> 
+        <h5 class="_dp-b _pdt-32px _fs-5 _fs-4-md _fw-300 _fw-600-md _lh-125pct _cl-blue">ง่าย สะดวก รวดเร็ว
+        <span class="_dp-b _fw-300 _cl-blue">ด้วยเทคโนโลยีในการดูแลสุขภาพ</span></h5>
       </div>
     </div>
 
@@ -60,7 +60,7 @@
     data: () => ({
       mockProducts: 
       [{
-        image: require('~/assets/images/products/home-product1.png'),
+        image: `https://cms.maplelife.co.th/wp-content/uploads/2018/04/home-product1.png`,
         heading: 'เครื่องตรวจระดับน้ำตาลในเลือดยี่ห้อ SD <span class="_dp-b _fw-500">จากประเทศเกาหลี</span>',
         list: [
           'บันทึกผลการทดสอบได้ถึง 500 ค่า พร้อมแสดงค่าเฉลี่ยของระดับน้ำตาลที่ 7, 14, 30 วัน', 
@@ -69,45 +69,45 @@
           'ใช้เวลาในการอ่านค่าผลน้ำตาล 5 วินาที',
           'เป็นระบบที่ไม่ต้องใช้โค้ด ชิป หรือเข้ารหัสใดๆ'
           ],
-        url: ''
+        url: '/products/เครื่องตรวจระดับน้ำตาล'
       }, {
-        image: require('~/assets/images/products/home-product2.png'),
+        image: `https://cms.maplelife.co.th/wp-content/uploads/2018/04/home-product2.png`,
         heading: 'แผ่นวัดระดับน้ำตาล<span class="_dp-ilb">ในเลือด</span><span class="_dp-ilb _fw-500">ยี่ห้อ SD</span>',
         list: [
           'ใช้เวลาในการรายงานผลเพียง 5 วินาที', 
           'ใช้ปริมาณเลือดเพียงเล็กน้อย', 
           'เทคโนโลยี Gold electrode'
           ],
-        url: ''
+        url: '/products/แผ่นตรวจน้ำตาลในเลือด'
       }, {
-        image: require('~/assets/images/products/home-product3.png'),
+        image: `https://cms.maplelife.co.th/wp-content/uploads/2018/04/home-product3-1.png`,
         heading: '<span class="_fw-500">เข็ม DROPLET LANCE</span> สำหรับการเจาะเลือด',
         list: [
           'เข็มเจาะเลือดผ่านการฆ่าเชื้อแล้ว', 
           'ใช้ร่วมกับปากกาเจาะเลือด', 
           'ขนาดเล็กด้วยเข็มเบอร์ 28G'
           ],
-        url: ''
+        url: '/products/เข็มเจาะเลือด'
       }, {
-        image: require('~/assets/images/products/home-product4.png'),
-        heading: '<span class="_fw-500">แผ่นแอลกอฮอล์<span class="_dp-b">สำเร็จรูป</span></span>',
+        image: `https://cms.maplelife.co.th/wp-content/uploads/2018/04/home-product4.png`,
+        heading: '<span class="_fw-500">แผ่นแอลกอฮอล์<span class="_dp-iln _dp-b-md">สำเร็จรูป</span></span>',
         list: [
           'ใช้เช็ดผิวหนังเพื่อฆ่าเชื้อ', 
           'แยกบรรจุซองละ 1 แผ่น สะดวกพกพา', 
           'แห้งเร็วกว่าการเทแอลกอฮอล์บนสำลี',
           'ใช้ได้ดีสำหรับการเจาะเลือดตรวจเบาหวาน'
           ],
-        url: ''
+        url: '/products/แผ่นเช็ดแอลกอฮอล์'
       }, {
-        image: require('~/assets/images/products/home-product5.png'),
-        heading: '<span class="_fw-500">แนวทาง<span class="_dp-b">การให้บริการ</span></span>',
+        image: `https://cms.maplelife.co.th/wp-content/uploads/2018/04/home-product5.png`,
+        heading: '<span class="_fw-500">แนวทาง<span class="_dp-ilb  _dp-b-md">การให้บริการ</span></span>',
         list: [
           'รับประกันตัวเครื่อง…..ปี', 
           'สามารถ Download คู่มือการใช้งานเครื่องภาษาไทยอย่างง่าย', 
           'สามารถ Download แนวทางการแก้ไขปัญหาเบื้องต้น',
           'บริการให้คำปรึกษาการใช้งานเครื่อง โดยผู้เชี่ยวชาญผลิตภัณฑ์'
           ],
-        url: ''
+        url: '/products/แพ็คเกจรายเดือน'
       }]
     }),
     head () {
@@ -127,18 +127,12 @@
     background-repeat: no-repeat;
     background-position: center center;
   }
-  h1{
+  h1 {
     font-family: 'Kanit', sans-serif;
     font-size: 3rem;
     font-weight: 600;
     line-height: 3.4rem;
     letter-spacing: 3px;
     color: #182F69;
-  }
-  .hero-text {
-    font-family: 'Kanit', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: #4F4F4F;
   }
 </style>

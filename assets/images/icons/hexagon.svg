@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="114px" height="128px" viewBox="0 0 114 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
-    <title>Polygon</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M62,1.88675135 L108.291651,28.6132487 C111.385662,30.3995766 113.291651,33.7008468 113.291651,37.2735027 L113.291651,90.7264973 C113.291651,94.2991532 111.385662,97.6004234 108.291651,99.3867513 L62,126.113249 C58.9059892,127.899577 55.0940108,127.899577 52,126.113249 L5.70834875,99.3867513 C2.61433799,97.6004234 0.708348754,94.2991532 0.708348754,90.7264973 L0.708348754,37.2735027 C0.708348754,33.7008468 2.61433799,30.3995766 5.70834875,28.6132487 L52,1.88675135 C55.0940108,0.100423396 58.9059892,0.100423396 62,1.88675135 Z" id="Polygon" fill="#D8D8D8"></path>
+<svg width="63px" height="78px" viewBox="0 0 63 78" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FF01AA" stop-opacity="0.462182971" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.5" offset="100%"></stop>
+        </linearGradient>
+        <path d="M35.0536189,80.1576869 C33.0987181,81.280771 29.9004612,81.280771 27.9463811,80.1576869 L3.55361888,66.1415961 C1.59953885,65.0185119 0,62.2618507 0,60.0156823 L0,31.9843177 C0,29.7381493 1.59953885,26.9814881 3.55361888,25.8584039 L27.9463811,11.8423131 C29.9004612,10.719229 33.0987181,10.719229 35.0536189,11.8423131 L59.4463811,25.8584039 C61.4004612,26.9814881 63,29.7381493 63,31.9843177 L63,60.0156823 C63,62.2618507 61.4004612,65.0185119 59.4463811,66.1415961 L35.0536189,80.1576869 Z" id="path-2"></path>
+        <filter x="-11.1%" y="-7.1%" width="122.2%" height="120.0%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.572332058   0 0 0 0 0.572332058   0 0 0 0 0.572332058  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="view" transform="translate(0.000000, -7.000000)">
+            <g id="view1" transform="translate(0.000000, -2.000000)">
+                <g id="Fill-1">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <use fill="#B44FDA" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                </g>
+            </g>
+        </g>
     </g>
 </svg>
