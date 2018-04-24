@@ -6,23 +6,20 @@ const path = require('path')
 
 module.exports = {
   mode: 'universal',
-  /*
-  ** Headers of the page
-  */
   head: {
     title: pkg.name,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no' },
       { hid: 'description', name: 'description', content: pkg.description },
-      { hid: 'fbapp', property: 'fb:app_id', content: '1479784165441633' },
+      { hid: 'fbapp', property: 'fb:app_id', content: pkg.fbAppId },
       { hid: 'og:url', property: 'og:url', content: pkg.url },
       { hid: 'og:site_name', property: 'og:site_name', content: pkg.url },
       { hid: 'og:locale', property: 'og:locale', content: 'th_TH' },
-      { hid: 'og:title', property: 'og:title', content: 'ตลาดไท – ตลาดกลางค้าส่งสินค้าเกษตรครบวงจร ใหญ่ที่สุดในอาเซียน' },
-      { hid: 'og:description', name: 'og:description', content: 'ตลาดกลางค้าส่งสินค้าเกษตรครบวงจร ใหญ่ที่สุดในอาเซียน' },
+      { hid: 'og:title', property: 'og:title', content: pkg.description },
+      { hid: 'og:description', name: 'og:description', content: pkg.description },
       { hid: 'og:image', property: 'og:image', content: '/images/image-placeholder.jpg' },
-      { hid: 'theme-color', name: 'theme-color', content: '#00A550' }
+      { hid: 'theme-color', name: 'theme-color', content: '#eeeeee' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -89,7 +86,7 @@ module.exports = {
     // parallel: true,
     // analyze: true,
     vendors: [
-      'axios', 'moment'
+      'axios', 'moment', 'firebase/app', 'firebase/auth', 'firebase/storage'
     ],
     publicPath: '/',
     plugins: [

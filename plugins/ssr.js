@@ -17,9 +17,15 @@ import faShoppingCart from '@fortawesome/fontawesome-pro-solid/faShoppingCart'
 import faShoppingBag from '@fortawesome/fontawesome-pro-solid/faShoppingBag'
 import faTimes from '@fortawesome/fontawesome-pro-solid/faTimes'
 import faHome from '@fortawesome/fontawesome-pro-solid/faHome'
+import faUser from '@fortawesome/fontawesome-pro-solid/faUser'
 import faUserCircle from '@fortawesome/fontawesome-pro-solid/faUserCircle'
 import faChevronRight from '@fortawesome/fontawesome-pro-solid/faChevronRight'
 import faLongArrowAltRight from '@fortawesome/fontawesome-pro-solid/faLongArrowAltRight'
+import faClipboardList from '@fortawesome/fontawesome-pro-solid/faClipboardList'
+import faTruck from '@fortawesome/fontawesome-pro-solid/faTruck'
+import faCreditCard from '@fortawesome/fontawesome-pro-solid/faCreditCard'
+import faUndoAlt from '@fortawesome/fontawesome-pro-solid/faUndoAlt'
+import faSignOutAlt from '@fortawesome/fontawesome-pro-solid/faSignOutAlt'
 import faLock from '@fortawesome/fontawesome-pro-solid/faLock'
 import faFrown from '@fortawesome/fontawesome-pro-regular/faFrown'
 import faMinus from '@fortawesome/fontawesome-pro-regular/faMinus'
@@ -41,7 +47,7 @@ Vue.use(require('vue-moment'), {
 Vue.use(VModal)
 Vue.use(Transitions)
 
-fontawesome.library.add(faFrown, faMinus, faPlus, faSpinner, faSearch, faShoppingCart, faShoppingBag, faTimes, faHome, faUserCircle, faChevronRight, faLongArrowAltRight)
+fontawesome.library.add(faFrown, faMinus, faPlus, faSpinner, faSearch, faShoppingCart, faShoppingBag, faTimes, faHome, faUser, faUserCircle, faChevronRight, faLongArrowAltRight, faClipboardList, faTruck, faCreditCard, faUndoAlt, faSignOutAlt, faLock)
 Vue.component('fa-icon', FontAwesomeIcon)
 // Init firebase
 Auth.initFirebase()
