@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import * as Firebase from 'firebase'
+import * as firebase from 'firebase/app'
 export default {
   props: {
     orderId: {
