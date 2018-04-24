@@ -197,7 +197,7 @@ export default {
   .menu-link{
     transition: 0.15s;
     h6{
-      font-family: 'Mitr', sans-serif;
+      font-family: 'Kanit', sans-serif;
       font-size: 1rem;
       color: #787878;
     }
