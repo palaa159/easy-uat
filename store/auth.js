@@ -1,5 +1,6 @@
 import JSCookie from 'js-cookie'
 import urls from '~/services/apiUrl'
+import * as Auth from '~/services/auth'
 
 export const state = () => ({
   user: null,
@@ -26,6 +27,25 @@ export const actions = {
       lastName
     })
     return res
+  },
+  async facebookSignUp ({ dispatch }) {
+    const resToken = await Auth.facebookSignIn()
+    // console.log(resToken)
+    if (resToken.credential && resToken.user.email) {
+      const accessToken = resToken.credential.accessToken
+      const resLogin = await this.$axios.$post(urls.fbLogin, {
+        access_token: accessToken,
+        email: resToken.user.email
+      })
+      let userData = {
+        email: resToken.user.email,
+        password: resLogin
+      }
+      return userData
+    } else {
+      return false
+      // this.errorMessage = 'ไม่สามารถล็อกได้เนื่องจาก Facebook ของคุณไม่มีอีเมล กรุณาใช้วิธีการสมัครผ่านอีเมลแทน'
+    }
   },
   async login ({ state, dispatch, commit }, { email, password }) {
     // load axios

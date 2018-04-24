@@ -18,6 +18,18 @@ function initFirebase () {
   return
 }
 
+function facebookSignIn () {
+  let provider = new firebase.auth.FacebookAuthProvider()
+  // provider.addScope('email')
+  provider.setCustomParameters({
+    'display': 'popup'
+  })
+  return firebase
+    .auth()
+    .signInWithPopup(provider)
+}
+
 export {
   initFirebase,
+  facebookSignIn
 }
