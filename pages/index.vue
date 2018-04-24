@@ -63,7 +63,7 @@
         image: require('~/assets/images/products/home-product1.png'),
         heading: 'เครื่องตรวจระดับน้ำตาลในเลือดยี่ห้อ SD <span class="_dp-b _fw-500">จากประเทศเกาหลี</span>',
         list: [
-          'บันทึกผลการทดสอบได้ถึง 500 ค่า พร้อมแสดงค่าเฉลี่ยของระดับน้ำตาลที่ 7,14,30 วัน', 
+          'บันทึกผลการทดสอบได้ถึง 500 ค่า พร้อมแสดงค่าเฉลี่ยของระดับน้ำตาลที่ 7, 14, 30 วัน', 
           'มีสัญลักษณ์เพื่อบันทึกผลการทดสอบ ก่อนและหลังอาหารได้b', 
           'สามารถตั้งเวลาเตือนในการเจาะเลือดได้ถึง 4 ครั้ง/วัน',
           'ใช้เวลาในการอ่านค่าผลน้ำตาล 5 วินาที',
@@ -119,7 +119,7 @@
   }
 </script>
 <style lang="scss" scoped>
-  .hero-image{
+  .hero-image {
     /* background:  */
     width: 100%;
     background-color: transparent;
@@ -127,7 +127,7 @@
     background-repeat: no-repeat;
     background-position: center center;
   }
-  h1{
+  h1 {
     font-family: 'Mitr', sans-serif;
     font-size: 3rem;
     font-weight: 600;
@@ -135,7 +135,7 @@
     letter-spacing: 3px;
     color: #182F69;
   }
-  .hero-text{
+  .hero-text {
     font-family: 'Kanit', sans-serif;
     font-size: 1.6rem;
     font-weight: 400;
