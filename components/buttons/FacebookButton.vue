@@ -1,6 +1,7 @@
 <template>
   <button 
-    :class="{'-loading': isBtnLoading}" 
+    :class="{'-loading -disabled': isBtnLoading}" 
+    :disabled="isBtnLoading"
     type="button"
     class="bio-button -facebook _w-100pct _mgv-16px _bdcl-neutral-100"
     @click="login">

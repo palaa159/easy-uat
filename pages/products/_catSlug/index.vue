@@ -16,6 +16,8 @@
           :description-list="x.description"
           :short-description="x.short_description"
           :price="parseFloat(x.price)"
+          :stock-quantity="x.stock_quantity"
+          :unit="x.attributes[0].options[0]"
         />
       </div>
     </div>
@@ -24,6 +26,7 @@
       :key="i">
       {{ x }}
     </div>
+    {{ products }}
   </div>
 </template>
 

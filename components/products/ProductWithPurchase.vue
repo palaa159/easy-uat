@@ -36,7 +36,7 @@
                 v-html="shortDescription"/>
             </div>
             <!-- Buy Now -->
-            <div class="_f-1 _pdh-12px">
+            <div class="_dp-n _dp-b-md _f-1 _pdh-12px">
               <BuyNow 
                 :price="price"
               />
@@ -46,8 +46,29 @@
       </div>
     </div>
     <!-- Purchase Options -->
-    <div class="container-fluid p-options _pdv-24px">
-      <PurchaseOptions />
+    <div class="p-options">
+      <div class="container _pdbt-48px _pdt-32px">
+        <div class="row _jtfct-ct">
+          <div class="col-10 _pd-0px _mgbt-4px">
+            <h6>
+              มีในสต็อก: {{ stockQuantity }}
+            </h6>
+          </div>
+        </div>
+        <!--  -->
+        <div class="row _jtfct-ct">
+          <div class="col-5">
+            <PurchaseOptions 
+              :unit="unit"
+            />
+          </div>
+          <div class="col-5">
+            <div class="_dp-f _jtfct-fe">
+              x
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -61,6 +82,10 @@
       PurchaseOptions
     },
     props: {
+      unit: {
+        type: String,
+        default: ''
+      },
       image: {
         type: String,
         default: 'http://via.placeholder.com/600x450'
@@ -84,6 +109,10 @@
       url: {
         type: String,
         default: '/'
+      },
+      stockQuantity: {
+        type: Number,
+        default: 1
       }
     }
   }

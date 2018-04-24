@@ -42,6 +42,7 @@
         </div>
         <button 
           :class="{'-loading -disabled': isBtnLoading}"
+          :disabled="isBtnLoading"
           type="submit" 
           class="bio-button -positive -outline _w-100pct _mgv-16px">
           <h4>
