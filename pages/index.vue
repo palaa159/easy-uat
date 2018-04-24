@@ -134,7 +134,7 @@
     background-position: center center;
   }
   h1{
-    font-family: 'Mitr', sans-serif;
+    font-family: 'Kanit', sans-serif;
     font-size: 3rem;
     font-weight: 600;
     line-height: 3.4rem;

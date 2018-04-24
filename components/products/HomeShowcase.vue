@@ -97,7 +97,7 @@
     }
   }
   h2{
-    font-family: 'Mitr', sans-serif;
+    font-family: 'Kanit', sans-serif;
     font-size: 2.4rem;
     font-weight: 300;
     line-height: 3rem;
