@@ -108,7 +108,7 @@ export default {
       },
       {
         title: 'ติดต่อเจ้าหน้าที่',
-        path: '/'
+        path: '/contact-us'
       }
     ]
   }
