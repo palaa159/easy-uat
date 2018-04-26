@@ -1,46 +1,49 @@
 <template>
-  <div class="container">
-    <div 
-      class="row _alit-ct _fdrt-rrv _pdbt-48px" 
-    >
-      <div class="col-12 col-sm-5">
-        <!-- Image container -->
-        <div class="_pst-rlt">
-          <!-- Image -->
-          <div 
-            v-lazy:background-image="`https://cms.maplelife.co.th/wp-content/uploads/2018/04/PIC2.png`"
-            class="hero-image _ratio" 
-          />
+  <div class="container-fluid">
+    <div class="row _pst-rlt">
+        <div class="col-12 gradient-bg">
+          <div class="container">
+            <div class="row _alit-ct _fdrt-rrv _pdv-48px">
+              <div class="col-12 col-sm-5">
+                <!-- Image container -->
+                <div class="_pst-rlt">
+                  <!-- Image -->
+                  <div 
+                    v-lazy:background-image="`https://cms.maplelife.co.th/wp-content/uploads/2018/04/PIC2.png`"
+                    class="hero-image _ratio" 
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-sm-7 hero-text">
+                <h1 class="_fs-3 _fw-400 _fs-1-md _fw-700-md _lh-125pct">เครื่องตรวจวัดระดับ<span class="_dp-ilb">น้ำตาลในเลือด</span><span class="_dp-ilb">SD GLUCONAVII</span></h1> 
+                <h5 class="_dp-b _pdt-32px _fs-5 _fs-4-md _fw-300 _fw-600-md _lh-125pct _cl-blue">ง่าย สะดวก รวดเร็ว
+                <span class="_dp-b _fw-300 _cl-blue">ด้วยเทคโนโลยีในการดูแลสุขภาพ</span></h5>
+              </div>
+            </div>
+            <div class="row _jtfct-ct">
+              <div 
+                v-for="(item, i) in mockProducts" 
+                :key="i" 
+                class="col-12 col-lg-10 _mgv-16px">
+                <!-- <HomeShowcase 
+                  :left-image="(i + 1) % 2 != 0"
+                  :image="item.images[0].src"
+                  :heading="item.name"
+                  :url="`/products/${item.slug}`"
+                /> -->
+                <HomeShowcase 
+                  :left-image="(i + 1) % 2 != 0"
+                  :image="item.image"
+                  :heading="item.heading"
+                  :list="item.list"
+                  :url="item.url"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-12 col-sm-7 hero-text">
-        <h1 class="_fs-3 _fw-400 _fs-1-md _fw-700-md _lh-125pct">เครื่องตรวจวัดระดับ<span class="_dp-ilb">น้ำตาลในเลือด</span><span class="_dp-ilb">SD GLUCONAVII</span></h1> 
-        <h5 class="_dp-b _pdt-32px _fs-5 _fs-4-md _fw-300 _fw-600-md _lh-125pct _cl-blue">ง่าย สะดวก รวดเร็ว
-        <span class="_dp-b _fw-300 _cl-blue">ด้วยเทคโนโลยีในการดูแลสุขภาพ</span></h5>
-      </div>
     </div>
-
-    <div class="row _jtfct-ct">
-      <div 
-        v-for="(item, i) in mockProducts" 
-        :key="i" 
-        class="col-12 col-lg-10 _mgv-16px">
-        <!-- <HomeShowcase 
-          :left-image="(i + 1) % 2 != 0"
-          :image="item.images[0].src"
-          :heading="item.name"
-          :url="`/products/${item.slug}`"
-        /> -->
-        <HomeShowcase 
-          :left-image="(i + 1) % 2 != 0"
-          :image="item.image"
-          :heading="item.heading"
-          :list="item.list"
-          :url="item.url"
-        />
-      </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -137,5 +140,55 @@
     line-height: 3.4rem;
     letter-spacing: 3px;
     color: #182F69;
+  }
+
+  @media (max-width: 767px) {
+    .gradient-bg {
+      background-image: url('~/assets/images/rectangle-aqua.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: 0 8%;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 19%;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: auto;
+        background-repeat: no-repeat;
+        background-image: url('~/assets/images/rectangle-grey.svg');
+        background-size: 125% auto;
+        z-index: -1;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: auto;
+        background-repeat: no-repeat;
+        background-image: url('~/assets/images/rectangle-aqua.svg');
+        background-size: 215% auto;
+        transform: scaleX(-1);
+        z-index: -1;
+      }
+
+    }
+  }
+  @media (min-width: 768px) {
+    .gradient-bg {
+      // position: absolute;
+      // top: 0;
+      // left: 0;
+      // width: 100%;
+      // height: 100%;
+      background-image: url('~/assets/images/rectangle-desktop.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center bottom;
+    }
   }
 </style>

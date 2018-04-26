@@ -1,0 +1,22 @@
+
+<svg width="1024px" height="2946px" viewBox="0 0 1024 2946" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="86.1768425%" id="linearGradient-1">
+            <stop stop-color="#FDFFFF" offset="0%"></stop>
+            <stop stop-color="#A8FFEE" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="32.293172%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#E7EFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="bg">
+            <g id="Rectangle">
+                <polygon fill="url(#linearGradient-1)" points="0 566.911126 1024 0 1024 1992 1024 2945.78125 729.257812 2537.60156 0 1416.17431"></polygon>
+                <polygon fill="url(#linearGradient-2)" points="1024 1048.59375 1024 5 1024 2367 0 2940.78125 0 2468"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
