@@ -50,8 +50,8 @@
 import ProductThumb from '~/components/products/ProductThumb'
 import PageHeading from '~/components/text/PageHeading'
 export default {
-  async asyncData ({ store }) {
-    let cats = await store.dispatch('product/getCategories')
+  async asyncData ({ store, error }) {
+    let cats = await store.dispatch('product/getCategories', {})
     cats = cats.filter(cat => cat.slug !== 'uncategorized')
     return {
       cats

@@ -27,26 +27,43 @@
       </div>
     </div>
     <!-- Other products -->
-    <!-- <div 
-      v-for="(x, i) in products" 
-      :key="i">
-      {{ x }}
-    </div> -->
-    <!-- {{ products }} -->
+    <OtherProducts 
+      :items="cats"
+    />
   </div>
 </template>
 
 <script>
 import PageHeading from '~/components/text/PageHeading'
 import ProductWithPurchase from '~/components/products/ProductWithPurchase'
+import OtherProducts from '~/components/products/OtherProducts'
 export default {
-  async asyncData ({ app, store, params, error }) {
+  async asyncData ({ app, store, params, redirect }) {
     const products = await store.dispatch('product/getProductsByCatSlug', params.catSlug)
+    // if (!products) {
+    //   redirect('/')
+    // }
     return { products }
   },
   components: { 
     ProductWithPurchase,
-    PageHeading
+    PageHeading,
+    OtherProducts
+  },
+  data: () => ({
+    cats: []
+  }),
+  head () {
+    return {
+      title: `${this.products[0].categories[0].name} ${this.$store.state.site.title}`
+    }
+  },
+  async created () {
+    // Get all cats except itself
+    let cats = await this.$store.dispatch('product/getCategories', {
+      exclude: this.products && this.products[0].categories[0].id || 0
+    })
+    this.cats = cats.filter(cat => cat.slug !== 'uncategorized')
   }
 }
 </script>

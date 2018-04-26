@@ -9,8 +9,8 @@ export const actions = {
     const prod = await this.$axios.$get(`${urls.getProductByAttr}?featured=true`)
     return prod
   },
-  async getCategories () {
-    const cats = await this.$axios.$get(`${urls.getCategories}`)
+  async getCategories ({}, { exclude = 0 }) {
+    const cats = await this.$axios.$get(`${urls.getCategories}?exclude=${exclude}`)
     return cats
   },
   async getProductsByCatSlug ({}, catSlug) {
