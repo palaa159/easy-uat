@@ -15,9 +15,9 @@ export const actions = {
     const cart = this.$axios.$get(`${urls.getCartContent}`)
     return cart
   },
-  async addToCart ({ id, quantity }) {
+  async addToCart ({}, { id, quantity = 1 }) {
     const added = this.$axios.$post(`${urls.addToCart}`, {
-      product_id: id,
+      id,
       quantity
     })
     return added

@@ -189,7 +189,7 @@
         left: 0px;
         background-image: url('~/assets/images/rectangle-desktop.svg');
         background-repeat: no-repeat;
-        background-size: 100% calc(100% + 140vw);
+        background-size: 100% calc(100% + 150vw);
         background-position: center bottom;
       }
     }

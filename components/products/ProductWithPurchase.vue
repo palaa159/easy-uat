@@ -94,7 +94,7 @@
       PurchaseOptions
     },
     props: {
-      id: {
+      productId: {
         type: Number,
         default: 0
       },
@@ -139,9 +139,9 @@
         this.quantity = this.quantity + x
       },
       async addToCartAndCheckout () {
-        console.log('Add')
+        console.log(this.productId)
         const added = await this.$store.dispatch('purchase/addToCart', {
-          id: this.id,
+          id: this.productId,
           quantity: 1
         })
         console.log(added)
