@@ -27,9 +27,9 @@
       </div>
       <div class="col-12 col-sm-7">
         <h2  
-          class="_fs-3 _fs-1-md _lh-125pct _fw-300 _cl-blue"
+          class="_fs-3 _fs-1-md _lh-100pct _fw-300 _cl-blue"
           v-html="heading" /> 
-        <ul class="_pdt-48px _pdbt-16px _mgl-16px home-list">
+        <ul class="_pdt-32px _pdbt-16px _mgl-16px home-list">
           <li 
             v-for="(li, i) in list" 
             :key="i" 

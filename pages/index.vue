@@ -14,8 +14,8 @@
         </div>
       </div>
       <div class="col-12 col-sm-7 hero-text">
-        <h1 class="_fs-3 _fw-400 _fs-1-md _fw-700-md _lh-125pct">เครื่องตรวจวัดระดับ<span class="_dp-ilb">น้ำตาลในเลือด</span><span class="_dp-ilb">SD GLUCONAVII</span></h1> 
-        <h5 class="_dp-b _pdt-32px _fs-5 _fs-4-md _fw-300 _fw-600-md _lh-125pct _cl-blue">ง่าย สะดวก รวดเร็ว
+        <h1 class="_fs-3 _fw-400 _fs-1-md _fw-700-md _lh-100pct">เครื่องตรวจวัดระดับ<span class="_dp-ilb">น้ำตาลในเลือด</span><span class="_dp-ilb">SD GLUCONAVII</span></h1> 
+        <h5 class="_dp-b _pdt-24px _fs-5 _fs-4-md _fw-300 _fw-600-md _lh-125pct _cl-blue">ง่าย สะดวก รวดเร็ว
         <span class="_dp-b _fw-300 _cl-blue">ด้วยเทคโนโลยีในการดูแลสุขภาพ</span></h5>
       </div>
     </div>
@@ -25,12 +25,6 @@
         v-for="(item, i) in mockProducts" 
         :key="i" 
         class="col-12 col-lg-10 _mgv-16px">
-        <!-- <HomeShowcase 
-          :left-image="(i + 1) % 2 != 0"
-          :image="item.images[0].src"
-          :heading="item.name"
-          :url="`/products/${item.slug}`"
-        /> -->
         <HomeShowcase 
           :left-image="(i + 1) % 2 != 0"
           :image="item.image"
