@@ -10,7 +10,7 @@
           <!-- Top row -->
           <div class="row _dp-f _jtfct-ct _bgcl-aqua">
             <div 
-              v-for="(item, i) in cats.slice(0,3)" 
+              v-for="(item, i) in cats.slice(0, 3)" 
               :key="i" 
               class="col-12 col-md-4"
             >
@@ -29,7 +29,7 @@
           <!-- Bottom row -->
           <div class="row _dp-f _jtfct-ct">
             <div 
-              v-for="(item, i) in cats.slice(3,5)" 
+              v-for="(item, i) in cats.slice(3, 5)" 
               :key="i" 
               class="col-12 col-md-4"
             >

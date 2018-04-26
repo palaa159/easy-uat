@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div 
-      class="row _alit-ct _fdrt-rrv _pdv-48px" 
+      class="row _alit-ct _fdrt-rrv _pdbt-48px" 
     >
       <div class="col-12 col-sm-5">
         <!-- Image container -->
