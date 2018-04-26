@@ -90,9 +90,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-    filter: drop-shadow(2mm 5mm 3mm rgba(0,0,0,0.3));
     &[lazy=loaded] {
       opacity: 1;
+      filter: drop-shadow(0mm 5mm 4mm rgba(0, 0, 0, .15));
     }
   }
   .hexagon {
