@@ -151,6 +151,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    &[lazy=loaded] {
+      filter: drop-shadow(0mm 5mm 4mm rgba(0, 0, 0, .15));
+    }
   }
   .-with-triangle {
     position: relative;
