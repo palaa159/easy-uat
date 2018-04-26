@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="99px" height="93px" viewBox="0 0 99 93" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>graphic</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#C0FFF7" offset="0%"></stop>
+            <stop stop-color="#8CFFEB" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1-HOME" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop01-home" transform="translate(-84.000000, -3001.000000)" fill="url(#linearGradient-1)">
+            <g id="graphic" transform="translate(133.500000, 3048.000000) rotate(53.000000) translate(-133.500000, -3048.000000) translate(83.000000, 3005.000000)">
+                <path d="M25.0036797,0 L0,42.8634508 L25.0036797,85.7269017 L75.0169222,85.7269017 L100.014719,42.8634508 L75.0169222,0 L25.0036797,0 Z M13.5902353,42.8634508 L31.8046805,11.6519176 L68.2218045,11.6519176 L86.4303665,42.8634508 L68.2218045,74.0808072 L31.8046805,74.0808072 L13.5902353,42.8634508 Z" id="Fill-1"></path>
+            </g>
+        </g>
+    </g>
+</svg>

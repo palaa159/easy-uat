@@ -2,7 +2,7 @@
   <div class="container">
     <div 
       :class="{'_fdrt-rrv': !leftImage}"
-      class="row _alit-ct" 
+      class="row _alit-ct product-showcase _pst-rlt _pdv-64px" 
     >
       <div class="col-12 col-sm-5">
         <!-- Image container -->
@@ -112,12 +112,38 @@
   }
   ul {
     list-style-image: url(~/assets/images/icons/hexagon-bullet.svg);
-    li{
+    li {
       padding-left: 8px; 
     }
   }
-  .home-list{
+  .home-list {
     font-family: 'Kanit', sans-serif;
     color: #4F4F4F;
+  }
+
+  .product-showcase {
+    &::before{
+      content: '';
+      position: absolute;
+      background: url(~/assets/images/hexagon-bg.svg);
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      transform: scaleX(-1);
+      top: -80px;
+    }
+    &._fdrt-rrv {
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .product-showcase {
+      &::before {
+        background-size: 100px;
+      }
+    }
   }
 </style>

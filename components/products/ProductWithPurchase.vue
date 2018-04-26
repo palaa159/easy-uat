@@ -25,6 +25,12 @@
           <div 
             class="product-description-list" 
             v-html="descriptionList"/>
+          <nuxt-link 
+            :to="url" 
+            class="link"
+            v-on:click=" collapsed = !collapsed">
+            <span>ข้อมูลเพิ่มเติม</span>
+          </nuxt-link>
           <!-- Short Desc + Buy now -->
           <div 
             v-if="shortDescription" 
@@ -132,6 +138,7 @@
       adjustAmount (x) {
         this.amount = this.amount + x
       }
+      
     },
   }
 </script>

@@ -201,4 +201,13 @@
     font-weight: 300;
     line-height: 160%;
   }
+  li:nth-child(n+4){
+		display: none;
+  }
+  
+}
+.product-description-list{
+  p{
+    display: none;
+  }
 }
