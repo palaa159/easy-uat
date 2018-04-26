@@ -92,7 +92,7 @@
     background-position: center center;
     &[lazy=loaded] {
       opacity: 1;
-      filter: drop-shadow(0mm 5mm 4mm rgba(0, 0, 0, .15));
+      filter: drop-shadow(0mm 5mm 4mm rgba(0, 0, 0, .25));
     }
   }
   .hexagon {

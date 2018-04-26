@@ -1,20 +1,20 @@
 <template>
-    <div >
-      <!-- Image container -->
+  <div >
+    <!-- Image container -->
     <div class="_pst-rlt">
       <!-- Image -->
       
     </div>
     <nuxt-link 
-        :to="url" 
-        class="link _tal-ct">
-        <div 
-          v-lazy:background-image="image" 
-          class="image _ratio _bgs-ct" 
-        />
-        <h6  
-          class="_fs-3 _fs-4-md _lh-125pct _fw-500 _cl-dark-aqua"
-          v-html="text" />
+      :to="url" 
+      class="link _tal-ct">
+      <div 
+        v-lazy:background-image="image" 
+        class="image _ratio _bgs-ct" 
+      />
+      <h6  
+        class="_fs-3 _fs-4-md _lh-125pct _fw-500 _cl-dark-aqua"
+        v-html="text" />
     </nuxt-link>
   </div>
 </template>
@@ -47,7 +47,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     &[lazy=loaded] {
-      filter: drop-shadow(0mm 5mm 4mm rgba(0, 0, 0, .15));
+      filter: drop-shadow(0mm 5mm 4mm rgba(0, 0, 0, .25));
     }
   }
   .link span {
