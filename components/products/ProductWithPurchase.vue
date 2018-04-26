@@ -13,6 +13,7 @@
             <div class="_f-2 _dp-n-sm">
               <BuyNow 
                 :price="price"
+                @clickBuyNow="addToCartAndCheckout()"
               />
             </div>
           </div>
@@ -44,6 +45,7 @@
             <div class="_dp-n _dp-b-md _f-1 _pdh-12px">
               <BuyNow 
                 :price="price"
+                @clickBuyNow="addToCartAndCheckout()"
               />
             </div>
           </div>
@@ -57,11 +59,11 @@
         <div class="row _jtfct-ct _alit-ct">
           <div class="col-7 col-md-5">
             <PurchaseOptions 
-              :amount="amount"
-              :max-amount="stockQuantity"
+              :quantity="quantity"
+              :max-quantity="stockQuantity"
               :unit="unit"
               :price="price"
-              @adjust-item="adjustAmount"
+              @adjust-item="adjustQuantity"
             />
           </div>
           <div class="col-5 col-md-4">
@@ -92,6 +94,10 @@
       PurchaseOptions
     },
     props: {
+      id: {
+        type: Number,
+        default: 0
+      },
       unit: {
         type: String,
         default: ''
@@ -126,11 +132,19 @@
       }
     },
     data: () => ({
-      amount: 1
+      quantity: 1
     }),
     methods: {
-      adjustAmount (x) {
-        this.amount = this.amount + x
+      adjustQuantity (x) {
+        this.quantity = this.quantity + x
+      },
+      async addToCartAndCheckout () {
+        console.log('Add')
+        const added = await this.$store.dispatch('purchase/addToCart', {
+          id: this.id,
+          quantity: 1
+        })
+        console.log(added)
       }
     },
   }

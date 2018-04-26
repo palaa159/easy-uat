@@ -15,19 +15,19 @@ export const actions = {
     }
     if (accessToken) {
       commit('auth/SET_TOKEN', accessToken)
-      await app.$axios.$get(urls.getUserMe, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`
-          }
-        })
-        .then((user) => {
-          commit('auth/SET_USER', user)
-        })
-        .catch((err) => {
+      const promises = [
+        // User Me
+        app.$axios.$get(urls.getUserMe).catch((err) => {
           // Clear Cookie
           console.log(err)
           JSCookie.remove('__session')
-        })
+        }),
+        // Cart
+        app.$axios.$get(urls.getCartContent)
+      ]
+      const [ user, cart ] = await Promise.all(promises)
+      commit('auth/SET_USER', user)
+      commit('purchase/SET_CART_CONTENT', cart)
     }
   }
 }

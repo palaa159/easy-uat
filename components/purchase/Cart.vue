@@ -22,7 +22,7 @@
             <div class="container">
               <!-- If no item -->
               <button
-                v-if="!$store.state.purchase.items.length" 
+                v-if="!$store.state.purchase.cartContent.length" 
                 class="bio-button -dark -outline _mgh-at"
                 @click="$store.commit('purchase/SET_CART_SHOW', !$store.state.purchase.isCartShowing)" 
               >
@@ -36,7 +36,7 @@
                 <!-- Total -->
                 <div>
                   <p class="_lh-100pct _cl-dark">
-                    สินค้า {{ $store.state.purchase.items.length }} รายการ รวมเป็นเงิน
+                    สินค้า {{ $store.state.purchase.cartContent.length }} รายการ รวมเป็นเงิน
                   </p>
                   <h4 class="_cl-dark _lh-100pct">
                     THB {{ totalPrice }}
@@ -55,11 +55,11 @@
           </div>
           <!-- Main -->
           <div 
-            :class="{'_alit-ct': !$store.state.purchase.items.length}"
+            :class="{'_alit-ct': !$store.state.purchase.cartContent.length}"
             class="_f-9 _dp-f _jtfct-ct _ovfy-at" 
           >
             <div 
-              v-if="!$store.state.purchase.items.length"
+              v-if="!$store.state.purchase.cartContent.length"
               class="_tal-ct _cl-dark" 
             >
               <fa-icon 
@@ -77,7 +77,7 @@
             >
               <!-- Purchase Item -->
               <PurchaseItem 
-                v-for="(item, i) in $store.state.purchase.items"
+                v-for="(item, i) in $store.state.purchase.cartContent"
                 :index="i"
                 :key="i"
                 :p-data="item"
@@ -97,7 +97,7 @@
       />
       <!-- Badge -->
       <Badge 
-        :number="$store.state.purchase.items.length"
+        :number="$store.state.purchase.cartContent.length"
       />
     </div>
   </div>
@@ -114,19 +114,22 @@
     computed: {
       totalPrice () {
         const reducer = (a, c) => a + c
-        if (!this.$store.state.purchase.items.length) return 0
-        return this.$store.state.purchase.items
+        if (!this.$store.state.purchase.cartContent.length) return 0
+        return this.$store.state.purchase.cartContent
           .map(x => x = x.price * x.amount)
           .reduce(reducer)
           .toLocaleString()
       }
+    },
+    mounted () {
+      // Get Cart Content
     },
     methods: {
       proceed () {
         this.$store.commit('purchase/SET_CART_SHOW', false)
         this.$router.replace({ path: '/checkout' })
       }
-    }
+    },
   }
 </script>
 

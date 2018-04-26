@@ -1,13 +1,13 @@
 <template>
   <div class="_dp-f _jtfct-spbtw _alit-ct">
-    <!-- Amount -->
+    <!-- quantity -->
     <div class="_dp-f _alit-ct">
       <div class="_dp-f ctn _bdrd-4px _ovf-hd">
         <!-- - -->
         <div 
           v-if="editable"
           class="minus _bgcl-neutral-300 _cs-pt _pd-16px"
-          @click="amount > 1 && $emit('adjust-item', -1)" 
+          @click="quantity > 1 && $emit('adjust-item', -1)" 
         >
           <fa-icon :icon="['far', 'minus']"/>
         </div>
@@ -19,14 +19,14 @@
             v-if="!editable" 
             class="_mgr-8px">จำนวน:</span>
           <span class="_fs-4 _fw-600">
-            {{ amount }}
+            {{ quantity }}
           </span>
         </div>
         <!-- + -->
         <div 
           v-if="editable"
           class="plus _bgcl-neutral-300 _cs-pt _pd-16px"
-          @click="amount < maxAmount && $emit('adjust-item', 1)"
+          @click="quantity < maxQuantity && $emit('adjust-item', 1)"
         >
           <fa-icon :icon="['far', 'plus']"/>
         </div>
@@ -36,7 +36,7 @@
     <!-- Total price -->
     <div class="_dp-n _dp-b-sm">
       <div class="_tal-l">THB</div>
-      <div class="_lh-100pct _fs-4">{{ (price * amount).toFixed(2) }}</div>
+      <div class="_lh-100pct _fs-4">{{ (price * quantity).toFixed(2) }}</div>
     </div>
   </div>
 </template>
@@ -56,11 +56,11 @@
         type: Number,
         default: 0
       },
-      amount: {
+      quantity: {
         type: Number,
         default: 1
       },
-      maxAmount: {
+      maxQuantity: {
         type: Number,
         default: 9
       }

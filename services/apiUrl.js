@@ -12,9 +12,14 @@ export default {
   /* User */
   updateBasicProfile: `${prefix}/api/v1/user/me`, // PUT
   getUserMe: `${prefix}/wp/v2/users/me?context=edit`, // PUT
+  // getUserMe: `${prefix}/api/v1/user`,
   /* Categories with subcats */
   getCategories: `${prefix}/api/v1/wc/category`, // GET
   /* Product */
   getProductByAttr: `${prefix}/api/v1/wc/product`, // GET
-  getProductsByCatSlug: `${prefix}/api/v1/wc/products_by_cat_slug`
+  getProductsByCatSlug: `${prefix}/api/v1/wc/products_by_cat_slug`,
+  // Cart
+  getCartContent: `${prefix}/api/v1/wc/cart`,
+  addToCart: `${prefix}/api/v1/wc/cart/add`, // POST
+  clearCart: `${prefix}/api/v1/wc/cart/clear` // POST
 }

@@ -4,7 +4,9 @@
       <div class="_fs-6">THB</div>
       <div class="_fs-4 _mgbt-8px">{{ price.toFixed(2) }}</div>
       <!-- Buy now btn -->
-      <button class="bio-button -gradient _ttf-upc _fw-700 _pdv-4px _bdw-0px">Buy Now!</button>
+      <button 
+        class="bio-button -gradient _ttf-upc _fw-700 _pdv-4px _bdw-0px" 
+        @click="$emit('clickBuyNow')">Buy Now!</button>
     </div>
   </div>
 </template>

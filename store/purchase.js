@@ -1,41 +1,35 @@
+import urls from '~/services/apiUrl'
+
 export const state = () => ({
   isCartShowing: false,
-  items: [{
-    id: 1,
-    title: 'เครื่องตรวจระดับนำตาลในเลือด SD CHECK GOLD',
-    amount: 1,
-    price: 12000
-  }, {
-    id: 2,
-    title: 'เครื่องตรวจระดับนำตาลในเลือด SD CHECK GOLD',
-    amount: 1,
-    price: 12000
-  }, {
-    id: 3,
-    title: 'เครื่องตรวจระดับนำตาลในเลือด SD CHECK GOLD',
-    amount: 1,
-    price: 12000
-  }, {
-    id: 4,
-    title: 'เครื่องตรวจระดับนำตาลในเลือด SD CHECK GOLD',
-    amount: 1,
-    price: 12000
-  }, {
-    id: 5,
-    title: 'เครื่องตรวจระดับนำตาลในเลือด SD CHECK GOLD',
-    amount: 1,
-    price: 12000
-  }, {
-    id: 6,
-    title: 'เครื่องตรวจระดับนำตาลในเลือด SD CHECK GOLD',
-    amount: 1,
-    price: 12000
-  }]
+  cartContent: null
 })
+
+export const actions = {
+  async getCartContent () {
+    const cart = this.$axios.$get(`${urls.getCartContent}`)
+    return cart
+  },
+  async clearCart () {
+    const clear = this.$axios.$get(`${urls.clearCart}`)
+    const cart = this.$axios.$get(`${urls.getCartContent}`)
+    return cart
+  },
+  async addToCart ({ id, quantity }) {
+    const added = this.$axios.$post(`${urls.addToCart}`, {
+      product_id: id,
+      quantity
+    })
+    return added
+  }
+}
 
 export const mutations = {
   CLEAR_CART (state) {
     state.items = []
+  },
+  SET_CART_CONTENT (state, content) {
+    state.cartContent = content
   },
   SET_CART_SHOW (state, bool) {
     state.isCartShowing = bool

@@ -26,7 +26,7 @@
             to="/profile" 
           >
             <img 
-              :src="$store.state.auth.user.avatar_urls['24']" 
+              :src="$store.state.auth.user.avatar_urls && $store.state.auth.user.avatar_urls['24']" 
               class="_bdrd-50pct _mgr-8px-md"
               style="vertical-align: middle;"
               alt="avatar">
