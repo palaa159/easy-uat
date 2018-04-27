@@ -22,7 +22,7 @@ module.exports = {
       { hid: 'theme-color', name: 'theme-color', content: '#eeeeee' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v1' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Kanit:300,400,500,600&amp;subset=thai' }
     ]
   },
