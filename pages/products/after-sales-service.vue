@@ -4,7 +4,7 @@
       <div class="col-12">
         <div class="container">
           <div class="row">
-            <div class="col-12 col-md-5"> </div>
+            <div class="col-12 col-md-5"/>
             <div class="col-12 col-md-7">
               <PageHeading 
                 text="After Sales Service"
@@ -24,8 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
-    </div>
+    <div class="row"/>
   </div>
 </template>
 
@@ -37,7 +36,7 @@ export default {
   },
   head () {
     return {
-      title: `AFTER SALES SERVICE`,
+      title: `AFTER SALES SERVICE ${this.$store.state.site.title}`,
       meta: [
         { hid: 'og:title', property: 'og:title', content: `AFTER SALES SERVICE` },
         { hid: 'og:description', name: 'og:description', content: `AFTER SALES SERVICE` }

@@ -10,8 +10,8 @@
           <li 
             v-for="(li, i) in list" 
             :key="i" 
-            v-html="li" 
-            class="_fw-300 _lh-150pct _pdbt-16px"
+            class="_fw-300 _lh-150pct _pdbt-16px" 
+            v-html="li"
           />
         </ul>
       </div>
@@ -23,6 +23,9 @@
 import PageHeading from '~/components/text/PageHeading'
 
 export default {
+  components: {
+      PageHeading
+  },
     data: () => ({
       list: [
           'เครื่องตรวจน้ำตาลจากเลือดที่ซื้อจากทางบริษัทจะมีการรับประกันความเสียหายที่เกิดจากขั้นตอน	การผลิตทุกเครื่องเป็นระยะเวลา 3 ปี โดยการรับประกันจะไม่ครอบคลุมความเสียหายที่เกิดจากการใช้งาน การเสื่อมสภาพตามกาลเวลาอันสมควร',
@@ -32,9 +35,6 @@ export default {
           'หากมีการโต้แย้งระหว่างบริษัท หรือพนักงานของบริษัท กับลูกค้า ทางบริษัทขอสงวนสิทธิ์ว่าคำ	ตัดสินของบริษัทถือเป็นที่สิ้นสุด  '
       ]
     }),
-  components: {
-      PageHeading
-  },
   head () {
     const siteTitle = this.$store.state.site.title
     return { 
@@ -49,12 +49,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  ul{
-    li{
+  ul {
+    li {
       list-style-type: disc;
     }
   }
-  .term-content{
+  .term-content {
     font-family: 'Kanit', sans-serif;
   }
 </style>
