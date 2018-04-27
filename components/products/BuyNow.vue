@@ -5,8 +5,10 @@
       <div class="_fs-4 _mgbt-8px">{{ price.toFixed(2) }}</div>
       <!-- Buy now btn -->
       <button 
+        :class="{'-loading': isLoading}"
+        :disabled="isLoading"
         class="bio-button -gradient _ttf-upc _fw-700 _pdv-4px _bdw-0px" 
-        @click="$emit('clickBuyNow')">Buy Now!</button>
+        @click="buy">Buy Now!</button>
     </div>
   </div>
 </template>
@@ -18,6 +20,15 @@
         type: Number,
         default: 0.00
       },
+      isLoading: {
+        type: Boolean,
+        default: false
+      }
+    },
+    methods: {
+      buy () {
+        this.$emit('clickBuyNow')
+      }
     }
   }
 </script>
@@ -27,5 +38,10 @@
     /* Rectangle 5: */
     background-image: linear-gradient(-180deg, #9914FF 0%, #6A17F0 100%);
     border-radius: 3px;
+  }
+  .-loading {
+    &::after {
+      top: calc(50% - 0.5em);
+    }
   }
 </style>

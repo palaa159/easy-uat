@@ -8,7 +8,7 @@
     <div 
       v-for="(item, i) in items"
       :key="i" 
-      class="col-3">
+      class="col-12 col-md-3">
       <!-- ProductThumb -->
       <ProductThumb 
         :image="item.image.src"

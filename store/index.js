@@ -27,7 +27,7 @@ export const actions = {
       ]
       const [ user, cart ] = await Promise.all(promises)
       commit('auth/SET_USER', user)
-      commit('purchase/SET_CART_CONTENT', cart)
+      // commit('purchase/SET_CART_CONTENT', cart)
     }
   }
 }

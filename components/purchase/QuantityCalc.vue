@@ -1,12 +1,12 @@
 <template>
   <div class="_dp-f _jtfct-spbtw _alit-fe">
-    <!-- Amount -->
+    <!-- quantity -->
     <div class="_dp-f ctn _bdrd-4px _ovf-hd">
       <!-- - -->
       <div 
         v-if="editable"
         class="minus _bgcl-neutral-300 _cs-pt _pd-8px"
-        @click="amount > 1 && $emit('adjust-item', -1)" 
+        @click="quantity > 1 && $emit('adjust-item', -1)" 
       >
         <fa-icon :icon="['far', 'minus']"/>
       </div>
@@ -16,22 +16,22 @@
           v-if="!editable" 
           class="_mgr-8px">จำนวน:</span>
         <span>
-          {{ amount }}
+          {{ quantity }}
         </span>
       </div>
       <!-- + -->
       <div 
         v-if="editable"
         class="plus _bgcl-neutral-300 _cs-pt _pd-8px"
-        @click="amount <= 19 && $emit('adjust-item', 1)"
+        @click="quantity <= 19 && $emit('adjust-item', 1)"
       >
         <fa-icon :icon="['far', 'plus']"/>
       </div>
     </div>
-    <!-- Total price -->
+    <!-- Total lineTotal -->
     <div>
       <div class="_tal-r">THB</div>
-      <h4 class="_lh-100pct">{{ (price * amount).toLocaleString() }}</h4>
+      <h4 class="_lh-100pct">{{ (lineTotal).toLocaleString() }}</h4>
     </div>
   </div>
 </template>
@@ -43,11 +43,11 @@
         type: Boolean,
         default: true
       },
-      price: {
+      lineTotal: {
         type: Number,
         default: 0
       },
-      amount: {
+      quantity: {
         type: Number,
         default: 1
       }

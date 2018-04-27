@@ -2,19 +2,19 @@
   <div class="_dp-f _mgv-12px">
     <!-- Image -->
     <div 
-      v-lazy:background-image="pData.image"
+      v-lazy:background-image="pData.images[0].src"
       class="image _f-2 _ratio" 
     />
     <!-- Detail -->
     <div class="_mgl-12px _dp-f _f-8 _fdrt-cl _jtfct-spbtw _pdv-4px _pdv-8px-sm _pdh-2px _pdh-12px-sm">
       <h6 
         class="_lh-100pct _mgbt-4px" 
-        v-html="`${index + 1}. ${pData.title}`" />
+        v-html="`${index + 1}. ${pData.name}`" />
       <!-- Amount -->
       <div class="_w-100pct">
-        <AmountCalc
-          :amount="pData.amount" 
-          :price="pData.price"
+        <QuantityCalc
+          :quantity="pData.quantity" 
+          :line-total="pData.line_total"
           :editable="editable"
           @adjust-item="onAdjust"
         />
@@ -27,7 +27,7 @@
     >
       <div 
         class="_cs-pt"
-        @click="$store.commit('purchase/REMOVE_PROD', pData.id)">
+        @click="$store.dispatch('purchase/removeFromCart', pData.key)">
         ❌
       </div>
     </div>
@@ -35,11 +35,11 @@
 </template>
 
 <script>
-  import AmountCalc from '~/components/purchase/AmountCalc'
+  import QuantityCalc from '~/components/purchase/QuantityCalc'
   export default {
     name: 'PurchaseItem',
     components: {
-      AmountCalc
+      QuantityCalc
     },
     props: {
       editable: {

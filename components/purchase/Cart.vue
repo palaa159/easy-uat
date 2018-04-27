@@ -22,7 +22,7 @@
             <div class="container">
               <!-- If no item -->
               <button
-                v-if="!$store.state.purchase.cartContent.length" 
+                v-if="!Object.keys($store.state.purchase.cart.cart_contents).length" 
                 class="bio-button -dark -outline _mgh-at"
                 @click="$store.commit('purchase/SET_CART_SHOW', !$store.state.purchase.isCartShowing)" 
               >
@@ -36,10 +36,10 @@
                 <!-- Total -->
                 <div>
                   <p class="_lh-100pct _cl-dark">
-                    สินค้า {{ $store.state.purchase.cartContent.length }} รายการ รวมเป็นเงิน
+                    สินค้า {{ Object.keys($store.state.purchase.cart.cart_contents).length }} รายการ รวมเป็นเงิน
                   </p>
                   <h4 class="_cl-dark _lh-100pct">
-                    THB {{ totalPrice }}
+                    THB {{ totalCartPrice }}
                   </h4>
                 </div>
                 <!-- Pay -->
@@ -55,11 +55,11 @@
           </div>
           <!-- Main -->
           <div 
-            :class="{'_alit-ct': !$store.state.purchase.cartContent.length}"
+            :class="{'_alit-ct': !Object.keys($store.state.purchase.cart.cart_contents).length}"
             class="_f-9 _dp-f _jtfct-ct _ovfy-at" 
           >
             <div 
-              v-if="!$store.state.purchase.cartContent.length"
+              v-if="!Object.keys($store.state.purchase.cart.cart_contents).length"
               class="_tal-ct _cl-dark" 
             >
               <fa-icon 
@@ -76,11 +76,14 @@
               class="container _w-100pct _cl-dark" 
             >
               <!-- Purchase Item -->
+              <!-- <div v-for="(key, value, i) in $store.state.purchase.cart.cart_contents">
+                {{ key }} {{ value }} {{ }}
+              </div> -->
               <PurchaseItem 
-                v-for="(item, i) in $store.state.purchase.cartContent"
+                v-for="(value, key, i) in $store.state.purchase.cart.cart_contents"
                 :index="i"
-                :key="i"
-                :p-data="item"
+                :key="key"
+                :p-data="value"
               />
             </div>
           </div>
@@ -97,9 +100,24 @@
       />
       <!-- Badge -->
       <Badge 
-        :number="$store.state.purchase.cartContent.length"
+        :number="totalQuantity"
       />
     </div>
+    <!-- Added to Cart Message -->
+    <fade-transition>
+      <div 
+        v-if="addedToCart"
+        class="_pst-asl _zid-1 _r-32px _t-48px _bgcl-white _pdh-16px _pdv-12px _tal-ct _bdrd-4px">
+        <div class="_cl-neutral-800 _mgbt-4px">
+          <strong>Product Added!</strong>
+        </div>
+        <nuxt-link 
+          to="/checkout" 
+          class="bio-link">
+          Proceed to Checkout
+        </nuxt-link>
+      </div>
+    </fade-transition>
   </div>
 </template>
 
@@ -111,18 +129,30 @@
       Badge,
       PurchaseItem,
     },
+    data: () => ({
+      isCartLoading: false
+    }),
     computed: {
-      totalPrice () {
-        const reducer = (a, c) => a + c
-        if (!this.$store.state.purchase.cartContent.length) return 0
-        return this.$store.state.purchase.cartContent
-          .map(x => x = x.price * x.amount)
+      totalCartPrice () {
+        if (this.$store.state.purchase.cart['\u0000*\u0000totals']) {
+          return parseFloat(this.$store.state.purchase.cart['\u0000*\u0000totals'].cart_contents_total).toFixed(2)
+        }
+        return 0
+      },
+      totalQuantity () {
+       const reducer = (a, c) => a + c
+        if (!Object.keys(this.$store.state.purchase.cart.cart_contents).length) return 0
+        return Object.values(this.$store.state.purchase.cart.cart_contents)
+          .map(x => x = x.quantity)
           .reduce(reducer)
-          .toLocaleString()
       }
     },
-    mounted () {
+    async created () {
       // Get Cart Content
+      this.isCartLoading = true
+      const cart = await this.$store.dispatch('purchase/getCartContent')
+      this.isCartLoading = false
+      return this.$store.commit('purchase/SET_CART_CONTENT', cart)
     },
     methods: {
       proceed () {

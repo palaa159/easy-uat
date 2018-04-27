@@ -11,14 +11,14 @@
               class="_dp-n">
             <label 
               for="items" 
-              class="_mg-0px"><h5 class="_pdh-4px">รายการสินค้า ({{ $store.state.purchase.items.length }})</h5></label>
+              class="_mg-0px"><h5 class="_pdh-4px">รายการสินค้า ({{ Object.keys($store.state.purchase.cart.cart_contents).length }})</h5></label>
             <div class="bio-accordion-content">
-              <PurchaseItem 
-                v-for="(item, i) in $store.state.purchase.items"
+              <!-- <PurchaseItem 
+                v-for="(item, i) in $store.state.purchase.cart.cart_contents"
                 :index="i"
                 :key="i"
                 :p-data="item"
-              />
+              /> -->
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@
               for="delivery" 
               class="_mg-0px"><h5 class="_pdh-4px">ข้อมูลการจัดส่ง</h5></label>
             <div class="bio-accordion-content _pd-0px">
-              <DeliveryAddress />  
+              <!-- <DeliveryAddress />   -->
             </div>
           </div>
         </div>
@@ -42,7 +42,7 @@
       <!-- Summary -->
       <div class="col-12 col-sm-4">
         <Summary 
-          :items="$store.state.purchase.items"
+          :items="Object.values($store.state.purchase.cart.cart_contents)"
         />
       </div>
     </div>
@@ -72,14 +72,14 @@
     },
     fetch ({ store, redirect }) {
       // Check if valid
-      if (store.state.purchase.items.length) {
+      if (Object.keys(store.state.purchase.cart.cart_contents).length) {
         return true
       }
       return redirect('/')
     },
     watch: {
-      '$store.state.purchase.items' () {
-        if (!this.$store.state.purchase.items.length) {
+      '$store.state.purchase.cart.cart_contents' () {
+        if (!Object.keys(this.$store.state.purchase.cart.cart_contents).length) {
           this.$router.replace({ path: '/' })
         }
       }

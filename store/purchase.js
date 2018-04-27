@@ -2,7 +2,9 @@ import urls from '~/services/apiUrl'
 
 export const state = () => ({
   isCartShowing: false,
-  cartContent: null
+  cart: {
+    cart_contents: {}
+  }
 })
 
 export const actions = {
@@ -15,12 +17,19 @@ export const actions = {
     const cart = this.$axios.$get(`${urls.getCartContent}`)
     return cart
   },
-  async addToCart ({}, { id, quantity = 1 }) {
-    const added = this.$axios.$post(`${urls.addToCart}`, {
+  async addToCart ({ commit }, { id, quantity = 1, data }) {
+    const added = await this.$axios.$post(`${urls.addToCart}`, {
       id,
-      quantity
+      quantity,
+      data
     })
-    return added
+    return commit('SET_CART_CONTENT', added)
+  },
+  async removeFromCart ({ commit }, keyId) {
+    const remain = await this.$axios.$put(urls.removeFromCart, {
+      id: keyId
+    })
+    return commit('SET_CART_CONTENT', remain)
   }
 }
 
@@ -29,7 +38,8 @@ export const mutations = {
     state.items = []
   },
   SET_CART_CONTENT (state, content) {
-    state.cartContent = content
+    // console.log(content)
+    state.cart = content
   },
   SET_CART_SHOW (state, bool) {
     state.isCartShowing = bool

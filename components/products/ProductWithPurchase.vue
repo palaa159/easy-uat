@@ -29,7 +29,7 @@
           <nuxt-link 
             :to="url" 
             class="link"
-            v-on:click=" collapsed = !collapsed">
+            @click=" collapsed = !collapsed">
             <span>ข้อมูลเพิ่มเติม</span>
           </nuxt-link>
           <!-- Short Desc + Buy now -->
@@ -51,6 +51,7 @@
             <div class="_dp-n _dp-b-md _f-1 _pdh-12px">
               <BuyNow 
                 :price="price"
+                :is-loading="isBtnLoading"
                 @clickBuyNow="addToCartAndCheckout()"
               />
             </div>
@@ -75,12 +76,18 @@
           <div class="col-5 col-md-4">
             <div class="link _cs-pt _dp-f _jtfct-fe">
               <div class="_tal-ct">
-                <div class="hexagon _dp-f _jtfct-ct _alit-ct">
-                  <fa-icon 
-                    class="_cl-white"
-                    size="lg" 
-                    icon="shopping-cart"/>
-                </div>
+                <button 
+                  :disabled="isBtnLoading"
+                  :class="{'-disabled': isBtnLoading}"
+                  class="bio-button -transparent" 
+                  @click="addToCart">
+                  <div class="hexagon _dp-f _jtfct-ct _alit-ct">
+                    <fa-icon 
+                      class="_cl-white"
+                      size="lg" 
+                      icon="shopping-cart"/>
+                  </div>
+                </button>
                 <h6 class="_ttf-upc">Add to Cart</h6>
               </div>
             </div>
@@ -100,6 +107,10 @@
       PurchaseOptions
     },
     props: {
+      productData: {
+        type: Object,
+        default: () => ({})
+      },
       productId: {
         type: Number,
         default: 0
@@ -138,19 +149,33 @@
       }
     },
     data: () => ({
-      quantity: 1
+      quantity: 1,
+      isBtnLoading: false
     }),
     methods: {
       adjustQuantity (x) {
         this.quantity = this.quantity + x
       },
-      async addToCartAndCheckout () {
-        console.log(this.productId)
+      async addToCart () {
+        this.isBtnLoading = true
         const added = await this.$store.dispatch('purchase/addToCart', {
           id: this.productId,
-          quantity: 1
+          quantity: this.quantity,
+          data: this.productData
         })
-        console.log(added)
+        this.isBtnLoading = false
+        // return alert('Added to cart')
+      },
+      async addToCartAndCheckout () {
+        // console.log(this.productId)
+        this.isBtnLoading = true
+        const added = await this.$store.dispatch('purchase/addToCart', {
+          id: this.productId,
+          quantity: 1,
+          data: this.productData
+        })
+        this.isBtnLoading = false
+        this.$router.push('/checkout')
       }
       
     },
@@ -204,5 +229,10 @@
     &:hover {
       transform: scale(1.1);
     }
+  }
+  .-transparent {
+    background: transparent;
+    border: 0px;
+    padding: 0px;
   }
 </style>

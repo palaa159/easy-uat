@@ -10,7 +10,7 @@
       class="link _tal-ct">
       <div 
         v-lazy:background-image="image" 
-        class="image _ratio _bgs-ct" 
+        class="image _ratio" 
       />
       <h6  
         class="_fs-3 _fs-4-md _lh-125pct _fw-500 _cl-dark-aqua"
@@ -43,11 +43,11 @@
     width: 100%;
     // height: 300px;
     background-color: transparent;
-    background-size: cover;
+    background-size: 70%;
     background-repeat: no-repeat;
     background-position: center center;
     &[lazy=loaded] {
-      filter: drop-shadow(0mm 5mm 4mm rgba(0, 0, 0, .25));
+      filter: drop-shadow(0mm 5mm 4mm rgba(0, 0, 0, .15));
     }
   }
   .link span {

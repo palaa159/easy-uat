@@ -110,7 +110,7 @@ export default {
       })
       if (token) {
         // return this.$router.replace(`/${redirect}`)
-        return window.location.href = `/${redirect}`
+        return window.location.href = `${window.location.origin}${redirect}`
       }
       return this.errorMsg = 'เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง'
     },

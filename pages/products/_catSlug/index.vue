@@ -15,6 +15,7 @@
         :key="i" 
         class="col-12 _pdh-0px">
         <ProductWithPurchase 
+          :product-data="x"
           :product-id="x.id"
           :heading="x.name"
           :image="x.images[0].src"

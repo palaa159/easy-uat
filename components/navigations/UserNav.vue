@@ -11,7 +11,7 @@
           <!-- User Control -->
           <nuxt-link 
             v-if="$store.state.auth.user === null"
-            to="/login" 
+            :to="`/login?redirect=${$route.path}`"
           >
             <span>เข้าสู่ระบบ</span>
           </nuxt-link>
@@ -45,7 +45,7 @@ import urls from '~/services/apiUrl'
 export default {
   components: {
     Cart
-  }
+  },
 }
 </script>
 

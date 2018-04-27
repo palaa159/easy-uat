@@ -86,7 +86,7 @@ module.exports = {
     // parallel: true,
     // analyze: true,
     vendors: [
-      'axios', 'moment', 'firebase/app', 'firebase/auth', 'firebase/storage'
+      'axios', 'moment', 'firebase/app', 'firebase/auth', 'firebase/storage', 'debounce'
     ],
     publicPath: '/',
     plugins: [
