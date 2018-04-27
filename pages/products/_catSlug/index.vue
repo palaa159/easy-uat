@@ -56,7 +56,11 @@ export default {
   }),
   head () {
     return {
-      title: `${this.products[0].categories[0].name} ${this.$store.state.site.title}`
+      title: `${this.products[0].categories[0].name} ${this.$store.state.site.title}`,
+      meta: [
+        { hid: 'og:title', property: 'og:title', content: `${this.products[0].categories[0].name} ${this.$store.state.site.title}` },
+        { hid: 'og:description', name: 'og:description', content: `${this.products[0].categories[0].name} ${this.$store.state.site.title}` }
+      ]
     }
   },
   async created () {

@@ -35,5 +35,14 @@ export default {
   components: {
     PageHeading
   },
+  head () {
+    return {
+      title: `AFTER SALES SERVICE`,
+      meta: [
+        { hid: 'og:title', property: 'og:title', content: `AFTER SALES SERVICE` },
+        { hid: 'og:description', name: 'og:description', content: `AFTER SALES SERVICE` }
+      ]
+    }
+  },
 }
 </script>

@@ -14,7 +14,11 @@ export default {
   head () {
     const siteTitle = this.$store.state.site.title
     return { 
-      title: `Register ${siteTitle}`
+      title: `Register ${siteTitle}`,
+      meta: [
+        { hid: 'og:title', property: 'og:title', content: `ลงทะเบียนสมาชิก` },
+        { hid: 'og:description', name: 'og:description', content: `ลงทะเบียนสมาชิก` }
+      ]
     }
   },
   components: {

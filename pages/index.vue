@@ -116,7 +116,11 @@
     head () {
       const siteTitle = this.$store.state.site.title
       return { 
-        title: `Home ${siteTitle}`
+        title: `หน้าแรก ${siteTitle}`,
+        meta: [
+        { hid: 'og:title', property: 'og:title', content: `หน้าแรก` },
+        { hid: 'og:description', name: 'og:description', content: `หน้าแรก` }
+      ]
       }
     }
   }

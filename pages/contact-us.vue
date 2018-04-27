@@ -35,5 +35,15 @@ export default {
       PageHeading,
       ContactUs
   },
+  head () {
+    const siteTitle = this.$store.state.site.title
+    return { 
+      title: `ติอต่อเจ้าหน้าที่ ${siteTitle}`,
+      meta: [
+        { hid: 'og:title', property: 'og:title', content: `ติอต่อเจ้าหน้าที่` },
+        { hid: 'og:description', name: 'og:description', content: `ติอต่อเจ้าหน้าที่` }
+      ]
+    }
+  }
 }
 </script>
