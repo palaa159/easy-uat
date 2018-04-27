@@ -1,7 +1,8 @@
 {
-  "name": "nuxtcommerce",
-  "url": "Nuxtcommerce.co",
-  "description": "Maplelife ดูแลคุณ",
+  "name": "Maplelife",
+  "url": "maplelife.co.th",
+  "title": "Maplelife",
+  "description": "Maplelife",
   "fbAppId": "450683535364717",
   "version": "1.0.0",
   "author": "Apon Palanuwech",

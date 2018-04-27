@@ -21,11 +21,11 @@ export const actions = {
           // Clear Cookie
           console.log(err)
           JSCookie.remove('__session')
-        }),
+        })
         // Cart
-        app.$axios.$get(urls.getCartContent)
+        // app.$axios.$get(urls.getCartContent)
       ]
-      const [ user, cart ] = await Promise.all(promises)
+      const [ user ] = await Promise.all(promises)
       commit('auth/SET_USER', user)
       // commit('purchase/SET_CART_CONTENT', cart)
     }
