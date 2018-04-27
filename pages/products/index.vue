@@ -61,5 +61,15 @@ export default {
       ProductThumb,
       PageHeading
   },
+  head () {
+    const siteTitle = this.$store.state.site.title
+    return { 
+      title: `สินค้าแนะนำสำหรับผู้ที่มีเครื่องอยู่แล้ว ${siteTitle}`,
+      meta: [
+        { hid: 'og:title', property: 'og:title', content: `สินค้าแนะนำสำหรับผู้ที่มีเครื่องอยู่แล้ว` },
+        { hid: 'og:description', name: 'og:description', content: `สินค้าแนะนำสำหรับผู้ที่มีเครื่องอยู่แล้ว` }
+      ]
+    }
+  }
 }
 </script>

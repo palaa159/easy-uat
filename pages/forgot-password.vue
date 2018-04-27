@@ -14,7 +14,11 @@ export default {
   head () {
     const siteTitle = this.$store.state.site.title
     return { 
-      title: `ลืมรหัสผ่าน ${siteTitle}`
+      title: ` ${siteTitle}`,
+      meta: [
+        { hid: 'og:title', property: 'og:title', content: `ลืมรหัสผ่าน` },
+        { hid: 'og:description', name: 'og:description', content: `ลืมรหัสผ่าน` }
+      ]
     }
   },
   components: {
