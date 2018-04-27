@@ -6,18 +6,17 @@ Vue.use(Router)
 const _127e7b2c = () => import('../pages/terms-conditions.vue' /* webpackChunkName: "pages/terms-conditions" */).then(m => m.default || m)
 const _1d44cd5c = () => import('../pages/set-password.vue' /* webpackChunkName: "pages/set-password" */).then(m => m.default || m)
 const _202fdbcf = () => import('../pages/register.vue' /* webpackChunkName: "pages/register" */).then(m => m.default || m)
+const _fc8150ee = () => import('../pages/forgot-password.vue' /* webpackChunkName: "pages/forgot-password" */).then(m => m.default || m)
 const _d07b4c26 = () => import('../pages/login.vue' /* webpackChunkName: "pages/login" */).then(m => m.default || m)
 const _4c2579f5 = () => import('../pages/checkout/index.vue' /* webpackChunkName: "pages/checkout/index" */).then(m => m.default || m)
-const _687a18d2 = () => import('../pages/contact-us.vue' /* webpackChunkName: "pages/contact-us" */).then(m => m.default || m)
 const _c0a41eda = () => import('../pages/products/index.vue' /* webpackChunkName: "pages/products/index" */).then(m => m.default || m)
-const _75aab2bb = () => import('../pages/KitchenSink.vue' /* webpackChunkName: "pages/KitchenSink" */).then(m => m.default || m)
-const _fc8150ee = () => import('../pages/forgot-password.vue' /* webpackChunkName: "pages/forgot-password" */).then(m => m.default || m)
+const _687a18d2 = () => import('../pages/contact-us.vue' /* webpackChunkName: "pages/contact-us" */).then(m => m.default || m)
 const _ab5acc20 = () => import('../pages/profile/index.vue' /* webpackChunkName: "pages/profile/index" */).then(m => m.default || m)
 const _101b8f4a = () => import('../pages/profile/refund.vue' /* webpackChunkName: "pages/profile/refund" */).then(m => m.default || m)
+const _b78cd792 = () => import('../pages/profile/orders.vue' /* webpackChunkName: "pages/profile/orders" */).then(m => m.default || m)
+const _1b148102 = () => import('../pages/profile/credit-card.vue' /* webpackChunkName: "pages/profile/credit-card" */).then(m => m.default || m)
 const _06463adc = () => import('../pages/profile/address.vue' /* webpackChunkName: "pages/profile/address" */).then(m => m.default || m)
 const _32fe1844 = () => import('../pages/products/after-sales-service.vue' /* webpackChunkName: "pages/products/after-sales-service" */).then(m => m.default || m)
-const _1b148102 = () => import('../pages/profile/credit-card.vue' /* webpackChunkName: "pages/profile/credit-card" */).then(m => m.default || m)
-const _b78cd792 = () => import('../pages/profile/orders.vue' /* webpackChunkName: "pages/profile/orders" */).then(m => m.default || m)
 const _585e6c5c = () => import('../pages/profile/logout.vue' /* webpackChunkName: "pages/profile/logout" */).then(m => m.default || m)
 const _61c7a7f7 = () => import('../pages/checkout/_payment/index.vue' /* webpackChunkName: "pages/checkout/_payment/index" */).then(m => m.default || m)
 const _efc8e218 = () => import('../pages/products/_catSlug/index.vue' /* webpackChunkName: "pages/products/_catSlug/index" */).then(m => m.default || m)
@@ -98,6 +97,11 @@ export function createRouter () {
 			name: "register"
 		},
 		{
+			path: "/forgot-password",
+			component: _fc8150ee,
+			name: "forgot-password"
+		},
+		{
 			path: "/login",
 			component: _d07b4c26,
 			name: "login"
@@ -108,24 +112,14 @@ export function createRouter () {
 			name: "checkout"
 		},
 		{
-			path: "/contact-us",
-			component: _687a18d2,
-			name: "contact-us"
-		},
-		{
 			path: "/products",
 			component: _c0a41eda,
 			name: "products"
 		},
 		{
-			path: "/KitchenSink",
-			component: _75aab2bb,
-			name: "KitchenSink"
-		},
-		{
-			path: "/forgot-password",
-			component: _fc8150ee,
-			name: "forgot-password"
+			path: "/contact-us",
+			component: _687a18d2,
+			name: "contact-us"
 		},
 		{
 			path: "/profile",
@@ -138,6 +132,16 @@ export function createRouter () {
 			name: "profile-refund"
 		},
 		{
+			path: "/profile/orders",
+			component: _b78cd792,
+			name: "profile-orders"
+		},
+		{
+			path: "/profile/credit-card",
+			component: _1b148102,
+			name: "profile-credit-card"
+		},
+		{
 			path: "/profile/address",
 			component: _06463adc,
 			name: "profile-address"
@@ -146,16 +150,6 @@ export function createRouter () {
 			path: "/products/after-sales-service",
 			component: _32fe1844,
 			name: "products-after-sales-service"
-		},
-		{
-			path: "/profile/credit-card",
-			component: _1b148102,
-			name: "profile-credit-card"
-		},
-		{
-			path: "/profile/orders",
-			component: _b78cd792,
-			name: "profile-orders"
 		},
 		{
 			path: "/profile/logout",

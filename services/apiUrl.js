@@ -21,6 +21,7 @@ export default {
   // Cart
   getCartContent: `${prefix}/api/v1/wc/cart`,
   addToCart: `${prefix}/api/v1/wc/cart/add`, // POST
+  updateProductQuantity: `${prefix}/api/v1/wc/cart/update`, // PUT
   clearCart: `${prefix}/api/v1/wc/cart/clear`, // POST
   removeFromCart: `${prefix}/api/v1/wc/cart/remove`
 }

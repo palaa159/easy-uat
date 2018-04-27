@@ -40,7 +40,7 @@
     methods: {
       handleScroll () {
         // console.log(window.scrollY)
-        if (window.scrollY > 400) {
+        if (window.scrollY > 200) {
           this.isNavSticky = true
         } else {
           this.isNavSticky = false

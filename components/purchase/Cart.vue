@@ -4,8 +4,10 @@
     <slide-x-right-transition>
       <div 
         v-show="$store.state.purchase.isCartShowing"
-        class="cart-panel-container _ovfy-hd _pst-f _r-0px _w-100pct _w-40pct-sm _bgcl-white _zid-1"> 
-        <div class="cart-panel _dp-f _fdrt-cl">
+        class="cart-panel-container _ovfy-hd _pst-f _r-0px _w-100pct _w-40pct-sm _bgcl-white"> 
+        <div 
+          :class="{'is-processing': $store.state.purchase.isCartProcessing}" 
+          class="cart-panel _dp-f _fdrt-cl">
           <!-- Header -->
           <div class="_f-1 _dp-f _jtfct-spbtw container _alit-ct">
             <div class="_cl-dark">
@@ -26,7 +28,7 @@
                 class="bio-button -dark -outline _mgh-at"
                 @click="$store.commit('purchase/SET_CART_SHOW', !$store.state.purchase.isCartShowing)" 
               >
-                เลือกซื้อของต่อ
+                เลือกซื้อของต่อ <fa-icon icon="long-arrow-alt-right"/>
               </button>
               <!-- If has item -->
               <div 
@@ -36,7 +38,7 @@
                 <!-- Total -->
                 <div>
                   <p class="_lh-100pct _cl-dark">
-                    สินค้า {{ Object.keys($store.state.purchase.cart.cart_contents).length }} รายการ รวมเป็นเงิน
+                    สินค้า {{ totalQuantity }} ชิ้น รวมเป็นเงิน
                   </p>
                   <h4 class="_cl-dark _lh-100pct">
                     THB {{ totalCartPrice }}
@@ -45,9 +47,12 @@
                 <!-- Pay -->
                 <div>
                   <button 
-                    class="bio-button -info" 
+                    class="bio-button -accent" 
                     @click="proceed()">
-                    <h6>ดำเนินการชำระเงิน</h6>
+                    <h6>
+                      ดำเนินการชำระเงิน
+                      <fa-icon icon="long-arrow-alt-right"/>
+                    </h6>
                   </button>
                 </div>
               </div>
@@ -92,6 +97,7 @@
     </slide-x-right-transition>
     <!-- Cart Button -->
     <div
+      ref="cartBtn"
       class="_dp-f _alit-ct _cs-pt _cl-white" 
       @click="$store.commit('purchase/SET_CART_SHOW', !$store.state.purchase.isCartShowing)">
       <fa-icon 
@@ -104,20 +110,32 @@
       />
     </div>
     <!-- Added to Cart Message -->
-    <fade-transition>
+    <slide-y-up-transition>
       <div 
-        v-if="addedToCart"
-        class="_pst-asl _zid-1 _r-32px _t-48px _bgcl-white _pdh-16px _pdv-12px _tal-ct _bdrd-4px">
-        <div class="_cl-neutral-800 _mgbt-4px">
-          <strong>Product Added!</strong>
+        v-if="$store.state.purchase.isCartBubbleShowing" 
+        class="wrapper _w-100pct _pst-asl _zid-1 _t-48px _l-0px _ptev-n"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-12 _tal-r">
+              <div
+                ref="message"
+                class="box _bgcl-white _pdh-16px _pdv-12px _tal-l _bdrd-4px _dp-ilb _ptev-at"
+              >
+                <div class="_cl-neutral-800 _mgbt-4px">
+                  <strong>Product Added!</strong>
+                </div>
+                <nuxt-link 
+                  to="/checkout" 
+                  class="bio-link">
+                  Go to Checkout
+                </nuxt-link>
+              </div>
+            </div>
+          </div>
         </div>
-        <nuxt-link 
-          to="/checkout" 
-          class="bio-link">
-          Proceed to Checkout
-        </nuxt-link>
       </div>
-    </fade-transition>
+    </slide-y-up-transition>
   </div>
 </template>
 
@@ -130,7 +148,8 @@
       PurchaseItem,
     },
     data: () => ({
-      isCartLoading: false
+      isCartLoading: false,
+      isMessageShowing: false
     }),
     computed: {
       totalCartPrice () {
@@ -164,15 +183,65 @@
 </script>
 
 <style lang="scss" scoped>
+  .box {
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      width: 0;
+      height: 0;
+      border-bottom: 20px solid #fff;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+    }
+  }
   .cart-panel-container {
     top: 0px;
+    z-index: 2;
     box-shadow: -1px 0px 40px -10px rgba(0, 0, 0, 0.1);
   }
   .cart-panel {
     height: calc(100vh);
+    &.is-processing {
+      &::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 1;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: inline-block;
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-left-color: #7983ff;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: donut-spin 0.6s linear infinite;
+        z-index: 2;
+      }
+    }
   }
   .summary {
     border-top: 1px dashed rgba(0, 0, 0, 0.1);
     min-height: 84px;
+  }
+  @keyframes donut-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 </style>

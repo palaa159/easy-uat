@@ -12,7 +12,7 @@
               <div class="_fs-4 _mgv-16px">🔒 Secured Checkout</div>
             </div>
           </div>
-          <div class="row _pst-rlt">
+          <div class="row _pst-rlt _zid-0">
             <!-- H-Line -->
             <div class="_w-100pct _pst-asl h-line-container">
               <div 
@@ -43,7 +43,7 @@
     <fade-transition>
       <div 
         v-if="$store.state.purchase.isCartShowing"
-        class="curtain _pst-f _t-0px _l-0px _w-100pct _h-100vh _zid-0"
+        class="curtain _pst-f _t-0px _l-0px _w-100pct _h-100vh _zid-1"
         @click="$store.commit('purchase/SET_CART_SHOW', false)"
       />
     </fade-transition>

@@ -2,14 +2,14 @@
   <div class="_dp-f _mgv-12px">
     <!-- Image -->
     <div 
-      v-lazy:background-image="pData.images[0].src"
+      v-lazy:background-image="pData.images && pData.images[0].src"
       class="image _f-2 _ratio" 
     />
     <!-- Detail -->
     <div class="_mgl-12px _dp-f _f-8 _fdrt-cl _jtfct-spbtw _pdv-4px _pdv-8px-sm _pdh-2px _pdh-12px-sm">
       <h6 
         class="_lh-100pct _mgbt-4px" 
-        v-html="`${index + 1}. ${pData.name}`" />
+        v-html="`${pData.name}`" />
       <!-- Amount -->
       <div class="_w-100pct">
         <QuantityCalc
@@ -63,12 +63,16 @@
     },
     // serverCacheKey: props => props.index,
     methods: {
-      onAdjust (n) {
+      async onAdjust (n) {
         console.log(`on adjust: ${n}`)
-        this.$store.commit('purchase/SET_PROD_CART_AMT', { 
-          id: this.pData.id,
-          amount: this.pData.amount + n
+        const cart = await this.$store.dispatch('purchase/updateProductQuantity', {
+          keyId: this.pData.key,
+          quantity: this.pData.quantity + n
         })
+        // this.$store.commit('purchase/SET_PROD_CART_AMT', { 
+        //   id: this.pData.id,
+        //   amount: this.pData.amount + n
+        // })
       }
     }
   }

@@ -2,6 +2,8 @@ import urls from '~/services/apiUrl'
 
 export const state = () => ({
   isCartShowing: false,
+  isCartBubbleShowing: false,
+  isCartProcessing: false,
   cart: {
     cart_contents: {}
   }
@@ -18,17 +20,34 @@ export const actions = {
     return cart
   },
   async addToCart ({ commit }, { id, quantity = 1, data }) {
+    commit('SET_CART_PROCESSING', true)
     const added = await this.$axios.$post(`${urls.addToCart}`, {
       id,
       quantity,
       data
     })
+    commit('SET_CART_BUBBLE', true)
+    setTimeout(() => {
+      commit('SET_CART_BUBBLE', false)
+    }, 4500)
+    commit('SET_CART_PROCESSING', false)
     return commit('SET_CART_CONTENT', added)
   },
+  async updateProductQuantity ({ commit }, { keyId, quantity }) {
+    commit('SET_CART_PROCESSING', true)
+    const remain = await this.$axios.$put(urls.updateProductQuantity, {
+      id: keyId,
+      quantity
+    })
+    commit('SET_CART_PROCESSING', false)
+    return commit('SET_CART_CONTENT', remain)
+  },
   async removeFromCart ({ commit }, keyId) {
+    commit('SET_CART_PROCESSING', true)
     const remain = await this.$axios.$put(urls.removeFromCart, {
       id: keyId
     })
+    commit('SET_CART_PROCESSING', false)
     return commit('SET_CART_CONTENT', remain)
   }
 }
@@ -36,6 +55,12 @@ export const actions = {
 export const mutations = {
   CLEAR_CART (state) {
     state.items = []
+  },
+  SET_CART_PROCESSING (state, bool) {
+    state.isCartProcessing = bool
+  },
+  SET_CART_BUBBLE (state, bool) {
+    state.isCartBubbleShowing = bool
   },
   SET_CART_CONTENT (state, content) {
     // console.log(content)
