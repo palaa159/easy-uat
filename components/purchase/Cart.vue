@@ -4,7 +4,7 @@
     <slide-x-right-transition>
       <div 
         v-show="$store.state.purchase.isCartShowing"
-        class="cart-panel-container _ovfy-hd _pst-f _r-0px _w-100pct _w-40pct-sm _bgcl-white"> 
+        class="cart-panel-container _ovfy-hd _pst-f _r-0px _w-100pct _w-40pct-md _bgcl-white"> 
         <div 
           :class="{'is-processing': $store.state.purchase.isCartProcessing}" 
           class="cart-panel _dp-f _fdrt-cl">

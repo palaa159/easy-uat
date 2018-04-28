@@ -6,7 +6,7 @@
       class="image _f-2 _ratio" 
     />
     <!-- Detail -->
-    <div class="_mgl-12px _dp-f _f-8 _fdrt-cl _jtfct-spbtw _pdv-4px _pdv-8px-sm _pdh-2px _pdh-12px-sm">
+    <div class="_mgl-12px _dp-f _f-8 _fdrt-cl _jtfct-spbtw _pdv-4px _pdv-8px-md _pdh-2px _pdh-12px-md">
       <h6 
         class="_lh-100pct _mgbt-4px" 
         v-html="`${pData.name}`" />

@@ -2,7 +2,7 @@
   <div class="_mgt-16px">
     <!-- Items -->
     <slide-y-down-transition 
-      class="_dp-n _dp-b-sm" 
+      class="_dp-n _dp-b-md" 
       group>
       <div 
         v-for="(x, i) in items"
@@ -24,7 +24,7 @@
       </div>
       <!-- Mobile Dropdown -->
     </slide-y-down-transition>
-    <div class="_dp-b _dp-n-sm bio-select">
+    <div class="_dp-b _dp-n-md bio-select">
       <select @change="navigate">
         <option 
           v-for="(x, i) in items"

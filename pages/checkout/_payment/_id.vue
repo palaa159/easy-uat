@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <!-- ขอบคุณ -->
-      <div class="col-12 col-sm-8">
+      <div class="col-12 col-md-8">
         <div class="_bgcl-white _pdh-16px _pdt-12px _pdbt-24px _mgbt-16px">
           <div class="_mgbt-16px">
             <h4 class="_cl-positive">
@@ -54,7 +54,7 @@
         </div>
       </div>
       <!-- Summary -->
-      <div class="col-12 col-sm-4">
+      <div class="col-12 col-md-4">
         <Summary 
           :items="[]"
         />

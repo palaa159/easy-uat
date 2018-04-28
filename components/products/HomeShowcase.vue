@@ -4,7 +4,7 @@
       :class="{'_fdrt-rrv': !leftImage}"
       class="row _alit-ct product-showcase _pst-rlt _pdv-64px" 
     >
-      <div class="col-12 col-sm-5">
+      <div class="col-12 col-md-5">
         <!-- Image container -->
         <div class="_pst-rlt">
           <!-- Image -->
@@ -25,7 +25,7 @@
           </nuxt-link>
         </div>
       </div>
-      <div class="col-12 col-sm-7">
+      <div class="col-12 col-md-7">
         <h2  
           class="_fs-3 _fs-1-md _lh-100pct _fw-300 _cl-blue"
           v-html="heading" /> 

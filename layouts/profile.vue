@@ -18,8 +18,8 @@
               <Menu />
             </div>
           </div>
-          <div class="col-12 col-md-8 _mgt-16px _mgt-0px-sm">
-            <div class="_bgcl-white _pd-16px-sm">
+          <div class="col-12 col-md-8 _mgt-16px _mgt-0px-md">
+            <div class="_bgcl-white _pd-16px-md">
               <nuxt/>
             </div>
           </div>

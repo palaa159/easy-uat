@@ -4,13 +4,13 @@
     <div class="container _pdv-48px -with-triangle">
       <div class="row _jtfct-ct">
         <!-- Image -->
-        <div class="col-12 col-sm-4">
+        <div class="col-12 col-md-4">
           <div class="_pst-rlt _dp-f _alit-fe">
             <div 
               v-lazy:background-image="image" 
               class="image _ratio _f-3" 
             />
-            <div class="_f-2 _dp-n-sm">
+            <div class="_f-2 _dp-n-md">
               <BuyNow 
                 :price="price"
                 @clickBuyNow="addToCartAndCheckout()"
@@ -19,9 +19,9 @@
           </div>
         </div>
         <!-- Detail -->
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-md-6">
           <h2 
-            class="_lh-125pct _mgv-24px _fw-500 _fs-4 _fs-3-sm" 
+            class="_lh-125pct _mgv-24px _fw-500 _fs-4 _fs-3-md" 
             v-html="heading" /> 
           <div 
             :class="{'-collapsed': collapsed}" 

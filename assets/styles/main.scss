@@ -1,6 +1,10 @@
-@import 'node_modules/biomatic/dist/biomatic.full.min.css';
-@import 'node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
-@import 'node_modules/bootstrap/scss/utilities/_embed.scss';
+$sm: 770px;
+$md: 900px;
+$lg: 1200px;
+
+@import 'assets/styles/biomatic.full.min.css';
+@import 'assets/styles/_grid.scss';
+@import 'assets/styles/_embed.scss';
 // เพิ่ม stylesheet ของ Vue Thailand Address เข้าไป
 // @import 'modules/vue-thai-address-input/dist/vue-thai-address-input.css';
 @import 'assets/styles/variables';

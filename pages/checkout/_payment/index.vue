@@ -2,7 +2,7 @@
   <div class="container">
     <!--  -->
     <div class="row">
-      <div class="col-12 col-sm-8">
+      <div class="col-12 col-md-8">
         <div class="_pd-16px _bgcl-white">
           <!-- Tabs -->
           <div class="tab-container">
@@ -11,12 +11,12 @@
                 v-for="(x, i) in methods"
                 :key="i"
                 :class="{'active': $route.query.method === x.slug}"
-                class="_f-2 _f-2-sm tab _cs-pt _tal-ct"
+                class="_f-2 _f-2-md tab _cs-pt _tal-ct"
                 @click="$router.replace({ query: { method: x.slug } })" 
               >
                 {{ x.title }}
               </div>
-              <div class="_f-0 _dp-n _dp-b-sm _f-5-sm tab">
+              <div class="_f-0 _dp-n _dp-b-md _f-5-md tab">
                 &nbsp;
               </div>
             </div>
@@ -30,7 +30,7 @@
             <!-- Submit Button -->
             <no-ssr>
               <button 
-                class="bio-button _w-100pct _w-50pct-sm -positive" 
+                class="bio-button _w-100pct _w-50pct-md -positive" 
                 @click="pay()">
                 <h5>สั่งซื้อ</h5>
               </button>
@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-sm-4">
+      <div class="col-12 col-md-4">
         <Summary 
           :items="$store.state.purchase.items"
         />

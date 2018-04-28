@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-12 col-sm-8">
+      <div class="col-12 col-md-8">
         <div class="_pdv-16px _pdh-16px _bgcl-white">
           <!-- รายการสินค้า -->
           <div class="bio-accordion -has-icon">
@@ -40,7 +40,7 @@
         </div>
       </div>
       <!-- Summary -->
-      <div class="col-12 col-sm-4">
+      <div class="col-12 col-md-4">
         <Summary 
           :items="Object.values($store.state.purchase.cart.cart_contents)"
         />

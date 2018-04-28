@@ -34,7 +34,7 @@
       <h5 class="_mgl-16px">{{ unit }}</h5>
     </div>
     <!-- Total price -->
-    <div class="_dp-n _dp-b-sm">
+    <div class="_dp-n _dp-b-md">
       <div class="_tal-l">THB</div>
       <div class="_lh-100pct _fs-4">{{ (price * quantity).toFixed(2) }}</div>
     </div>

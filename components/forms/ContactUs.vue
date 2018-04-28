@@ -3,7 +3,7 @@
     <div class="_mgv-32px container">
       <div class="row _dp-f _fdrt-cl _alit-ct">
         <!-- ชื่อ -->
-        <div class="col-12 col-sm-10 col-md-6 _pdh-0px _pdh-16px-sm">
+        <div class="col-12 col-md-6 _pdh-0px _pdh-16px-sm">
           <form @submit.stop.prevent="submit">
             <float-label>
               <input 
