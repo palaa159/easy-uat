@@ -14,6 +14,7 @@
         v-for="(x, i) in products" 
         :key="i" 
         class="col-12 _pdh-0px">
+        <!-- {{ x }} -->
         <ProductWithPurchase 
           :product-data="x"
           :product-id="x.id"
@@ -23,7 +24,7 @@
           :short-description="x.short_description"
           :price="parseFloat(x.price)"
           :stock-quantity="x.stock_quantity"
-          :unit="x.attributes[0].options[0]"
+          :unit="x.attributes[0] && x.attributes[0].options[0] || ''"
         />
       </div>
     </div>

@@ -24,14 +24,19 @@
             class="_lh-125pct _mgv-24px _fw-500 _fs-4 _fs-3-sm" 
             v-html="heading" /> 
           <div 
-            class="product-description-list" 
+            :class="{'-collapsed': collapsed}" 
+            class="product-description-list"
             v-html="descriptionList"/>
-          <nuxt-link 
-            :to="url" 
-            class="link"
-            @click=" collapsed = !collapsed">
-            <span>ข้อมูลเพิ่มเติม</span>
-          </nuxt-link>
+          <div 
+            v-if="descriptionList.match(/<li>/gi).length > 3"
+            :class="{'-collapsed': collapsed}"
+            class="more-info _cs-pt _mgt-2px"
+            @click="collapsed = !collapsed">
+            <h6>
+              <span v-if="collapsed">ข้อมูลเพิ่มเติม</span>
+              <span v-else>ปิด</span>
+            </h6>
+          </div>
           <!-- Short Desc + Buy now -->
           <div 
             v-if="shortDescription" 
@@ -41,11 +46,12 @@
               <div 
                 class="_fw-300" 
                 v-html="shortDescription"/>
-              <div class="_mgt-24px">
+                <!-- <div class="_mgt-24px">
                 <h4>
                   In Stock: {{ stockQuantity }} {{ unit }}
                 </h4>
               </div>
+              -->
             </div>
             <!-- Buy Now -->
             <div class="_dp-n _dp-b-md _f-1 _pdh-12px">
@@ -82,13 +88,19 @@
                   class="bio-button -transparent" 
                   @click="addToCart">
                   <div class="hexagon _dp-f _jtfct-ct _alit-ct">
+                    <span 
+                      v-if="isBtnLoading" 
+                      class="bio-button -loading _bgcl-tpr _bdw-0px"/>
                     <fa-icon 
+                      v-else
                       class="_cl-white"
                       size="lg" 
                       icon="shopping-cart"/>
                   </div>
                 </button>
-                <h6 class="_ttf-upc">Add to Cart</h6>
+                <h6 class="_ttf-upc">
+                  <span>Add to Cart</span>
+                </h6>
               </div>
             </div>
           </div>
@@ -150,7 +162,8 @@
     },
     data: () => ({
       quantity: 1,
-      isBtnLoading: false
+      isBtnLoading: false,
+      collapsed: true
     }),
     methods: {
       adjustQuantity (x) {
@@ -234,5 +247,29 @@
     background: transparent;
     border: 0px;
     padding: 0px;
+  }
+  .more-info {
+    position: relative;
+    padding-left: 32px;
+    transition: 0.2;
+    &.-collapsed {
+      &::after {
+        border-bottom: 0px solid #9914FF;
+        border-top: 10px solid #9914FF;
+      }
+    }
+    &::after {
+      transition: 0.2;
+      content: '';
+      position: absolute;
+      left: 2px;
+      bottom: 8px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-bottom: 10px solid #9914FF;
+      border-right: 10px solid transparent;
+      border-radius: 4px;
+    }
   }
 </style>

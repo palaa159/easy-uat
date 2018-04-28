@@ -189,25 +189,28 @@
   z-index: 0;
 }
 
-.product-description-list ul {
-  margin-left: 16px;
-  list-style-image: url(~/assets/images/icons/hexagon-bullet.svg);
-  li {
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 8px;
-    // font-family: Kanit;
-    font-size: 1em;
-    font-weight: 300;
-    line-height: 160%;
+.product-description-list {
+  ul {
+    margin-left: 24px;
+    list-style-image: url(~/assets/images/icons/hexagon-bullet.svg);
+    li {
+      padding-top: 4px;
+      padding-bottom: 4px;
+      padding-left: 8px;
+      // font-family: Kanit;
+      font-size: 1em;
+      font-weight: 300;
+      line-height: 160%;
+    }
+    li:nth-child(n+4) {
+      display: list-item;
+    }
   }
-  li:nth-child(n+4){
-		display: none;
-  }
-  
-}
-.product-description-list{
-  p{
-    display: none;
+  &.-collapsed {
+    ul {
+      li:nth-child(n+4) {
+        display: none;
+      }
+    }
   }
 }

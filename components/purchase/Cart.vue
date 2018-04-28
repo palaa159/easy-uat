@@ -105,7 +105,11 @@
         icon="shopping-cart" 
       />
       <!-- Badge -->
-      <Badge 
+      <div 
+        v-if="isCartLoading" 
+        class="bio-button _pdl-8px -loading _bgcl-tpr _bdw-0px"/>
+      <Badge
+        v-else 
         :number="totalQuantity"
       />
     </div>
