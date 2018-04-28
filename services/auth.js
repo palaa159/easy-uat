@@ -5,12 +5,12 @@ import 'firebase/storage'
 function initFirebase () {
   // Initialize Firebase
   const config = {
-    apiKey: "AIzaSyDqJ-2F8n0jCaFTVe5VyHsymKHTSJHVgz4",
-    authDomain: "maplelife-co-th.firebaseapp.com",
-    databaseURL: "https://maplelife-co-th.firebaseio.com",
-    projectId: "maplelife-co-th",
-    storageBucket: "maplelife-co-th.appspot.com",
-    messagingSenderId: "293257228830"
+    apiKey: "AIzaSyD82CPrSM7IkvOtcENua_o8TbtLgjxi7X8",
+    authDomain: "makerstation-in-th.firebaseapp.com",
+    databaseURL: "https://makerstation-in-th.firebaseio.com",
+    projectId: "makerstation-in-th",
+    storageBucket: "makerstation-in-th.appspot.com",
+    messagingSenderId: "549808708652"
   }
   if (!firebase.apps.length) {
     return firebase.initializeApp(config)

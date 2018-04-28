@@ -14,14 +14,14 @@
         </nuxt-link>
       </div>
       <div class="row _pdv-16px _dp-f _jtfct-spbtw">
-        <div class="col-12 col-md-6 _tal-ct _tal-l-md _pdv-16px _pdv-24px-md"><img src="~/assets/images/other/DBD-Registered.png"/></div>
-        <div class="col-12 col-md-6 copyright _tal-ct _tal-r-md _pdv-8px _pdv-24px-md"><span>Copyright &copy;2018 Maplelife co., Ltd | </span>
-        <nuxt-link 
-          :to="`/terms-conditions`" 
-          class=""
-        >
-          <span>ข้อกำหนดและเงื่อนไข</span>
-        </nuxt-link>
+        <div class="col-12 col-md-6 _tal-ct _tal-l-md _pdv-16px _pdv-24px-md"><img src="~/assets/images/other/DBD-Registered.png"></div>
+        <div class="col-12 col-md-6 copyright _tal-ct _tal-r-md _pdv-8px _pdv-24px-md"><span>Copyright &copy;2018 Makerstation | </span>
+          <nuxt-link 
+            :to="`/terms-conditions`" 
+            class=""
+          >
+            <span>ข้อกำหนดและเงื่อนไข</span>
+          </nuxt-link>
         </div>
       </div>
     </div>

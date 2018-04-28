@@ -73,7 +73,7 @@ module.exports = {
     debug: false,
     https: true,
     port: 443,
-    host: 'cms.maplelife.co.th',
+    host: 'cms.makerstation.in.th',
     // prefix: '/wp-json/api/v1', moved to apiUrl.js
   },
 
