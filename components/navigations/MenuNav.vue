@@ -6,7 +6,7 @@
         v-if="items.length" 
         class="row _dp-n _dp-f-md _alit-ct">
         <nuxt-link 
-          v-for="(x, i) in items.slice(0, 3)" 
+          v-for="(x, i) in items" 
           :key="i"
           :to="x.path"
           class="col _tal-ct menu-link" 
@@ -14,22 +14,15 @@
           <h6>{{ x.title }}</h6>
         </nuxt-link>
         <!-- Logo -->
-        <div class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"/>
-        <nuxt-link 
-          v-for="(x, i) in items.slice(3, 6)" 
-          :key="i + 4"
-          :to="x.path"
-          class="col _tal-ct menu-link" 
-        >
-          <h6>{{ x.title }}</h6>
-        </nuxt-link>
-
+        <!-- <div class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"/> -->
       </div>
       <!-- Mobile Menu -->
       <div class="row _dp-n-md">
         <nuxt-link 
           to="/" 
-          class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"/>
+          class="col">
+          <div class="logo _bgrp-nrp _bgs-ct _bgpst-ct"/>
+        </nuxt-link>
         <div class="col _dp-f _jtfct-fe _alit-ct">
           <div 
             class="_dp-ilb hbg-container _pdv-8px _pdh-24px _cs-pt" 
@@ -85,32 +78,7 @@ export default {
     items: []
   }),
   created () {
-    this.items = [
-      {
-        title: 'หน้าแรก',
-        path: '/'
-      },
-      {
-        title: 'สั่งซื้อ',
-        path: '/'
-      },
-      {
-        title: 'สินค้า',
-        path: '/products'
-      },
-      {
-        title: 'แพ็ครายเดือน',
-        path: '/'
-      },
-      {
-        title: 'แจ้งชำระเงิน',
-        path: '/profile/orders'
-      },
-      {
-        title: 'ติดต่อเจ้าหน้าที่',
-        path: '/contact-us'
-      }
-    ]
+    this.items = this.$store.state.menu.primaryMenu
   }
 }
 </script>

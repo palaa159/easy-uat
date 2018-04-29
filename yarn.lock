@@ -7710,9 +7710,9 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-agile@^0.3.7:
-  version "0.3.7"
-  resolved "https://registry.yarnpkg.com/vue-agile/-/vue-agile-0.3.7.tgz#dfab89b0e4d55c9da8a6fcdc58f69c79242b4057"
+vue-agile@^0.4.0-alpha.3:
+  version "0.4.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/vue-agile/-/vue-agile-0.4.0-alpha.3.tgz#31eb66ba3437dd272195118ae08f23846b9b9510"
   dependencies:
     vue "2.*.*"
 
@@ -7754,6 +7754,10 @@ vue-js-modal@^1.3.12:
 vue-lazyload@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/vue-lazyload/-/vue-lazyload-1.2.3.tgz#901f9ec15c7e6ca78781a2bae4a343686bdedb2c"
+
+vue-line-clamp@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/vue-line-clamp/-/vue-line-clamp-1.2.3.tgz#0fb619bef329e74a682fe8f8c17a720d211655a0"
 
 vue-loader@^13.7.0:
   version "13.7.1"

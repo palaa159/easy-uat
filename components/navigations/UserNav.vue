@@ -23,7 +23,7 @@
           </nuxt-link>
           <nuxt-link 
             v-if="$store.state.auth.user"
-            to="/profile" 
+            to="/profile"
           >
             <img 
               :src="$store.state.auth.user.avatar_urls && $store.state.auth.user.avatar_urls['24']" 
@@ -53,7 +53,8 @@ export default {
 <style lang="scss" scoped>
   // User Controls
   .user-bar {
-    background-image: linear-gradient(140deg, #4BBFEC 0%, #81A5FF 100%);
+    // background-image: linear-gradient(140deg, #4BBFEC 0%, #81A5FF 100%);
+    background-color: gray;
     height: 42px;
   }
   .user-control {

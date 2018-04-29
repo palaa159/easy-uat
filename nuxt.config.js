@@ -16,13 +16,19 @@ module.exports = {
       { hid: 'og:url', property: 'og:url', content: pkg.url },
       { hid: 'og:site_name', property: 'og:site_name', content: pkg.url },
       { hid: 'og:locale', property: 'og:locale', content: 'th_TH' },
-      { hid: 'og:title', property: 'og:title', content: pkg.description },
+      { hid: 'og:title', property: 'og:title', content: pkg.title },
       { hid: 'og:description', name: 'og:description', content: pkg.description },
-      { hid: 'og:image', property: 'og:image', content: '/images/image-placeholder.jpg' },
-      { hid: 'theme-color', name: 'theme-color', content: '#eeeeee' }
+      { hid: 'og:image:width', property: 'og:image:width', content: '135' },
+      { hid: 'og:image:height', property: 'og:image:height', content: '135' },
+      { hid: 'og:image', property: 'og:image', content: 'https://makerstation.in.th/images/logo.png/og-image.jpg' },
+      { hid: 'theme-color', name: 'theme-color', content: '#2B2B2B' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v1' },
+      { rel: 'apple-touch-icon', sizes: '120x120', href: '/apple-touch-icon.png' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+      { rel: 'manifest', href: '/site.webmanifest' },
+      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Kanit:300,400,500,600&amp;subset=thai' }
     ]
   },
@@ -59,9 +65,9 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    // ['@nuxtjs/google-analytics', {
-    //   id: ''
-    // }],
+    ['@nuxtjs/google-analytics', {
+      id: pkg.gaId
+    }],
     // ['@nuxtjs/pwa', { icon: false }] // doesn't work in firebase functions
   ],
   /*
@@ -73,7 +79,7 @@ module.exports = {
     debug: false,
     https: true,
     port: 443,
-    host: 'cms.makerstation.in.th',
+    host: pkg.apiUrl,
     // prefix: '/wp-json/api/v1', moved to apiUrl.js
   },
 
@@ -96,15 +102,15 @@ module.exports = {
     ],
     babel: {
       presets: [[
-        "env", {
-          "targets": {
-            "chrome": 52,
-            "browsers": ["safari 7", "ie 11"]
+        'env', {
+          'targets': {
+            'chrome': 52,
+            'browsers': ['safari 7', 'ie 11']
           }
         }
       ], 'stage-0', 'stage-1', 'stage-2', 'stage-3'],
       plugins: [
-        "transform-runtime",
+        'transform-runtime',
       ]
     },
     /*

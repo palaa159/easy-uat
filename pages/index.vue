@@ -1,45 +1,36 @@
 <template>
-  <div class="container-fluid">
-    <div class="row _pst-rlt">
-      <div class="col-12 gradient-bg">
-        <div class="container">
-          <div class="row _alit-ct _fdrt-rrv _pdbt-48px _mgt-24px">
-            <div class="col-12 col-md-5">
-              <!-- Image container -->
-              <div class="_pst-rlt">
-                <!-- Image -->
-                <div 
-                  v-lazy:background-image="`https://cms.maplelife.co.th/wp-content/uploads/2018/04/PIC2.png`"
-                  class="hero-image _ratio" 
-                />
-              </div>
-            </div>
-            <div class="col-12 col-md-7 hero-text">
-              <h1 class="_fs-3 _fw-400 _fs-1-md _fw-700-md _lh-100pct">เครื่องตรวจวัดระดับ<span class="_dp-ilb">น้ำตาลในเลือด</span><span class="_dp-ilb">SD GLUCONAVII</span></h1> 
-              <h5 class="_dp-b _pdt-32px _fs-5 _fs-4-md _fw-300 _fw-600-md _lh-125pct _cl-blue">ง่าย สะดวก รวดเร็ว
-              <span class="_dp-b _fw-300 _cl-blue">ด้วยเทคโนโลยีในการดูแลสุขภาพ</span></h5>
-            </div>
+  <div class="_w-100pct">
+    <!-- Slide -->
+    <div class="_w-100pct _bgcl-gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <!-- Agile -->
+            <Slideshow
+              :slides="topSlides"
+            />
           </div>
-          <div class="row _jtfct-ct">
-            <div 
-              v-for="(item, i) in mockProducts" 
-              :key="i" 
-              class="col-12 col-lg-10 _mgv-16px">
-              <!-- <HomeShowcase 
-                  :left-image="(i + 1) % 2 != 0"
-                  :image="item.images[0].src"
-                  :heading="item.name"
-                  :url="`/products/${item.slug}`"
-                /> -->
-              <HomeShowcase 
-                :left-image="(i + 1) % 2 != 0"
-                :image="item.image"
-                :heading="item.heading"
-                :list="item.list"
-                :url="item.url"
-              />
-            </div>
+        </div>
+      </div>
+    </div>
+    <!-- สินค้ามาใหม่ -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h4 class="_pdv-12px">สินค้ามาใหม่</h4>
+          <div>
+            <FeaturedProducts 
+              :products="featuredProducts"
+            />
           </div>
+        </div>
+      </div>
+    </div>
+    <!-- สินค้าตามหมวดหมู่ -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h4>ดูสินค้าตามหมวดหมู่</h4>
         </div>
       </div>
     </div>
@@ -47,87 +38,43 @@
 </template>
 
 <script>
-  import HomeShowcase from '~/components/products/HomeShowcase'
-  // import WooCommerce from 'woocommerce'
+  import Slideshow from '~/components/slideshows/Slideshow'
+  import FeaturedProducts from '~/components/products/FeaturedProducts'
   export default {
-    // async asyncData ({ store }) {
-    //   const featuredProducts = await store.dispatch('product/getFeaturedProducts')
-    //   // console.log(featured)
-    //   return {
-    //     featuredProducts
-    //   }
-    // },
     components: {
-      HomeShowcase
+      Slideshow,
+      FeaturedProducts
     },
-    data: () => ({
-      mockProducts: 
-      [{
-        image: `https://cms.maplelife.co.th/wp-content/uploads/2018/04/home-product1.png`,
-        heading: 'เครื่องตรวจระดับน้ำตาลในเลือดยี่ห้อ SD <span class="_dp-b _fw-500">จากประเทศเกาหลี</span>',
-        list: [
-          'บันทึกผลการทดสอบได้ถึง 500 ค่า พร้อมแสดงค่าเฉลี่ยของระดับน้ำตาลที่ 7, 14, 30 วัน', 
-          'มีสัญลักษณ์เพื่อบันทึกผลการทดสอบ ก่อนและหลังอาหารได้b', 
-          'สามารถตั้งเวลาเตือนในการเจาะเลือดได้ถึง 4 ครั้ง/วัน',
-          'ใช้เวลาในการอ่านค่าผลน้ำตาล 5 วินาที',
-          'เป็นระบบที่ไม่ต้องใช้โค้ด ชิป หรือเข้ารหัสใดๆ'
-          ],
-        url: '/products/เครื่องตรวจระดับน้ำตาล'
-      }, {
-        image: `https://cms.maplelife.co.th/wp-content/uploads/2018/04/home-product2.png`,
-        heading: 'แผ่นวัดระดับน้ำตาล<span class="_dp-ilb">ในเลือด</span><span class="_dp-ilb _fw-500">ยี่ห้อ SD</span>',
-        list: [
-          'ใช้เวลาในการรายงานผลเพียง 5 วินาที', 
-          'ใช้ปริมาณเลือดเพียงเล็กน้อย', 
-          'เทคโนโลยี Gold electrode'
-          ],
-        url: '/products/แผ่นตรวจน้ำตาลในเลือด'
-      }, {
-        image: `https://cms.maplelife.co.th/wp-content/uploads/2018/04/home-product3-1.png`,
-        heading: '<span class="_fw-500">เข็ม DROPLET LANCE</span> สำหรับการเจาะเลือด',
-        list: [
-          'เข็มเจาะเลือดผ่านการฆ่าเชื้อแล้ว', 
-          'ใช้ร่วมกับปากกาเจาะเลือด', 
-          'ขนาดเล็กด้วยเข็มเบอร์ 28G'
-          ],
-        url: '/products/เข็มเจาะเลือด'
-      }, {
-        image: `https://cms.maplelife.co.th/wp-content/uploads/2018/04/home-product4.png`,
-        heading: '<span class="_fw-500">แผ่นแอลกอฮอล์<span class="_dp-iln _dp-b-md">สำเร็จรูป</span></span>',
-        list: [
-          'ใช้เช็ดผิวหนังเพื่อฆ่าเชื้อ', 
-          'แยกบรรจุซองละ 1 แผ่น สะดวกพกพา', 
-          'แห้งเร็วกว่าการเทแอลกอฮอล์บนสำลี',
-          'ใช้ได้ดีสำหรับการเจาะเลือดตรวจเบาหวาน'
-          ],
-        url: '/products/แผ่นเช็ดแอลกอฮอล์'
-      }, {
-        image: `https://cms.maplelife.co.th/wp-content/uploads/2018/04/home-product5.png`,
-        heading: '<span class="_fw-500">แนวทาง<span class="_dp-ilb  _dp-b-md">การให้บริการ</span></span>',
-        list: [
-          'รับประกันตัวเครื่อง…..ปี', 
-          'สามารถ Download คู่มือการใช้งานเครื่องภาษาไทยอย่างง่าย', 
-          'สามารถ Download แนวทางการแก้ไขปัญหาเบื้องต้น',
-          'บริการให้คำปรึกษาการใช้งานเครื่อง โดยผู้เชี่ยวชาญผลิตภัณฑ์'
-          ],
-        url: '/products/แพ็คเกจรายเดือน'
-      }]
-    }),
     head () {
       const siteTitle = this.$store.state.site.title
       return { 
         title: `หน้าแรก ${siteTitle}`,
         meta: [
-        { hid: 'og:title', property: 'og:title', content: `หน้าแรก` },
-        { hid: 'og:description', name: 'og:description', content: `หน้าแรก` }
-      ]
+          { hid: 'og:title', property: 'og:title', content: `หน้าแรก` },
+          { hid: 'og:description', name: 'og:description', content: `หน้าแรก` }
+        ]
       }
+    },
+    data: () => ({
+      topSlides: [{}, {}],
+      featuredProducts: []
+    }),
+    async mounted () {
+      // Call homepage slideshow
+      const promises = [
+        this.$store.dispatch('content/getSlideshow', {
+          slug: 'homepage-banner'
+        }),
+        this.$store.dispatch('product/getFeaturedProducts')
+      ]
+      const [ topSlides, featuredProducts ] = await Promise.all(promises)
+      this.topSlides = topSlides
+      this.featuredProducts = featuredProducts
     }
   }
 </script>
 <style lang="scss" scoped>
   .hero-image {
-    /* background:  */
     width: 100%;
     background-color: transparent;
     background-size: contain;
@@ -144,58 +91,5 @@
     line-height: 3.4rem;
     letter-spacing: 3px;
     color: #182F69;
-  }
-
-  @media (max-width: 767px) {
-    .gradient-bg {
-      background-image: url('~/assets/images/rectangle-aqua.svg');
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: 0 6%;
-      &::before {
-        content: '';
-        position: absolute;
-        top: 19%;
-        bottom: 0px;
-        left: 0px;
-        width: 100%;
-        height: auto;
-        background-repeat: no-repeat;
-        background-image: url('~/assets/images/rectangle-grey.svg');
-        background-size: 125% auto;
-        z-index: -1;
-      }
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        bottom: 0px;
-        left: 0px;
-        width: 100%;
-        height: auto;
-        background-repeat: no-repeat;
-        background-image: url('~/assets/images/rectangle-aqua.svg');
-        background-size: 215% auto;
-        transform: scaleX(-1);
-        z-index: -1;
-      }
-    }
-  }
-  @media (min-width: 768px) {
-    .gradient-bg {
-      position: relative;
-      &::before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        background-image: url('~/assets/images/rectangle-desktop.svg');
-        background-repeat: no-repeat;
-        background-size: 100% calc(100% + 150vw);
-        background-position: center bottom;
-      }
-    }
   }
 </style>

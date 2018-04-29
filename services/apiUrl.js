@@ -23,5 +23,7 @@ export default {
   addToCart: `${prefix}/api/v1/wc/cart/add`, // POST
   updateProductQuantity: `${prefix}/api/v1/wc/cart/update`, // PUT
   clearCart: `${prefix}/api/v1/wc/cart/clear`, // POST
-  removeFromCart: `${prefix}/api/v1/wc/cart/remove`
+  removeFromCart: `${prefix}/api/v1/wc/cart/remove`,
+  // Other assets
+  getSlideshow: `${prefix}/wp/v2/slideshows`
 }
