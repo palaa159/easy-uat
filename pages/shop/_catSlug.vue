@@ -26,9 +26,15 @@
     </div>
     <!-- Products -->
     <div 
-      v-if="res.products" 
+      v-if="res.products"
       class="container _mgv-32px">
+      <!-- Products -->
       <div class="row">
+        <div class="col-12">
+          <h4 class="_mgbt-24px">สินค้าทั้งหมด</h4>
+        </div>
+      </div>
+      <div class="row _pdh-16px">
         <div 
           v-for="(p, i) in res.products" 
           :key="i" 

@@ -52,3 +52,10 @@ fontawesome.library.add(faFacebookSquare, faFrown, faMinus, faPlus, faSpinner, f
 Vue.component('fa-icon', FontAwesomeIcon)
 // Init firebase
 Auth.initFirebase()
+
+// Filters
+Vue.filter('currency', val => {
+  val = parseFloat(val).toLocaleString()
+  return val + ' ฿'
+  // parseFloat(val) 
+})

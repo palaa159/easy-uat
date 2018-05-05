@@ -1,24 +1,22 @@
-const primaryMenu = [
-  {
-    title: 'หน้าแรก',
-    path: '/'
-  }, {
-    title: 'สินค้า',
-    path: 'shop'
-  }, {
-    title: 'เวิร์คช็อป',
-    path: 'workshop'
-  }, {
-    title: 'บทความ',
-    path: 'content'
-  }, {
-    title: 'แจ้งชำระเงิน',
-    path: 'profile'
-  }, {
-    title: 'ติดต่อเรา',
-    path: 'contact-us'
-  }
-]
+const primaryMenu = [{
+  title: 'หน้าแรก',
+  path: '/'
+}, {
+  title: 'สินค้า',
+  path: '/shop'
+}, {
+  title: 'เวิร์คช็อป',
+  path: '/workshop'
+}, {
+  title: 'บทความ',
+  path: '/content'
+}, {
+  title: 'แจ้งชำระเงิน',
+  path: '/profile'
+}, {
+  title: 'ติดต่อเรา',
+  path: '/contact-us'
+}]
 
 export const state = () => ({
   isShowing: false,
@@ -27,10 +25,10 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_MOBILE_MENU (state, bool) {
+  SET_MOBILE_MENU(state, bool) {
     state.isShowing = bool
   },
-  SET_USER_MENU (state, bool) {
+  SET_USER_MENU(state, bool) {
     state.isUserMenuShowing = bool
   }
 }

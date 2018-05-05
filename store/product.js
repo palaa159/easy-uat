@@ -1,9 +1,12 @@
 import urls from '~/services/apiUrl'
 
 export const actions = {
-  async getProductByAttr({}, slug) {
+  async getProductByAttr({}, {
+    slug,
+    variations = false
+  }) {
     const prod = await this.$axios.$get(`${urls.getProductByAttr}/${slug}`)
-    return prod
+    return prod || {}
   },
   async getFeaturedProducts() {
     const prod = await this.$axios.$get(`${urls.getProductByAttr}?featured=true`)
@@ -22,5 +25,11 @@ export const actions = {
   async getShopCategories({}) {
     const cats = await this.$axios.$get(`${urls.getShopCategories}`)
     return cats
+  },
+  async getProductVariationsById({}, {
+    id
+  }) {
+    const variations = await this.$axios.$get(`${urls.getProductVariations}?id=${id}`)
+    return variations
   }
 }

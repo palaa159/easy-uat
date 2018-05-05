@@ -18,6 +18,7 @@ export default {
   getShopCategories: `${prefix}/api/v1/wc/shop_categories`, // GET
   /* Product */
   getProductByAttr: `${prefix}/api/v1/wc/product`, // GET
+  getProductVariations: `${prefix}/api/v1/wc/product_variations_by_id`, // GET
   getProductsByCatSlug: `${prefix}/api/v1/wc/products_by_cat_slug`,
   // Cart
   getCartContent: `${prefix}/api/v1/wc/cart`,
