@@ -40,7 +40,7 @@ Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: '/images/error.png',
   loading: '/images/loading.gif',
-  attempt: 1
+  attempt: 0
 })
 Vue.use(require('vue-moment'), {
   moment

@@ -2,7 +2,7 @@
   <div class="_dp-f _mgv-12px">
     <!-- Image -->
     <div 
-      v-lazy:background-image="pData.images && pData.images[0].src"
+      v-lazy:background-image="pData.images && pData.images[0].src || ''"
       class="image _f-2 _ratio" 
     />
     <!-- Detail -->

@@ -21,7 +21,7 @@
         <nuxt-link 
           to="/" 
           class="col">
-          <div class="logo _bgrp-nrp _bgs-ct _bgpst-ct"/>
+          <div class="logo _bgrp-nrp _bgs-ct _bgpst-l"/>
         </nuxt-link>
         <div class="col _dp-f _jtfct-fe _alit-ct">
           <div 

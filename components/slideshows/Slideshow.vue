@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="slides.length">
     <no-ssr>
       <agile 
         :options="slideOptions">

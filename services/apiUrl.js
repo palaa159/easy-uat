@@ -15,6 +15,7 @@ export default {
   // getUserMe: `${prefix}/api/v1/user`,
   /* Categories with subcats */
   getCategories: `${prefix}/api/v1/wc/category`, // GET
+  getShopCategories: `${prefix}/api/v1/wc/shop_categories`, // GET
   /* Product */
   getProductByAttr: `${prefix}/api/v1/wc/product`, // GET
   getProductsByCatSlug: `${prefix}/api/v1/wc/products_by_cat_slug`,
@@ -25,5 +26,7 @@ export default {
   clearCart: `${prefix}/api/v1/wc/cart/clear`, // POST
   removeFromCart: `${prefix}/api/v1/wc/cart/remove`,
   // Other assets
-  getSlideshow: `${prefix}/wp/v2/slideshows`
+  getSlideshow: `${prefix}/wp/v2/slideshows`,
+  getFeaturedContent: `${prefix}/api/v1/content/featured`,
+  getProductsAndSubcats: `${prefix}/api/v1/wc/products_and_subcats_by_cat_slug`
 }

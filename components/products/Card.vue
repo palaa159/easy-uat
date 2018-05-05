@@ -1,21 +1,26 @@
 <template>
-  <div class="card _dp-ilb _mgr-24px _bgcl-gray _ovf-hd _bdrd-2px">
+  <div class="card _bgcl-gray _ovf-hd _bdrd-2px">
     <!-- Image -->
-    <nuxt-link to="/">
+    <nuxt-link :to="`/shop/product/${slug}`">
       <div 
         v-lazy:background-image="image" 
         class="image _bgs-cv _bgpst-ct _bgrp-nrp" />
     </nuxt-link>
     <!-- Detail -->
     <div class="_pdh-12px _pdv-8px">
-      <p 
-        class="_h-48px _lh-125pct" 
-        v-html="title"/>
-      <p>
+      <div 
+        class="_ovfy-hd" 
+        style="height: 40px;">
+        <nuxt-link 
+          :to="`/shop/product/${slug}`" 
+          class="_lh-125pct" 
+          v-html="title"/>
+      </div>
+      <!-- <p v-if="salePrice !== '0'">
         <span class="currency">฿</span>
-        <span>{{ salePrice || regularPrice }}</span>
-      </p>
-      <p v-if="salePrice">
+        <span>{{ salePrice }}</span>
+      </p> -->
+      <p class="_mgt-4px">
         <span class="currency">฿</span>
         <span>{{ regularPrice }}</span>
       </p>
@@ -30,31 +35,35 @@ export default {
       type: String,
       default: 'x'
     },
+    slug: {
+      type: String,
+      default: ''
+    },
     image: {
       type: String,
       default: ''
     },
     regularPrice: {
-      type: Number,
-      default: 0
+      type: String,
+      default: '0'
     },
     salePrice: {
-      type: Number,
-      default: 0
+      type: String,
+      default: '0'
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .card {
-    min-width: 200px;
-    &:hover {
-      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-    .image {
-      height: 200px;
-    }
+.card {
+  min-width: 160px;
+  &:hover {
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   }
+  .image {
+    height: 160px;
+  }
+}
 </style>
 

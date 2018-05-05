@@ -3,10 +3,21 @@ import Cookie from 'cookie'
 import urls from '~/services/apiUrl'
 
 export const actions = {
-  async nuxtServerInit ({ commit, dispatch }, { app, req }) {
+  async nuxtServerInit({
+    commit,
+    dispatch
+  }, {
+    app,
+    req
+  }) {
+    if (req.url.indexOf('undefined') > -1) {
+      return
+    }
     let accessToken = null
     if (req && req.headers && req.headers.cookie) {
-      let { __session } = Cookie.parse(req.headers.cookie)
+      let {
+        __session
+      } = Cookie.parse(req.headers.cookie)
       // console.log(__session)
       if (__session) {
         accessToken = JSON.parse(__session)
@@ -25,7 +36,7 @@ export const actions = {
         // Cart
         // app.$axios.$get(urls.getCartContent)
       ]
-      const [ user ] = await Promise.all(promises)
+      const [user] = await Promise.all(promises)
       commit('auth/SET_USER', user)
       // commit('purchase/SET_CART_CONTENT', cart)
     }
