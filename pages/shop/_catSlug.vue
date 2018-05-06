@@ -43,7 +43,7 @@
             :key="i"
             :title="p.name" 
             :image="p.images[0].src"
-            :regular-price="p.regular_price"
+            :price="p.price_html"
             :slug="p.slug"
           />
         </div>

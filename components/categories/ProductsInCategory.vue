@@ -13,7 +13,7 @@
     <!-- Products -->
     <div 
       v-if="products" 
-      class="container-fluid _mgv-32px">
+      class="container-fluid _pd-0px _mgv-32px">
       <div class="row">
         <div 
           v-for="(p, i) in products" 
@@ -23,7 +23,7 @@
             :key="i"
             :title="p.name" 
             :image="p.images[0].src"
-            :regular-price="p.regular_price"
+            :price="p.price_html"
             :slug="p.slug"
           />
         </div>

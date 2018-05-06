@@ -43,6 +43,7 @@
     "js-cookie": "^2.2.0",
     "nuxtjs-node6": "latest",
     "vee-validate": "^2.0.6",
+    "vue-affix": "^0.2.4",
     "vue-agile": "^0.4.0-alpha.3",
     "vue-credit-card": "palaa159/vue-credit-card",
     "vue-float-label": "^1.6.1",

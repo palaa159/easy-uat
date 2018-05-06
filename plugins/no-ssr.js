@@ -3,7 +3,9 @@ import VueFloatLabel from 'vue-float-label'
 import VueAgile from 'vue-agile'
 // import VueThaiAddressInput from '~/modules/vue-thai-address-input'
 import VueCard from 'vue-credit-card'
+import VueAffix from 'vue-affix'
 
+Vue.use(VueAffix)
 Vue.use(VueFloatLabel)
 Vue.use(VueAgile)
 // Vue.use(VueThaiAddressInput)

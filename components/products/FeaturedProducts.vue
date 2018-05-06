@@ -5,7 +5,7 @@
       :key="i"
       :title="x.name"
       :image="x.images[0].src" 
-      :regular-price="x.regular_price"
+      :price="x.price_html"
       :slug="x.slug"
       class="_dp-ilb _mgr-24px"
     />

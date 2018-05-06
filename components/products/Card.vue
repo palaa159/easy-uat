@@ -20,9 +20,10 @@
         <span class="currency">฿</span>
         <span>{{ salePrice }}</span>
       </p> -->
-      <p class="_mgt-4px">
-        <span class="currency">฿</span>
-        <span>{{ regularPrice }}</span>
+      <p class="_mgt-4px _lh-100pct">
+        <span 
+          class="_lh-100pct" 
+          v-html="price"/>
       </p>
     </div>
   </div>
@@ -50,6 +51,10 @@ export default {
     salePrice: {
       type: String,
       default: '0'
+    },
+    price: {
+      type: String,
+      default: '0'
     }
   }
 }
@@ -57,7 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  min-width: 160px;
+  min-width: 140px;
   &:hover {
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   }

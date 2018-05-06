@@ -6,22 +6,30 @@ $dark-aqua: #22608E;
 $light-purple: #6B18F1;
 $light-blue: #eef5ff;
 $light-grey: #f2f2f2;
-
-
 @mixin breakpoint($point) {
-  @if $point == desktop {
-    @media (min-width: 70em) { @content ; }
- }
-  @else if $point == laptop {
-    @media (min-width: 64em) { @content ; }
- }
-   @else if $point == tablet {
-    @media (min-width: 50em) { @content ; }
- }
-  @else if $point == phablet {
-    @media (min-width: 37.5em)  { @content ; }
- }
- @else if $point == mobile {
-    @media (max-width: 37.5em)  { @content ; }
- }
+  @if $point==desktop {
+    @media (min-width: 70em) {
+      @content ;
+    }
+  }
+  @else if $point==laptop {
+    @media (min-width: 64em) {
+      @content ;
+    }
+  }
+  @else if $point==tablet {
+    @media (min-width: 50em) {
+      @content ;
+    }
+  }
+  @else if $point==phablet {
+    @media (min-width: 37.5em) {
+      @content ;
+    }
+  }
+  @else if $point==mobile {
+    @media (max-width: 770px) {
+      @content ;
+    }
+  }
 }

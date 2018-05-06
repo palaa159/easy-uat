@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <div class="row _mgt-32px">
-      <div class="col-12 col-md-9">
+    <div class="row _mgt-32px special-row">
+      <div 
+        id="product-content" 
+        class="col-12 col-md-9">
         <!-- Images -->
         <div>
           <div 
@@ -53,83 +55,108 @@
             </div>
           </div>
         </div>
+        <!-- {{ variations }} -->
       </div>
-      <div class="col-12 col-md-3">
-        <div>
-          <h3 
-            class="_lh-100pct" 
-            v-html="product.name"/>
-          <p class="_cl-neutral-500">รหัสสินค้า: 
-            <span 
-              class="_ttf-upc" 
-              v-html="product.sku"/>
-          </p>
-          <!-- ราคา -->
-          <!-- <h3>THB {{ currentProduct.regular_price | currency }}</h3> -->
-          <h4>ราคา</h4>
-          <h3 
-            v-if="currentProduct.price_html" 
-            class="_lh-100pct"
-            v-html="currentProduct.price_html"/>
-          <h3 
-            v-else 
-            class="_lh-100pct">{{ currentProduct.price | currency }}</h3>
-          <!-- If has variations -->
-          <div 
-            v-if="product.variations.length" 
-            class="_mgt-32px">
-            <h4 class="_lh-100pct">เลือกแบบ</h4>
-            <!-- Attribute in case of variations -->
+      <div 
+        ref="cont" 
+        class="col-12 col-md-3 _mgbt-48px">
+        <no-ssr>
+          <affix 
+            :enabled="!isMobile"
+            :offset="{ top: 60, bottom: 0 }"
+            :scroll-affix="false" 
+            :style="`width: ${isMobile? '100%': stickyWidth}`" 
+            relative-element-selector="#product-content">
             <div>
+              <h3 
+                class="_lh-100pct" 
+                v-html="product.name"/>
+              <p class="_cl-neutral-500">รหัสสินค้า: 
+                <span 
+                  class="_ttf-upc" 
+                  v-html="product.sku"/>
+              </p>
+              <!-- ราคา -->
+              <!-- <h3>THB {{ currentProduct.regular_price | currency }}</h3> -->
+              <h5>ราคา</h5>
+              <h3 
+                v-if="currentProduct.price_html" 
+                class="_lh-100pct"
+                v-html="currentProduct.price_html"/>
+              <h3 
+                v-else 
+                class="_lh-100pct">{{ currentProduct.price | currency }}</h3>
+              <!-- If has variations -->
               <div 
-                v-for="(v, i) in product.attributes" 
-                :key="i">
-                <!-- Loop each attribute -->
-                <button 
-                  v-for="(vx, ix) in v.options"
-                  :key="ix" 
-                  :class="{'-white': selectedVariation !== vx}"
-                  class="bio-button _w-100pct _mgv-12px _tal-l"
-                  @click="selectedVariation = vx">
-                  <h5 class="_pd-8px">{{ vx }}</h5>
-                </button>
+                v-if="product.variations.length" 
+                class="_mgt-32px">
+                <h5 class="_lh-100pct _cl-accent _mgbt-12px">เลือก</h5>
+                <!-- Attribute in case of variations -->
+                <div class="container-fluid">
+                  <div 
+                    v-for="(v, i) in product.attributes"
+                    :key="i" 
+                    class="row">
+                    <!-- Loop each attribute -->
+                    <div 
+                      v-for="(vx, ix) in v.options"
+                      :key="ix"
+                      class="col-6 attr-btn">
+                      <button 
+                        :disabled="!variations.length"
+                        :class="{'-white': selectedVariation !== vx, '-loading': !variations.length}"
+                        class="bio-button _w-100pct _mgbt-8px"
+                        @click="selectedVariation = vx">
+                        <h5 class="_pdv-4px _tal-ct">{{ vx }}</h5>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <!-- Dimension and weight -->
+              <div>
+                <div class="_mgv-16px">
+                  <h5>ขนาด (มม.): </h5>
+                  <p>{{ currentProduct.dimensions.width * 10 }} x {{ currentProduct.dimensions.length * 10 }} x {{ currentProduct.dimensions.height * 10 }}</p>
+                </div>
+                <div class="_mgv-16px">
+                  <h5>น้ำหนัก (กรัม): </h5>
+                  <p>{{ (parseFloat(currentProduct.weight || 0).toFixed(2) * 1000).toLocaleString() }}</p>
+                </div>
               </div>
-            </div>
-          </div> 
-          <!-- Dimension and weight -->
-          <div>
-            <div class="_mgv-16px">
-              <h5>ขนาด (มม.): </h5>
-              <p>{{ currentProduct.dimensions.width * 10 }} x {{ currentProduct.dimensions.length * 10 }} x {{ currentProduct.dimensions.height * 10 }}</p>
-            </div>
-            <div class="_mgv-16px">
-              <h5>น้ำหนัก (กรัม): </h5>
-              <p>{{ (parseFloat(currentProduct.weight || 0).toFixed(2) * 1000).toLocaleString() }}</p>
-            </div>
-          </div>
-          <!--  -->
-          <div 
-            v-if="currentProduct.in_stock" 
-            class="_mgbt-16px">
-            <strong>มีสินค้า{{ currentProduct.stock_quantity? ':': '' }} {{ currentProduct.stock_quantity }}</strong>
-          </div>
-          <!-- Add Cart -->
-          <form @submit.stop.prevent="addToCart">
-            <div class="_dp-f _bdw-2px _bdcl-primary">
-              <div class="_f-1 _dp-f _alit-ct _jtfct-ct">
-                <input 
-                  v-model="quantity"
-                  :max="product.stock_quantity" 
-                  min="1"
-                  class="_bgcl-tpr _bdw-0px _w-48px _h-48px _tal-ct _mgl-12px" 
-                  type="number">
+              <!--  -->
+              <div 
+                v-if="currentProduct.in_stock" 
+                class="_mgbt-16px _cl-accent">
+                <strong>มีสินค้า{{ currentProduct.stock_quantity? ':': '' }} {{ currentProduct.stock_quantity? currentProduct.stock_quantity + ' ชิ้น': '' }}</strong>
               </div>
-              <div class="_f-3 _pd-12px _ttf-upc _tal-ct _bgcl-primary _cl-white _cs-pt">
-                <h5 class="_ltspc-1px">หยิบใส่ตะกร้า</h5>
-              </div>
+              <!-- Add Cart -->
+              <form @submit.stop.prevent="addToCart">
+                <div 
+                  :class="{'_bdcl-primary': !(variations.length > 0 && !selectedVariation), '_bdcl-gray': (variations.length > 0 && !selectedVariation)}" 
+                  class="_dp-f _bdw-2px">
+                  <div class="_f-1 _dp-f _alit-ct _jtfct-ct _bgcl-white">
+                    <input 
+                      :disabled="variations.length > 0 && !selectedVariation"
+                      v-model="quantity"
+                      :max="product.stock_quantity" 
+                      :class="{'_cl-primary': !(variations.length > 0 && !selectedVariation), '_cl-gray': (variations.length > 0 && !selectedVariation)}"
+                      min="1"
+                      class="_bgcl-white _bdw-0px _w-48px _h-48px _tal-ct _mgl-12px" 
+                      type="number">
+                  </div>
+                  <button 
+                    :class="{'_bgcl-primary': !(variations.length > 0 && !selectedVariation), '_bgcl-gray -disabled': (variations.length > 0 && !selectedVariation)}" 
+                    :disabled="variations.length > 0 && !selectedVariation" 
+                    type="submit"
+                    class="_f-3 _bdw-0px _pd-12px _ttf-upc _tal-ct _cl-white _cs-pt" >
+                    <h5 class="_ltspc-1px">หยิบใส่ตะกร้า</h5>
+                  </button>
+                </div>
+              </form>
             </div>
-          </form>
-        </div>
+          </affix>
+        </no-ssr>
       </div>
     </div>
   </div>
@@ -138,6 +165,7 @@
 <script>
 import ProductThumb from '~/components/products/ProductThumb'
 import PageHeading from '~/components/text/PageHeading'
+import db from 'debounce'
 export default {
   async asyncData({ store, error, params }) {
     const product = await store.dispatch('product/getProductByAttr', {
@@ -158,7 +186,9 @@ export default {
     variations: [],
     selectedVariation: null,
     gallery: [],
-    quantity: 1
+    quantity: 1,
+    isMobile: true,
+    stickyWidth: '260px'
   }),
   computed: {
     currentImage() {
@@ -185,6 +215,15 @@ export default {
       }
     }
   },
+  watch: {
+    isMobile: {
+      handler: 'checkMobile',
+      immediate: true
+    },
+    '$refs.cont.clientWidth'() {
+      this.stickyWidth = this.$refs.cont.clientWidth + 'px'
+    }
+  },
   async created() {
     if (this.product && this.product.variations.length) {
       const variations = await this.$store.dispatch(
@@ -198,8 +237,20 @@ export default {
     }
   },
   methods: {
+    checkMobile() {
+      if (process.browser) {
+        this.resize()
+        window.addEventListener('resize', this.resize)
+      }
+    },
+    resize() {
+      if (window.innerWidth < 770) {
+        return (this.isMobile = true)
+      }
+      return (this.isMobile = false)
+    },
     selectGalleryImage(i) {
-      // this.selectedVariation = null
+      this.selectedVariation = null
       this.imageIndex = i
     },
     addToCart() {
@@ -220,8 +271,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'assets/styles/variables';
+.special-row {
+  @include breakpoint(mobile) {
+    flex-direction: column-reverse;
+  }
+}
 .image {
-  height: 600px;
+  padding-top: 75%;
 }
 .image-item {
   div {
@@ -232,6 +289,15 @@ export default {
     div {
       border: 3px solid rgba(0, 0, 0, 0.85);
     }
+  }
+}
+.attr-btn {
+  padding: 0px 4px;
+  &:nth-child(odd) {
+    padding-left: 0px;
+  }
+  &:nth-child(even) {
+    padding-right: 0px;
   }
 }
 </style>

@@ -7710,6 +7710,10 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-affix@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/vue-affix/-/vue-affix-0.2.4.tgz#4f599f10517cab95a2d628029f91edb83316afe7"
+
 vue-agile@^0.4.0-alpha.3:
   version "0.4.0-alpha.3"
   resolved "https://registry.yarnpkg.com/vue-agile/-/vue-agile-0.4.0-alpha.3.tgz#31eb66ba3437dd272195118ae08f23846b9b9510"
