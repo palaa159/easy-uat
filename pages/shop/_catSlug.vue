@@ -31,10 +31,10 @@
       <!-- Products -->
       <div class="row">
         <div class="col-12">
-          <h4 class="_mgbt-24px">สินค้าทั้งหมด</h4>
+          <h4 class="_mgbt-16px">สินค้าทั้งหมด</h4>
         </div>
       </div>
-      <div class="row _pdh-16px">
+      <div class="row">
         <div 
           v-for="(p, i) in res.products" 
           :key="i" 

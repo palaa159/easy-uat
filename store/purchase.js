@@ -10,16 +10,26 @@ export const state = () => ({
 })
 
 export const actions = {
-  async getCartContent () {
+  async getCartContent() {
     const cart = this.$axios.$get(`${urls.getCartContent}`)
     return cart
   },
-  async clearCart () {
-    const clear = this.$axios.$get(`${urls.clearCart}`)
-    const cart = this.$axios.$get(`${urls.getCartContent}`)
-    return cart
+  async clearCart({
+    commit
+  }) {
+    const empty = await this.$axios.$post(urls.clearCart)
+    const cart = await this.$axios.$get(`${urls.getCartContent}`)
+    // Clear cookie
+
+    return commit('SET_CART_CONTENT', cart)
   },
-  async addToCart ({ commit }, { id, quantity = 1, data }) {
+  async addToCart({
+    commit
+  }, {
+    id,
+    quantity = 1,
+    data
+  }) {
     commit('SET_CART_PROCESSING', true)
     const added = await this.$axios.$post(`${urls.addToCart}`, {
       id,
@@ -33,7 +43,12 @@ export const actions = {
     commit('SET_CART_PROCESSING', false)
     return commit('SET_CART_CONTENT', added)
   },
-  async updateProductQuantity ({ commit }, { keyId, quantity }) {
+  async updateProductQuantity({
+    commit
+  }, {
+    keyId,
+    quantity
+  }) {
     commit('SET_CART_PROCESSING', true)
     const remain = await this.$axios.$put(urls.updateProductQuantity, {
       id: keyId,
@@ -42,7 +57,9 @@ export const actions = {
     commit('SET_CART_PROCESSING', false)
     return commit('SET_CART_CONTENT', remain)
   },
-  async removeFromCart ({ commit }, keyId) {
+  async removeFromCart({
+    commit
+  }, keyId) {
     commit('SET_CART_PROCESSING', true)
     const remain = await this.$axios.$put(urls.removeFromCart, {
       id: keyId
@@ -53,23 +70,23 @@ export const actions = {
 }
 
 export const mutations = {
-  CLEAR_CART (state) {
+  CLEAR_CART(state) {
     state.items = []
   },
-  SET_CART_PROCESSING (state, bool) {
+  SET_CART_PROCESSING(state, bool) {
     state.isCartProcessing = bool
   },
-  SET_CART_BUBBLE (state, bool) {
+  SET_CART_BUBBLE(state, bool) {
     state.isCartBubbleShowing = bool
   },
-  SET_CART_CONTENT (state, content) {
+  SET_CART_CONTENT(state, content) {
     // console.log(content)
     state.cart = content
   },
-  SET_CART_SHOW (state, bool) {
+  SET_CART_SHOW(state, bool) {
     state.isCartShowing = bool
   },
-  SET_PROD_CART_AMT (state, obj = {
+  SET_PROD_CART_AMT(state, obj = {
     amount: 1,
     id: 1
   }) { // n = 1, -1
@@ -79,7 +96,7 @@ export const mutations = {
     clonedItems[i].amount = obj.amount
     state.items = clonedItems
   },
-  REMOVE_PROD (state, id) {
+  REMOVE_PROD(state, id) {
     if (id) {
       let clonedItems = state.items.filter(x => x.id !== id)
       state.items = clonedItems

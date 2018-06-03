@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header/>
-    <div class="_bdtw-1px _bdbtw-1px _bdcl-neutral-200">
+    <div class="_bdtw-1px breadcrumb _bdcl-neutral-200">
       <Breadcrumbs />
     </div>
     <!-- Content -->
@@ -26,3 +26,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.breadcrumb {
+  background: rgba(0, 0, 0, 0.02);
+}
+</style>

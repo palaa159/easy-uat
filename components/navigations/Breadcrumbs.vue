@@ -1,10 +1,10 @@
 <template>
   <div 
     v-if="crumbs && crumbs.length" 
-    class="breadcrumbs _pdv-12px ">
+    class="container _pdt-12px ">
     <div class="row">
       <div class="col">
-        <ul class="_dp-f _pdv-12px _jtfct-ct _fs-7">
+        <ul class="_dp-f _pdt-12px _jtfct-fs _fs-7">
           <li v-if="crumbs.length >= 1">
             <nuxt-link 
               to="/" 
@@ -42,13 +42,18 @@
 <script>
 export default {
   computed: {
-    crumbs () {
-      const c = this.$route.path && this.$route.path !== '/' && this.$route.path.split('/')
+    crumbs() {
+      const c =
+        this.$route.path &&
+        this.$route.path !== '/' &&
+        this.$route.path.split('/')
       let crumbs = []
       if (c && c.length) {
         for (let i = 1; i < c.length; i++) {
-          crumbs.push({ 
-            path: `${c[i-2]?c[i-2]: ''}${c[i-2]? '/': ''}${c[i-1]}${c[i-1]? '/': ''}${c[i]}`,
+          crumbs.push({
+            path: `${c[i - 2] ? c[i - 2] : ''}${c[i - 2] ? '/' : ''}${
+              c[i - 1]
+            }${c[i - 1] ? '/' : ''}${c[i]}`,
             title: c[i]
           })
         }
@@ -61,7 +66,7 @@ export default {
 
 
 <style lang="scss" scoped>
-  .breadcrumbs {
-    background: rgba(0, 0, 0, 0.02);
-  }
+.breadcrumbs {
+  background: rgba(0, 0, 0, 0.02);
+}
 </style>

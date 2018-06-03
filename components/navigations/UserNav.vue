@@ -1,6 +1,6 @@
 <template>
   <div  
-    class="user-bar _bgcl-blue _pst-rlt _dp-f _alit-ct">
+    class="user-bar _pst-rlt _dp-f _alit-ct">
     <div class="container">
       <div 
         class="_dp-f _alit-ct user-control _jtfct-fe" 
@@ -45,28 +45,29 @@ import urls from '~/services/apiUrl'
 export default {
   components: {
     Cart
-  },
+  }
 }
 </script>
 
 
 <style lang="scss" scoped>
-  // User Controls
-  .user-bar {
-    // background-image: linear-gradient(140deg, #4BBFEC 0%, #81A5FF 100%);
-    background-color: gray;
-    height: 42px;
-  }
-  .user-control {
-    div, a {
-      padding: 0px 0.5rem;
-      font-size: 0.9rem;
-      &:not(.cart) {
-        color: #fff;
-      }
-      &:last-child {
-        padding-right: 0px;
-      }
+// User Controls
+.user-bar {
+  // background-image: linear-gradient(140deg, #4BBFEC 0%, #81A5FF 100%);
+  background-color: gray;
+  height: 42px;
+}
+.user-control {
+  div,
+  a {
+    padding: 0px 0.5rem;
+    font-size: 0.9rem;
+    &:not(.cart) {
+      color: #fff;
+    }
+    &:last-child {
+      padding-right: 0px;
     }
   }
+}
 </style>

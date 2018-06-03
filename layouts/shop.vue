@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header/>
-    <div class="_bdtw-1px _bdbtw-1px _bdcl-neutral-200">
+    <div class="_bdtw-1px breadcrumb _bdcl-neutral-200">
       <Breadcrumbs />
     </div>
     <!-- Content -->
@@ -21,29 +21,32 @@
 </template>
 
 <script>
-  import Header from '~/components/layout/Header'
-  import Footer from '~/components/layout/Footer'
-  import Breadcrumbs from '~/components/navigations/Breadcrumbs'
-  export default {
-    components: {
-      Header,
-      Footer,
-      Breadcrumbs
-    }
+import Header from '~/components/layout/Header'
+import Footer from '~/components/layout/Footer'
+import Breadcrumbs from '~/components/navigations/Breadcrumbs'
+export default {
+  components: {
+    Header,
+    Footer,
+    Breadcrumbs
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  @import 'assets/styles/variables';
-  .min-height-100vh {
-    min-height: calc(100vh - 100px);
-    background: rgba(0, 0, 0, 0.02);
-    padding-bottom: 100px;
+@import 'assets/styles/variables';
+.min-height-100vh {
+  min-height: calc(100vh - 100px);
+  background: rgba(0, 0, 0, 0.02);
+  padding-bottom: 100px;
+}
+.breadcrumb {
+  background: rgba(0, 0, 0, 0.02);
+}
+.curtain {
+  @include breakpoint(mobile) {
+    background: #fff;
   }
-  .curtain {
-    @include breakpoint(mobile) {
-      background: #fff;
-    }
-    background: rgba(0, 0, 0, 0.75);
-  }
+  background: rgba(0, 0, 0, 0.75);
+}
 </style>

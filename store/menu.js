@@ -2,7 +2,7 @@ const primaryMenu = [{
   title: 'หน้าแรก',
   path: '/'
 }, {
-  title: 'สินค้า',
+  title: 'MakerShop',
   path: '/shop'
 }, {
   title: 'เวิร์คช็อป',
@@ -13,9 +13,6 @@ const primaryMenu = [{
 }, {
   title: 'แจ้งชำระเงิน',
   path: '/profile'
-}, {
-  title: 'ติดต่อเรา',
-  path: '/contact-us'
 }]
 
 export const state = () => ({

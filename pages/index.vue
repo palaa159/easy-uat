@@ -2,16 +2,9 @@
   <div class="_w-100pct">
     <!-- Slide -->
     <div class="_w-100pct _bgcl-gray">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <!-- Agile -->
-            <Slideshow
-              :slides="topSlides"
-            />
-          </div>
-        </div>
-      </div>
+      <Slideshow
+        :slides="topSlides"
+      />
     </div>
     <!-- สินค้ามาใหม่ -->
     <div class="container">
@@ -105,19 +98,21 @@ export default {
       .dispatch('content/getSlideshow', {
         slug: 'homepage-banner'
       })
-      .then(topSlides => (this.topSlides = topSlides))
+      .then((topSlides) => (this.topSlides = topSlides))
     this.$store
       .dispatch('product/getFeaturedProducts')
-      .then(featuredProducts => (this.featuredProducts = featuredProducts))
+      .then((featuredProducts) => (this.featuredProducts = featuredProducts))
     this.$store
       .dispatch('product/getCategories', {
         exclude: '15'
       })
-      .then(categories => (this.categories = categories))
-    this.$store.dispatch('content/getFeaturedContent').then(contentSlides => {
-      // console.log(contentSlides)
-      this.contentSlides = contentSlides
-    })
+      .then((categories) => (this.categories = categories))
+    this.$store
+      .dispatch('content/getContent', { featured: true })
+      .then((contentSlides) => {
+        // console.log(contentSlides)
+        this.contentSlides = contentSlides
+      })
   }
 }
 </script>

@@ -14,20 +14,20 @@ export default {
   getUserMe: `${prefix}/wp/v2/users/me?context=edit`, // PUT
   // getUserMe: `${prefix}/api/v1/user`,
   /* Categories with subcats */
-  getCategories: `${prefix}/api/v1/wc/category`, // GET
-  getShopCategories: `${prefix}/api/v1/wc/shop_categories`, // GET
+  getCategories: `${prefix}/api/v1/products/categories`, // GET
+  getShopCategories: `${prefix}/api/v1/products/categories`, // GET
   /* Product */
-  getProductByAttr: `${prefix}/api/v1/wc/product`, // GET
+  getProduct: `${prefix}/api/v1/products`, // GET
   getProductVariations: `${prefix}/api/v1/wc/product_variations_by_id`, // GET
   getProductsByCatSlug: `${prefix}/api/v1/wc/products_by_cat_slug`,
   // Cart
-  getCartContent: `${prefix}/api/v1/wc/cart`,
-  addToCart: `${prefix}/api/v1/wc/cart/add`, // POST
-  updateProductQuantity: `${prefix}/api/v1/wc/cart/update`, // PUT
-  clearCart: `${prefix}/api/v1/wc/cart/clear`, // POST
-  removeFromCart: `${prefix}/api/v1/wc/cart/remove`,
+  getCartContent: `${prefix}/api/v1/wc-auth/cart`,
+  addToCart: `${prefix}/api/v1/wc-auth/cart/add`, // POST
+  updateProductQuantity: `${prefix}/api/v1/wc-auth/cart/update`, // PUT
+  clearCart: `${prefix}/api/v1/wc-auth/cart/clear`, // POST
+  removeFromCart: `${prefix}/api/v1/wc-auth/cart/remove`,
   // Other assets
   getSlideshow: `${prefix}/wp/v2/slideshows`,
-  getFeaturedContent: `${prefix}/api/v1/content/featured`,
-  getProductsAndSubcats: `${prefix}/api/v1/wc/products_and_subcats_by_cat_slug`
+  getContent: `${prefix}/api/v1/content`,
+  getProductsAndSubcats: `${prefix}/api/v1/wc/products_and_subcats_by_cat_slug`,
 }

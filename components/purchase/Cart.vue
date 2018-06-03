@@ -6,7 +6,6 @@
         v-show="$store.state.purchase.isCartShowing"
         class="cart-panel-container _ovfy-hd _pst-f _r-0px _w-100pct _w-40pct-md _bgcl-white"> 
         <div 
-          :class="{'is-processing': $store.state.purchase.isCartProcessing}" 
           class="cart-panel _dp-f _fdrt-cl">
           <!-- Header -->
           <div class="_f-1 _dp-f _jtfct-spbtw container _alit-ct">
@@ -37,12 +36,13 @@
               >
                 <!-- Total -->
                 <div>
-                  <p class="_lh-100pct _cl-dark">
+                  <!-- <p class="_lh-100pct _cl-dark">
                     สินค้า {{ totalQuantity }} ชิ้น รวมเป็นเงิน
-                  </p>
+                  </p> -->
                   <h4 class="_cl-dark _lh-100pct">
-                    THB {{ totalCartPrice }}
+                    THB {{ totalCartPrice | currency }}
                   </h4>
+                  <small class="_cl-accent">(ยังไม่รวมค่าขนส่ง)</small>
                 </div>
                 <!-- Pay -->
                 <div>
@@ -90,6 +90,11 @@
                 :key="key"
                 :p-data="value"
               />
+              <div class="_mgv-48px _tal-ct">
+                <div 
+                  class="bio-link _bdtw-0px _bdrw-0px _bdlw-0px _cs-pt" 
+                  @click="$store.dispatch('purchase/clearCart')">Clear cart</div>
+              </div>
             </div>
           </div>
         </div>
@@ -140,112 +145,143 @@
         </div>
       </div>
     </slide-y-up-transition>
+    <!-- Curtain -->
+    <fade-transition>
+      <div 
+        v-if="$store.state.purchase.isCartShowing"
+        class="curtain _pst-f _t-0px _l-0px _w-100pct _h-100pct _zid-1"
+        @click="$store.commit('purchase/SET_CART_SHOW', false)"
+      />
+    </fade-transition>
   </div>
 </template>
 
 <script>
-  import Badge from '~/components/extras/Badge'
-  import PurchaseItem from '~/components/purchase/PurchaseItem'
-  export default {
-    components: {
-      Badge,
-      PurchaseItem,
+import Badge from '~/components/extras/Badge'
+import PurchaseItem from '~/components/purchase/PurchaseItem'
+export default {
+  components: {
+    Badge,
+    PurchaseItem
+  },
+  data: () => ({
+    isCartLoading: false,
+    isMessageShowing: false
+  }),
+  computed: {
+    totalCartPrice() {
+      if (this.$store.state.purchase.cart['\u0000*\u0000totals']) {
+        return parseFloat(
+          this.$store.state.purchase.cart['\u0000*\u0000totals']
+            .cart_contents_total
+        ).toFixed(2)
+      }
+      return 0
     },
-    data: () => ({
-      isCartLoading: false,
-      isMessageShowing: false
-    }),
-    computed: {
-      totalCartPrice () {
-        if (this.$store.state.purchase.cart['\u0000*\u0000totals']) {
-          return parseFloat(this.$store.state.purchase.cart['\u0000*\u0000totals'].cart_contents_total).toFixed(2)
-        }
+    totalQuantity() {
+      const reducer = (a, c) => a + c
+      if (!Object.keys(this.$store.state.purchase.cart.cart_contents).length)
         return 0
-      },
-      totalQuantity () {
-       const reducer = (a, c) => a + c
-        if (!Object.keys(this.$store.state.purchase.cart.cart_contents).length) return 0
-        return Object.values(this.$store.state.purchase.cart.cart_contents)
-          .map(x => x = x.quantity)
-          .reduce(reducer)
+      return Object.values(this.$store.state.purchase.cart.cart_contents)
+        .map((x) => (x = x.quantity))
+        .reduce(reducer)
+    }
+  },
+  watch: {
+    '$store.state.purchase.cart.cart_contents'() {
+      // If checkout/payment without cart item
+      if (
+        this.$route.path.indexOf('/checkout') > -1 &&
+        !(this.$route.path.indexOf('/checkout/payment/') > -1) &&
+        !Object.keys(this.$store.state.purchase.cart.cart_contents).length
+      ) {
+        return this.$router.replace('/')
       }
-    },
-    async created () {
-      // Get Cart Content
-      this.isCartLoading = true
-      const cart = await this.$store.dispatch('purchase/getCartContent')
-      this.isCartLoading = false
-      return this.$store.commit('purchase/SET_CART_CONTENT', cart)
-    },
-    methods: {
-      proceed () {
-        this.$store.commit('purchase/SET_CART_SHOW', false)
-        this.$router.replace({ path: '/checkout' })
-      }
-    },
+    }
+  },
+  async created() {
+    // Get Cart Content
+    this.isCartLoading = true
+    // const cart = await this.$store.dispatch('purchase/getCartContent')
+    this.isCartLoading = false
+    // return this.$store.commit('purchase/SET_CART_CONTENT', cart)
+  },
+  methods: {
+    proceed() {
+      this.$store.commit('purchase/SET_CART_SHOW', false)
+      this.$router.replace({ path: '/checkout' })
+    }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  .box {
-    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
-    position: relative;
+@import 'assets/styles/variables';
+.curtain {
+  @include breakpoint(mobile) {
+    background: #fff;
+  }
+  background: rgba(0, 0, 0, 0.75);
+}
+.box {
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-bottom: 20px solid #fff;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+  }
+}
+.cart-panel-container {
+  top: 0px;
+  z-index: 2;
+  box-shadow: -1px 0px 40px -10px rgba(0, 0, 0, 0.1);
+}
+.cart-panel {
+  height: calc(100vh);
+  &.is-processing {
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      z-index: 1;
+    }
     &::after {
       content: '';
       position: absolute;
-      top: -12px;
-      right: 20px;
-      width: 0;
-      height: 0;
-      border-bottom: 20px solid #fff;
-      border-left: 20px solid transparent;
-      border-right: 20px solid transparent;
+      top: 50%;
+      left: 50%;
+      display: inline-block;
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-left-color: #7983ff;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: donut-spin 0.6s linear infinite;
+      z-index: 2;
     }
   }
-  .cart-panel-container {
-    top: 0px;
-    z-index: 2;
-    box-shadow: -1px 0px 40px -10px rgba(0, 0, 0, 0.1);
+}
+.summary {
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  min-height: 84px;
+}
+@keyframes donut-spin {
+  0% {
+    transform: rotate(0deg);
   }
-  .cart-panel {
-    height: calc(100vh);
-    &.is-processing {
-      &::before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.9);
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        z-index: 1;
-      }
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        display: inline-block;
-        border: 4px solid rgba(0, 0, 0, 0.1);
-        border-left-color: #7983ff;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        animation: donut-spin 0.6s linear infinite;
-        z-index: 2;
-      }
-    }
+  100% {
+    transform: rotate(360deg);
   }
-  .summary {
-    border-top: 1px dashed rgba(0, 0, 0, 0.1);
-    min-height: 84px;
-  }
-  @keyframes donut-spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+}
 </style>

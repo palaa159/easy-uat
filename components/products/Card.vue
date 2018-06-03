@@ -20,7 +20,7 @@
         <span class="currency">฿</span>
         <span>{{ salePrice }}</span>
       </p> -->
-      <p class="_mgt-4px _lh-100pct">
+      <p class="_mgbt-4px _mgt-8px _lh-100pct">
         <span 
           class="_lh-100pct" 
           v-html="price"/>

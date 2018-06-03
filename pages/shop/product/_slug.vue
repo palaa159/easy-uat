@@ -25,7 +25,9 @@
           </div>
         </div>
         <!-- Description -->
-        <h3 class="_cl-neutral-500">รายละเอียดสินค้า</h3>
+        <h3 
+          id="description" 
+          class="_cl-neutral-500">รายละเอียดสินค้า</h3>
         <!-- Youtube link -->
         <div 
           v-if="product.acf.review_link && product.acf.review_link"
@@ -35,14 +37,37 @@
             class="embed-responsive-item" 
             allowfullscreen/>
         </div>
-        <div v-html="product.description"/>
-        <!-- Attributes -->
         <div 
-          v-if="product.attributes.length" 
+          class="cms-content" 
+          v-html="product.description"/>
+        <!-- Review Content -->
+        <div v-if="product.acf.related_content && product.acf.related_content.length">
+          <!-- {{ product.acf.related_content }} -->
+          <div class="bio-message -dark _pdv-24px">
+            <div class="bio-message-content">
+              <h4 class="_lh-100pct _mgbt-12px">เนื้อหาที่เกี่ยวข้อง</h4>
+              <li 
+                v-for="(item, i) in product.acf.related_content" 
+                :key="i"
+                class="_mgbt-8px _mgh-8px"
+              >
+                <a 
+                  :href="`/content/${item.post_name}`" 
+                  target="_blank"
+                  class="bio-link -fancy" 
+                >{{ item.post_title }}</a>
+              </li>
+            </div>
+          </div>
+        </div>
+        <!-- Specs -->
+        <div 
+          v-if="product.attributes.filter(a => a.visible).length"
+          id="specs" 
           class="_mgt-24px">
           <h3 class="_cl-neutral-500">สเป็ค</h3>
           <div 
-            v-for="(x, i) in product.attributes" 
+            v-for="(x, i) in product.attributes.filter(a => a.visible)" 
             :key="i"
             class="_dp-f _pdv-8px _bdbtw-1px _bdcl-neutral-300">
             <!-- Left -->
@@ -50,12 +75,53 @@
               {{ x.name }}
             </div>
             <!-- Right -->
-            <div class="_f-1 _fw-700">
-              {{ x.options.join(', ') }}
-            </div>
+            <div 
+              class="_f-1 _fw-700" 
+              v-html="x.options.join('<br>')"/>
           </div>
         </div>
-        <!-- {{ variations }} -->
+        <!-- Buyers guide -->
+        <div 
+          v-if="product.acf.buyers_guide && product.acf.buyers_guide.length"
+          id="buyers-guide" 
+          class="_mgv-32px" 
+        >
+          <h3 class="_cl-neutral-500">วิธีการเลือกซื้อ</h3>
+          <div 
+            class="cms-content" 
+            v-html="product.acf.buyers_guide"/>
+        </div>
+        <!-- Prerequisites -->
+        <div 
+          v-if="product.acf.prerequisites && product.acf.prerequisites.length"
+          id="prerequisites" 
+          class="_mgv-32px" 
+        >
+          <h3 class="_cl-neutral-500">สิ่งที่ต้องมี</h3>
+          <ul class="_mgh-24px">
+            <li 
+              v-for="(item, i) in product.acf.prerequisites"
+              :key="i" 
+              class="_lst-d _mgv-8px _lh-150pct">
+              <nuxt-link 
+                v-if="item.tag_link || item.product"
+                :to="getPrereqLink(item)" 
+                class="bio-link -fancy">{{ item.title }}</nuxt-link>
+              <span v-else>{{ item.title }}</span>
+            </li>
+          </ul>
+        </div>
+        <!-- FAQs -->
+        <div 
+          v-if="product.acf.faqs && product.acf.faqs.length"
+          id="faqs" 
+          class="_mgv-32px" 
+        >
+          <h3 class="_cl-neutral-500">คำถามที่พบบ่อย</h3>
+          <div 
+            class="cms-content" 
+            v-html="product.acf.faqs"/>
+        </div>
       </div>
       <div 
         ref="cont" 
@@ -78,7 +144,7 @@
               </p>
               <!-- ราคา -->
               <!-- <h3>THB {{ currentProduct.regular_price | currency }}</h3> -->
-              <h5>ราคา</h5>
+              <h6 class="_lh-100pct">ราคา:</h6>
               <h3 
                 v-if="currentProduct.price_html" 
                 class="_lh-100pct"
@@ -89,8 +155,8 @@
               <!-- If has variations -->
               <div 
                 v-if="product.variations.length" 
-                class="_mgt-32px">
-                <h5 class="_lh-100pct _cl-accent _mgbt-12px">เลือก</h5>
+                class="_mgt-16px">
+                <h6 class="_lh-100pct _mgbt-12px">Choose {{ product.attributes.filter(a => a.variation)[0].name }}:</h6>
                 <!-- Attribute in case of variations -->
                 <div class="container-fluid">
                   <div 
@@ -116,15 +182,15 @@
               <!-- Dimension and weight -->
               <div>
                 <div class="_mgv-16px">
-                  <h5>ขนาด (มม.): </h5>
+                  <h6 class="_lh-100pct">ขนาด (mm.): </h6>
                   <p>{{ currentProduct.dimensions.width * 10 }} x {{ currentProduct.dimensions.length * 10 }} x {{ currentProduct.dimensions.height * 10 }}</p>
                 </div>
                 <div class="_mgv-16px">
-                  <h5>น้ำหนัก (กรัม): </h5>
+                  <h6 class="_lh-100pct">น้ำหนัก (g.): </h6>
                   <p>{{ (parseFloat(currentProduct.weight || 0).toFixed(2) * 1000).toLocaleString() }}</p>
                 </div>
               </div>
-              <!--  -->
+              <!-- Stock -->
               <div 
                 v-if="currentProduct.in_stock" 
                 class="_mgbt-16px _cl-accent">
@@ -133,44 +199,99 @@
               <!-- Add Cart -->
               <form @submit.stop.prevent="addToCart">
                 <div 
-                  :class="{'_bdcl-primary': !(variations.length > 0 && !selectedVariation), '_bdcl-gray': (variations.length > 0 && !selectedVariation)}" 
+                  :class="{'_bdcl-primary': !isDisabled, '_bdcl-gray': isDisabled}" 
                   class="_dp-f _bdw-2px">
                   <div class="_f-1 _dp-f _alit-ct _jtfct-ct _bgcl-white">
                     <input 
-                      :disabled="variations.length > 0 && !selectedVariation"
+                      :disabled="isDisabled"
                       v-model="quantity"
                       :max="product.stock_quantity" 
-                      :class="{'_cl-primary': !(variations.length > 0 && !selectedVariation), '_cl-gray': (variations.length > 0 && !selectedVariation)}"
+                      :class="{'_cl-primary': !isDisabled, '_cl-gray': isDisabled}"
                       min="1"
-                      class="_bgcl-white _bdw-0px _w-48px _h-48px _tal-ct _mgl-12px" 
+                      required
+                      class="_bgcl-white _bdw-0px _w-100pct _h-48px _tal-ct _pdl-12px" 
                       type="number">
                   </div>
                   <button 
-                    :class="{'_bgcl-primary': !(variations.length > 0 && !selectedVariation), '_bgcl-gray -disabled': (variations.length > 0 && !selectedVariation)}" 
-                    :disabled="variations.length > 0 && !selectedVariation" 
+                    :class="{'_bgcl-primary': !isDisabled, '_bgcl-gray -loading -disabled': isDisabled}" 
+                    :disabled="isDisabled" 
                     type="submit"
-                    class="_f-3 _bdw-0px _pd-12px _ttf-upc _tal-ct _cl-white _cs-pt" >
-                    <h5 class="_ltspc-1px">หยิบใส่ตะกร้า</h5>
+                    class="_f-3 bio-button _bdw-0px _pd-12px _ttf-upc _tal-ct _cl-white _cs-pt">
+                    <h5 
+                      v-show="!isDisabled" 
+                      class="_ltspc-1px">หยิบใส่ตะกร้า</h5>
                   </button>
                 </div>
               </form>
+              <!-- Extra contents -->
+              <nav class="_mgv-16px">
+                <ul>
+                  <li>
+                    <a 
+                      v-scroll-to="'#description'" 
+                      href="#">
+                      <h5 class="_cl-primary _mgv-12px _fw-100">รายละเอียดสินค้า</h5>
+                    </a>
+                  </li>
+                  <li v-if="product.attributes.filter(a => a.visible).length">
+                    <a 
+                      v-scroll-to="'#specs'" 
+                      href="#">
+                      <h5 class="_cl-primary _mgv-12px _fw-100">สเป็ค</h5>
+                    </a>                    
+                  </li>
+                  <li v-if="product.acf.buyers_guide">
+                    <a 
+                      v-scroll-to="'#buyers-guide'" 
+                      href="#">
+                      <h5 class="_cl-primary _mgv-12px _fw-100">วิธีการเลือกซื้อ</h5>
+                    </a>
+                  </li>
+                  <li v-if="product.acf.prerequisites">
+                    <a 
+                      v-scroll-to="'#prerequisites'" 
+                      href="#">
+                      <h5 class="_cl-primary _mgv-12px _fw-100">สิ่งที่ต้องมี</h5>
+                    </a>                    
+                  </li>
+                  <li v-if="product.acf.faqs">
+                    <a 
+                      v-scroll-to="'#faqs'" 
+                      href="#">
+                      <h5 class="_cl-primary _mgv-12px _fw-100">คำถามที่พบบ่อย</h5>
+                    </a>                    
+                  </li>
+                  <!-- <li>
+                    <a 
+                      v-scroll-to="'#reviews'" 
+                      href="#">
+                      <h5 class="_cl-primary _mgv-12px _fw-100">รีวิวจากผู้ใช้จริง</h5>
+                    </a>                    
+                  </li> -->
+                </ul>
+              </nav>
+              <!-- Buyers guide -->
+              <!-- Prereq -->
+              <!-- FAQs -->
             </div>
           </affix>
         </no-ssr>
       </div>
     </div>
+    <!-- {{ product }} -->
   </div>
 </template>
 
 <script>
 import ProductThumb from '~/components/products/ProductThumb'
 import PageHeading from '~/components/text/PageHeading'
+import pkg from '~/package.json'
 import db from 'debounce'
 export default {
   async asyncData({ store, error, params }) {
-    const product = await store.dispatch('product/getProductByAttr', {
+    const product = (await store.dispatch('product/getProductByAttr', {
       slug: params.slug
-    })
+    }))[0]
     const gallery = product.images
     return {
       product,
@@ -188,17 +309,24 @@ export default {
     gallery: [],
     quantity: 1,
     isMobile: true,
-    stickyWidth: '260px'
+    stickyWidth: '260px',
+    isBtnLoading: false
   }),
   computed: {
+    isDisabled() {
+      return (
+        (this.variations.length > 0 && !this.selectedVariation) ||
+        this.isBtnLoading
+      )
+    },
     currentImage() {
       // console.log(this.selectedVariation)
       if (this.selectedVariation === null) {
         return this.product.images[this.imageIndex].src
       } else {
         // Find variations from selectedVariation -> รุ่นใหญ่
-        let thisVar = this.variations.find(v => {
-          return v.attributes.find(a => a.option === this.selectedVariation)
+        let thisVar = this.variations.find((v) => {
+          return v.attributes.find((a) => a.option === this.selectedVariation)
         })
         return thisVar.image
       }
@@ -208,8 +336,8 @@ export default {
         return this.product
       } else {
         // Find variations from selectedVariation -> รุ่นใหญ่
-        let thisVar = this.variations.find(v => {
-          return v.attributes.find(a => a.option === this.selectedVariation)
+        let thisVar = this.variations.find((v) => {
+          return v.attributes.find((a) => a.option === this.selectedVariation)
         })
         return thisVar
       }
@@ -225,6 +353,9 @@ export default {
     }
   },
   async created() {
+    if (process.browser) {
+      window.scrollTo(0, 0)
+    }
     if (this.product && this.product.variations.length) {
       const variations = await this.$store.dispatch(
         'product/getProductVariationsById',
@@ -237,6 +368,10 @@ export default {
     }
   },
   methods: {
+    getPrereqLink(item) {
+      if (item.is_product) return `/shop/product/${item.product.post_name}`
+      return `/tag/${item.tag_link[0].slug}`
+    },
     checkMobile() {
       if (process.browser) {
         this.resize()
@@ -253,17 +388,42 @@ export default {
       this.selectedVariation = null
       this.imageIndex = i
     },
-    addToCart() {
-      alert('add')
+    async addToCart() {
+      // alert('add')
+      this.isBtnLoading = true
+      const added = await this.$store.dispatch('purchase/addToCart', {
+        id: this.product.id,
+        quantity: this.quantity,
+        data: this.product
+      })
+      this.isBtnLoading = false
     }
   },
   head() {
     const siteTitle = this.$store.state.site.title
     return {
-      title: `สินค้า ${siteTitle}`,
+      title: `${this.product.name} ${siteTitle}`,
       meta: [
-        { hid: 'og:title', property: 'og:title', content: `สินค้า` },
-        { hid: 'og:description', name: 'og:description', content: `สินค้า` }
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${this.product.name} ${siteTitle}`
+        },
+        {
+          hid: `og:url`,
+          property: 'og:url',
+          content: `${pkg.url}` + this.$route.fullPath
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: `${this.product.description}`
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: `${(this.gallery[0] && this.gallery[0].src) || ''}`
+        }
       ]
     }
   }

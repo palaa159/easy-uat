@@ -2,30 +2,45 @@
   <div class="_w-100pct">
     <!-- Slide -->
     <div class="_w-100pct _bgcl-gray">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <!-- Agile -->
-            <Slideshow
-              :slides="topSlides"
-            />
-          </div>
+      <Slideshow
+        :slides="topSlides"
+      />
+    </div>
+    <!-- Search -->
+    <div class="container">
+      <div class="row _jtfct-ct">
+        <div class="col-12 col-md-10 _mgt-48px _mgbt-32px">
+          <form 
+            class="_dp-f _w-100pct _alit-ct" 
+            @submit.stop.prevent="submit">
+            <!-- <h5 class="_f-1">ค้นหา: </h5> -->
+            <div class="bio-input _f-4 _f-6-md">
+              <input 
+                v-model="searchKeyword"
+                class="_fs-4 _h-48px" 
+                type="text" 
+                placeholder="ไซโคลน, เลื่อย, ปากกา">
+            </div>
+            <button 
+              type="submit" 
+              class="_f-1 _h-48px bio-button -dark">ค้นหา</button>
+          </form>
         </div>
       </div>
     </div>
     <!-- สินค้ามาใหม่ -->
-    <!-- <div class="container">
+    <div class="container">
       <div class="row">
         <div class="col-12">
           <h4 class="_pdv-12px">สินค้ามาใหม่</h4>
-          <div class="_pdh-12px">
+          <div>
             <FeaturedProducts 
               :products="featuredProducts"
             />
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <!-- สินค้าตามหมวดหมู่ -->
     <div class="container">
       <div class="row _mgbt-24px">
@@ -85,7 +100,8 @@ export default {
   data: () => ({
     topSlides: [],
     categories: [],
-    featuredProducts: []
+    featuredProducts: [],
+    searchKeyword: ''
   }),
   async asyncData({ store }) {
     const categories = await store.dispatch('product/getShopCategories')
@@ -94,21 +110,20 @@ export default {
       categories
     }
   },
-  // created() {
-  //   this.$store
-  //     .dispatch('product/getFeaturedProducts')
-  //     .then(featuredProducts => (this.featuredProducts = featuredProducts))
-  // },
+  created() {
+    this.$store
+      .dispatch('product/getFeaturedProducts')
+      .then((featuredProducts) => (this.featuredProducts = featuredProducts))
+  },
   mounted() {
     this.$store
       .dispatch('content/getSlideshow', {
-        slug: 'homepage-banner'
+        slug: 'shop-banner'
       })
-      .then(topSlides => (this.topSlides = topSlides))
+      .then((topSlides) => (this.topSlides = topSlides))
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
 </style>

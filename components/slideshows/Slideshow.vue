@@ -7,10 +7,16 @@
           v-for="(slide, i) in slides"
           :key="i" 
           :style="`background-image: url(${slide.image || ''})`"
-          class="slide _bgrp-nrp _bgs-cv _bgpst-ct _bgcl-gray">
-          <h3 v-html="slide.header"/>
-          <h5 v-html="slide.subheader"/>
-          <p v-html="slide.description"/>
+          class="slide _h-256px _h-512px-md _dp-f _bgrp-nrp _bgs-cv _bgpst-ctr _bgcl-gray _alit-ct _jtfct-ct">
+          <div>
+            <h1 
+              class="_cl-white _tal-ct _lh-150pct" 
+              v-html="slide.header"/>
+            <h3 
+              class="_cl-white _tal-ct _lh-150pct" 
+              v-html="slide.subheader"/>
+              <!-- <p v-html="slide.description"/> -->
+          </div>
         </div>
       </agile>
     </no-ssr>
@@ -22,13 +28,13 @@ export default {
   props: {
     slides: {
       type: Array,
-      default: () => ([1, 2])
+      default: () => [1, 2]
     }
   },
   data: () => ({
     slideOptions: {}
   }),
-  mounted () {
+  mounted() {
     if (process.browser) {
       this.slideOptions = {
         // fade: true,
@@ -42,9 +48,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  .slide {
-    height: 350px;
-  }
-</style>

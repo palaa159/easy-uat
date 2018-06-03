@@ -33,7 +33,9 @@ import faMinus from '@fortawesome/fontawesome-pro-regular/faMinus'
 import faPlus from '@fortawesome/fontawesome-pro-regular/faPlus'
 import * as Auth from '~/services/auth'
 
-Vue.use(VueScrollTo)
+Vue.use(VueScrollTo, {
+  offset: -50
+})
 Vue.use(VeeValidate)
 // VueLazyLoad
 Vue.use(VueLazyload, {

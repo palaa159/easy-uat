@@ -1,5 +1,5 @@
 <template>
-  <div v-if="slides.length">
+  <div v-if="false">
     <no-ssr>
       <agile 
         :options="slideOptions">
@@ -18,10 +18,16 @@
                 </div>
               </div>
               <div class="col-12 col-md-5">
-                <nuxt-link :to="`/content/${slide.post_name}`">
-                  <h4 v-html="slide.post_title"/>
+                <nuxt-link 
+                  :to="`/content/${slide.post_name}`" 
+                  class="bio-link -fancy">
+                  <h4 
+                    class="_lh-125pct" 
+                    v-html="slide.post_title"/>
                 </nuxt-link>
-                <p v-html="slide.acf.short_description"/>
+                <p 
+                  class="_lh-150pct" 
+                  v-html="slide.acf.short_description"/>
               </div>
             </div>
           </div>

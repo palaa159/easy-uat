@@ -8,12 +8,8 @@
         <nuxt-link :to="`/shop/${x.slug}`">
           <div 
             v-lazy:background-image="x.image && x.image.src || ''" 
-            class="_h-128px _bgrp-nrp _bgs-cv _bgpst-ct"/>
-          <div class="_pd-4px _tal-ct">
-            <small>
-              {{ x.name }}
-            </small>
-          </div>
+            class="_h-128px _tal-ct _bgrp-nrp _bgs-ct _bgpst-ct _dp-f _alit-ct _jtfct-ct _cl-white _fw-700"/>
+          <h6 class="_tal-ct _lh-100pct _pdt-16px">{{ x.name }}</h6>
         </nuxt-link>
       </div>
     </div>

@@ -9,9 +9,11 @@
           v-for="(x, i) in items" 
           :key="i"
           :to="x.path"
+          exact
+          active-class="_cl-primary _fw-500"
           class="col _tal-ct menu-link" 
         >
-          <h6>{{ x.title }}</h6>
+          {{ x.title }}
         </nuxt-link>
         <!-- Logo -->
         <!-- <div class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"/> -->
@@ -77,7 +79,7 @@ export default {
   data: () => ({
     items: []
   }),
-  created () {
+  created() {
     this.items = this.$store.state.menu.primaryMenu
   }
 }
@@ -85,99 +87,105 @@ export default {
 
 
 <style lang="scss" scoped>
-  @import 'assets/styles/variables';
+@import 'assets/styles/variables';
 
-  .mobile-menu {
-    top: 50px;
-    height: calc(100vh - 50px);
-    z-index: 9;
-  }
+.mobile-menu {
+  top: 50px;
+  height: calc(100vh - 50px);
+  z-index: 9;
+}
 
-  .menu-container {
-    width: 220px;
-  }
+.menu-container {
+  width: 220px;
+}
 
-  .icon, .icon:before, .icon:after, .icon i, .icon i:before, .icon i:after { 
-    transition: all 0.1s ease;
-  }
-  .menu.icon {
-    color: $blue;
+.icon,
+.icon:before,
+.icon:after,
+.icon i,
+.icon i:before,
+.icon i:after {
+  transition: all 0.1s ease;
+}
+.menu.icon {
+  color: $blue;
+  position: absolute;
+  width: 24px;
+  height: 3px;
+  background-color: currentColor;
+  &::before {
+    content: '';
     position: absolute;
+    top: -8px;
+    left: 0;
     width: 24px;
     height: 3px;
     background-color: currentColor;
-    &::before {
-      content: '';
-      position: absolute;
-      top: -8px;
-      left: 0;
-      width: 24px;
-      height: 3px;
-      background-color: currentColor;
-    }
-    &::after {
-      content: '';
-      position: absolute;
-      top: 8px;
-      left: 0;
-      width: 24px;
-      height: 3px;
-      background-color: currentColor;
-    }
   }
-  .close.icon {
-    color: $blue;
-    position: absolute;
-    margin-top: 0;
-    margin-left: 0;
-    width: 21px;
-    height: 21px;
-  }
-  .close.icon:before {
+  &::after {
     content: '';
     position: absolute;
-    top: 0px;
-    width: 26px;
+    top: 8px;
+    left: 0;
+    width: 24px;
     height: 3px;
     background-color: currentColor;
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
   }
-  .close.icon:after {
-    content: '';
-    position: absolute;
-    top: 0px;
-    width: 26px;
-    height: 3px;
-    background-color: currentColor;
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
+}
+.close.icon {
+  color: $blue;
+  position: absolute;
+  margin-top: 0;
+  margin-left: 0;
+  width: 21px;
+  height: 21px;
+}
+.close.icon:before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  width: 26px;
+  height: 3px;
+  background-color: currentColor;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.close.icon:after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  width: 26px;
+  height: 3px;
+  background-color: currentColor;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.menu-item {
+  // border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
+  transition: 0.15s;
+  h3 {
+    line-height: 2.5rem;
+    // border-bottom: 2.5px solid $purple;
   }
-  .menu-item {
-    // border-top: 1px solid rgba(0, 0, 0, 0.1);
-    transition: 0.15s;
-    h3 {
-      line-height: 2.5rem;
-      // border-bottom: 2.5px solid $purple;
-    }
-  }
-  .menu-link{
-    transition: 0.15s;
-    h6{
-      font-family: 'Kanit', sans-serif;
-      font-size: 1rem;
-      color: #787878;
-    }
-  }
-  .logo {
-    background-image: url('~/assets/images/logo.png');
-    height: 48px;
-    margin: 0 auto;
-  }
-  .gradient-text {
-    background: linear-gradient($magenta, $purple);
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
-  }
+}
+.menu-link {
+  transition: 0.15s;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+  // color: #787878;
+}
+.logo {
+  background-image: url('~/assets/images/logo.png');
+  height: 48px;
+  margin: 0 auto;
+}
+.gradient-text {
+  background: linear-gradient($magenta, $purple);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
 </style>
