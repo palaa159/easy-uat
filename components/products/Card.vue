@@ -14,7 +14,7 @@
         <nuxt-link 
           :to="`/shop/product/${slug}`" 
           class="_lh-125pct" 
-          v-html="title"/>
+        >{{ title | titleLang }}</nuxt-link>
       </div>
       <!-- <p v-if="salePrice !== '0'">
         <span class="currency">฿</span>

@@ -1,7 +1,7 @@
 <template>
   <div class="_w-100pct">
     <!-- Slide -->
-    <div class="_w-100pct _bgcl-gray">
+    <div class="_w-100pct _bgcl-gray _h-256px _h-512px-md">
       <Slideshow
         :slides="topSlides"
       />
@@ -48,7 +48,7 @@
           <h4 class="_pdv-12px">ดูสินค้าตามหมวดหมู่</h4>
           <div>
             <HomeCategories 
-              :categories="categories"
+              :categories="$store.state.product.categories"
             />
           </div>
         </div>
@@ -103,14 +103,11 @@ export default {
     featuredProducts: [],
     searchKeyword: ''
   }),
-  async asyncData({ store }) {
-    const categories = await store.dispatch('product/getShopCategories')
-    // console.log(categories)
-    return {
-      categories
-    }
-  },
   created() {
+    this.$store.dispatch('product/getShopCategories').then((categories) => {
+      // console.log(categories)
+      this.categories = categories
+    })
     this.$store
       .dispatch('product/getFeaturedProducts')
       .then((featuredProducts) => (this.featuredProducts = featuredProducts))

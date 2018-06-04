@@ -19,6 +19,6 @@ export const actions = {
     if (slug) x = `?slug=${slug}`
     if (featured) x = `?featured=${featured}`
     const content = await this.$axios.$get(`${urls.getContent}${x}`)
-    return content && content[0] || null
+    return content
   }
 }

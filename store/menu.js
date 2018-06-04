@@ -2,7 +2,7 @@ const primaryMenu = [{
   title: 'หน้าแรก',
   path: '/'
 }, {
-  title: 'MakerShop',
+  title: 'MakerStore',
   path: '/shop'
 }, {
   title: 'เวิร์คช็อป',

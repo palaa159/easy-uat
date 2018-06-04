@@ -215,7 +215,7 @@ module.exports = {
      */
     extend(config, ctx) {
       // Run ESLint on save
-      if (ctx.dev && ctx.client) {
+      if (ctx.isDev && ctx.client) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -223,7 +223,7 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-      if (!ctx.dev) {
+      if (!ctx.isDev) {
         config.plugins.push(
           new PurgecssPlugin({
             paths: glob.sync([

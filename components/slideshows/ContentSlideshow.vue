@@ -1,5 +1,5 @@
 <template>
-  <div v-if="false">
+  <div v-if="slides.length">
     <no-ssr>
       <agile 
         :options="slideOptions">
@@ -51,7 +51,7 @@ export default {
   mounted() {
     if (process.browser) {
       this.slideOptions = {
-        // fade: true,
+        infinite: false,
         arrows: false,
         autoplay: false,
         autoplaySpeed: 2000,

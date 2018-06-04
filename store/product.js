@@ -1,11 +1,21 @@
 import urls from '~/services/apiUrl'
 
+export const state = () => ({
+  categories: []
+})
+
+export const mutations = {
+  SET_CATEGORIES(state, cats) {
+    state.categories = cats
+  },
+}
+
 export const actions = {
   async getProductBySlug({}, {
     slug,
     variations = false
   }) {
-    const prod = await this.$axios.$get(`${urls.getProduct}/${slug}`)
+    const prod = await this.$axios.$get(`${urls.getProductBySlug}?slug=${slug}`)
     return prod || {}
   },
   async getFeaturedProducts({}) {
@@ -15,7 +25,7 @@ export const actions = {
   async getCategories({}, {
     exclude = '0'
   }) {
-    const cats = await this.$axios.$get(`${urls.getCategories}?exclude=${exclude}`)
+    const cats = await this.$axios.$get(`${urls.getShopCategories}?exclude=${exclude}`)
     return cats
   },
   async getProductsByCatSlug({}, catSlug) {

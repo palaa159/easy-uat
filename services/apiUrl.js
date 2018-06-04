@@ -1,6 +1,7 @@
 const prefix = `/wp-json`
 
 export default {
+  getSiteInit: `${prefix}/api/v1/site-init`,
   getToken: `${prefix}/jwt-auth/v1/token`, // PUT
   emailRegister: `${prefix}/api/v1/auth/email`, // POST
   fbLogin: `${prefix}/api/v1/auth/fb`,
@@ -14,10 +15,10 @@ export default {
   getUserMe: `${prefix}/wp/v2/users/me?context=edit`, // PUT
   // getUserMe: `${prefix}/api/v1/user`,
   /* Categories with subcats */
-  getCategories: `${prefix}/api/v1/products/categories`, // GET
-  getShopCategories: `${prefix}/api/v1/products/categories`, // GET
+  getShopCategories: `${prefix}/api/v2/product-category?withProducts=true`, // GET
   /* Product */
-  getProduct: `${prefix}/api/v1/products`, // GET
+  getProduct: `${prefix}/api/v2/product`, // GET
+  getProductBySlug: `${prefix}/api/v2/wc/product-slug`, // GET
   getProductVariations: `${prefix}/api/v1/wc/product_variations_by_id`, // GET
   getProductsByCatSlug: `${prefix}/api/v1/wc/products_by_cat_slug`,
   // Cart

@@ -22,7 +22,7 @@
           <Card
             :key="i"
             :title="p.name" 
-            :image="p.images[0].src"
+            :image="p.image"
             :price="p.price_html"
             :slug="p.slug"
           />

@@ -61,3 +61,13 @@ Vue.filter('currency', val => {
   return val + ' ฿'
   // parseFloat(val) 
 })
+
+Vue.filter('titleLang', val => {
+  var re = new RegExp('[:' + 'th' + '](.*?)[:]')
+  // Returns first backreference
+  let x = val.match(re)
+  if (x) {
+    return x[1].substring(3, x[1].length - 1)
+  }
+  return val
+})

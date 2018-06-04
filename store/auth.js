@@ -9,17 +9,43 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_TOKEN (state, token) {
+  SET_TOKEN(state, token) {
     this.$axios.setToken(token, 'Bearer')
     state.token = token
   },
-  SET_USER (state, user) {
+  SET_USER(state, user) {
     state.user = user
   }
 }
 
 export const actions = {
-  async register ({ commit }, { email, password, firstName, lastName }) {
+  async getUserMe({
+    commit
+  }) {
+    const promises = [
+      this.$axios.$get(urls.getUserMe).catch((err) => {
+        // Clear Cookie
+        console.log(err)
+        JSCookie.remove('__session')
+      }),
+      this.$axios.$get(urls.customer).catch((err) => {
+        // Clear Cookie
+        console.log(err)
+        JSCookie.remove('__session')
+      })
+    ]
+    const [user, customer] = await Promise.all(promises)
+    commit('SET_USER', user)
+    commit('SET_CUSTOMER', customer)
+  },
+  async register({
+    commit
+  }, {
+    email,
+    password,
+    firstName,
+    lastName
+  }) {
     const res = await this.$axios.$post(urls.emailRegister, {
       email,
       password,
@@ -28,7 +54,11 @@ export const actions = {
     })
     return res
   },
-  async forgotSetPassword ({}, { key, login, password }) {
+  async forgotSetPassword({}, {
+    key,
+    login,
+    password
+  }) {
     const isChanged = await this.$axios.$post(urls.forgotSetPassword, {
       key,
       login,
@@ -36,7 +66,9 @@ export const actions = {
     })
     return isChanged
   },
-  async facebookSignUp ({ dispatch }) {
+  async facebookSignUp({
+    dispatch
+  }) {
     const resToken = await Auth.facebookSignIn()
     // console.log(resToken)
     if (resToken.credential && resToken.user.email) {
@@ -55,18 +87,32 @@ export const actions = {
       // this.errorMessage = 'ไม่สามารถล็อกได้เนื่องจาก Facebook ของคุณไม่มีอีเมล กรุณาใช้วิธีการสมัครผ่านอีเมลแทน'
     }
   },
-  async login ({ state, dispatch, commit }, { email, password }) {
+  async login({
+    state,
+    dispatch,
+    commit
+  }, {
+    email,
+    password
+  }) {
     // load axios
-    const { token } = await this.$axios.$post(urls.getToken, {
+    const {
+      token
+    } = await this.$axios.$post(urls.getToken, {
       username: email,
       password
     })
     if (token) {
-      JSCookie.set('__session', { token })
+      JSCookie.set('__session', {
+        token
+      })
     }
     return token
   },
-  async logout ({ dispatch, commit }) {
+  async logout({
+    dispatch,
+    commit
+  }) {
     JSCookie.remove('__session')
     await commit('SET_TOKEN', null)
     return window.location.href = '/'

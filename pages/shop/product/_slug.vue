@@ -156,11 +156,11 @@
               <div 
                 v-if="product.variations.length" 
                 class="_mgt-16px">
-                <h6 class="_lh-100pct _mgbt-12px">Choose {{ product.attributes.filter(a => a.variation)[0].name }}:</h6>
+                <h6 class="_lh-100pct _mgbt-12px">เลือก {{ product.attributes.filter(a => a.variation)[0].name }}:</h6>
                 <!-- Attribute in case of variations -->
                 <div class="container-fluid">
                   <div 
-                    v-for="(v, i) in product.attributes"
+                    v-for="(v, i) in product.attributes.filter(a => a.variation)"
                     :key="i" 
                     class="row">
                     <!-- Loop each attribute -->
@@ -169,8 +169,8 @@
                       :key="ix"
                       class="col-6 attr-btn">
                       <button 
-                        :disabled="!variations.length"
-                        :class="{'-white': selectedVariation !== vx, '-loading': !variations.length}"
+                        :disabled="!product.variations.length"
+                        :class="{'-white': selectedVariation !== vx, '-loading': !product.variations.length}"
                         class="bio-button _w-100pct _mgbt-8px"
                         @click="selectedVariation = vx">
                         <h5 class="_pdv-4px _tal-ct">{{ vx }}</h5>
@@ -278,7 +278,6 @@
         </no-ssr>
       </div>
     </div>
-    <!-- {{ product }} -->
   </div>
 </template>
 
@@ -289,9 +288,9 @@ import pkg from '~/package.json'
 import db from 'debounce'
 export default {
   async asyncData({ store, error, params }) {
-    const product = (await store.dispatch('product/getProductByAttr', {
+    const product = await store.dispatch('product/getProductBySlug', {
       slug: params.slug
-    }))[0]
+    })
     const gallery = product.images
     return {
       product,
@@ -304,7 +303,6 @@ export default {
   },
   data: () => ({
     imageIndex: 0,
-    variations: [],
     selectedVariation: null,
     gallery: [],
     quantity: 1,
@@ -315,7 +313,7 @@ export default {
   computed: {
     isDisabled() {
       return (
-        (this.variations.length > 0 && !this.selectedVariation) ||
+        (this.product.variations.length > 0 && !this.selectedVariation) ||
         this.isBtnLoading
       )
     },
@@ -325,7 +323,7 @@ export default {
         return this.product.images[this.imageIndex].src
       } else {
         // Find variations from selectedVariation -> รุ่นใหญ่
-        let thisVar = this.variations.find((v) => {
+        let thisVar = this.product.variations.find((v) => {
           return v.attributes.find((a) => a.option === this.selectedVariation)
         })
         return thisVar.image
@@ -336,7 +334,7 @@ export default {
         return this.product
       } else {
         // Find variations from selectedVariation -> รุ่นใหญ่
-        let thisVar = this.variations.find((v) => {
+        let thisVar = this.product.variations.find((v) => {
           return v.attributes.find((a) => a.option === this.selectedVariation)
         })
         return thisVar
@@ -355,16 +353,6 @@ export default {
   async created() {
     if (process.browser) {
       window.scrollTo(0, 0)
-    }
-    if (this.product && this.product.variations.length) {
-      const variations = await this.$store.dispatch(
-        'product/getProductVariationsById',
-        {
-          id: this.product.id
-        }
-      )
-      // console.log(variations)
-      this.variations = variations
     }
   },
   methods: {
