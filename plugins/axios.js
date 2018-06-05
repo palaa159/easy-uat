@@ -13,6 +13,6 @@ export default ({
     if (code === 400 || code === 404) {
       return redirect('/400')
     }
-    return window.alert('มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง หรือติดต่อ Admin')
+    // return window.alert('มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง หรือติดต่อ Admin')
   })
 }

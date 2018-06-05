@@ -115,7 +115,7 @@
         class="bio-button _pdl-8px -loading _bgcl-tpr _bdw-0px"/>
       <Badge
         v-else 
-        :number="totalQuantity"
+        :number="parseInt(totalQuantity)"
       />
     </div>
     <!-- Added to Cart Message -->
@@ -202,9 +202,9 @@ export default {
   async created() {
     // Get Cart Content
     this.isCartLoading = true
-    // const cart = await this.$store.dispatch('purchase/getCartContent')
+    const cart = await this.$store.dispatch('purchase/getCartContent')
     this.isCartLoading = false
-    // return this.$store.commit('purchase/SET_CART_CONTENT', cart)
+    return this.$store.commit('purchase/SET_CART_CONTENT', cart)
   },
   methods: {
     proceed() {

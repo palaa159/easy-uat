@@ -228,6 +228,10 @@ $lg: 1200px;
   }
 }
 
+[lazy] {
+  transition: 0.25s;
+}
+
 [lazy=loaded] {
   opacity: 1;
 }

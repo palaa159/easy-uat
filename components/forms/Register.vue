@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4 class="_tal-ct _mgbt-32px">
-      ลงทะเบียนสมาชิก
+      สมัครสมาชิก
     </h4>
     <no-ssr>
       <form @submit.stop.prevent="submit">
@@ -77,7 +77,7 @@
           type="submit" 
           class="bio-button -positive -outline _w-100pct _mgv-32px">
           <h4>
-            ลงทะเบียน
+            สมัครสมาชิก
             <fa-icon icon="long-arrow-alt-right"/>
           </h4>
         </button>
@@ -87,6 +87,7 @@
     <!-- Facebook Login -->
     <div>
       <FacebookButton
+        btn-title="สมัครสมาชิกด้วย"
         @success="fbSuccess"
         @error="fbError"
       />
@@ -123,25 +124,26 @@ export default {
     redirect: ''
   }),
   methods: {
-    async fbSuccess ({ email, password }) { // userData
+    async fbSuccess({ email, password }) {
+      // userData
       await this.login(email, password)
-      return this.isBtnLoading = false
+      return (this.isBtnLoading = false)
     },
-    fbError (res) {
+    fbError(res) {
       return this.errorMsg(res)
     },
-    async login (email = null, password = null) {
+    async login(email = null, password = null) {
       const redirect = this.$route.query.redirect || ''
       this.isLoggingIn = true
       const token = await this.$store.dispatch('auth/login', {
         email: email || this.email,
         password: password || this.password
       })
-      if (token) return window.location.href = `/${redirect}`
+      if (token) return (window.location.href = `/${redirect}`)
       this.isLoggingIn = false
-      return this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง'
+      return (this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
     },
-    async register () {
+    async register() {
       const register = await this.$store.dispatch('auth/register', {
         email: this.email,
         password: this.password,
@@ -151,17 +153,18 @@ export default {
       if (register) {
         return await this.login()
       }
-      return this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง'
+      return (this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
     },
-    async submit () {
+    async submit() {
       this.isBtnLoading = true
       this.errorMsg = ''
       const isValid = await this.$validator.validateAll()
       if (isValid) {
-        await this.register()
-          .catch(err => this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
+        await this.register().catch(
+          (err) => (this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
+        )
       }
-      return this.isBtnLoading = false
+      return (this.isBtnLoading = false)
     }
   }
 }

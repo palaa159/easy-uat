@@ -15,6 +15,9 @@ export const mutations = {
   },
   SET_USER(state, user) {
     state.user = user
+  },
+  SET_CUSTOMER(state, customer) {
+    state.customer = customer
   }
 }
 

@@ -33,17 +33,11 @@
       </div>
     </div>
     <!-- Content -->
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <h4 class="_pdv-12px">คอนเท๊นต์</h4>
-        </div>
-      </div>
-    </div>
     <div class="_w-100pct _bgcl-gray">
       <div class="container">
         <div class="row">
           <div class="col-12">
+            <h4 class="_pdt-12px">คอนเท๊นต์</h4>
             <!-- Agile -->
             <ContentSlideshow
               :slides="contentSlides"

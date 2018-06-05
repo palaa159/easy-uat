@@ -28,12 +28,14 @@ export const actions = {
   }, {
     id,
     quantity = 1,
+    variationId = false,
     data
   }) {
     commit('SET_CART_PROCESSING', true)
     const added = await this.$axios.$post(`${urls.addToCart}`, {
       id,
       quantity,
+      variationId,
       data
     })
     commit('SET_CART_BUBBLE', true)

@@ -1,10 +1,14 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-9">
+      <div 
+        id="content" 
+        class="col-12 col-md-9">
         <div class="_mgt-16px">
-          <h3 v-html="content.title.rendered"/>
-          <p>{{ content.date | moment('วันที่ DD MMMM YYYY HH:mm') }}</p>
+          <h3 
+            class="_lh-100pct" 
+            v-html="content.post_title"/>
+          <p>{{ content.post_date | moment('วันที่ DD MMMM YYYY HH:mm') }}</p>
         </div>
         <div 
           class="_pdv-32px embed-responsive embed-responsive-21by9 _mgv-24px">
@@ -22,10 +26,36 @@
         <h4>More content</h4>
       </div>
       <div class="col-12 col-md-3">
-        <div class="_mgt-16px">
-          <h5>สินค้าที่เกี่ยวข้อง</h5>
-          {{ content.acf.related_products }}
-        </div>
+        <no-ssr>
+          <affix 
+            :enabled="_enabled"
+            :offset="{ top: -140, bottom: 0 }"
+            :scroll-affix="false" 
+            relative-element-selector="#content">
+            <div style="margin-top: 100px;">
+              <h5>สินค้าที่เกี่ยวข้อง</h5>
+              <div 
+                v-if="content.acf.related_products" 
+                class="container-fluid _pd-0px _mgt-16px">
+                <div class="row">
+                  <div 
+                    v-for="(p, i) in content.acf.related_products" 
+                    :key="i" 
+                    class="col-6 col-md-3 col-lg-2 _mgbt-24px">
+                    <Card
+                      :key="i"
+                      :title="p.name" 
+                      :image="p.image"
+                      :price="p.price_html"
+                      :slug="p.slug"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- {{ content.acf.related_products }} -->
+            </div>
+          </affix>
+        </no-ssr>
       </div>
     </div>
   </div>
@@ -33,9 +63,11 @@
 
 <script>
 import ContentFromWP from '~/components/content/ContentFromWP'
+import Card from '~/components/products/Card'
 export default {
   components: {
-    ContentFromWP
+    ContentFromWP,
+    Card
   },
   async asyncData({ store, params, redirect }) {
     const slug = params.slug
@@ -44,7 +76,14 @@ export default {
       // return redirect('400')
     }
     // console.log(content)
-    return { content }
+    return { content: content[0] }
+  },
+  computed: {
+    _enabled() {
+      if (process.browser) {
+        return window.innerWidth > 770
+      }
+    }
   }
 }
 </script>

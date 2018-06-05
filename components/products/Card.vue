@@ -1,5 +1,5 @@
 <template>
-  <div class="card _bgcl-gray _ovf-hd _bdrd-2px">
+  <div class="card _bgcl-white _ovf-hd _bdrd-2px">
     <!-- Image -->
     <nuxt-link :to="`/shop/product/${slug}`">
       <div 
@@ -10,11 +10,12 @@
     <div class="_pdh-12px _pdv-8px">
       <div 
         class="_ovfy-hd" 
-        style="height: 40px;">
+        style="height: 34px;">
         <nuxt-link 
           :to="`/shop/product/${slug}`" 
-          class="_lh-125pct" 
-        >{{ title | titleLang }}</nuxt-link>
+        >
+          <h6 class="_lh-100pct _cl-neutral-800">{{ title | titleLang }}</h6>
+        </nuxt-link>
       </div>
       <!-- <p v-if="salePrice !== '0'">
         <span class="currency">฿</span>
@@ -22,7 +23,7 @@
       </p> -->
       <p class="_mgbt-4px _mgt-8px _lh-100pct">
         <span 
-          class="_lh-100pct" 
+          class="_lh-100pct _fs-7" 
           v-html="price"/>
       </p>
     </div>

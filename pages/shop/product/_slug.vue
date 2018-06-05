@@ -187,7 +187,7 @@
                 </div>
                 <div class="_mgv-16px">
                   <h6 class="_lh-100pct">น้ำหนัก (g.): </h6>
-                  <p>{{ (parseFloat(currentProduct.weight || 0).toFixed(2) * 1000).toLocaleString() }}</p>
+                  <p>{{ (parseFloat(currentProduct.weight || 0)).toLocaleString() }}</p>
                 </div>
               </div>
               <!-- Stock -->
@@ -216,7 +216,7 @@
                     :class="{'_bgcl-primary': !isDisabled, '_bgcl-gray -loading -disabled': isDisabled}" 
                     :disabled="isDisabled" 
                     type="submit"
-                    class="_f-3 bio-button _bdw-0px _pd-12px _ttf-upc _tal-ct _cl-white _cs-pt">
+                    class="_f-3 bio-button _bdrd-0px _bdw-0px _pd-12px _ttf-upc _tal-ct _cl-white _cs-pt">
                     <h5 
                       v-show="!isDisabled" 
                       class="_ltspc-1px">หยิบใส่ตะกร้า</h5>
@@ -379,9 +379,11 @@ export default {
     async addToCart() {
       // alert('add')
       this.isBtnLoading = true
+      // console.log(this.currentProduct)
       const added = await this.$store.dispatch('purchase/addToCart', {
         id: this.product.id,
         quantity: this.quantity,
+        variationId: this.currentProduct.id,
         data: this.product
       })
       this.isBtnLoading = false

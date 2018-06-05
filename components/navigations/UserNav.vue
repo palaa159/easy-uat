@@ -13,13 +13,13 @@
             v-if="$store.state.auth.user === null"
             :to="`/login?redirect=${$route.path}`"
           >
-            <span>เข้าสู่ระบบ</span>
+            <span class="_fs-7">เข้าสู่ระบบ</span>
           </nuxt-link>
           <nuxt-link 
             v-if="$store.state.auth.user === null"
             to="/register" 
           >
-            <span>ลงทะเบียน</span>
+            <span class="_fs-7">ลงทะเบียน</span>
           </nuxt-link>
           <nuxt-link 
             v-if="$store.state.auth.user"
@@ -30,7 +30,7 @@
               class="_bdrd-50pct _mgr-8px-md"
               style="vertical-align: middle;"
               alt="avatar">
-            <span class="_dp-n _dp-ilb-md">{{ $store.state.auth.user.email }}</span>
+            <span class="_dp-n _dp-ilb-md _fs-7">{{ $store.state.auth.user.email }}</span>
           </nuxt-link>
           <!-- Shopping cart with badge -->
           <Cart />
@@ -54,8 +54,8 @@ export default {
 // User Controls
 .user-bar {
   // background-image: linear-gradient(140deg, #4BBFEC 0%, #81A5FF 100%);
-  background-color: gray;
-  height: 42px;
+  background-color: rgba(40, 40, 40, 1);
+  height: 36px;
 }
 .user-control {
   div,

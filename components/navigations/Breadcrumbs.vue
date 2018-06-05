@@ -4,7 +4,7 @@
     class="container _pdt-12px ">
     <div class="row">
       <div class="col">
-        <ul class="_dp-f _pdt-12px _jtfct-fs _fs-7">
+        <ul class="_dp-f _alit-ct _pdt-12px _jtfct-fs _fs-7">
           <li v-if="crumbs.length >= 1">
             <nuxt-link 
               to="/" 

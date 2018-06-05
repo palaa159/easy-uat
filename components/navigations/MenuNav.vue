@@ -5,16 +5,23 @@
       <div 
         v-if="items.length" 
         class="row _dp-n _dp-f-md _alit-ct">
-        <nuxt-link 
-          v-for="(x, i) in items" 
-          :key="i"
-          :to="x.path"
-          exact
-          active-class="_cl-primary _fw-500"
-          class="col _tal-ct menu-link" 
-        >
-          {{ x.title }}
-        </nuxt-link>
+        <!-- Left Menu -->
+        <div class="col-6">
+          x
+        </div>
+        <!-- Right Menu -->
+        <div class="col-6 _dp-f _jtfct-spbtw">
+          <nuxt-link 
+            v-for="(x, i) in items" 
+            :key="i"
+            :to="x.path"
+            exact
+            active-class="_cl-primary _fw-500"
+            class="_tal-ct menu-link" 
+          >
+            {{ x.title }}
+          </nuxt-link>
+        </div>
         <!-- Logo -->
         <!-- <div class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"/> -->
       </div>

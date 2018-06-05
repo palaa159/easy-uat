@@ -10,7 +10,7 @@
             <div class="row _alit-ct">
               <div class="col-12 col-md-7">
                 <div 
-                  class="_pdv-32px embed-responsive embed-responsive-21by9 _mgv-48px">
+                  class="_pdv-32px embed-responsive embed-responsive-21by9 _mgt-16px _mgbt-48px">
                   <iframe 
                     :src="`${slide.acf.assets.youtube_full}?rel=0`" 
                     class="embed-responsive-item" 

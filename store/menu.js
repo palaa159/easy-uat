@@ -1,18 +1,15 @@
 const primaryMenu = [{
-  title: 'หน้าแรก',
-  path: '/'
-}, {
-  title: 'MakerStore',
+  title: 'MakerStore®',
   path: '/shop'
 }, {
-  title: 'เวิร์คช็อป',
+  title: 'Workshops',
   path: '/workshop'
 }, {
-  title: 'บทความ',
-  path: '/content'
+  title: 'Learn',
+  path: '/learn'
 }, {
-  title: 'แจ้งชำระเงิน',
-  path: '/profile'
+  title: 'About',
+  path: '/about'
 }]
 
 export const state = () => ({
