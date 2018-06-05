@@ -13,14 +13,14 @@
         <div class="container">
           <div class="row">
             <div class="col-12 _mgt-16px _tal-ct">
-              <div class="_fs-4 _mgv-16px">🔒 Secured Checkout</div>
+              <div class="_fs-5 _mgv-12px">🔒 Secured Checkout</div>
             </div>
           </div>
           <div class="row _pst-rlt _zid-0">
             <!-- H-Line -->
             <div class="_w-100pct _pst-asl h-line-container">
               <div 
-                :style="`width: ${progressPercent}%`" 
+                :style="`width: 0%`" 
                 class="h-line" 
               />
             </div>
@@ -35,6 +35,7 @@
                 <PaymentStep
                   :number="i + 1"
                   :title="x.title"
+                  :is-active="i + 1 === $store.state.purchase.checkoutStep"
                 />
               </div>
             </div>
@@ -49,17 +50,10 @@
         v-if="$store.state.purchase.isPurchasing" 
         class="curtain-purchase _pst-f _dp-f _alit-ct _jtfct-ct _tal-ct _t-0px _l-0px _w-100pct _h-100vh _zid-1 _fw-700">
         <p>
-          Processing your payment.
+          Processing your order.
           <br> Do not close this page.
         </p>
       </div>
-    </fade-transition>
-    <fade-transition>
-      <div 
-        v-if="$store.state.purchase.isCartShowing"
-        class="curtain _pst-f _t-0px _l-0px _w-100pct _h-100vh _zid-1"
-        @click="$store.commit('purchase/SET_CART_SHOW', false)"
-      />
     </fade-transition>
     <Footer/>
   </div>

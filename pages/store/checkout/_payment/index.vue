@@ -48,68 +48,73 @@
 </template>
 
 <style lang="scss" scoped>
-  .tab-buttons {
-    .tab {
-      padding: 10px;
-      border-bottom: 3px solid rgba(0, 0, 0, 0.1);
-      &.active {
-        border-bottom: 3px solid rgba(0, 0, 0, 0.5);
-        font-weight: 700;
-      }
+.tab-buttons {
+  .tab {
+    padding: 10px;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+    &.active {
+      border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+      font-weight: 700;
     }
   }
+}
 </style>
 
 
 <script>
-  import Summary from '~/components/purchase/Summary'
-  import BankTransfer from '~/components/purchase/BankTransfer'
-  import CreditCard from '~/components/purchase/CreditCard'
-  // Remove cart
-  export default {
-    components: {
-      Summary,
-      BankTransfer,
-      CreditCard
-    },
-    head () {
-      const siteTitle = this.$store.state.site.title
-      return { 
-        title: `การชำระเงิน ${siteTitle}`
-      }
-    },
-    data: () => ({
-      methods: [
-        {
-          title: 'โอนเงินผ่านธนาคาร',
-          slug: 'bank-transfer'
-        },
-        {
-          title: 'บัตรเครดิต / เดบิต',
-          slug: 'credit-card'
-        }
-      ]
-    }),
-    layout: 'checkout',
-    watch: {
-      '$route.query' () {
-        return this.checkQuery()
-      }
-    },
-    // Validate query
-    created () {
-      return this.checkQuery()
-    },
-    methods: {
-      checkQuery () {
-        if (!(this.$route.query.method === 'bank-transfer' || this.$route.query.method === 'credit-card')) {
-          return this.$router.replace({ query: { method: 'bank-transfer' } })
-        }
+import Summary from '~/components/purchase/Summary'
+import BankTransfer from '~/components/purchase/BankTransfer'
+import CreditCard from '~/components/purchase/CreditCard'
+// Remove cart
+export default {
+  components: {
+    Summary,
+    BankTransfer,
+    CreditCard
+  },
+  head() {
+    const siteTitle = this.$store.state.site.title
+    return {
+      title: `การชำระเงิน ${siteTitle}`
+    }
+  },
+  data: () => ({
+    methods: [
+      {
+        title: 'โอนเงินผ่านธนาคาร',
+        slug: 'bank-transfer'
       },
-      pay () {
-        let id = 'e3T8q4'
-        return this.$router.replace(`/checkout/payment/${id}`)
+      {
+        title: 'บัตรเครดิต / เดบิต',
+        slug: 'credit-card'
+      }
+    ]
+  }),
+  layout: 'checkout',
+  watch: {
+    '$route.query'() {
+      return this.checkQuery()
+    }
+  },
+  // Validate query
+  created() {
+    return this.checkQuery()
+  },
+  methods: {
+    checkQuery() {
+      if (
+        !(
+          this.$route.query.method === 'bank-transfer' ||
+          this.$route.query.method === 'credit-card'
+        )
+      ) {
+        return this.$router.replace({ query: { method: 'bank-transfer' } })
       }
     },
+    pay() {
+      let id = 'e3T8q4'
+      return this.$router.replace(`/store/checkout/payment/${id}`)
+    }
   }
+}
 </script>

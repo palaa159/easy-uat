@@ -5,7 +5,7 @@
         class="_lh-100pct" 
         v-html="catTitle"/>
       <nuxt-link 
-        :to="`/shop/${catSlug}`" 
+        :to="`/store/${catSlug}`" 
         class="_mgl-8px">
         ดูทั้งหมด
       </nuxt-link>

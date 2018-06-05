@@ -1,6 +1,6 @@
 const primaryMenu = [{
   title: 'MakerStore®',
-  path: '/shop'
+  path: '/store'
 }, {
   title: 'Workshops',
   path: '/workshop'

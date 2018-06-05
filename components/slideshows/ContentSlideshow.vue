@@ -19,7 +19,7 @@
               </div>
               <div class="col-12 col-md-5">
                 <nuxt-link 
-                  :to="`/content/${slide.post_name}`" 
+                  :to="`/learn/${slide.post_name}`" 
                   class="bio-link -fancy">
                   <h4 
                     class="_lh-125pct" 

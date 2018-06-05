@@ -54,7 +54,7 @@ const config = {
   //     '/profile/**'
   //   ],
   //   // routes() {
-  //   //   return axios.get(`https://${pkg.apiUrl}/wp-json/api/v1/wc/product`).then(res => res.data.map(product => `/shop/product/${product.slug}`))
+  //   //   return axios.get(`https://${pkg.apiUrl}/wp-json/api/v1/wc/product`).then(res => res.data.map(product => `/store/product/${product.slug}`))
   //   // }
   // }
 }

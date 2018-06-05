@@ -52,7 +52,7 @@
                 class="_mgbt-8px _mgh-8px"
               >
                 <a 
-                  :href="`/content/${item.post_name}`" 
+                  :href="`/learn/${item.post_name}`" 
                   target="_blank"
                   class="bio-link -fancy" 
                 >{{ item.post_title }}</a>
@@ -357,7 +357,7 @@ export default {
   },
   methods: {
     getPrereqLink(item) {
-      if (item.is_product) return `/shop/product/${item.product.post_name}`
+      if (item.is_product) return `/store/product/${item.product.post_name}`
       return `/tag/${item.tag_link[0].slug}`
     },
     checkMobile() {

@@ -2,37 +2,26 @@
   <div class="container">
     <div class="row _jtfct-ct">
       <div class="col-12 col-md-12 _mgv-12px">
-        <h5 class="_pdh-16px">ข้อมูลที่อยู่ในการจัดส่ง</h5>
-        <form 
-          @submit.stop.prevent="update">
-          <DeliveryAddress />
-          <div class="_w-100pct _pdh-12px">
-            <div 
-              v-if="errorMsg" 
-              class="bio-message -negative _mgbt-16px">
-              {{ errorMsg }}
-            </div>
-            <button class="bio-button _w-100pct -info -outline">
-              <h5>อัพเดท</h5>
-            </button>
-          </div>
-        </form>
+        <!-- <h5 class="_pdh-16px">ข้อมูลที่อยู่ในการจัดส่ง</h5> -->
+        <BillingAndShippingForm 
+          proceed-btn-title="บันทึก"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import DeliveryAddress from '~/components/forms/DeliveryAddress'
+import BillingAndShippingForm from '~/components/forms/BillingAndShippingForm'
 export default {
-  head () {
+  head() {
     const siteTitle = this.$store.state.site.title
-    return { 
+    return {
       title: `ที่อยู่ในการจัดส่ง ${siteTitle}`
     }
   },
   components: {
-    DeliveryAddress
+    BillingAndShippingForm
   },
   data: () => ({
     errorMsg: 'x'

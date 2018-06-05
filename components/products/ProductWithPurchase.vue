@@ -111,165 +111,164 @@
 </template>
 
 <script>
-  import BuyNow from '~/components/products/BuyNow'
-  import PurchaseOptions from '~/components/products/PurchaseOptions'
-  export default {
-    components: {
-      BuyNow,
-      PurchaseOptions
+import BuyNow from '~/components/products/BuyNow'
+import PurchaseOptions from '~/components/products/PurchaseOptions'
+export default {
+  components: {
+    BuyNow,
+    PurchaseOptions
+  },
+  props: {
+    productData: {
+      type: Object,
+      default: () => ({})
     },
-    props: {
-      productData: {
-        type: Object,
-        default: () => ({})
-      },
-      productId: {
-        type: Number,
-        default: 0
-      },
-      unit: {
-        type: String,
-        default: ''
-      },
-      image: {
-        type: String,
-        default: 'http://via.placeholder.com/600x450'
-      },
-      heading: {
-        type: String,
-        default: 'เฮด'
-      },
-      descriptionList: {
-        type: String,
-        default: ''
-      },
-      shortDescription: {
-        type: String,
-        default: ''
-      },
-      price: {
-        type: Number,
-        default: 0.00
-      },
-      url: {
-        type: String,
-        default: '/'
-      },
-      stockQuantity: {
-        type: Number,
-        default: 1
-      }
+    productId: {
+      type: Number,
+      default: 0
     },
-    data: () => ({
-      quantity: 1,
-      isBtnLoading: false,
-      collapsed: true
-    }),
-    methods: {
-      adjustQuantity (x) {
-        this.quantity = this.quantity + x
-      },
-      async addToCart () {
-        this.isBtnLoading = true
-        const added = await this.$store.dispatch('purchase/addToCart', {
-          id: this.productId,
-          quantity: this.quantity,
-          data: this.productData
-        })
-        this.isBtnLoading = false
-        // return alert('Added to cart')
-      },
-      async addToCartAndCheckout () {
-        // console.log(this.productId)
-        this.isBtnLoading = true
-        const added = await this.$store.dispatch('purchase/addToCart', {
-          id: this.productId,
-          quantity: 1,
-          data: this.productData
-        })
-        this.isBtnLoading = false
-        this.$router.push('/checkout')
-      }
-      
+    unit: {
+      type: String,
+      default: ''
     },
+    image: {
+      type: String,
+      default: 'http://via.placeholder.com/600x450'
+    },
+    heading: {
+      type: String,
+      default: 'เฮด'
+    },
+    descriptionList: {
+      type: String,
+      default: ''
+    },
+    shortDescription: {
+      type: String,
+      default: ''
+    },
+    price: {
+      type: Number,
+      default: 0.0
+    },
+    url: {
+      type: String,
+      default: '/'
+    },
+    stockQuantity: {
+      type: Number,
+      default: 1
+    }
+  },
+  data: () => ({
+    quantity: 1,
+    isBtnLoading: false,
+    collapsed: true
+  }),
+  methods: {
+    adjustQuantity(x) {
+      this.quantity = this.quantity + x
+    },
+    async addToCart() {
+      this.isBtnLoading = true
+      const added = await this.$store.dispatch('purchase/addToCart', {
+        id: this.productId,
+        quantity: this.quantity,
+        data: this.productData
+      })
+      this.isBtnLoading = false
+      // return alert('Added to cart')
+    },
+    async addToCartAndCheckout() {
+      // console.log(this.productId)
+      this.isBtnLoading = true
+      const added = await this.$store.dispatch('purchase/addToCart', {
+        id: this.productId,
+        quantity: 1,
+        data: this.productData
+      })
+      this.isBtnLoading = false
+      this.$router.push('/store/checkout')
+    }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  $aqua: #B4FFF0;
-  .item-container {
-    border-bottom: 7px solid #001DFF;
+$aqua: #b4fff0;
+.item-container {
+  border-bottom: 7px solid #001dff;
+}
+.p-options {
+  background-color: $aqua;
+}
+.image {
+  width: 100%;
+  // height: 350px;
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  &[lazy='loaded'] {
+    filter: drop-shadow(0mm 5mm 4mm rgba(0, 0, 0, 0.25));
   }
-  .p-options {
-    background-color: $aqua;
+}
+.-with-triangle {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: calc(50% - 30px);
+    bottom: 0px;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-bottom: 30px solid $aqua;
+    border-right: 30px solid transparent;
   }
-  .image {
-    width: 100%;
-    // height: 350px;
-    background-color: transparent;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    &[lazy=loaded] {
-      filter: drop-shadow(0mm 5mm 4mm rgba(0, 0, 0, .25));
-    }
+}
+.hexagon {
+  background-image: url(~/assets/images/icons/hexagon.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100px;
+  height: 100px;
+}
+.link div {
+  transition: 0.15s;
+  transform: scale(1);
+  &:hover {
+    transform: scale(1.1);
   }
-  .-with-triangle {
-    position: relative;
+}
+.-transparent {
+  background: transparent;
+  border: 0px;
+  padding: 0px;
+}
+.more-info {
+  position: relative;
+  padding-left: 32px;
+  transition: 0.2;
+  &.-collapsed {
     &::after {
-      content: '';
-      position: absolute;
-      left: calc(50% - 30px);
-      bottom: 0px;
-      width: 0;
-      height: 0;
-      border-left: 30px solid transparent;
-      border-bottom: 30px solid $aqua;
-      border-right: 30px solid transparent;
+      border-bottom: 0px solid #9914ff;
+      border-top: 10px solid #9914ff;
     }
   }
-  .hexagon {
-    background-image: url(~/assets/images/icons/hexagon.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 100px;
-    height: 100px;
-  }
-  .link div {
-    transition: 0.15s;
-    transform: scale(1);
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
-  .-transparent {
-    background: transparent;
-    border: 0px;
-    padding: 0px;
-  }
-  .more-info {
-    position: relative;
-    padding-left: 32px;
+  &::after {
     transition: 0.2;
-    &.-collapsed {
-      &::after {
-        border-bottom: 0px solid #9914FF;
-        border-top: 10px solid #9914FF;
-      }
-    }
-    &::after {
-      transition: 0.2;
-      content: '';
-      position: absolute;
-      left: 2px;
-      bottom: 8px;
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-bottom: 10px solid #9914FF;
-      border-right: 10px solid transparent;
-      border-radius: 4px;
-    }
+    content: '';
+    position: absolute;
+    left: 2px;
+    bottom: 8px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid #9914ff;
+    border-right: 10px solid transparent;
+    border-radius: 4px;
   }
+}
 </style>

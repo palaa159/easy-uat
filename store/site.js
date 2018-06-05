@@ -7,6 +7,7 @@ export const state = () => ({
   termCondition: [],
   privacyPolicy: [],
   returnPolicy: [],
+  countryCodes: {}
 })
 
 export const actions = {
@@ -16,10 +17,18 @@ export const actions = {
   }) {
     const {
       product_categories,
-      content_categories
+      content_categories,
+      country_codes
     } = await this.$axios.$get(urls.getSiteInit)
     commit('product/SET_CATEGORIES', product_categories, {
       root: true
     })
+    commit('SET_CC', country_codes)
+  }
+}
+
+export const mutations = {
+  SET_CC(state, cc) {
+    state.countryCodes = cc
   }
 }

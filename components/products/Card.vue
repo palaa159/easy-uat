@@ -1,7 +1,7 @@
 <template>
   <div class="card _bgcl-white _ovf-hd _bdrd-2px">
     <!-- Image -->
-    <nuxt-link :to="`/shop/product/${slug}`">
+    <nuxt-link :to="`/store/product/${slug}`">
       <div 
         v-lazy:background-image="image" 
         class="image _bgs-cv _bgpst-ct _bgrp-nrp" />
@@ -12,7 +12,7 @@
         class="_ovfy-hd" 
         style="height: 34px;">
         <nuxt-link 
-          :to="`/shop/product/${slug}`" 
+          :to="`/store/product/${slug}`" 
         >
           <h6 class="_lh-100pct _cl-neutral-800">{{ title | titleLang }}</h6>
         </nuxt-link>

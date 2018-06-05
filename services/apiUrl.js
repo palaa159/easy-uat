@@ -32,4 +32,5 @@ export default {
   getSlideshow: `${prefix}/wp/v2/slideshows`,
   getContent: `${prefix}/api/v1/content`,
   getProductsAndSubcats: `${prefix}/api/v1/wc/products_and_subcats_by_cat_slug`,
+  getCountryCodes: `${prefix}/api/v1/utils/countries`,
 }

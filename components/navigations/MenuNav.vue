@@ -7,8 +7,11 @@
         class="row _dp-n _dp-f-md _alit-ct">
         <!-- Left Menu -->
         <div class="col-6">
-          x
-        </div>
+          <nuxt-link 
+            to="/" 
+          >
+            <div class="logo _h-32px _bgrp-nrp _bgs-ct _bgpst-l"/>
+        </nuxt-link></div>
         <!-- Right Menu -->
         <div class="col-6 _dp-f _jtfct-spbtw">
           <nuxt-link 

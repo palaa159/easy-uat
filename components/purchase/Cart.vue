@@ -135,7 +135,7 @@
                   <strong>Product Added!</strong>
                 </div>
                 <nuxt-link 
-                  to="/checkout" 
+                  to="/store/checkout" 
                   class="bio-link">
                   Go to Checkout
                 </nuxt-link>
@@ -209,7 +209,7 @@ export default {
   methods: {
     proceed() {
       this.$store.commit('purchase/SET_CART_SHOW', false)
-      this.$router.replace({ path: '/checkout' })
+      this.$router.replace({ path: '/store/checkout' })
     }
   }
 }

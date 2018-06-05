@@ -1,8 +1,10 @@
 <template>
-  <div class="_dp-f _mgv-12px">
+  <div 
+    :class="{'is-processing': isProcessing}" 
+    class="_dp-f _mgv-12px item">
     <!-- Image -->
     <div 
-      v-lazy:background-image="pData.images && pData.images[0].src || ''"
+      v-lazy:background-image="pData.images && pData.images[0].src"
       class="image _f-2 _ratio" 
     />
     <!-- Detail -->
@@ -13,8 +15,9 @@
       <!-- Amount -->
       <div class="_w-100pct">
         <QuantityCalc
-          :quantity="parseInt(pData.quantity)" 
-          :line-total="pData.line_total"
+          :quantity="pData.quantity" 
+          :discounts="pData.discounts || {}"
+          :line-total="_lineTotal"
           :editable="editable"
           @adjust-item="onAdjust"
         />
@@ -27,7 +30,7 @@
     >
       <div 
         class="_cs-pt"
-        @click="$store.dispatch('purchase/removeFromCart', pData.key)">
+        @click="remove(pData.key)">
         ❌
       </div>
     </div>
@@ -54,17 +57,35 @@ export default {
       type: Object,
       default: () => ({
         id: 1,
-        title: 'เครื่องตรวจระดับนำตาลในเลือก SD CHECK GOLD',
+        title: 'aaa',
         price: 12000,
         image: 'http://via.placeholder.com/350x350',
         amount: 1
       })
     }
   },
+  data: () => ({
+    isProcessing: false
+  }),
+  computed: {
+    _lineTotal() {
+      return (
+        parseFloat(this.pData.total) ||
+        parseFloat(this.pData.line_total) ||
+        parseFloat(this.pData.price)
+      )
+    }
+  },
   // serverCacheKey: props => props.index,
   methods: {
+    async remove(key) {
+      this.isProcessing = true
+      await this.$store.dispatch('purchase/removeFromCart', key)
+      this.isProcessing = false
+    },
     async onAdjust(n) {
-      console.log(`on adjust: ${n}`)
+      // console.log(`on adjust: ${n}`)
+      this.isProcessing = true
       const cart = await this.$store.dispatch(
         'purchase/updateProductQuantity',
         {
@@ -72,16 +93,42 @@ export default {
           quantity: this.pData.quantity + n
         }
       )
-      // this.$store.commit('purchase/SET_PROD_CART_AMT', {
-      //   id: this.pData.id,
-      //   amount: this.pData.amount + n
-      // })
+      this.isProcessing = false
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.item {
+  &.is-processing {
+    position: relative;
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      z-index: 1;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: inline-block;
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-left-color: #7983ff;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: donut-spin 0.6s linear infinite;
+      z-index: 2;
+    }
+  }
+}
 .image {
   min-width: 64px;
   max-width: 150px;

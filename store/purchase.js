@@ -4,9 +4,12 @@ export const state = () => ({
   isCartShowing: false,
   isCartBubbleShowing: false,
   isCartProcessing: false,
+  isPurchasing: false,
   cart: {
     cart_contents: {}
-  }
+  },
+  gateways: [],
+  checkoutStep: 1
 })
 
 export const actions = {
@@ -51,13 +54,14 @@ export const actions = {
     keyId,
     quantity
   }) {
-    commit('SET_CART_PROCESSING', true)
-    const remain = await this.$axios.$put(urls.updateProductQuantity, {
+    const update = await this.$axios.$put(urls.updateProductQuantity, {
       id: keyId,
       quantity
     })
-    commit('SET_CART_PROCESSING', false)
-    return commit('SET_CART_CONTENT', remain)
+    if (update) {
+      const cart = await this.$axios.$get(`${urls.getCartContent}`)
+      return commit('SET_CART_CONTENT', cart)
+    }
   },
   async removeFromCart({
     commit
@@ -72,8 +76,17 @@ export const actions = {
 }
 
 export const mutations = {
+  SET_STEP(state, step) {
+    state.checkoutStep = step
+  },
+  SET_GATEWAYS(state, gateways) {
+    state.gateways = gateways
+  },
   CLEAR_CART(state) {
     state.items = []
+  },
+  SET_PURCHASING(state, bool) {
+    state.isPurchasing = bool
   },
   SET_CART_PROCESSING(state, bool) {
     state.isCartProcessing = bool
@@ -88,19 +101,23 @@ export const mutations = {
   SET_CART_SHOW(state, bool) {
     state.isCartShowing = bool
   },
-  SET_PROD_CART_AMT(state, obj = {
-    amount: 1,
-    id: 1
-  }) { // n = 1, -1
+  SET_PROD_CART_AMT(
+    state,
+    obj = {
+      amount: 1,
+      id: 1
+    }
+  ) {
+    // n = 1, -1
     let clonedItems = state.items
     // Find item by obj.id
-    const i = clonedItems.findIndex(x => x.id === obj.id)
+    const i = clonedItems.findIndex((x) => x.id === obj.id)
     clonedItems[i].amount = obj.amount
     state.items = clonedItems
   },
   REMOVE_PROD(state, id) {
     if (id) {
-      let clonedItems = state.items.filter(x => x.id !== id)
+      let clonedItems = state.items.filter((x) => x.id !== id)
       state.items = clonedItems
     }
   }

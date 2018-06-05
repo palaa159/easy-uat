@@ -5,7 +5,7 @@
         v-for="(x, i) in categories" 
         :key="i" 
         class="col-4 col-md _pd-4px">
-        <nuxt-link :to="`/shop/${x.slug}`">
+        <nuxt-link :to="`/store/${x.slug}`">
           <div 
             v-lazy:background-image="x.image || ''" 
             class="_h-128px _tal-ct _bgrp-nrp _bgs-ct _bgpst-ct _dp-f _alit-ct _jtfct-ct _cl-white _fw-700"/>
