@@ -149,7 +149,7 @@
                   v-lazy:background-image="currentImage" 
                   class="image _bgrp-nrp _bgs-cv _bgpst-ct"/>
                 <div class="container-fluid  _pd-0px">
-                  <div class="row _mgt-24px">
+                  <div class="row _mgt-12px">
                     <div 
                       v-for="(image, i) in gallery" 
                       :key="i" 
@@ -165,7 +165,7 @@
               </div>
               <!-- ราคา -->
               <!-- <h3>THB {{ currentProduct.regular_price | currency }}</h3> -->
-              <h6 class="_lh-100pct">ราคา:</h6>
+              <h6 class="_lh-100pct _mgbt-4px">ราคา:</h6>
               <h3 
                 v-if="currentProduct.price_html" 
                 class="_lh-100pct _fs-5 _fs-4-md"
@@ -192,61 +192,62 @@
                       <button 
                         :disabled="!product.variations.length"
                         :class="{'-white': selectedVariation !== vx, '-loading': !product.variations.length}"
-                        class="bio-button _w-100pct _mgbt-8px"
+                        class="bio-button _w-100pct _mgbt-8px _pdv-8px"
                         @click="selectedVariation = vx">
-                        <h5 class="_pdv-4px _tal-ct">{{ vx }}</h5>
+                        <div class="_fw-400 _tal-ct">{{ vx }}</div>
                       </button>
                     </div>
                   </div>
                 </div>
               </div> 
               <!-- Dimension and weight -->
-              <div>
+              <div class="row _mgt-12px">
                 <div 
                   v-if="currentProduct.dimensions.width" 
-                  class="_mgv-16px">
+                  class="col">
                   <h6 class="_lh-100pct">ขนาด (mm.): </h6>
-                  <p>{{ currentProduct.dimensions.width * 10 }} x {{ currentProduct.dimensions.length * 10 }} x {{ currentProduct.dimensions.height * 10 }}</p>
+                  <p class="_fs-7">{{ currentProduct.dimensions.width * 10 }} x {{ currentProduct.dimensions.length * 10 }} x {{ currentProduct.dimensions.height * 10 }}</p>
                 </div>
                 <div 
                   v-if="currentProduct.weight" 
-                  class="_mgv-16px">
+                  class="col">
                   <h6 class="_lh-100pct">น้ำหนัก (g.): </h6>
-                  <p>{{ (parseFloat(currentProduct.weight || 0)).toLocaleString() }}</p>
+                  <p class="_fs-7">{{ (parseFloat(currentProduct.weight || 0)).toLocaleString() }}</p>
                 </div>
-              </div>
-              <!-- Stock -->
-              <div 
-                v-if="currentProduct.in_stock" 
-                class="_mgv-16px _cl-accent">
-                <strong>มีสินค้า{{ currentProduct.stock_quantity? ':': '' }} {{ currentProduct.stock_quantity? currentProduct.stock_quantity + ' ชิ้น': '' }}</strong>
               </div>
               <!-- Add Cart -->
               <form @submit.stop.prevent="addToCart">
+                <!-- Stock -->
                 <div 
-                  :class="{'_bdcl-primary': !isDisabled, '_bdcl-gray': isDisabled}" 
-                  class="_dp-f _bdw-2px">
-                  <div class="_f-1 _dp-f _alit-ct _jtfct-ct _bgcl-white">
-                    <input 
-                      :disabled="isDisabled"
-                      v-model="quantity"
-                      :max="product.stock_quantity" 
-                      :class="{'_cl-primary': !isDisabled, '_cl-gray': isDisabled}"
-                      min="1"
-                      required
-                      class="_bgcl-white _bdw-0px _w-100pct _h-48px _tal-ct _pdl-12px" 
-                      type="number">
+                  v-if="_shouldShowQuantity" 
+                  class="_mgv-12px">
+                  <h6 class="_lh-100pct _mgbt-8px">เลือกจำนวน:</h6>
+                  <div class="bio-select">
+                    <select v-model="quantity">
+                      <option 
+                        disabled 
+                        value="">เลือกจำนวน</option>
+                      <option 
+                        v-for="i in currentProduct.stock_quantity" 
+                        :key="i" 
+                        :value="i"
+                      >{{ i }}</option>
+                    </select>
                   </div>
-                  <button 
-                    :class="{'_bgcl-primary': !isDisabled, '_bgcl-gray -loading -disabled': isDisabled}" 
-                    :disabled="isDisabled" 
-                    type="submit"
-                    class="_f-3 bio-button _bdrd-0px _bdw-0px _pd-12px _ttf-upc _tal-ct _cl-white _cs-pt">
-                    <h5 
-                      v-show="!isDisabled" 
-                      class="_ltspc-1px">หยิบใส่ตะกร้า</h5>
-                  </button>
                 </div>
+                <div 
+                  v-if="!currentProduct.in_stock" 
+                  class="_mgv-12px _cl-accent">
+                  <strong>ไม่มีสินค้า</strong>
+                </div>
+                <button 
+                  :class="{'_bgcl-primary': !isDisabled, '-disabled': isDisabled, '-loading': isBtnLoading}" 
+                  :disabled="isDisabled" 
+                  type="submit"
+                  class="bio-button _w-100pct _bdw-0px _bdcl-tpr _pdv-12px _cl-white">
+                  <h5 
+                    class="_ltspc-1px">หยิบใส่ตะกร้า</h5>
+                </button>
               </form>
               <!-- Extra contents -->
               <nav class="_mgv-16px">
@@ -364,6 +365,15 @@ export default {
         })
         return thisVar
       }
+    },
+    _shouldShowQuantity() {
+      if (!this.product.variations && this.currentProduct.in_stock) {
+        return true
+      }
+      if (this.product.variations && this.selectedVariation) {
+        return true
+      }
+      return false
     }
   },
   watch: {
@@ -462,7 +472,7 @@ export default {
   }
   &.active {
     div {
-      border: 3px solid rgba(0, 0, 0, 0.85);
+      border: 3px solid rgba(0, 0, 0, 0.55);
     }
   }
 }
