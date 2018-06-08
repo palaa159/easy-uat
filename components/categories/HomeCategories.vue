@@ -5,7 +5,9 @@
         v-for="(x, i) in categories" 
         :key="i" 
         class="col-4 col-md _pd-4px">
-        <nuxt-link :to="`/store/${x.slug}`">
+        <nuxt-link 
+          :to="`/store/${x.slug}`" 
+          class="bio-link">
           <div 
             v-lazy:background-image="x.image || ''" 
             class="_h-128px _tal-ct _bgrp-nrp _bgs-ct _bgpst-ct _dp-f _alit-ct _jtfct-ct _cl-white _fw-700"/>
@@ -13,15 +15,12 @@
         </nuxt-link>
       </div>
     </div>
+    <!-- {{ categories }} -->
   </div>
 </template>
 
 <script>
-import Card from '~/components/categories/Card'
 export default {
-  components: {
-    Card
-  },
   props: {
     categories: {
       type: Array,

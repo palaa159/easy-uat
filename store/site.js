@@ -20,10 +20,29 @@ export const actions = {
       content_categories,
       country_codes
     } = await this.$axios.$get(urls.getSiteInit)
-    commit('product/SET_CATEGORIES', product_categories, {
+    commit('product/SET_CATEGORIES', Object.values(product_categories), {
       root: true
     })
     commit('SET_CC', country_codes)
+    // Generate Menu Items
+    const primaryMenu = [{
+      title: 'MakerStore®',
+      path: '/store',
+      isSubMenuShowing: false,
+      subMenu: Object.values(product_categories)
+    }, {
+      title: 'Workshops',
+      path: '/workshop'
+    }, {
+      title: 'Learn',
+      path: '/learn'
+    }, {
+      title: 'About',
+      path: '/about'
+    }]
+    commit('menu/SET_MENU_ITEMS', primaryMenu, {
+      root: true
+    })
   }
 }
 

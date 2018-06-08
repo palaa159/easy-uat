@@ -5,7 +5,7 @@
         id="product-content" 
         class="col-12 col-md-9">
         <!-- Images -->
-        <div>
+        <div class="_dp-n _dp-b-md">
           <div 
             v-lazy:background-image="currentImage" 
             class="image _bgrp-nrp _bgs-cv _bgpst-ct"/>
@@ -135,23 +135,44 @@
             relative-element-selector="#product-content">
             <div>
               <h3 
-                class="_lh-100pct" 
+                class="_lh-100pct _fs-5 _fs-4-md" 
                 v-html="product.name"/>
               <p class="_cl-neutral-500">รหัสสินค้า: 
                 <span 
                   class="_ttf-upc" 
                   v-html="product.sku"/>
               </p>
+              <!-- Mobile Image -->
+              <!-- Images -->
+              <div class="_dp-b _dp-n-md _mgt-12px">
+                <div 
+                  v-lazy:background-image="currentImage" 
+                  class="image _bgrp-nrp _bgs-cv _bgpst-ct"/>
+                <div class="container-fluid  _pd-0px">
+                  <div class="row _mgt-24px">
+                    <div 
+                      v-for="(image, i) in gallery" 
+                      :key="i" 
+                      :class="{'active': imageIndex === i}"
+                      class="col-3 _mgbt-12px _cs-pt image-item"
+                      @click="selectGalleryImage(i)">
+                      <div 
+                        v-lazy:background-image="image.src" 
+                        class="_bgs-cv _bgpst-ct"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <!-- ราคา -->
               <!-- <h3>THB {{ currentProduct.regular_price | currency }}</h3> -->
               <h6 class="_lh-100pct">ราคา:</h6>
               <h3 
                 v-if="currentProduct.price_html" 
-                class="_lh-100pct"
+                class="_lh-100pct _fs-5 _fs-4-md"
                 v-html="currentProduct.price_html"/>
               <h3 
                 v-else 
-                class="_lh-100pct">{{ currentProduct.price | currency }}</h3>
+                class="_lh-100pct _fs-5 _fs-4-md">{{ currentProduct.price | currency }}</h3>
               <!-- If has variations -->
               <div 
                 v-if="product.variations.length" 
@@ -181,11 +202,15 @@
               </div> 
               <!-- Dimension and weight -->
               <div>
-                <div class="_mgv-16px">
+                <div 
+                  v-if="currentProduct.dimensions.width" 
+                  class="_mgv-16px">
                   <h6 class="_lh-100pct">ขนาด (mm.): </h6>
                   <p>{{ currentProduct.dimensions.width * 10 }} x {{ currentProduct.dimensions.length * 10 }} x {{ currentProduct.dimensions.height * 10 }}</p>
                 </div>
-                <div class="_mgv-16px">
+                <div 
+                  v-if="currentProduct.weight" 
+                  class="_mgv-16px">
                   <h6 class="_lh-100pct">น้ำหนัก (g.): </h6>
                   <p>{{ (parseFloat(currentProduct.weight || 0)).toLocaleString() }}</p>
                 </div>
@@ -193,7 +218,7 @@
               <!-- Stock -->
               <div 
                 v-if="currentProduct.in_stock" 
-                class="_mgbt-16px _cl-accent">
+                class="_mgv-16px _cl-accent">
                 <strong>มีสินค้า{{ currentProduct.stock_quantity? ':': '' }} {{ currentProduct.stock_quantity? currentProduct.stock_quantity + ' ชิ้น': '' }}</strong>
               </div>
               <!-- Add Cart -->

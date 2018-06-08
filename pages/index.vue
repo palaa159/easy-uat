@@ -12,8 +12,9 @@
         <div class="col-12">
           <h4 class="_pdv-12px">สินค้ามาใหม่</h4>
           <div>
-            <FeaturedProducts 
+            <ProductCardsColumn 
               :products="featuredProducts"
+              :limit="8"
             />
           </div>
         </div>
@@ -61,12 +62,12 @@
 <script>
 import Slideshow from '~/components/slideshows/Slideshow'
 import ContentSlideshow from '~/components/slideshows/ContentSlideshow'
-import FeaturedProducts from '~/components/products/FeaturedProducts'
+import ProductCardsColumn from '~/components/products/ProductCardsColumn'
 import HomeCategories from '~/components/categories/HomeCategories'
 export default {
   components: {
     Slideshow,
-    FeaturedProducts,
+    ProductCardsColumn,
     HomeCategories,
     ContentSlideshow
   },
@@ -86,21 +87,22 @@ export default {
     categories: [],
     contentSlides: []
   }),
-  created() {
-    // Call homepage slideshow
-    this.$store
-      .dispatch('content/getSlideshow', {
+  async asyncData({ store }) {
+    const promises = [
+      store.dispatch('content/getSlideshow', {
         slug: 'homepage-banner'
-      })
-      .then((topSlides) => (this.topSlides = topSlides))
-    this.$store
-      .dispatch('product/getFeaturedProducts')
-      .then((featuredProducts) => (this.featuredProducts = featuredProducts))
-    this.$store
-      .dispatch('content/getContent', { featured: true })
-      .then((contentSlides) => {
-        this.contentSlides = contentSlides
-      })
+      }),
+      store.dispatch('product/getFeaturedProducts'),
+      store.dispatch('content/getContent', { featured: true })
+    ]
+    const [topSlides, featuredProducts, contentSlides] = await Promise.all(
+      promises
+    )
+    return {
+      topSlides,
+      featuredProducts,
+      contentSlides
+    }
   }
 }
 </script>

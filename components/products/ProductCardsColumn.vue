@@ -1,23 +1,12 @@
 <template>
-  <!-- <div class="_ovfx-at wrapper _dp-f _pdbt-16px">
-    <Card
-      v-for="(x, i) in products" 
-      :key="i"
-      :title="x.name"
-      :image="x.image || x.images[0].src" 
-      :price="x.price_html"
-      :slug="x.slug"
-      class="_dp-ilb _mgr-24px"
-    />
-  </div> -->
   <div 
     v-if="products" 
     class="container-fluid _pd-0px">
     <div class="row">
       <div 
-        v-for="(p, i) in products" 
+        v-for="(p, i) in products.slice(0, limit)" 
         :key="i" 
-        class="col-6 col-md-3 col-lg-2 _mgbt-24px">
+        class="col-6 col-sm-4 col-md-2 _mgbt-24px">
         <Card
           :key="i"
           :title="p.name" 
@@ -40,6 +29,10 @@ export default {
     products: {
       type: Array,
       default: () => []
+    },
+    limit: {
+      type: Number,
+      default: 0
     }
   }
 }

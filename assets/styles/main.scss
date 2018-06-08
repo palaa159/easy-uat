@@ -203,6 +203,11 @@ $lg: 1200px;
   z-index: 0;
 }
 
+.bio-checkbox:not(.-switch)>label:after {
+  height: 7px;
+  width: 12px;
+}
+
 .product-description-list {
   ul {
     margin-left: 24px;

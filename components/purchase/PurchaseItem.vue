@@ -11,7 +11,7 @@
     <div class="_mgl-12px _dp-f _f-8 _fdrt-cl _jtfct-spbtw _pdv-4px _pdv-8px-md _pdh-2px _pdh-12px-md">
       <h6 
         class="_lh-100pct _mgbt-4px _ttf-upc" 
-        v-html="`${pData.name}${pData.variation_id? ' (' + pData.variations.find(x => x.id === pData.variation_id).sku + ')': ''}`" />
+        v-html="_title" />
       <!-- Amount -->
       <div class="_w-100pct">
         <QuantityCalc
@@ -74,6 +74,17 @@ export default {
         parseFloat(this.pData.line_total) ||
         parseFloat(this.pData.price)
       )
+    },
+    _title() {
+      return `${this.pData.name}${
+        this.pData.variation_id &&
+        this.pData.variations.find((x) => x.id === this.pData.variation_id)
+          ? ' (' +
+            this.pData.variations.find((x) => x.id === this.pData.variation_id)
+              .sku +
+            ')'
+          : ''
+      }`
     }
   },
   // serverCacheKey: props => props.index,

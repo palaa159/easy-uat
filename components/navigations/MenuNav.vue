@@ -1,28 +1,48 @@
 <template>
-  <div class="_pdv-8px _pdv-16px-md">
+  <div class="_pdv-8px _pdv-12px-md">
     <div class="container">
       <!-- Desktop Menu -->
       <div 
         v-if="items.length" 
         class="row _dp-n _dp-f-md _alit-ct">
         <!-- Left Menu -->
-        <div class="col-6">
+        <div class="col-3">
           <nuxt-link 
             to="/" 
           >
             <div class="logo _h-32px _bgrp-nrp _bgs-ct _bgpst-l"/>
-        </nuxt-link></div>
-        <!-- Right Menu -->
+          </nuxt-link>
+        </div>
+        <!-- Center Menu -->
         <div class="col-6 _dp-f _jtfct-spbtw">
-          <nuxt-link 
+          <div 
             v-for="(x, i) in items" 
-            :key="i"
-            :to="x.path"
-            exact
-            active-class="_cl-primary _fw-500"
-            class="_tal-ct menu-link" 
-          >
-            {{ x.title }}
+            :key="i" 
+            @mouseover="x.isSubMenuShowing = true"
+            @mouseout="x.isSubMenuShowing = false">
+            <nuxt-link 
+              :to="x.path"
+              exact
+              active-class="_cl-primary"
+              class="_tal-ct menu-link _fw-400 _fs-5"
+            >
+              {{ x.title }}
+            </nuxt-link>
+            <!-- MakerStore Dropdowns -->
+            <DesktopDropDownMenu 
+              v-if="x.subMenu && x.isSubMenuShowing"
+              :menus="x.subMenu"
+            />
+          </div>
+        </div>
+        <!-- Right Menu -->
+        <div class="col-3 _tal-r">
+          <nuxt-link 
+            to="/contact" 
+            active-class="_cl-primary"
+            class="_tal-ct menu-link _fw-400 _fs-5"
+            exact>
+            ติตต่อเรา
           </nuxt-link>
         </div>
         <!-- Logo -->
@@ -85,12 +105,17 @@
 </template>
 
 <script>
+import DesktopDropDownMenu from '~/components/extras/DesktopDropdownMenu'
+import clonedeep from 'lodash.clonedeep'
 export default {
+  components: {
+    DesktopDropDownMenu
+  },
   data: () => ({
     items: []
   }),
   created() {
-    this.items = this.$store.state.menu.primaryMenu
+    this.items = clonedeep(this.$store.state.menu.primaryMenu)
   }
 }
 </script>
@@ -189,7 +214,7 @@ export default {
 }
 .logo {
   background-image: url('~/assets/images/logo.png');
-  height: 48px;
+  height: 32px;
   margin: 0 auto;
 }
 .gradient-text {

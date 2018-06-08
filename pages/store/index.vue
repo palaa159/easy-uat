@@ -28,19 +28,6 @@
         </div>
       </div>
     </div>
-    <!-- สินค้ามาใหม่ -->
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <h4 class="_pdv-12px">สินค้ามาใหม่</h4>
-          <div>
-            <FeaturedProducts 
-              :products="featuredProducts"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- สินค้าตามหมวดหมู่ -->
     <div class="container">
       <div class="row _mgbt-24px">
@@ -49,6 +36,20 @@
           <div>
             <HomeCategories 
               :categories="$store.state.product.categories"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- สินค้ามาใหม่ -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h4 class="_pdv-12px">สินค้ามาใหม่</h4>
+          <div>
+            <ProductCardsColumn 
+              :products="featuredProducts"
+              :limit="12"
             />
           </div>
         </div>
@@ -76,7 +77,7 @@
 
 <script>
 import Slideshow from '~/components/slideshows/Slideshow'
-import FeaturedProducts from '~/components/products/FeaturedProducts'
+import ProductCardsColumn from '~/components/products/ProductCardsColumn'
 import ProductsInCategory from '~/components/categories/ProductsInCategory'
 import HomeCategories from '~/components/categories/HomeCategories'
 export default {
@@ -93,7 +94,7 @@ export default {
   },
   components: {
     Slideshow,
-    FeaturedProducts,
+    ProductCardsColumn,
     ProductsInCategory,
     HomeCategories
   },
@@ -103,21 +104,22 @@ export default {
     featuredProducts: [],
     searchKeyword: ''
   }),
-  created() {
-    this.$store.dispatch('product/getShopCategories').then((categories) => {
-      // console.log(categories)
-      this.categories = categories
-    })
-    this.$store
-      .dispatch('product/getFeaturedProducts')
-      .then((featuredProducts) => (this.featuredProducts = featuredProducts))
-  },
-  mounted() {
-    this.$store
-      .dispatch('content/getSlideshow', {
+  async asyncData({ store }) {
+    const promises = [
+      store.dispatch('product/getShopCategories'),
+      store.dispatch('product/getFeaturedProducts'),
+      store.dispatch('content/getSlideshow', {
         slug: 'shop-banner'
       })
-      .then((topSlides) => (this.topSlides = topSlides))
+    ]
+    const [categories, featuredProducts, topSlides] = await Promise.all(
+      promises
+    )
+    return {
+      categories,
+      featuredProducts,
+      topSlides
+    }
   }
 }
 </script>
