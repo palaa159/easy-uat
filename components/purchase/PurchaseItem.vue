@@ -3,15 +3,17 @@
     :class="{'is-processing': isProcessing}" 
     class="_dp-f _mgv-12px item">
     <!-- Image -->
-    <div 
-      v-lazy:background-image="_image"
-      class="image _f-2 _ratio" 
-    />
+    <nuxt-link 
+      v-lazy:background-image="_image" 
+      :to="`/store/product/${pData.slug}`"
+      class="_f-2 image _ratio"/>
     <!-- Detail -->
     <div class="_mgl-12px _dp-f _f-8 _fdrt-cl _jtfct-spbtw _pdv-4px _pdv-8px-md _pdh-2px _pdh-12px-md">
-      <h6 
-        class="_lh-100pct _mgbt-4px" 
-        v-html="_title" />
+      <nuxt-link :to="`/store/product/${pData.slug}`">        
+        <h6 
+          class="_lh-100pct _mgbt-4px _cl-neutral-800" 
+          v-html="_title" />
+      </nuxt-link>
       <!-- Amount -->
       <div class="_w-100pct">
         <QuantityCalc
@@ -69,7 +71,10 @@ export default {
   }),
   computed: {
     _image() {
-      if (!this.pData.variation_id) {
+      if (this.pData.order_id) {
+        return this.pData.images && this.pData.images[0].src
+      }
+      if (!this.pData.variation) {
         return this.pData.images && this.pData.images[0].src
       }
       if (this.pData.variations) {

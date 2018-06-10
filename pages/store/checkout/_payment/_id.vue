@@ -31,9 +31,9 @@
             <strong>กรุณาโอนเงินมาเลขบัญชีดังต่อไปนี้:</strong>
             <div class="bio-message -primary _mgv-16px">
               <h6 class="_lh-125pct">
-                Siam Commercial Bank<br>
-                xxxจำกัด<br>
-                2222-222-222
+                {{ $store.state.site.bankTransfer.name }}<br>
+                {{ $store.state.site.bankTransfer.accountTitle }}<br>
+                {{ $store.state.site.bankTransfer.number }}
               </h6>
             </div>
             <strong>แจ้งหลักฐานการโอนเงินได้ <nuxt-link 

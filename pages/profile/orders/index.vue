@@ -51,11 +51,13 @@ export default {
   data: () => ({
     orders: []
   }),
-  async mounted() {
+  async asyncData({ store }) {
     // Fetch all orders
-    const orders = await this.$store.dispatch('order/getOrders')
+    const orders = await store.dispatch('order/getOrders')
     // console.log(orders)
-    this.orders = orders
+    return {
+      orders
+    }
   },
   layout: 'profile'
 }

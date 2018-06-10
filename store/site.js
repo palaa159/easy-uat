@@ -8,7 +8,12 @@ export const state = () => ({
   termCondition: [],
   privacyPolicy: [],
   returnPolicy: [],
-  countryCodes: {}
+  countryCodes: {},
+  bankTransfer: {
+    name: 'Siam Commercial Bank',
+    accountTitle: 'บริษัท',
+    number: '408-648180-4'
+  }
 })
 
 export const actions = {

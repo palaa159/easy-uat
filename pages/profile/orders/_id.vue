@@ -129,14 +129,13 @@ export default {
   data: () => ({
     order: {}
   }),
-  async mounted() {
+  async asyncData({ store, params }) {
     // Fetch order
-    const order = await this.$store.dispatch(
-      'order/getOrder',
-      this.$route.params.id
-    )
+    const order = await store.dispatch('order/getOrder', params.id)
     // console.log(order)
-    this.order = order
+    return {
+      order
+    }
   },
   methods: {
     async successUpload(url) {

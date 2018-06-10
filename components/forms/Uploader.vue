@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <input
       ref="input" 
@@ -9,9 +8,9 @@
       @change="detectFiles($event.target.files)">
     <div 
       :class="{'uploading': progressUpload > 0 && progressUpload < 100, 'uploaded': progressUpload === 100}"
-      class="button-wrapper _mgt-24px _mgbt-8px _dp-f _alit-ct">
+      class="button-wrapper _mgt-24px _mgbt-8px _dp-f _alit-ct _w-100pct">
       <button 
-        class="bio-button -info -outline" 
+        class="bio-button -primary -outline" 
         type="button"
         @click="$refs.input.click()"
       >
@@ -44,7 +43,7 @@ export default {
       default: 'no_id'
     }
   },
-  data () {
+  data() {
     return {
       progressUpload: 0,
       file: File,
@@ -53,80 +52,87 @@ export default {
     }
   },
   watch: {
-    uploadTask: function() {
-      this.uploadTask.on('state_changed', sp => {
-        this.progressUpload = Math.floor(sp.bytesTransferred / sp.totalBytes * 100)
+    uploadTask() {
+      this.uploadTask.on('state_changed', (sp) => {
+        this.progressUpload = Math.floor(
+          sp.bytesTransferred / sp.totalBytes * 100
+        )
       })
     }
   },
   methods: {
-    detectFiles (fileList) {
-      Array.from(Array(fileList.length).keys()).map( x => {
+    detectFiles(fileList) {
+      Array.from(Array(fileList.length).keys()).map((x) => {
         this.upload(fileList[x])
       })
     },
-    upload (file) {
-      console.log(file)
+    upload(file) {
+      // console.log(file)
       const fileType = file.type.split('/')[1]
-      console.log(fileType)
-      this.uploadTask = Firebase.storage().ref().child(`order_payment_slip/${this.orderId}.${fileType}`).put(file)
-      this.uploadTask.then(snapshot => {
+      // console.log(fileType)
+      this.uploadTask = firebase
+        .storage()
+        .ref()
+        .child(`order_payment_slip/${this.orderId}.${fileType}`)
+        .put(file)
+      this.uploadTask.then((snapshot) => {
         this.downloadURL = this.uploadTask.snapshot.downloadURL
         this.$emit('url', this.downloadURL)
       })
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-  .button-wrapper {
+.button-wrapper {
+  outline: none;
+  position: relative;
+  transition: 0.25s;
+  height: 48px;
+  overflow: hidden;
+  button {
     outline: none;
-    position: relative;
     transition: 0.25s;
-    height: 48px;
-    overflow: hidden;
+    width: 50%;
+    margin: 0 auto;
+    .check {
+      display: none;
+    }
+  }
+  .fill {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-color: #4dc4ff;
+    height: 6px;
+    transition: 0.25s;
+  }
+  &.uploading {
     button {
-      outline: none;
-      transition: 0.25s;
-      width: 50%;
-      margin: 0 auto;
-      .check {
+      height: 8px;
+      padding: 0px;
+      border-radius: 8px;
+      width: 75%;
+      p {
         display: none;
       }
     }
-    .fill {
-      position: absolute;
-      left: 0px;
-      top: 0px;
+  }
+  &.uploaded {
+    button {
       background-color: #4dc4ff;
-      height: 6px;
-      transition: 0.25s;
-    }
-    &.uploading {
-      button {
-        height: 8px;
-        padding: 0px;
-        border-radius: 8px;
-        width: 75%;
-        p {
-          display: none;
-        }
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      p,
+      .fill {
+        display: none;
       }
-    }
-    &.uploaded {
-      button {
-        background-color: #4dc4ff;
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        p, .fill {
-          display: none;
-        }
-        .check {
-          display: inline-block;
-        }
+      .check {
+        display: inline-block;
       }
     }
   }
+}
 </style>

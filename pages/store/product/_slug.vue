@@ -367,10 +367,13 @@ export default {
       }
     },
     _shouldShowQuantity() {
-      if (!this.product.variations && this.currentProduct.in_stock) {
+      if (
+        this.product.variations.length === 0 &&
+        this.currentProduct.in_stock
+      ) {
         return true
       }
-      if (this.product.variations && this.selectedVariation) {
+      if (this.product.variations.length > 0 && this.selectedVariation) {
         return true
       }
       return false

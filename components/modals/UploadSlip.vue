@@ -9,6 +9,7 @@
     width="95%" 
     height="auto" 
     @before-open="beforeOpen"
+    @closed="onClosed"
   >
     <div class="container _pdv-16px">
       <div class="row">
@@ -23,7 +24,7 @@
           <p class="_mgt-16px _tal-ct">
             <span>รายการ #{{ orderId }}</span>
             <br>
-            <span>จำนวนเงิน: THB {{ amount }}</span>
+            <span>จำนวนเงิน: THB {{ amount | currency }}</span>
           </p>
         </div>
       </div>
@@ -34,6 +35,17 @@
             :order-id="orderId"
             @url="getUrl"
           />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="bio-message -primary _mgv-16px">
+            <h6 class="_lh-125pct">
+              {{ $store.state.site.bankTransfer.name }}<br>
+              {{ $store.state.site.bankTransfer.accountTitle }}<br>
+              {{ $store.state.site.bankTransfer.number }}
+            </h6>
+          </div>
         </div>
       </div>
     </div>
@@ -51,14 +63,17 @@ export default {
     amount: 0
   }),
   methods: {
-    beforeOpen (event) {
+    beforeOpen(event) {
       this.orderId = event.params.orderId
       this.amount = event.params.amount
       // console.log(event.params.orderId);
     },
-    getUrl (url) {
+    getUrl(url) {
       // console.log(url)
       this.$emit('success', url)
+    },
+    onClosed() {
+      return window.location.reload()
     }
   }
 }
