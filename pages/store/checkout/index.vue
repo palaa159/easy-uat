@@ -32,12 +32,6 @@
                 @success="updateAddressSuccess"
               />
             </div>
-            <!-- <div v-else>
-              <nuxt-link 
-                to="/login?redirect=/checkout">
-                <button class="bio-button -info _h-48px _mgt-12px _pdh-24px ">เข้าสู่ระบบเพื่อกรอกข้อมูล</button>
-              </nuxt-link> 
-            </div> -->
           </Accordion>
         </div>
       </div>
@@ -63,14 +57,10 @@ import PurchaseItem from '~/components/purchase/PurchaseItem'
 import BillingAndShippingForm from '~/components/forms/BillingAndShippingForm'
 import Summary from '~/components/purchase/Summary'
 export default {
-  async asyncData({ store }) {
-    store.commit('purchase/SET_STEP', 1)
-    return await store.dispatch('site/getCountryCodes')
-  },
   head() {
     const siteTitle = this.$store.state.site.title
     return {
-      title: `Checkout ${siteTitle}`
+      title: `Store Checkout ${siteTitle}`
     }
   },
   layout: 'checkout',
@@ -101,7 +91,7 @@ export default {
   },
   methods: {
     async updateAddressSuccess() {
-      return this.$router.push('/checkout/payment')
+      return this.$router.push('/store/checkout/payment')
     }
   }
 }

@@ -36,7 +36,7 @@ export default {
   created() {
     if (process.browser) {
       if (this.isSticky) {
-        window.addEventListener('scroll', db(this.handleScroll, 20))
+        window.addEventListener('scroll', this.handleScroll)
       }
     }
   },

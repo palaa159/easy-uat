@@ -1,46 +1,56 @@
 <template>
   <div class="container">
-    <!--  -->
+    <!-- Back -->
+    <div class="row">
+      <div class="col-12 _mgbt-16px">
+        <nuxt-link 
+          to="/store/checkout" 
+          class="bio-link -fancy">
+          <fa-icon icon="long-arrow-alt-left"/>
+          กลับไปยังหน้าก่อน
+        </nuxt-link>
+      </div>
+    </div>
+    <!-- Payment Methods -->
     <div class="row">
       <div class="col-12 col-md-8">
+        <!-- New UI -->
         <div class="_pd-16px _bgcl-white">
-          <!-- Tabs -->
-          <div class="tab-container">
-            <div class="_dp-f tab-buttons">
-              <div
-                v-for="(x, i) in methods"
-                :key="i"
-                :class="{'active': $route.query.method === x.slug}"
-                class="_f-2 _f-2-md tab _cs-pt _tal-ct"
-                @click="$router.replace({ query: { method: x.slug } })" 
+          <h5 class="_mgh-12px _mgbt-16px">กรุณาเลือกช่องทางการชำระเงิน</h5>
+          <div
+            v-for="(x, i) in methods"
+            :key="i"
+            class="_f-2 _f-2-md tab _cs-pt _pdh-12px _pdv-16px _bdtw-1px _bdcl-neutral-400"
+            @click="$router.replace({ query: { method: x.id } })" 
+          >
+            <div class="bio-radio">
+              <input 
+                :id="x.id" 
+                :checked="$route.query.method === x.id" 
+                :name="x.id" 
+                type="radio"
               >
-                {{ x.title }}
-              </div>
-              <div class="_f-0 _dp-n _dp-b-md _f-5-md tab">
-                &nbsp;
+              <label :for="x.id">
+                <h5 class="_pdl-4px _fw-300">{{ x.title }}</h5>
+                <p class="_pdl-4px"/>
+              </label>
+              <div class="_pdl-24px">
+                <BankTransfer 
+                  v-if="x.id === 'bacs' && $route.query.method === $store.state.purchase.gateways[0].id" 
+                  @pay-bank-transfer="confirmPayBankTransfer"/>
+                <CreditCard 
+                  v-if="x.id === 'omise' && $route.query.method === 'omise'" 
+                  @pay-credit-card="confirmPayCard" />
               </div>
             </div>
-          </div>
-          <!-- Content -->
-          <div class="_pdt-24px _pdbt-12px">
-            <div class="_pdt-16px _pdbt-32px">
-              <BankTransfer v-if="$route.query.method === 'bank-transfer'" />
-              <CreditCard v-else />
-            </div>
-            <!-- Submit Button -->
-            <no-ssr>
-              <button 
-                class="bio-button _w-100pct _w-50pct-md -positive" 
-                @click="pay()">
-                <h5>สั่งซื้อ</h5>
-              </button>
-            </no-ssr>
           </div>
         </div>
+
       </div>
       <div class="col-12 col-md-4">
         <Summary 
-          :items="$store.state.purchase.items"
+          :cart="this.$store.state.purchase.cart"
+          :items="Object.keys($store.state.purchase.cart.cart_contents).map(e => $store.state.purchase.cart.cart_contents[e])"
         />
       </div>
     </div>
@@ -72,48 +82,91 @@ export default {
     BankTransfer,
     CreditCard
   },
+  async asyncData({ app, store }) {
+    // Get payment gateways
+    store.commit('purchase/SET_STEP', 2)
+    const gateways = await store.dispatch('purchase/getPaymentGateways')
+    if (gateways) {
+      return store.commit(
+        'purchase/SET_GATEWAYS',
+        gateways.filter((x) => x.enabled)
+      )
+    }
+  },
   head() {
     const siteTitle = this.$store.state.site.title
     return {
       title: `การชำระเงิน ${siteTitle}`
     }
   },
-  data: () => ({
-    methods: [
-      {
-        title: 'โอนเงินผ่านธนาคาร',
-        slug: 'bank-transfer'
-      },
-      {
-        title: 'บัตรเครดิต / เดบิต',
-        slug: 'credit-card'
-      }
-    ]
-  }),
   layout: 'checkout',
-  watch: {
-    '$route.query'() {
-      return this.checkQuery()
+  computed: {
+    methods() {
+      return this.$store.state.purchase.gateways
     }
   },
-  // Validate query
-  created() {
-    return this.checkQuery()
+  watch: {
+    '$route.query': {
+      handler: 'checkQuery',
+      immediate: true
+    },
+    '$store.state.purchase.cart.cart_contents'() {
+      if (!Object.keys(this.$store.state.purchase.cart.cart_contents).length) {
+        this.$router.replace({ path: '/' })
+      }
+    }
   },
   methods: {
     checkQuery() {
-      if (
-        !(
-          this.$route.query.method === 'bank-transfer' ||
-          this.$route.query.method === 'credit-card'
-        )
-      ) {
-        return this.$router.replace({ query: { method: 'bank-transfer' } })
-      }
+      // if (this.$route.query.method && )
+      let gws = this.$store.state.purchase.gateways.map((x) => x.id)
+      if (gws.indexOf(this.$route.query.method) === -1)
+        return this.$router.replace({
+          query: { method: this.$store.state.purchase.gateways[0].id }
+        })
     },
-    pay() {
-      let id = 'e3T8q4'
-      return this.$router.replace(`/store/checkout/payment/${id}`)
+    async pay(cardDetail) {
+      // Freeze page
+      // console.log(cardDetail)
+      const res = await this.$store.dispatch(
+        'purchase/payByCreditCard',
+        cardDetail
+      )
+      if (res.id && res.data && res.data.customer_id) {
+        this.$store.commit('purchase/SET_PURCHASING', false)
+        return (window.location.href = `/checkout/payment/${res.id}`)
+      }
+      this.$store.commit('purchase/SET_PURCHASING', false)
+      // success or fail with message
+      // Take a minute, do not close this page
+      // Create order from cart
+      // let id = 'e3T8q4'
+      // return this.$router.replace(`/checkout/payment/${id}`)
+    },
+    confirmPayCard(cardDetail) {
+      const x = window.confirm('ยืนยันวิธีการชำระเงิน')
+      if (x === true) return this.pay(cardDetail)
+    },
+    async confirmPayBankTransfer() {
+      const x = window.confirm('ยืนยันวิธีการชำระเงิน')
+      if (x === true) {
+        this.$store.commit('purchase/SET_PURCHASING', true)
+        this.isBtnLoading = true
+        const res = await this.$store.dispatch('order/createOrder', {
+          method: this.$store.state.purchase.gateways.find(
+            (g) => g.id === 'bacs'
+          )
+        })
+        // console.log(res)
+        this.isBtnLoading = false
+        if (res.id && res.data && res.data.customer_id) {
+          this.$store.commit('purchase/SET_PURCHASING', false)
+          return (window.location.href = `/store/checkout/payment/${res.id}`)
+        }
+        this.$store.commit('purchase/SET_PURCHASING', false)
+        // Throw error
+        window.alert('Error payment')
+      }
     }
   }
 }

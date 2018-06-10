@@ -8,7 +8,7 @@
           class="_pdv-8px">
           <nuxt-link 
             :to="`/store/${item.slug}`"
-            class="bio-link _cl-neutral-700" 
+            class="_pdv-8px bio-link _cl-neutral-700 _cl-neutral-800-hover" 
           >
             {{ item.name }}
           </nuxt-link>

@@ -3,13 +3,15 @@
     <div class="_w-100pct">
       <h3 
         class="_tal-ct _mgv-24px" 
-        v-html="res.category.name"/>
+        v-html="_parentCatName.name"/>
     </div>
-    <div class="container">
+    <div 
+      v-if="_subCategories" 
+      class="container">
       <div class="row">
         <div class="col-12">
           <div 
-            v-for="(cat, i) in res.subcategories" 
+            v-for="(cat, i) in _subCategories" 
             :key="i" 
             class="row _mgv-16px">
             <div class="col-12">
@@ -55,6 +57,7 @@
 <script>
 import ProductsInCategory from '~/components/categories/ProductsInCategory'
 import Card from '~/components/products/Card'
+import groupBy from 'lodash/groupBy'
 export default {
   components: {
     ProductsInCategory,
@@ -62,11 +65,22 @@ export default {
   },
   async asyncData({ store, params }) {
     const res = await store.dispatch(
-      'category/getProductsAndSubcats',
+      'product/getProductsByCatSlug',
       params.catSlug
     )
     return {
       res
+    }
+  },
+  computed: {
+    _parentCatName() {
+      return this.$store.state.product.categories.find(
+        (x) => x.slug === this.$route.params.catSlug
+      )
+    },
+    _subCategories() {
+      // Group by Subcats
+      return this._parentCatName.subcategories
     }
   }
 }

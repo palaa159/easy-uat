@@ -106,7 +106,7 @@
 
 <script>
 import DesktopDropDownMenu from '~/components/extras/DesktopDropdownMenu'
-import clonedeep from 'lodash.clonedeep'
+import cloneDeep from 'lodash.clonedeep'
 export default {
   components: {
     DesktopDropDownMenu
@@ -115,7 +115,7 @@ export default {
     items: []
   }),
   created() {
-    this.items = clonedeep(this.$store.state.menu.primaryMenu)
+    this.items = cloneDeep(this.$store.state.menu.primaryMenu)
   }
 }
 </script>

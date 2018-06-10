@@ -17,7 +17,7 @@
           <div 
             v-for="(item, i) in items" 
             :key="i"
-            class="_dp-f">
+            class="_dp-f _pdv-4px">
             <div class="_f-4 _fs-7 _pdl-24px">
               {{ item.name }}
             </div>
@@ -73,7 +73,7 @@
     <!-- เข้าสู่ระบบ -->
     <nuxt-link 
       v-if="!$store.state.auth.user" 
-      to="/login?redirect=/checkout">
+      to="/login?redirect=/store/checkout">
       <button class="bio-button _h-48px _mgt-12px -info _w-100pct">เข้าสู่ระบบ</button>
     </nuxt-link> 
   </div>

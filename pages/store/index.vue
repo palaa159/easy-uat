@@ -1,15 +1,27 @@
 <template>
   <div class="_w-100pct">
     <!-- Slide -->
-    <div class="_w-100pct _bgcl-gray _h-256px _h-512px-md">
+    <!-- <div class="_w-100pct _bgcl-gray _h-256px _h-512px-md">
       <Slideshow
         :slides="topSlides"
       />
+    </div> -->
+    <!-- สินค้าตามหมวดหมู่ -->
+    <div class="container">
+      <div class="row _mgv-24px _jtfct-ct">
+        <div class="col-12 col-md-10">
+          <div>
+            <HomeCategories 
+              :categories="$store.state.product.categories"
+            />
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Search -->
     <div class="container">
       <div class="row _jtfct-ct">
-        <div class="col-12 col-md-10 _mgt-48px _mgbt-32px">
+        <div class="col-12 col-md-10 _mgt-24px _mgbt-32px">
           <form 
             class="_dp-f _w-100pct _alit-ct" 
             @submit.stop.prevent="submit">
@@ -25,19 +37,6 @@
               type="submit" 
               class="_f-1 _h-48px bio-button -dark">ค้นหา</button>
           </form>
-        </div>
-      </div>
-    </div>
-    <!-- สินค้าตามหมวดหมู่ -->
-    <div class="container">
-      <div class="row _mgbt-24px">
-        <div class="col-12">
-          <h4 class="_pdv-12px">ดูสินค้าตามหมวดหมู่</h4>
-          <div>
-            <HomeCategories 
-              :categories="$store.state.product.categories"
-            />
-          </div>
         </div>
       </div>
     </div>
@@ -85,10 +84,14 @@ export default {
   head() {
     const siteTitle = this.$store.state.site.title
     return {
-      title: `Shop ${siteTitle}`,
+      title: `MakerStore® ${siteTitle}`,
       meta: [
-        { hid: 'og:title', property: 'og:title', content: `Shop` },
-        { hid: 'og:description', name: 'og:description', content: `Shop` }
+        { hid: 'og:title', property: 'og:title', content: `MakerStore®` },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: `MakerStore®`
+        }
       ]
     }
   },

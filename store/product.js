@@ -29,7 +29,7 @@ export const actions = {
     return cats
   },
   async getProductsByCatSlug({}, catSlug) {
-    const products = await this.$axios.$get(`${urls.getProductsByCatSlug}?catSlug=${encodeURI(catSlug)}`)
+    const products = await this.$axios.$get(`${urls.getProduct}?category=${encodeURI(catSlug)}`)
     return products
   },
   async getShopCategories({}) {

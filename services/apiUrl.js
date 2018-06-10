@@ -13,6 +13,7 @@ export default {
   /* User */
   updateBasicProfile: `${prefix}/api/v1/user/me`, // PUT
   customer: `${prefix}/api/v1/user/customer`,
+  address: `${prefix}/api/v1/user/address`, // PUT
   getUserMe: `${prefix}/wp/v2/users/me?context=edit`, // PUT
   // getUserMe: `${prefix}/api/v1/user`,
   /* Categories with subcats */
@@ -28,6 +29,12 @@ export default {
   updateProductQuantity: `${prefix}/api/v1/wc-auth/cart/update`, // PUT
   clearCart: `${prefix}/api/v1/wc-auth/cart/clear`, // POST
   removeFromCart: `${prefix}/api/v1/wc-auth/cart/remove`,
+  // Order
+  order: `${prefix}/api/v1/wc-auth/order`,
+  subscription: `${prefix}/api/v1/wc-auth/subscription`,
+  chargeCredit: `${prefix}/api/v1/wc-auth/order_credit_charge`,
+  // Payments
+  payment: `${prefix}/api/v1/wc/payment`,
   // Other assets
   getSlideshow: `${prefix}/wp/v2/slideshows`,
   getContent: `${prefix}/api/v1/content`,

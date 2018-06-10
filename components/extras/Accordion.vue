@@ -12,7 +12,7 @@
     <slide-y-up-transition>
       <div 
         v-show="isShowing"
-        class="content _mgt-24px">
+        class="content">
         <slot name="content"/>
       </div>
     </slide-y-up-transition>

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row _mgt-32px special-row">
+    <div class="row _mgt-24px special-row">
       <div 
         id="product-content" 
         class="col-12 col-md-9">
@@ -9,13 +9,13 @@
           <div 
             v-lazy:background-image="currentImage" 
             class="image _bgrp-nrp _bgs-cv _bgpst-ct"/>
-          <div class="container-fluid  _pd-0px">
-            <div class="row _mgv-24px">
+          <div class="container-fluid _pdv-0px _pdh-8px">
+            <div class="row _mgv-12px">
               <div 
                 v-for="(image, i) in gallery" 
                 :key="i" 
                 :class="{'active': imageIndex === i}"
-                class="col-4 col-md-2 _mgbt-12px _cs-pt image-item"
+                class="col-4 col-md-2 _mgbt-12px _cs-pt image-item _pdh-4px"
                 @click="selectGalleryImage(i)">
                 <div 
                   v-lazy:background-image="image.src" 
@@ -148,13 +148,13 @@
                 <div 
                   v-lazy:background-image="currentImage" 
                   class="image _bgrp-nrp _bgs-cv _bgpst-ct"/>
-                <div class="container-fluid  _pd-0px">
+                <div class="container-fluid _pdv-0px _pdh-8px">
                   <div class="row _mgt-12px">
                     <div 
                       v-for="(image, i) in gallery" 
                       :key="i" 
                       :class="{'active': imageIndex === i}"
-                      class="col-3 _mgbt-12px _cs-pt image-item"
+                      class="col-3 _mgbt-12px _cs-pt image-item _pdh-4px"
                       @click="selectGalleryImage(i)">
                       <div 
                         v-lazy:background-image="image.src" 
@@ -463,7 +463,7 @@ export default {
   }
 }
 .image {
-  padding-top: 75%;
+  padding-top: 70%;
 }
 .image-item {
   div {

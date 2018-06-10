@@ -5,8 +5,9 @@
     <div class="row">
       <div 
         v-for="(p, i) in products.slice(0, limit)" 
-        :key="i" 
-        class="col-6 col-sm-3 col-md-2 _mgbt-24px">
+        :key="i"
+        :class="_class" 
+        class="_mgbt-24px">
         <Card
           :key="i"
           :title="p.name" 
@@ -33,6 +34,10 @@ export default {
     limit: {
       type: Number,
       default: 0
+    },
+    _class: {
+      type: String,
+      default: 'col-6 col-sm-3 col-md-2'
     }
   }
 }

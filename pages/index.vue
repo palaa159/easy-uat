@@ -9,25 +9,31 @@
     <!-- สินค้ามาใหม่ -->
     <div class="container">
       <div class="row">
-        <div class="col-12">
-          <h4 class="_pdv-12px">สินค้ามาใหม่</h4>
+        <div class="col-12 col-md-3">
+          <h6 class="_pdv-16px">ดูสินค้าตามหมวดหมู่</h6>
+          <div class="row">
+            <nuxt-link 
+              v-for="(item, i) in $store.state.product.categories" 
+              :to="`/store/${item.slug}`"
+              :key="i"
+              class="bio-link _cl-neutral-600 _cl-neutral-800-hover col-6 col-md-12">
+              <div 
+                class="_dp-f _alit-ct _pdv-8px _bdbtw-1px _bdcl-neutral-300 _bdcl-neutral-600-hover">
+                <div 
+                  v-lazy:background-image="item.image || ''" 
+                  class="_h-24px _bgrp-nrp _bgs-ct _bgpst-l _f-1"/>
+                <h6 class="_lh-100pct _f-4">{{ item.name }}</h6>
+              </div>
+            </nuxt-link>
+          </div>
+        </div>
+        <div class="col-12 col-md-9">
+          <h6 class="_pdv-16px">สินค้ามาใหม่</h6>
           <div>
             <ProductCardsColumn 
               :products="featuredProducts"
               :limit="8"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- สินค้าตามหมวดหมู่ -->
-    <div class="container">
-      <div class="row _mgbt-24px">
-        <div class="col-12">
-          <h4 class="_pdv-12px">ดูสินค้าตามหมวดหมู่</h4>
-          <div>
-            <HomeCategories 
-              :categories="$store.state.product.categories"
+              _class="col-6 col-md-3"
             />
           </div>
         </div>
@@ -37,7 +43,7 @@
     <div class="_w-100pct _bgcl-gray">
       <div class="container">
         <div class="row">
-          <div class="col-12">
+          <div class="col-12 _pdbt-24px">
             <h4 class="_pdt-12px">คอนเท๊นต์</h4>
             <!-- Agile -->
             <ContentSlideshow

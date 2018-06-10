@@ -18,7 +18,9 @@
             <span>
               {{ x.title }}
             </span>
-            <fa-icon :icon="x.icon"/>
+            <span class="_w-16px _tal-ct">
+              <fa-icon :icon="x.icon"/>
+            </span>
           </div>
         </nuxt-link>
       </div>
@@ -42,49 +44,51 @@ export default {
   data: () => ({
     items: []
   }),
-  mounted () {
-    this.items = [{
-      path: '/profile',
-      title: 'ข้อมูลบัญชี',
-      icon: 'user'
-    }, {
-      path: '/profile/orders',
-      title: 'รายการสั่งซื้อของฉัน',
-      icon: 'clipboard-list'
-    }, {
-      path: '/profile/address',
-      title: 'ข้อมูลการจัดส่ง',
-      icon: 'truck'
-    }, {
-      path: '/profile/credit-card',
-      title: 'บัตรเครดิตของฉัน',
-      icon: 'credit-card'
-    }, {
-      path: '/profile/refund',
-      title: 'รายการส่งคืน',
-      icon: 'undo-alt'
-    }, {
-      path: '/profile/logout',
-      title: 'ออกจากระบบ',
-      icon: 'sign-out-alt'
-    }]
+  mounted() {
+    this.items = [
+      {
+        path: '/profile',
+        title: 'ข้อมูลบัญชี',
+        icon: ['fal', 'user']
+      },
+      {
+        path: '/profile/orders',
+        title: 'รายการสั่งซื้อของฉัน',
+        icon: ['fal', 'clipboard-list']
+      },
+      {
+        path: '/profile/address',
+        title: 'ข้อมูลที่อยู่',
+        icon: ['fal', 'truck']
+      },
+      // {
+      //   path: '/profile/refund',
+      //   title: 'รายการส่งคืน',
+      //   icon: ['fal', 'undo-alt']
+      // },
+      {
+        path: '/profile/logout',
+        title: 'ออกจากระบบ',
+        icon: ['fal', 'sign-out-alt']
+      }
+    ]
   },
   methods: {
-    navigate (e) {
+    navigate(e) {
       const path = e.target.value
       this.$router.push({ path })
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss">
-  .active {
-    div {
-      span {
-        font-weight: 800;
-        color: darken(#1f9eff, 20%);
-      }
+.active {
+  div {
+    span {
+      font-weight: 800;
+      color: darken(#1f9eff, 20%);
     }
   }
+}
 </style>

@@ -15,33 +15,49 @@
           <!-- Order ID -->
           <div class="_fs-5 _mgbt-24px">
             <div class="_mgbt-4px">
-              หมายเลขคำสั่งซื้อของคุณคือ <span class="_cl-warning">XXXXX</span>
+              หมายเลขคำสั่งซื้อของคุณคือ <span class="_cl-warning">#{{ order.id }}</span>
             </div>
-            <small>
+            <!-- <small>
               สามารถตรวจสอบสถานะการซื้อทั้งหมดได้
               <nuxt-link 
                 class="bio-link -fancy" 
                 to="/profile/orders">ที่นี่</nuxt-link>
-            </small>
+            </small> -->
+          </div>
+          <!-- BACS -->
+          <div 
+            v-if="order.payment_method === 'bacs'" 
+            class="_mgv-12px">
+            <strong>กรุณาโอนเงินมาเลขบัญชีดังต่อไปนี้:</strong>
+            <div class="bio-message -primary _mgv-16px">
+              <h6 class="_lh-125pct">
+                Siam Commercial Bank<br>
+                xxxจำกัด<br>
+                2222-222-222
+              </h6>
+            </div>
+            <strong>แจ้งหลักฐานการโอนเงินได้ <nuxt-link 
+              :to="`/profile/orders/${order.id}`" 
+              class="_cl-primary">ที่นี่</nuxt-link></strong>
           </div>
           <!-- Email Confirmed -->
-          <div class="_mgv-12px">
+          <div class="_mgt-24px">
             <div class="bio-message">
               <div>
-                <fa-icon icon="paper-plane"/>
-                <span class="_mgl-8px">เราได้ส่งอีเมลยืนยันไปทาง xxx@fff.ccc</span>
+                <fa-icon :icon="['fal', 'paper-plane']"/>
+                <span class="_mgl-8px">เราได้ส่งอีเมลยืนยันไปทาง {{ order.billing && order.billing.email }}</span>
               </div>
             </div>
           </div>
           <!-- Delivery -->
-          <div class="_mgv-12px">
+          <!-- <div class="_mgv-12px">
             <div class="bio-message">
               <div>
-                <fa-icon icon="truck"/>
+                <fa-icon :icon="['fal', 'truck']"/>
                 <span class="_mgl-8px">คุณจะได้รับสินค้าภายในวันที่ xxx</span>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- Continue shopping -->
           <!-- ช็อปต่อ -->
           <div class="_mgt-32px">
@@ -56,7 +72,8 @@
       <!-- Summary -->
       <div class="col-12 col-md-4">
         <Summary 
-          :items="[]"
+          :cart="this.$store.state.purchase.cart"
+          :summaryTotal="parseFloat(order.total)"
         />
       </div>
     </div>
@@ -69,13 +86,33 @@ export default {
   components: {
     Summary
   },
-  fetch ({ store }) {
+  data: () => ({
+    order: {}
+  }),
+  async asyncData({ store, params }) {
+    store.commit('purchase/SET_STEP', 3)
+    store.commit('menu/SET_USER_MENU', true)
+    // Fetch order from $route.params.id
+    const order = await store.dispatch('order/getOrder', params.id)
+    return {
+      order
+    }
+  },
+  validate({ params }) {
     // Check for valid order id
-    if (true) {
+    if (params.id) {
       // Clear Cart
       // store.commit('purchase/CLEAR_CART')
+      return true
     }
-    return
+    return false
+  },
+  async mounted() {
+    // Fetch order
+    // If exists
+    // Show order detail
+    // If not
+    // Redirect to homepage
   },
   layout: 'checkout'
 }

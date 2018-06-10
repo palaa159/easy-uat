@@ -14,10 +14,10 @@
 </template>
 
 <style lang="scss" scoped>
-  section {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  }
-  .image {
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
-  }
+section {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.image {
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+}
 </style>

@@ -4,18 +4,18 @@
     class="_dp-f _mgv-12px item">
     <!-- Image -->
     <div 
-      v-lazy:background-image="pData.images && pData.images[0].src"
+      v-lazy:background-image="_image"
       class="image _f-2 _ratio" 
     />
     <!-- Detail -->
     <div class="_mgl-12px _dp-f _f-8 _fdrt-cl _jtfct-spbtw _pdv-4px _pdv-8px-md _pdh-2px _pdh-12px-md">
       <h6 
-        class="_lh-100pct _mgbt-4px _ttf-upc" 
+        class="_lh-100pct _mgbt-4px" 
         v-html="_title" />
       <!-- Amount -->
       <div class="_w-100pct">
         <QuantityCalc
-          :quantity="pData.quantity" 
+          :quantity="pData.quantity"
           :discounts="pData.discounts || {}"
           :line-total="_lineTotal"
           :editable="editable"
@@ -68,6 +68,16 @@ export default {
     isProcessing: false
   }),
   computed: {
+    _image() {
+      if (!this.pData.variation_id) {
+        return this.pData.images && this.pData.images[0].src
+      }
+      if (this.pData.variations) {
+        return this.pData.variations.find(
+          (x) => x.id === this.pData.variation_id
+        ).image.src
+      }
+    },
     _lineTotal() {
       return (
         parseFloat(this.pData.total) ||
@@ -76,15 +86,18 @@ export default {
       )
     },
     _title() {
-      return `${this.pData.name}${
-        this.pData.variation_id &&
-        this.pData.variations.find((x) => x.id === this.pData.variation_id)
-          ? ' (' +
-            this.pData.variations.find((x) => x.id === this.pData.variation_id)
-              .sku +
-            ')'
-          : ''
-      }`
+      if (this.pData.variation_id && this.pData.variations) {
+        return `${this.pData.name}${
+          this.pData.variations.find((x) => x.id === this.pData.variation_id)
+            ? ' (' +
+              this.pData.variations.find(
+                (x) => x.id === this.pData.variation_id
+              ).attributes[0].option +
+              ')'
+            : ''
+        }`
+      }
+      return this.pData.name
     }
   },
   // serverCacheKey: props => props.index,

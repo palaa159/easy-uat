@@ -72,6 +72,23 @@ export const actions = {
     })
     commit('SET_CART_PROCESSING', false)
     return commit('SET_CART_CONTENT', remain)
+  },
+  async createOrder({
+    commit
+  }) {
+    const res = await this.$axios.$post(urls.order)
+    let formatted = {}
+    Object.entries(res).forEach(([key, value]) => {
+      key = key.replace('\u0000*\u0000', '')
+      formatted[key] = value
+    })
+    return formatted
+  },
+  async getPaymentGateways({
+    commit
+  }) {
+    const gateways = await this.$axios.$get(urls.payment)
+    return gateways
   }
 }
 
