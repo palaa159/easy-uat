@@ -159,6 +159,7 @@
 <script>
 import Badge from '~/components/extras/Badge'
 import PurchaseItem from '~/components/purchase/PurchaseItem'
+import _values from 'lodash/values'
 export default {
   components: {
     Badge,
@@ -182,7 +183,7 @@ export default {
       const reducer = (a, c) => a + c
       if (!Object.keys(this.$store.state.purchase.cart.cart_contents).length)
         return 0
-      return Object.values(this.$store.state.purchase.cart.cart_contents)
+      return _values(this.$store.state.purchase.cart.cart_contents)
         .map((x) => (x = x.quantity))
         .reduce(reducer)
     }
