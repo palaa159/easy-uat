@@ -81,7 +81,7 @@
 
 <script>
 import Accordion from '~/components/extras/Accordion'
-import _values from 'lodash.values'
+import _values from 'lodash/values'
 export default {
   components: {
     Accordion
