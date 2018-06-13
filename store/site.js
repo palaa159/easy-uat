@@ -1,6 +1,5 @@
 import pkg from '~/package'
 import urls from '~/services/apiUrl'
-import _values from 'lodash/values'
 
 export const state = () => ({
   title: `– ${pkg.description}`,
@@ -26,7 +25,7 @@ export const actions = {
       content_categories,
       country_codes
     } = await this.$axios.$get(urls.getSiteInit)
-    commit('product/SET_CATEGORIES', _values(product_categories), {
+    commit('product/SET_CATEGORIES', Object.values(product_categories), {
       root: true
     })
     commit('SET_CC', country_codes)
@@ -35,7 +34,7 @@ export const actions = {
       title: 'MakerStore®',
       path: '/store',
       isSubMenuShowing: false,
-      subMenu: _values(product_categories)
+      subMenu: Object.values(product_categories)
     }, {
       title: 'Workshops',
       path: '/workshop'

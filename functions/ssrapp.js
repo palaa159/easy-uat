@@ -7,7 +7,7 @@ try {
 } // You do that because the admin SDK can only be initialized once.
 const {
   Nuxt
-} = require('nuxtjs-node6')
+} = require('nuxt-edge')
 const express = require('express')
 const pkg = require('./package')
 // const axios = require('axios')

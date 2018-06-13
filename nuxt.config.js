@@ -183,12 +183,6 @@ module.exports = {
    */
   buildDir: 'nuxt',
   build: {
-    // cache: true,
-    // parallel: true,
-    // analyze: true,
-    vendors: [
-      'axios', 'moment', 'firebase/app', 'firebase/auth', 'firebase/storage', 'debounce'
-    ],
     publicPath: '/',
     plugins: [
       new MomentLocalesPlugin({

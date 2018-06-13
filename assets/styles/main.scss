@@ -235,10 +235,16 @@ $lg: 1200px;
 
 [lazy] {
   transition: 0.25s;
+  transition-property: opacity;
+}
+
+[lazy=loading] {
+  background-size: 200px;
 }
 
 [lazy=loaded] {
   opacity: 1;
+  background-size: cover;
 }
 
 .cms-content {

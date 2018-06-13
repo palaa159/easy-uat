@@ -6,7 +6,6 @@
     </div>
     <!-- Content -->
     <main 
-      :class="{'_mgt-48px': $store.state.menu.isUserSticky}" 
       class="min-height-100vh _dp-f _alit-ct _pdbt-128px">
       <nuxt/>
     </main>

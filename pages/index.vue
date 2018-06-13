@@ -1,11 +1,11 @@
 <template>
   <div class="_w-100pct">
     <!-- Slide -->
-    <div class="_w-100pct _bgcl-gray _h-256px _h-512px-md">
+    <!-- <div class="_w-100pct _bgcl-gray _h-256px _h-512px-md">
       <Slideshow
         :slides="topSlides"
       />
-    </div>
+    </div> -->
     <!-- สินค้ามาใหม่ -->
     <div class="container">
       <div class="row">
@@ -35,6 +35,17 @@
               :limit="8"
               _class="col-6 col-md-3"
             />
+          </div>
+          <!-- Enter Store -->
+          <div class="_mgbt-48px">
+            <nuxt-link 
+              class="_dp-ilb" 
+              to="/store">
+              <button class="bio-button -dark _bdcl-tpr">
+                ดูสินค้าทั้งหมด
+                <fa-icon icon="long-arrow-alt-right"/>
+              </button>
+            </nuxt-link>
           </div>
         </div>
       </div>

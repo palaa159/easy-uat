@@ -8,7 +8,7 @@
         <div class="_dp-n _dp-b-md">
           <div 
             v-lazy:background-image="currentImage" 
-            class="image _bgrp-nrp _bgs-cv _bgpst-ct"/>
+            class="image _bgrp-nrp _bgpst-ct"/>
           <div class="container-fluid _pdv-0px _pdh-8px">
             <div class="row _mgv-12px">
               <div 

@@ -14,7 +14,7 @@
           </nuxt-link>
         </div>
         <!-- Center Menu -->
-        <div class="col-6 _dp-f _jtfct-spbtw">
+        <div class="col-7 _dp-f _jtfct-spbtw">
           <div 
             v-for="(x, i) in items" 
             :key="i" 
@@ -23,8 +23,8 @@
             <nuxt-link 
               :to="x.path"
               exact
-              active-class="_cl-primary"
-              class="_tal-ct menu-link _fw-400 _fs-5"
+              active-class="_fw-600"
+              class="_tal-ct menu-link _fw-400 _fs-5 _cl-white"
             >
               {{ x.title }}
             </nuxt-link>
@@ -36,11 +36,11 @@
           </div>
         </div>
         <!-- Right Menu -->
-        <div class="col-3 _tal-r">
+        <div class="col-2 _tal-r">
           <nuxt-link 
             to="/contact" 
-            active-class="_cl-primary"
-            class="_tal-ct menu-link _fw-400 _fs-5"
+            active-class="_fw-600"
+            class="_tal-ct menu-link _fw-400 _cl-white _fs-5"
             exact>
             ติตต่อเรา
           </nuxt-link>
@@ -106,16 +106,21 @@
 
 <script>
 import DesktopDropDownMenu from '~/components/extras/DesktopDropdownMenu'
-import cloneDeep from 'lodash.clonedeep'
 export default {
   components: {
     DesktopDropDownMenu
+  },
+  props: {
+    light: {
+      type: Boolean,
+      default: false
+    }
   },
   data: () => ({
     items: []
   }),
   created() {
-    this.items = cloneDeep(this.$store.state.menu.primaryMenu)
+    this.items = JSON.parse(JSON.stringify(this.$store.state.menu.primaryMenu))
   }
 }
 </script>
@@ -207,13 +212,11 @@ export default {
 .menu-link {
   transition: 0.15s;
   font-family: 'Kanit', sans-serif;
-  font-weight: 300;
   font-size: 1rem;
-  color: rgba(0, 0, 0, 0.5);
   // color: #787878;
 }
 .logo {
-  background-image: url('~/assets/images/logo.png');
+  background-image: url('~/assets/images/logo-white.png');
   height: 32px;
   margin: 0 auto;
 }

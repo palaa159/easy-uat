@@ -81,7 +81,6 @@
 
 <script>
 import Accordion from '~/components/extras/Accordion'
-import _values from 'lodash/values'
 export default {
   components: {
     Accordion
@@ -123,7 +122,7 @@ export default {
     totalQuantity() {
       const reducer = (a, c) => a + c
       if (!Object.keys(this.cart.cart_contents).length) return 0
-      return _values(this.cart.cart_contents)
+      return Object.values(this.cart.cart_contents)
         .map((x) => (x = x.quantity))
         .reduce(reducer)
     }

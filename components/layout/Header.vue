@@ -9,7 +9,48 @@
       <UserNav />
     </div>
     <!-- Menu -->
-    <MenuNav />
+    <div 
+      v-lazy:background-image="`https://cms.makerstation.in.th/wp-content/uploads/2018/06/store-1.jpeg`" 
+      class="hero-image _w-100pct _bgrp-nrp _bgpst-ct">
+      <div class="_pst-rlt _zid-1 _dp-f _fdrt-cl _h-100pct">
+        <MenuNav 
+          :light="light"
+          class="_f-1"
+        />
+        <!-- Search -->
+        <div class="_f-5 _dp-f _alit-ct">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <h2 class="_tal-ct _cl-white _lh-100pct">สินค้าดี มีประโยชน์</h2>
+              </div>
+            </div>
+            <div class="row _jtfct-ct">
+              <div class="col-12 col-md-10 _mgt-24px _mgbt-32px">
+                <form 
+                  class="_dp-f _w-100pct _alit-ct" 
+                  @submit.stop.prevent="submit">
+                  <!-- <h5 class="_f-1">ค้นหา: </h5> -->
+                  <div class="bio-input _f-4 _f-6-md">
+                    <input 
+                      v-model="searchKeyword"
+                      class="_fs-4 _h-48px _bdrd-0px" 
+                      type="text" 
+                      placeholder="ไซโคลน, เลื่อย, ปากกา">
+                  </div>
+                  <button 
+                    type="submit" 
+                    class="_f-1 _h-48px bio-button -dark">ค้นหา</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  -->
+        <div class="_f-1"/>
+      </div>
+
+    </div>
   </header>
 </template>
 
@@ -26,6 +67,10 @@ export default {
     isSticky: {
       type: Boolean,
       default: true
+    },
+    light: {
+      type: Boolean,
+      default: false
     }
   },
   data: () => ({
@@ -60,6 +105,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.hero-image {
+  height: 400px;
+  position: relative;
+  z-index: 0;
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(40, 40, 40, 1) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+  }
+}
 .sticky-nav {
   position: fixed;
   z-index: 1;
