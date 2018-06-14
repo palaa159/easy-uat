@@ -5,6 +5,7 @@ import * as Auth from '~/services/auth'
 export const state = () => ({
   user: null,
   token: null,
+  customer: null,
   passwordRegex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%-_*#?&])[A-Za-z\d$@$!%-_*#?&]{8,}$/
 })
 
@@ -57,6 +58,16 @@ export const actions = {
     })
     return res
   },
+  async getUser({
+    commit
+  }) {
+    const user = await this.$axios.$get(urls.getUserMe)
+    if (!user) {
+      return false
+    }
+    commit('SET_USER', user)
+    return true
+  },
   async forgotSetPassword({}, {
     key,
     login,
@@ -106,6 +117,7 @@ export const actions = {
       password
     })
     if (token) {
+      commit('SET_TOKEN', token)
       JSCookie.set('__session', {
         token
       })

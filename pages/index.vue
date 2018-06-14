@@ -7,6 +7,20 @@
       />
     </div> -->
     <!-- สินค้ามาใหม่ -->
+    <!-- Content -->
+    <div class="_w-100pct content-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 _pdv-24px">
+            <!-- <h4 class="_pdt-12px">คอนเท๊นต์</h4> -->
+            <!-- Agile -->
+            <ContentSlideshow
+              :slides="contentSlides"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-3">
@@ -46,20 +60,6 @@
                 <fa-icon icon="long-arrow-alt-right"/>
               </button>
             </nuxt-link>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Content -->
-    <div class="_w-100pct _bgcl-gray">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 _pdbt-24px">
-            <h4 class="_pdt-12px">คอนเท๊นต์</h4>
-            <!-- Agile -->
-            <ContentSlideshow
-              :slides="contentSlides"
-            />
           </div>
         </div>
       </div>
@@ -141,5 +141,8 @@ h1 {
   line-height: 3.4rem;
   letter-spacing: 3px;
   color: #182f69;
+}
+.content-wrapper {
+  // background-color: rgba(40, 40, 40, 1);
 }
 </style>

@@ -2,6 +2,7 @@
   <div>
     <Header
       :light="true"
+      :hero="true"
     />
     <!-- <div class="_bdtw-1px breadcrumb _bdcl-neutral-200">
       <Breadcrumbs />

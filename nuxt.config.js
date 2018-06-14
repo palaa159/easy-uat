@@ -72,6 +72,10 @@ module.exports = {
         content: '#2B2B2B'
       }
     ],
+    script: [{
+      src: '/js/contactWidget.js',
+      body: true
+    }],
     link: [{
         rel: 'apple-touch-icon',
         sizes: '120x120',

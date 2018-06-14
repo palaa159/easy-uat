@@ -10,7 +10,8 @@
     </div>
     <!-- Menu -->
     <div 
-      v-lazy:background-image="`https://cms.makerstation.in.th/wp-content/uploads/2018/06/store-1.jpeg`" 
+      v-lazy:background-image="`https://cms.makerstation.in.th/wp-content/uploads/2018/06/store-1.jpeg`"
+      v-if="hero" 
       class="hero-image _w-100pct _bgrp-nrp _bgpst-ct">
       <div class="_pst-rlt _zid-1 _dp-f _fdrt-cl _h-100pct">
         <MenuNav 
@@ -51,6 +52,14 @@
       </div>
 
     </div>
+    <div 
+      v-else 
+      class="menu-wrapper">
+      <MenuNav 
+        :light="light"
+        class="_f-1"
+      />
+    </div>
   </header>
 </template>
 
@@ -69,6 +78,10 @@ export default {
       default: true
     },
     light: {
+      type: Boolean,
+      default: false
+    },
+    hero: {
       type: Boolean,
       default: false
     }
@@ -105,6 +118,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.menu-wrapper {
+  background-color: rgba(40, 40, 40, 1);
+}
 .hero-image {
   height: 400px;
   position: relative;

@@ -1,10 +1,7 @@
 export default function ({
   isHMR,
-  app,
   store,
   route,
-  params,
-  error,
   redirect
 }) {
   // If middleware is called from hot module replacement, ignore it
@@ -23,7 +20,7 @@ export default function ({
     // Remove cart menu
     store.commit('menu/SET_USER_MENU', false)
     if (store.state.auth.user === null) {
-      return redirect('/login?redirect=checkout/payment')
+      return redirect('/login?redirect=/checkout/payment')
     }
   }
 }
