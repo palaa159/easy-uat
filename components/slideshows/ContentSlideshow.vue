@@ -10,16 +10,21 @@
             <div class="row _alit-ct">
               <div class="col-12 col-md-7">
                 <div 
-                  class="_pdv-32px embed-responsive embed-responsive-21by9 _mgt-16px _mgbt-24px">
+                  v-if="slide.acf.assets.youtube_full.length > 40"
+                  class="_pdv-32px embed-responsive embed-responsive-21by9 _mgv-24px">
                   <iframe 
                     :src="`${slide.acf.assets.youtube_full}?rel=0`" 
                     class="embed-responsive-item" 
                     allowfullscreen/>
                 </div>
+                <div 
+                  v-lazy:background="slide.acf.assets.featured_image"
+                  v-else
+                  class="_h-256px _bgrp-nrp _bgs-ct _bgpst-ct _mgv-24px"/>
               </div>
               <div class="col-12 col-md-5">
                 <nuxt-link 
-                  :to="`/learn/${slide.post_name}`" 
+                  :to="`/blog/${slide.post_name}`" 
                   class="bio-link -fancy">
                   <h4 
                     class="_lh-125pct" 

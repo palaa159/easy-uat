@@ -1,11 +1,11 @@
 <template>
   <div class="_w-100pct">
     <!-- Slide -->
-    <!-- <div class="_w-100pct _bgcl-gray _h-256px _h-512px-md">
+    <div class="_w-100pct _bgcl-gray top-slider">
       <Slideshow
         :slides="topSlides"
       />
-    </div> -->
+    </div>
     <!-- สินค้ามาใหม่ -->
     <!-- Content -->
     <div class="_w-100pct content-wrapper">
@@ -68,8 +68,38 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h3 class="_pdv-12px">Makerspace Workshop</h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti, rem quia. Iure quod nobis voluptate eveniet minima animi tempora sunt perspiciatis aliquam ut sit, consequatur eligendi soluta, ex enim illo. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores blanditiis omnis, sed, error unde dolores, repudiandae architecto doloribus vitae commodi aut quos? Minus, iure? Eaque totam eligendi deserunt natus nostrum.</p>
+          <div class="_pdv-12px _dp-f _jtfct-spbtw">
+            <div>
+              <h3 class="_lh-100pct">
+                Workshops & Events
+              </h3>
+              <h6>Workshop ที่น่าสนใจของ MakerStation</h6>
+            </div>
+            <div>
+              <nuxt-link 
+                :to="`/workshop`"
+                class="bio-link">
+                ดูทั้งหมด
+              </nuxt-link>
+            </div>
+          </div>
+          <div class="row">
+            <div 
+              v-for="(wk, i) in workshops" 
+              :key="i" 
+              class="col-12 col-md-6">
+              <WorkshopCard 
+                :banner="wk.image"
+                :header="wk.name"
+                :instructor="wk.acf.instructor[0].display_name"
+                :price="wk.price"
+                :location="wk.acf.location.description"
+                :date="wk.acf.date"
+                :id="wk.id"
+                :workshop-data="wk"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -81,12 +111,14 @@ import Slideshow from '~/components/slideshows/Slideshow'
 import ContentSlideshow from '~/components/slideshows/ContentSlideshow'
 import ProductCardsColumn from '~/components/products/ProductCardsColumn'
 import HomeCategories from '~/components/categories/HomeCategories'
+import WorkshopCard from '~/components/workshop/WorkshopCard'
 export default {
   components: {
     Slideshow,
     ProductCardsColumn,
     HomeCategories,
-    ContentSlideshow
+    ContentSlideshow,
+    WorkshopCard
   },
   head() {
     const siteTitle = this.$store.state.site.title
@@ -102,47 +134,29 @@ export default {
     topSlides: [],
     featuredProducts: [],
     categories: [],
-    contentSlides: []
+    contentSlides: [],
+    workshops: []
   }),
-  async asyncData({ store }) {
-    const promises = [
-      store.dispatch('content/getSlideshow', {
-        slug: 'homepage-banner'
-      }),
-      store.dispatch('product/getFeaturedProducts'),
-      store.dispatch('content/getContent', { featured: true })
-    ]
-    const [topSlides, featuredProducts, contentSlides] = await Promise.all(
-      promises
-    )
-    return {
-      topSlides,
-      featuredProducts,
-      contentSlides
-    }
+  created() {
+    this.$store.dispatch('content/getSlideshow', {
+      slug: 'homepage-banner'
+    }).then((topSlides) => this.topSlides = topSlides)
+    this.$store.dispatch('product/getFeaturedProducts').then((featuredProducts) => this.featuredProducts = featuredProducts),
+    this.$store.dispatch('content/getContent', { featured: true }).then((contentSlides) => this.contentSlides = contentSlides)
+    this.$store.dispatch('workshop/getWorkshop', {}).then((workshops) => this.workshops = workshops)
+    // const [topSlides, featuredProducts, contentSlides] = await Promise.all(
+    //   promises
+    // )
+  
   }
 }
 </script>
 <style lang="scss" scoped>
-.hero-image {
-  width: 100%;
-  background-color: transparent;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  &[lazy='loaded'] {
-    filter: drop-shadow(0mm 5mm 4mm rgba(0, 0, 0, 0.15));
+@import 'assets/styles/variables';
+.top-slider {
+  height: 480px;
+  @include breakpoint(mobile) {
+    height: 256px;
   }
-}
-h1 {
-  font-family: 'Kanit', sans-serif;
-  font-size: 3rem;
-  font-weight: 600;
-  line-height: 3.4rem;
-  letter-spacing: 3px;
-  color: #182f69;
-}
-.content-wrapper {
-  // background-color: rgba(40, 40, 40, 1);
 }
 </style>

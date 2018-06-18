@@ -19,7 +19,7 @@
             :key="i"
             class="_dp-f _pdv-4px">
             <div class="_f-4 _fs-7 _pdl-24px">
-              {{ item.name }}
+              {{ item.name | titleLang }}
             </div>
             <div class="_f-1 _fs-7 _tal-r">
               x {{ item.quantity }}

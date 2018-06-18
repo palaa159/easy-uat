@@ -10,7 +10,7 @@
     </div>
     <!-- Menu -->
     <div 
-      v-lazy:background-image="`https://cms.makerstation.in.th/wp-content/uploads/2018/06/store-1.jpeg`"
+      v-lazy:background-image="heroImage"
       v-if="hero" 
       class="hero-image _w-100pct _bgrp-nrp _bgpst-ct">
       <div class="_pst-rlt _zid-1 _dp-f _fdrt-cl _h-100pct">
@@ -23,10 +23,17 @@
           <div class="container">
             <div class="row">
               <div class="col-12">
-                <h2 class="_tal-ct _cl-white _lh-100pct">สินค้าดี มีประโยชน์</h2>
+                <h2 
+                  class="_tal-ct _cl-white _lh-125pct" 
+                  v-html="header"/>
+                <p 
+                  class="_tal-ct _cl-white _mgt-12px" 
+                  v-html="description"/>
               </div>
             </div>
-            <div class="row _jtfct-ct">
+            <div 
+              v-if="hasSearch" 
+              class="row _jtfct-ct">
               <div class="col-12 col-md-10 _mgt-24px _mgbt-32px">
                 <form 
                   class="_dp-f _w-100pct _alit-ct" 
@@ -84,12 +91,29 @@ export default {
     hero: {
       type: Boolean,
       default: false
+    },
+    header: {
+      type: String,
+      default: null
+    },
+    description: {
+      type: String,
+      default: null
+    },
+    hasSearch: {
+      type: Boolean,
+      default: false
+    },
+    heroImage: {
+      type: String,
+      default: 'https://cms.makerstation.in.th/wp-content/uploads/2018/06/photo-1508873535684-277a3cbcc4e8.jpeg'
     }
   },
   data: () => ({
     menuItems: [],
     prevY: 0,
-    isNavSticky: false
+    isNavSticky: false,
+    searchKeyword: ''
   }),
   created() {
     if (process.browser) {
@@ -118,10 +142,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'assets/styles/variables';
 .menu-wrapper {
   background-color: rgba(40, 40, 40, 1);
 }
 .hero-image {
+  @include breakpoint(mobile) {
+    height: 300px;
+  }
   height: 400px;
   position: relative;
   z-index: 0;

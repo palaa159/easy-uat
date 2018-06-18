@@ -9,7 +9,16 @@ export const state = () => ({
     cart_contents: {}
   },
   gateways: [],
-  checkoutStep: 1
+  checkoutStep: 1,
+  bankTransferAccounts: [{
+    bankTitle: 'กสิกรไทย สาขาเดอะมอลล์ บางกะปิ',
+    accountTitle: 'นายภัสพงศ์ มุสิกบุตร',
+    accountNumber: '026-8-35312-7',
+  }, {
+    bankTitle: 'ไทยพาณิชย์ สาขาเดอะมอลล์ บางกะปิ',
+    accountTitle: 'นายภัสพงศ์ มุสิกบุตร',
+    accountNumber: '160-4-01231-6',
+  }]
 })
 
 export const actions = {
@@ -41,10 +50,12 @@ export const actions = {
       variationId,
       data
     })
+    /*
     commit('SET_CART_BUBBLE', true)
     setTimeout(() => {
       commit('SET_CART_BUBBLE', false)
-    }, 4500)
+    }, 4500) 
+    */
     commit('SET_CART_PROCESSING', false)
     return commit('SET_CART_CONTENT', added)
   },

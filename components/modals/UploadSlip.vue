@@ -39,17 +39,23 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <div class="bio-message -primary _mgv-16px">
-            <h6 class="_lh-125pct">
-              {{ $store.state.site.bankTransfer.name }}<br>
-              {{ $store.state.site.bankTransfer.accountTitle }}<br>
-              {{ $store.state.site.bankTransfer.number }}
-            </h6>
+          <div 
+            class="_mgv-12px">
+            <strong>กรุณาโอนเงินมาเลขบัญชีดังต่อไปนี้:</strong>
+            <div 
+              v-for="(x, i) in $store.state.purchase.bankTransferAccounts" 
+              :key="i" 
+              class="bio-message -dark _mgv-16px">
+              <h6 class="_lh-125pct">
+                ธนาคาร{{ x.bankTitle }}<br>
+                {{ x.accountTitle }}<br>
+                {{ x.accountNumber }}
+              </h6>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </modal>
+  </div></modal>
 </template>
 
 <script>

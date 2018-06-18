@@ -4,11 +4,11 @@
       <h4 
         class="_lh-100pct" 
         v-html="catTitle"/>
-      <nuxt-link 
+        <!-- <nuxt-link 
         :to="`/store/${catSlug}`" 
         class="_mgl-8px">
         ดูทั้งหมด
-      </nuxt-link>
+      </nuxt-link> -->
     </div>
     <!-- Products -->
     <div 

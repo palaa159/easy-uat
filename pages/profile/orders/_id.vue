@@ -17,7 +17,7 @@
         <h4>รหัสออเดอร์ #{{ order.id }}</h4>
       </div>
       <div class="col-4">
-        <p class="_ttf-upc _lh-100pct _tal-r _cl-accent">สถานะ: {{ order.status }}</p>
+        <p class="_ttf-upc _lh-100pct _tal-r _cl-accent">สถานะ: {{ _orderStatus }}</p>
       </div>
     </div>
     <!-- Tracking -->
@@ -135,6 +135,20 @@ export default {
     // console.log(order)
     return {
       order
+    }
+  },
+    head() {
+    const siteTitle = this.$store.state.site.title
+    return {
+      title: `รายการสั่งซื้อที่ #${this.$route.params.id} ${siteTitle}`
+    }
+  },
+  computed: {
+    _orderStatus () {
+      if (this.order.status && this.order.status.toLowerCase() === 'pending') {
+        return 'รอการแจ้งชำระเงิน'
+      }
+      return this.order.status
     }
   },
   methods: {

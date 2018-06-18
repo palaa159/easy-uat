@@ -11,6 +11,20 @@ $lg: 1200px;
 @import 'assets/styles/agile';
 /* Begin your default styles here */
 
+[lazy] {
+  transition: 0.25s;
+  transition-property: background-image !important;
+}
+
+[lazy=loading] {
+  background-size: 128px;
+  background-position: center center !important;
+}
+
+[lazy=loaded] {
+  opacity: 1; // background-size: cover !important;
+}
+
 .min-height-100vh {
   min-height: calc(100vh - 100px);
   background: rgba(0, 0, 0, 0.02);

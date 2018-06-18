@@ -23,7 +23,7 @@
             <nuxt-link 
               :to="x.path"
               exact
-              active-class="_fw-600"
+              active-class="_fw-600 _opct-100"
               class="_tal-ct menu-link _fw-400 _fs-5 _cl-white"
             >
               {{ x.title }}
@@ -69,7 +69,7 @@
     </div>
     <!-- Mobile Menu -->
     <scale-transition 
-      class="_pst-asl l-0px _w-100pct" 
+      class="_pst-asl _l-0px _t-0px _w-100pct _zid-1" 
       origin="top right">
       <div 
         v-show="$store.state.menu.isShowing" 
@@ -95,7 +95,7 @@
             <nuxt-link 
               :to="x.path"
               class="_cs-pt col _dp-f _jtfct-ct _alit-ct">
-              <h3 class="gradient-text _tal-ct bio-link hv-anim">{{ x.title }}</h3>
+              <h3 class="_tal-ct bio-link -fancy">{{ x.title }}</h3>
             </nuxt-link>
           </div>
         </div>
@@ -130,8 +130,8 @@ export default {
 @import 'assets/styles/variables';
 
 .mobile-menu {
-  top: 50px;
-  height: calc(100vh - 50px);
+  top: 32px;
+  height: calc(100vh - 32px);
   z-index: 9;
 }
 
@@ -148,7 +148,7 @@ export default {
   transition: all 0.1s ease;
 }
 .menu.icon {
-  color: $blue;
+  color: #fff;
   position: absolute;
   width: 24px;
   height: 3px;
@@ -210,6 +210,7 @@ export default {
   }
 }
 .menu-link {
+  opacity: 0.5;
   transition: 0.15s;
   font-family: 'Kanit', sans-serif;
   font-size: 1rem;

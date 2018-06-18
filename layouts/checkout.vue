@@ -5,7 +5,7 @@
     <main 
       :class="{'_mgt-48px': $store.state.menu.isUserSticky}"
       class="min-height-100vh _dp-f _alit-fst _jtfct-ct">
-      <!-- Secured Checkout -->
+      <!-- Secure Checkout -->
       <!-- Checkout Steps -->
       <div 
         class="_w-100pct"
@@ -13,7 +13,7 @@
         <div class="container">
           <div class="row">
             <div class="col-12 _mgt-16px _tal-ct">
-              <div class="_fs-5 _mgv-12px">🔒 Secured Checkout</div>
+              <div class="_fs-5 _mgv-12px">🔒 Secure Checkout</div>
             </div>
           </div>
           <div class="row _pst-rlt _zid-0">

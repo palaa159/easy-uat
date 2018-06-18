@@ -29,14 +29,17 @@
             v-if="order.payment_method === 'bacs'" 
             class="_mgv-12px">
             <strong>กรุณาโอนเงินมาเลขบัญชีดังต่อไปนี้:</strong>
-            <div class="bio-message -primary _mgv-16px">
+            <div 
+              v-for="(x, i) in $store.state.purchase.bankTransferAccounts" 
+              :key="i" 
+              class="bio-message -dark _mgv-16px">
               <h6 class="_lh-125pct">
-                {{ $store.state.site.bankTransfer.name }}<br>
-                {{ $store.state.site.bankTransfer.accountTitle }}<br>
-                {{ $store.state.site.bankTransfer.number }}
+                ธนาคาร{{ x.bankTitle }}<br>
+                {{ x.accountTitle }}<br>
+                {{ x.accountNumber }}
               </h6>
             </div>
-            <strong>แจ้งหลักฐานการโอนเงินได้ <nuxt-link 
+            <strong>จากนั้นแจ้งหลักฐานการโอนเงินได้ <nuxt-link 
               :to="`/profile/orders/${order.id}`" 
               class="_cl-primary">ที่นี่</nuxt-link></strong>
           </div>
@@ -45,7 +48,7 @@
             <div class="bio-message">
               <div>
                 <fa-icon :icon="['fal', 'paper-plane']"/>
-                <span class="_mgl-8px">เราได้ส่งอีเมลยืนยันไปทาง {{ order.billing && order.billing.email }}</span>
+                <span class="_mgl-8px">เราได้ส่งอีเมลยืนยันไปทาง {{ order.billing && order.billing.email }} แล้ว</span>
               </div>
             </div>
           </div>

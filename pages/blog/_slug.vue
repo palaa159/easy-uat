@@ -6,17 +6,22 @@
         class="col-12 col-md-9">
         <div class="_mgt-16px">
           <h3 
-            class="_lh-100pct" 
+            class="_lh-100pct _mgt-48px" 
             v-html="content.post_title"/>
           <p>{{ content.post_date | moment('วันที่ DD MMMM YYYY HH:mm') }}</p>
         </div>
         <div 
+          v-if="content.acf.assets.youtube_full.length >= 40"
           class="_pdv-32px embed-responsive embed-responsive-21by9 _mgv-24px">
           <iframe 
             :src="`${content.acf.assets.youtube_full}?rel=0`" 
             class="embed-responsive-item" 
             allowfullscreen/>
         </div>
+        <div 
+          v-lazy:background="content.acf.assets.featured_image" 
+          v-else 
+          class="image _bgrp-nrp _bgs-cv _mgv-24px"/>
         <ContentFromWP :content="content.acf.content" />
         <!-- Comments -->
         <h4>Comments</h4>
@@ -33,22 +38,24 @@
             :scroll-affix="false" 
             relative-element-selector="#content">
             <div style="margin-top: 100px;">
-              <h5>สินค้าที่เกี่ยวข้อง</h5>
-              <div 
-                v-if="content.acf.related_products" 
-                class="container-fluid _pd-0px _mgt-16px">
-                <div class="row">
-                  <div 
-                    v-for="(p, i) in content.acf.related_products" 
-                    :key="i" 
-                    class="col-6 col-md-3 col-lg-2 _mgbt-24px">
-                    <Card
-                      :key="i"
-                      :title="p.name" 
-                      :image="p.image"
-                      :price="p.price_html"
-                      :slug="p.slug"
-                    />
+              <!-- Related products -->
+              <div v-if="content.acf.related_products" >
+                <h5>สินค้าที่เกี่ยวข้อง</h5>
+                <div 
+                  class="container-fluid _pd-0px _mgt-16px">
+                  <div class="row">
+                    <div 
+                      v-for="(p, i) in content.acf.related_products" 
+                      :key="i" 
+                      class="col-6 col-md-3 col-lg-2 _mgbt-24px">
+                      <Card
+                        :key="i"
+                        :title="p.name" 
+                        :image="p.image"
+                        :price="p.price_html"
+                        :slug="p.slug"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -78,6 +85,7 @@ export default {
     // console.log(content)
     return { content: content[0] }
   },
+  scrollToTop: true,
   computed: {
     _enabled() {
       if (process.browser) {
@@ -87,3 +95,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.image {
+  height: 400px;
+}
+</style>

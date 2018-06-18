@@ -147,8 +147,14 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios', ['@nuxtjs/google-analytics', {
-      id: pkg.gaId
+      id: pkg.gaId,
+      autoTracking: {
+        pageviewOnLoad: false
+      }
     }],
+    [
+      '@nuxtjs/toast',
+    ],
     // [
     //   '@nuxtjs/sitemap'
     // ],
@@ -172,6 +178,9 @@ module.exports = {
   /*
    ** Axios module configuration
    */
+  toast: {
+    position: 'top-right'
+  },
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
     credentials: true,

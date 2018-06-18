@@ -21,6 +21,7 @@ export const actions = {
       commit('auth/SET_TOKEN', accessToken)
       await dispatch('auth/getUserMe')
     }
+    await dispatch('auth/getCustomer')
     await dispatch('site/getSiteInit')
   }
 }

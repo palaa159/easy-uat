@@ -1,11 +1,7 @@
 <template>
   <div class="_w-100pct">
-    <div class="_w-100pct">
-      <h3 
-        class="_tal-ct _mgv-24px" 
-        v-html="_parentCatName.name"/>
-    </div>
-    <div 
+    <!-- {{ res }} -->
+    <!-- <div 
       v-if="_subCategories" 
       class="container">
       <div class="row">
@@ -25,26 +21,31 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- Products -->
     <div 
-      v-if="res.products"
+      v-if="res"
       class="container _mgv-32px">
       <!-- Products -->
       <div class="row">
         <div class="col-12">
+          <nuxt-link 
+            to="/store" 
+            class="bio-link -fancy">
+            <h6 class="_mgbt-16px">กลับไปที่ MakerStore</h6>
+          </nuxt-link>
           <h4 class="_mgbt-16px">สินค้าทั้งหมด</h4>
         </div>
       </div>
       <div class="row">
         <div 
-          v-for="(p, i) in res.products" 
+          v-for="(p, i) in res" 
           :key="i" 
           class="col-6 col-md-3 col-lg-2 _mgbt-24px">
           <Card
             :key="i"
             :title="p.name" 
-            :image="p.images[0].src"
+            :image="p.image"
             :price="p.price_html"
             :slug="p.slug"
           />
@@ -72,6 +73,17 @@ export default {
       res
     }
   },
+  head() {
+    const siteTitle = this.$store.state.site.title
+    return {
+      title: `${this._parentCatName.name} ${siteTitle}`,
+      meta: [
+        { hid: 'og:title', property: 'og:title', content: this._parentCatName.name },
+        { hid: 'og:description', name: 'og:description', content: this._parentCatName.name }
+      ]
+    }
+  },
+  layout: 'store',
   computed: {
     _parentCatName() {
       return this.$store.state.product.categories.find(

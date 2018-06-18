@@ -8,11 +8,6 @@ export const state = () => ({
   privacyPolicy: [],
   returnPolicy: [],
   countryCodes: {},
-  bankTransfer: {
-    name: 'Siam Commercial Bank',
-    accountTitle: 'บริษัท',
-    number: '408-648180-4'
-  }
 })
 
 export const actions = {
@@ -39,8 +34,8 @@ export const actions = {
       title: 'Workshops',
       path: '/workshop'
     }, {
-      title: 'Learn',
-      path: '/learn'
+      title: 'Blog',
+      path: '/blog'
     }, {
       title: 'About',
       path: '/about'

@@ -1,9 +1,9 @@
 <template>
   <div>
     <Header/>
-    <div class="_bdtw-1px breadcrumb _bdcl-neutral-200">
+    <!-- <div class="_bdtw-1px breadcrumb _bdcl-gray">
       <Breadcrumbs />
-    </div>
+    </div> -->
     <!-- Content -->
     <main 
       class="min-height-100vh _dp-f _alit-ct _pdbt-128px">

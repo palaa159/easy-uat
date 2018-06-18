@@ -19,7 +19,7 @@
           <div class="_f-3">
             <div class="_tal-r">
               <div class="_tal-r _fs-7 _ttf-cptl">
-                สถานะ: <strong>{{ orderStatus }}</strong>
+                สถานะ: <strong>{{ _orderStatus }}</strong>
               </div>
               <span class="_fs-8">อัพเดทเมื่อ: {{ dateModified | moment('from') }}</span>
             </div>
@@ -60,6 +60,10 @@ export default {
       default: '',
       type: String
     },
+    _: {
+      default: '',
+      type: String
+    },
     total: {
       default: '',
       type: String
@@ -67,6 +71,14 @@ export default {
     dateModified: {
       default: '',
       type: String
+    }
+  },
+  computed: {
+    _orderStatus () {
+      if (this.orderStatus && this.orderStatus.toLowerCase() === 'pending') {
+        return 'รอการแจ้งชำระเงิน'
+      }
+      return this.orderStatus
     }
   },
   serverCacheKey: (props) => props.orderId

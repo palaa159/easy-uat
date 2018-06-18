@@ -23,6 +23,12 @@
           </nuxt-link>
           <nuxt-link 
             v-if="$store.state.auth.user"
+            to="/profile/orders" 
+          >
+            <span class="_fs-8">แจ้งการชำระเงิน</span>
+          </nuxt-link>
+          <nuxt-link 
+            v-if="$store.state.auth.user"
             to="/profile"
           >
             <img 

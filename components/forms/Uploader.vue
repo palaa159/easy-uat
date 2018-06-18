@@ -14,7 +14,7 @@
         type="button"
         @click="$refs.input.click()"
       >
-        <p>อัพโหลดรูป</p>
+        <p>อัพโหลดรูปสลิป</p>
         <div 
           :style="{ width: progressUpload + '%'}"
           class="fill" 

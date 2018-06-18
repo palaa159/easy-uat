@@ -3,6 +3,7 @@
     <Header
       :light="true"
       :hero="true"
+      :heroImage="`https://i1.wp.com/cms.makerstation.in.th/wp-content/uploads/2018/06/photo-1497219055242-93359eeed651-e1528990511282.jpeg?w=1200&ssl=1`"
       :header="_header"
       :description="_description"
     />
@@ -38,12 +39,12 @@ export default {
   computed: {
     _header () {
       const catSlug = this.$route.params.catSlug
-      if (!catSlug) return 'MakerStore'
-      return `<a class="_cl-white" href="/store">MakerStore®</a> → <br>${this.$store.state.product.categories.find(c => c.slug === catSlug).name}`
+      if (!catSlug) return 'Blog'
+      return `<a class="_cl-white" href="/blog">Blog</a> → <br>${this.$store.state.product.categories.find(c => c.slug === catSlug).name}`
     },
     _description () {
       const catSlug = this.$route.params.catSlug
-      if (!catSlug) return 'เราไม่ได้ขายของถูก แต่เราขายของดีมีคุณภาพเท่านั้น'
+      if (!catSlug) return 'สาระดีๆจาก MakerStation'
       return this.$store.state.product.categories.find(c => c.slug === catSlug).description
     }
   }

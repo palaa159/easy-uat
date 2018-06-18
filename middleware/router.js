@@ -18,9 +18,12 @@ export default function ({
   store.commit('menu/SET_USER_MENU', true)
   if (route.path.indexOf('/payment') > -1) {
     // Remove cart menu
-    store.commit('menu/SET_USER_MENU', false)
+    // store.commit('menu/SET_USER_MENU', false)
     if (store.state.auth.user === null) {
       return redirect('/login?redirect=/checkout/payment')
     }
+  }
+  if (process.browser) {
+    window.scrollTo(0, 0)
   }
 }

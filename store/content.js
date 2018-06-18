@@ -15,10 +15,16 @@ export const actions = {
     slug,
     featured = false
   }) {
-    let x
+    let x = ''
     if (slug) x = `?slug=${slug}`
     if (featured) x = `?featured=${featured}`
     const content = await this.$axios.$get(`${urls.getContent}${x}`)
     return content
+  },
+  async getPage({}, {
+    slug
+  }) {
+    const page = await this.$axios.$get(`${urls.getPage}?slug=${slug}`)
+    return page && page[0] || {}
   }
 }

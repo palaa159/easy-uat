@@ -12,7 +12,9 @@
       <nuxt-link :to="`/store/product/${pData.slug}`">        
         <h6 
           class="_lh-100pct _mgbt-4px _cl-neutral-800" 
-          v-html="_title" />
+        >
+          {{ _title | titleLang }}
+        </h6>
       </nuxt-link>
       <!-- Amount -->
       <div class="_w-100pct">
@@ -75,7 +77,7 @@ export default {
         return this.pData.images && this.pData.images[0].src
       }
       if (!this.pData.variation) {
-        return this.pData.images && this.pData.images[0].src
+        return this.pData.images && this.pData.images[0].src || this.pData.image
       }
       if (this.pData.variations) {
         return this.pData.variations.find(

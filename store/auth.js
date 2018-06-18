@@ -23,6 +23,16 @@ export const mutations = {
 }
 
 export const actions = {
+  async getCustomer({
+    commit
+  }) {
+    const customer = await this.$axios.$get(urls.customer).catch((err) => {
+      // Clear Cookie
+      console.log(err)
+      JSCookie.remove('__session')
+    })
+    commit('SET_CUSTOMER', customer)
+  },
   async getUserMe({
     commit
   }) {
@@ -32,15 +42,15 @@ export const actions = {
         console.log(err)
         JSCookie.remove('__session')
       }),
-      this.$axios.$get(urls.customer).catch((err) => {
-        // Clear Cookie
-        console.log(err)
-        JSCookie.remove('__session')
-      })
+      // this.$axios.$get(urls.customer).catch((err) => {
+      //   // Clear Cookie
+      //   console.log(err)
+      //   JSCookie.remove('__session')
+      // })
     ]
-    const [user, customer] = await Promise.all(promises)
+    const [user] = await Promise.all(promises)
     commit('SET_USER', user)
-    commit('SET_CUSTOMER', customer)
+    // commit('SET_CUSTOMER', customer)
   },
   async register({
     commit
@@ -102,8 +112,6 @@ export const actions = {
     }
   },
   async login({
-    state,
-    dispatch,
     commit
   }, {
     email,

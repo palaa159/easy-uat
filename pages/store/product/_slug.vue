@@ -52,7 +52,7 @@
                 class="_mgbt-8px _mgh-8px"
               >
                 <a 
-                  :href="`/learn/${item.post_name}`" 
+                  :href="`/blog/${item.post_name}`" 
                   target="_blank"
                   class="bio-link -fancy" 
                 >{{ item.post_title }}</a>
@@ -136,7 +136,10 @@
             <div>
               <h3 
                 class="_lh-100pct _fs-5 _fs-4-md" 
-                v-html="product.name"/>
+                v-html="_productName"/>
+              <p 
+                v-if="product.categories.find(c => c.slug === 'pre-order')" 
+                class="_cl-accent">สินค้า Pre-Order</p>
               <p class="_cl-neutral-500">รหัสสินค้า: 
                 <span 
                   class="_ttf-upc" 
@@ -165,14 +168,29 @@
               </div>
               <!-- ราคา -->
               <!-- <h3>THB {{ currentProduct.regular_price | currency }}</h3> -->
-              <h6 class="_lh-100pct _mgbt-4px">ราคา:</h6>
+              <h6 class="_lh-100pct _mgbt-4px">{{ _productPriceLabel }}</h6>
               <h3 
-                v-if="currentProduct.price_html" 
                 class="_lh-100pct _fs-5 _fs-4-md"
-                v-html="currentProduct.price_html"/>
-              <h3 
-                v-else 
-                class="_lh-100pct _fs-5 _fs-4-md">{{ currentProduct.price | currency }}</h3>
+              >
+                <span 
+                  v-if="currentProduct.price_html" 
+                  v-html="currentProduct.price_html"/>
+                <span 
+                  v-else-if="currentProduct.price" 
+                  v-html="currentProduct.price | currency"/>
+                <span v-else>{{ product.acf.deposit_price | currency }}</span>
+              </h3>
+              <!-- If pre-order -->
+              <div 
+                v-if="_isPreOrder" 
+                class="_mgt-12px">
+                <h6 class="_lh-100pct _mgbt-4px">ระยะเวลา:</h6>
+                <h3 
+                  class="_lh-100pct _fs-5 _fs-4-md"
+                >
+                  {{ product.acf.duration.minimum }} - {{ product.acf.duration.maximum }} วัน
+                </h3>
+              </div>
               <!-- If has variations -->
               <div 
                 v-if="product.variations.length" 
@@ -337,6 +355,21 @@ export default {
     isBtnLoading: false
   }),
   computed: {
+    _isPreOrder () {
+            if (this.product.categories.find(c => c.slug === 'pre-order')) {
+        return true
+      }
+      return false
+    },
+    _productPriceLabel () {
+      if (this.product.categories.find(c => c.slug === 'pre-order')) {
+        return 'ราคามัดจำ:'
+      }
+      return 'ราคา:'
+    },
+    _productName () {
+      return this.product.name
+    },
     isDisabled() {
       return (
         (this.product.variations.length > 0 && !this.selectedVariation) ||
@@ -425,6 +458,7 @@ export default {
         data: this.product
       })
       this.isBtnLoading = false
+      this.$toast.show(`${this.quantity} item(s) added to bag`).goAway(3500)
     }
   },
   head() {
