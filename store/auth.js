@@ -138,6 +138,6 @@ export const actions = {
   }) {
     JSCookie.remove('__session')
     await commit('SET_TOKEN', null)
-    return window.location.href = '/'
+    return window.location.href = '/?revalidate=true'
   }
 }

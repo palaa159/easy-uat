@@ -4,7 +4,7 @@
       <PageHeading 
         text="ข้อกำหนดและเงื่อนไข"
       />
-      <div class="col term-content _pdh-32px _pdh-128px-md _pdh-256px-lg _fs-5">
+      <!-- <div class="col term-content _pdh-32px _pdh-128px-md _pdh-256px-lg _fs-5">
         <p class="_tal-ct">คำว่า บริษัท ในที่นี้หมายถึง บริษัท เมเปิ้ลไลฟ์ จำกัด</p>
         <ul class="_pdt-48px _pdbt-16px _mgl-16px">
           <li 
@@ -14,7 +14,7 @@
             v-html="li"
           />
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

@@ -44,20 +44,17 @@ export const actions = {
     data
   }) {
     commit('SET_CART_PROCESSING', true)
-    const added = await this.$axios.$post(`${urls.addToCart}`, {
+    const bool = await this.$axios.$post(`${urls.addToCart}`, {
       id,
       quantity,
       variationId,
       data
     })
-    /*
-    commit('SET_CART_BUBBLE', true)
-    setTimeout(() => {
-      commit('SET_CART_BUBBLE', false)
-    }, 4500) 
-    */
-    commit('SET_CART_PROCESSING', false)
-    return commit('SET_CART_CONTENT', added)
+    if (bool) {
+      const cart = await this.$axios.$get(`${urls.getCartContent}`)
+      commit('SET_CART_CONTENT', cart)
+    }
+    return commit('SET_CART_PROCESSING', false)
   },
   async updateProductQuantity({
     commit

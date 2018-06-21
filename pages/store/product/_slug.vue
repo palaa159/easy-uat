@@ -451,7 +451,7 @@ export default {
       // alert('add')
       this.isBtnLoading = true
       // console.log(this.currentProduct)
-      const added = await this.$store.dispatch('purchase/addToCart', {
+      await this.$store.dispatch('purchase/addToCart', {
         id: this.product.id,
         quantity: this.quantity,
         variationId: this.currentProduct.id,

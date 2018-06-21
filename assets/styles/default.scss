@@ -2,7 +2,13 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, button {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
   font-family: Kanit;
   font-weight: 400;
 }
@@ -15,11 +21,50 @@ h1, h2, h3, h4, h5, h6, button {
   top: calc(50% - 0.5em + 0px) !important;
 }
 
-.page-enter-active, .page-leave-active {
+.page-enter-active,
+.page-leave-active {
   transition: .2s;
   margin-top: 0px;
 }
-.page-enter, .page-leave-to {
+
+.page-enter,
+.page-leave-to {
   opacity: 0;
   margin-top: 20px;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  line-height: 1.4em;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  line-height: 1.4em;
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  line-height: 1.4em;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  line-height: 1.4em;
+}
+
+[lazy] {
+  transition: all 0.15s, background-size 0s !important;
+}
+
+[lazy=loading] {
+  background-size: 150px !important;
+  background-color: $light-grey;
+  background-position: center center !important;
+}
+
+[lazy=loaded] {
+  opacity: 1;
+  background-size: cover;
+  transition: all 0.15s, background-image 0s !important;
 }

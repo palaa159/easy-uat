@@ -139,7 +139,7 @@ export default {
         email: email || this.email,
         password: password || this.password
       })
-      if (token) return (window.location.href = `/${redirect}`)
+      if (token) return (window.location.href = `/${redirect}&revalidate=true`)
       this.isLoggingIn = false
       return (this.errorMsg = 'ลงทะเบียนไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
     },

@@ -10,8 +10,6 @@ const {
 } = require('nuxt-edge')
 const express = require('express')
 const pkg = require('./package')
-// const axios = require('axios')
-// const config = require('../nuxt.config')
 
 const app = express()
 const config = {
@@ -32,45 +30,18 @@ const config = {
     host: 'cms.makerstation.in.th',
     // prefix: '/wp-json/api/v1', moved to apiUrl.js
   },
-  modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios', ['@nuxtjs/google-analytics', {
-      id: pkg.gaId
-    }],
-    // [
-    //   '@nuxtjs/sitemap'
-    // ],
-    ['nuxt-robots-module', {
-      /* module options */
-      UserAgent: '*',
-      Disallow: '/profile',
-    }],
-    // ['@nuxtjs/pwa', { icon: false }] // doesn't work in firebase functions
-  ],
-  // sitemap: {
-  //   // gzip: true,
-  //   exclude: [
-  //     '/profile',
-  //     '/profile/**'
-  //   ],
-  //   // routes() {
-  //   //   return axios.get(`https://${pkg.apiUrl}/wp-json/api/v1/wc/product`).then(res => res.data.map(product => `/store/product/${product.slug}`))
-  //   // }
-  // }
 }
 const nuxt = new Nuxt(config)
 
-function handleAppRequest(req, res) {
-  res.set('Cache-Control', 'public, max-age=6000, s-maxage=12000')
-  return nuxt.renderRoute('/')
-    .then(result => {
-      return res.send(result.html)
-    }).catch(err => {
-      res.send(err)
+const handleRequest = (req, res) => {
+  res.set('Cache-Control', 'public, maxage=3600')
+  return new Promise((resolve, reject) => {
+    nuxt.render(req, res, promise => {
+      promise.then(resolve).catch(reject)
     })
+  })
 }
 
-app.use(nuxt.render)
-app.get('*', handleAppRequest)
+app.use(handleRequest)
 
 exports = module.exports = functions.https.onRequest(app)
