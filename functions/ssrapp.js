@@ -34,9 +34,11 @@ const config = {
 const nuxt = new Nuxt(config)
 
 const handleRequest = (req, res) => {
-  res.set('Cache-Control', 'public, maxage=3600')
+  if (req.hostname.indexOf('cms') === -1) {
+    res.set('Cache-Control', 'public, max-age=43200, immutable')
+  }
   return new Promise((resolve, reject) => {
-    nuxt.render(req, res, promise => {
+    nuxt.render(req, res, (promise) => {
       promise.then(resolve).catch(reject)
     })
   })
