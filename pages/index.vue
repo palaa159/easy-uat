@@ -97,6 +97,7 @@
                 :date="wk.acf.date"
                 :id="wk.id"
                 :workshop-data="wk"
+                :slug="wk.slug"
               />
             </div>
           </div>

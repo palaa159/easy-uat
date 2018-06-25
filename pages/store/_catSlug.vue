@@ -1,27 +1,5 @@
 <template>
   <div class="_w-100pct">
-    <!-- {{ res }} -->
-    <!-- <div 
-      v-if="_subCategories" 
-      class="container">
-      <div class="row">
-        <div class="col-12">
-          <div 
-            v-for="(cat, i) in _subCategories" 
-            :key="i" 
-            class="row _mgv-16px">
-            <div class="col-12">
-              <ProductsInCategory 
-                :cat-title="cat.name"
-                :cat-slug="cat.slug"
-                :cat-id="cat.id"
-                :products="cat.products"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <!-- Products -->
     <div 
       v-if="res"

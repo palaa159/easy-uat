@@ -39,14 +39,12 @@
         <div class="col-2 _tal-r">
           <nuxt-link 
             to="/contact" 
-            active-class="_fw-600"
+            active-class="_fw-600 _opct-100"
             class="_tal-ct menu-link _fw-400 _cl-white _fs-5"
             exact>
-            ติตต่อเรา
+            ติดต่อเรา
           </nuxt-link>
         </div>
-        <!-- Logo -->
-        <!-- <div class="logo col _bgrp-nrp _bgs-ct _bgpst-ct"/> -->
       </div>
       <!-- Mobile Menu -->
       <div class="row _dp-n-md">

@@ -12,6 +12,7 @@
           :price="wk.price"
           :location="wk.acf.location.description"
           :date="wk.acf.date"
+          :slug="wk.slug"
         />
       </div>
     </div>

@@ -177,7 +177,7 @@
                   v-html="currentProduct.price_html"/>
                 <span 
                   v-else-if="currentProduct.price" 
-                  v-html="currentProduct.price | currency"/>
+                >{{ currentProduct.price | currency }}</span>
                 <span v-else>{{ product.acf.deposit_price | currency }}</span>
               </h3>
               <!-- If pre-order -->
@@ -256,7 +256,7 @@
                 <div 
                   v-if="!currentProduct.in_stock" 
                   class="_mgv-12px _cl-accent">
-                  <strong>ไม่มีสินค้า</strong>
+                  <strong>สินค้าหมด</strong>
                 </div>
                 <button 
                   :class="{'_bgcl-primary': !isDisabled, '-disabled': isDisabled, '-loading': isBtnLoading}" 

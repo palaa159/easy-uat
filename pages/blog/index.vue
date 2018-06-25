@@ -4,7 +4,7 @@
       <div 
         v-for="(item, i) in contents" 
         :key="i"
-        class="col-12 col-md-6 _mgv-12px">
+        class="col-12 col-md-3 _mgv-12px">
         <nuxt-link 
           :to="`/blog/${item.post_name}`" 
         >          

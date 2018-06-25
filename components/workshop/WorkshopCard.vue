@@ -26,7 +26,7 @@
           </div>
           <!-- Cost -->
           <div>
-            <h6>ราคา <span v-html="price"/> บาท / ที่นั่ง</h6>
+            <h6>ราคา {{ price | currency }} / ที่นั่ง</h6>
           </div>
         </div>
         <!-- See detail & Book -->
@@ -87,6 +87,9 @@ export default {
       default: () => {}
     }
   },
+  data: () => ({
+    isBtnLoading: false
+  }),
   methods: {
     async addToCart() {
       // alert('add')

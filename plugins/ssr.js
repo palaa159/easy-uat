@@ -52,6 +52,10 @@ Vue.use(require('vue-moment'), {
 Vue.use(VModal)
 Vue.use(Transitions)
 
+fontawesome.config = {
+  autoAddCss: false
+}
+
 fontawesome.library.add(faFacebookSquare, faFrown, faMinus, faPlus, faSpinner, faSearch, faShoppingCart, faShoppingBag, faTimes, faHome, faUser, faUserCircle, faChevronRight, faLongArrowAltRight, faLongArrowAltLeft, faFileAlt, faClipboardList, faTruck, faCreditCard, faUndoAlt, faSignOutAlt, faLock, faCheck, faPaperPlane, faRepeat)
 
 Vue.component('fa-icon', FontAwesomeIcon)

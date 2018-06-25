@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div class="row _jtfct-ct">
       <div 
         id="content" 
         class="col-12 col-md-9">
@@ -21,7 +21,7 @@
         <div 
           v-lazy:background="content.acf.assets.featured_image" 
           v-else 
-          class="image _bgrp-nrp _bgs-cv _mgv-24px"/>
+          class="image _bgrp-nrp _bgs-cv _mgv-24px _bgpst-ct"/>
         <ContentFromWP :content="content.acf.content" />
         <!-- Comments -->
         <h4>Comments</h4>
@@ -30,7 +30,7 @@
         <!-- Explore more content -->
         <h4>More content</h4>
       </div>
-      <div class="col-12 col-md-3">
+      <div class="col-12 col-md-2">
         <no-ssr>
           <affix 
             :enabled="_enabled"
@@ -47,7 +47,7 @@
                     <div 
                       v-for="(p, i) in content.acf.related_products" 
                       :key="i" 
-                      class="col-6 col-md-3 col-lg-2 _mgbt-24px">
+                      class="col-12 _mgbt-24px">
                       <Card
                         :key="i"
                         :title="p.name" 

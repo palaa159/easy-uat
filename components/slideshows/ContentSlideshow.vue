@@ -20,7 +20,7 @@
                 <div 
                   v-lazy:background="slide.acf.assets.featured_image"
                   v-else
-                  class="_h-256px _bgrp-nrp _bgs-ct _bgpst-ct _mgv-24px"/>
+                  class="_h-256px _bgrp-nrp _bgs-cv _bgpst-ct _mgv-24px"/>
               </div>
               <div class="col-12 col-md-5">
                 <nuxt-link 
@@ -31,8 +31,11 @@
                     v-html="slide.post_title"/>
                 </nuxt-link>
                 <p 
-                  class="_lh-150pct" 
-                  v-html="slide.acf.short_description"/>
+                  v-line-clamp:20="2" 
+                  class="_lh-150pct"
+                >
+                  {{ slide.acf.short_description }}
+                </p>
               </div>
             </div>
           </div>

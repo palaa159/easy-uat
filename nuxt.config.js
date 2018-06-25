@@ -155,9 +155,6 @@ module.exports = {
     [
       '@nuxtjs/toast',
     ],
-    // [
-    //   '@nuxtjs/sitemap'
-    // ],
     ['nuxt-robots-module', {
       /* module options */
       UserAgent: '*',
@@ -165,16 +162,6 @@ module.exports = {
     }],
     // ['@nuxtjs/pwa', { icon: false }] // doesn't work in firebase functions
   ],
-  // sitemap: {
-  //   // gzip: true,
-  //   exclude: [
-  //     '/profile',
-  //     '/profile/**'
-  //   ],
-  //   // routes() {
-  //   //   return axios.get(`https://${pkg.apiUrl}/wp-json/api/v1/wc/product`).then(res => res.data.map(product => `/store/product/${product.slug}`))
-  //   // }
-  // },
   /*
    ** Axios module configuration
    */
