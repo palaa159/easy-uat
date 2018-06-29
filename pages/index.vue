@@ -10,7 +10,7 @@
     <div class="_w-100pct _bgcl-black">
       <div class="container">
         <div class="row _jtfct-ct">
-          <div class="col-12 col-md-10 _mgv-0px _mgv-24px-md">
+          <div class="col-12 col-md-10 _mgbt-16px _mgv-24px-md">
             <div class="embed-responsive embed-responsive-16by9">
               <iframe 
                 class="embed-responsive-item" 
@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <!-- สินค้ามาใหม่ -->
+    <!-- สินค้าแนะนำ -->
     <!-- Content -->
     <div 
       class="_w-100pct content-wrapper">
@@ -60,7 +60,7 @@
           </div>
         </div>
         <div class="col-12 col-md-9">
-          <h6 class="_pdv-16px">สินค้ามาใหม่</h6>
+          <h6 class="_pdv-16px">สินค้าแนะนำ</h6>
           <div>
             <ProductCardsColumn 
               :products="featuredProducts"

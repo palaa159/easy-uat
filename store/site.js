@@ -39,6 +39,9 @@ export const actions = {
     }, {
       title: 'About',
       path: '/about'
+    }, {
+      title: 'Contact',
+      path: '/contact'
     }]
     commit('menu/SET_MENU_ITEMS', primaryMenu, {
       root: true

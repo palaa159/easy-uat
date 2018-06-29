@@ -1,7 +1,7 @@
 export const state = () => ({
   isShowing: false,
   isUserMenuShowing: true,
-  isUserSticky: false,
+  isMenuSticky: false,
   primaryMenu: []
 })
 
@@ -16,6 +16,6 @@ export const mutations = {
     state.isUserMenuShowing = bool
   },
   SET_USER_STICKY(state, bool) {
-    state.isUserSticky = bool
+    state.isMenuSticky = bool
   }
 }

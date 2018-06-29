@@ -12,11 +12,11 @@
         </div>
       </div>
     </div>
-    <!-- สินค้ามาใหม่ -->
+    <!-- สินค้าแนะนำ -->
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h4 class="_pdv-12px">สินค้ามาใหม่</h4>
+          <h4 class="_pdv-12px">สินค้าแนะนำ</h4>
           <div>
             <ProductCardsColumn 
               :products="featuredProducts"
