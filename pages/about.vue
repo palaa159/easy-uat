@@ -1,15 +1,15 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-12">
-        <h3 class="_mgv-24px _lh-100pct">เกี่ยวกับ MakerStation</h3>
+      <div class="col-12 _mgt-24px">
+        <!-- <h3 class="_mgv-24px _lh-100pct">เกี่ยวกับ MakerStation</h3> -->
         <ContentFromWP :content="page.content.rendered" />
       </div>
     </div>
     <!-- Team Members -->
     <div class="row">
       <div class="col-12">
-        <h3>MakerStation Team</h3>
+        <h3>Team</h3>
       </div>
     </div>
     <div 

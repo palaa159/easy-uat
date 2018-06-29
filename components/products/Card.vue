@@ -1,5 +1,11 @@
 <template>
   <div class="card _bgcl-white _ovf-hd _bdrd-2px">
+    <!-- Badge -->
+    <div 
+      v-if="badge.acf.full_price" 
+      class="badge _fw-600 _fs-7">
+      Pre-order
+    </div>
     <!-- Image -->
     <nuxt-link :to="`/store/product/${slug}`">
       <div 
@@ -23,7 +29,12 @@
       </p> -->
       <p class="_mgbt-4px _mgt-8px _lh-100pct _fs-7">
         <span 
-          v-if="price"
+          v-if="badge.acf.full_price" 
+        >
+          {{ badge.acf.full_price | currency }}
+        </span>
+        <span 
+          v-else-if="price"
           v-html="price"/>
         <span v-else>Pre-Order</span>
       </p>
@@ -57,6 +68,10 @@ export default {
     price: {
       type: String,
       default: '0'
+    },
+    badge: {
+      type: Object,
+      default: () => {}
     }
   }
 }
@@ -70,6 +85,13 @@ export default {
   }
   .image {
     height: 160px;
+  }
+  .badge {
+    position: absolute;
+    top: 12px;
+    background: red;
+    color: #fff;
+    padding: 4px 8px;
   }
 }
 </style>

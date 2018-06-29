@@ -12,10 +12,12 @@ export const state = () => ({
   checkoutStep: 1,
   bankTransferAccounts: [{
     bankTitle: 'กสิกรไทย สาขาเดอะมอลล์ บางกะปิ',
+    bankCode: 'kbank',
     accountTitle: 'นายภัสพงศ์ มุสิกบุตร',
     accountNumber: '026-8-35312-7',
   }, {
     bankTitle: 'ไทยพาณิชย์ สาขาเดอะมอลล์ บางกะปิ',
+    bankCode: 'scb',
     accountTitle: 'นายภัสพงศ์ มุสิกบุตร',
     accountNumber: '160-4-01231-6',
   }]

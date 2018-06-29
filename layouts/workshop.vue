@@ -39,12 +39,12 @@ export default {
   computed: {
     _header () {
       const catSlug = this.$route.params.catSlug
-      if (!catSlug) return 'Workshop & Events'
+      if (!catSlug) return 'Workshops & Events'
       return `<a class="_cl-white" href="/workshop">Workshop & Events</a> → <br>${this.$store.state.product.categories.find(c => c.slug === catSlug).name}`
     },
     _description () {
       const catSlug = this.$route.params.catSlug
-      if (!catSlug) return 'มาเป็นผู้สอน และผู้เรียนรู้'
+      if (!catSlug) return 'เรียนรู้และลงมือทำ'
       return this.$store.state.product.categories.find(c => c.slug === catSlug).description
     }
   }

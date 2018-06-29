@@ -1,14 +1,32 @@
 <template>
   <div class="_w-100pct">
     <!-- Slide -->
-    <div class="_w-100pct _bgcl-gray top-slider">
+    <!-- <div class="_w-100pct _bgcl-gray top-slider">
       <Slideshow
         :slides="topSlides"
       />
+    </div> -->
+    <!-- ไอ้ปลื้ม -->
+    <div class="_w-100pct _bgcl-black">
+      <div class="container">
+        <div class="row _jtfct-ct">
+          <div class="col-12 col-md-10 _mgv-0px _mgv-24px-md">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe 
+                class="embed-responsive-item" 
+                src="https://www.youtube.com/embed/ucHX_YXUpbA?autoplay=1" 
+                allowfullscreen
+                allow="autoplay encrypted-media allowfullscreen"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- สินค้ามาใหม่ -->
     <!-- Content -->
-    <div class="_w-100pct content-wrapper">
+    <div 
+      class="_w-100pct content-wrapper">
       <div class="container">
         <div class="row">
           <div class="col-12 _pdv-24px">
@@ -114,42 +132,42 @@ import ProductCardsColumn from '~/components/products/ProductCardsColumn'
 import HomeCategories from '~/components/categories/HomeCategories'
 import WorkshopCard from '~/components/workshop/WorkshopCard'
 export default {
-  components: {
-    Slideshow,
-    ProductCardsColumn,
-    HomeCategories,
-    ContentSlideshow,
-    WorkshopCard
-  },
-  head() {
-    const siteTitle = this.$store.state.site.title
-    return {
-      title: `หน้าแรก ${siteTitle}`,
-      meta: [
-        { hid: 'og:title', property: 'og:title', content: `หน้าแรก` },
-        { hid: 'og:description', name: 'og:description', content: `หน้าแรก` }
-      ]
-    }
-  },
-  data: () => ({
-    topSlides: [],
-    featuredProducts: [],
-    categories: [],
-    contentSlides: [],
-    workshops: []
-  }),
-  created() {
-    this.$store.dispatch('content/getSlideshow', {
-      slug: 'homepage-banner'
-    }).then((topSlides) => this.topSlides = topSlides)
-    this.$store.dispatch('product/getFeaturedProducts').then((featuredProducts) => this.featuredProducts = featuredProducts),
-    this.$store.dispatch('content/getContent', { featured: true }).then((contentSlides) => this.contentSlides = contentSlides)
-    this.$store.dispatch('workshop/getWorkshop', {}).then((workshops) => this.workshops = workshops)
-    // const [topSlides, featuredProducts, contentSlides] = await Promise.all(
-    //   promises
-    // )
-  
-  }
+components: {
+Slideshow,
+ProductCardsColumn,
+HomeCategories,
+ContentSlideshow,
+WorkshopCard
+},
+head() {
+const siteTitle = this.$store.state.site.title
+return {
+title: `หน้าแรก ${siteTitle}`,
+meta: [
+{ hid: 'og:title', property: 'og:title', content: `หน้าแรก` },
+{ hid: 'og:description', name: 'og:description', content: `หน้าแรก` }
+]
+}
+},
+data: () => ({
+topSlides: [],
+featuredProducts: [],
+categories: [],
+contentSlides: [],
+workshops: []
+}),
+created() {
+this.$store.dispatch('content/getSlideshow', {
+slug: 'homepage-banner'
+}).then((topSlides) => this.topSlides = topSlides)
+this.$store.dispatch('product/getFeaturedProducts').then((featuredProducts) => this.featuredProducts = featuredProducts),
+this.$store.dispatch('content/getContent', { featured: true }).then((contentSlides) => this.contentSlides = contentSlides)
+this.$store.dispatch('workshop/getWorkshop', {}).then((workshops) => this.workshops = workshops)
+// const [topSlides, featuredProducts, contentSlides] = await Promise.all(
+//   promises
+// )
+
+}
 }
 </script>
 <style lang="scss" scoped>

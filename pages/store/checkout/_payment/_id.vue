@@ -17,12 +17,6 @@
             <div class="_mgbt-4px">
               หมายเลขคำสั่งซื้อของคุณคือ <span class="_cl-warning">#{{ order.id }}</span>
             </div>
-            <!-- <small>
-              สามารถตรวจสอบสถานะการซื้อทั้งหมดได้
-              <nuxt-link 
-                class="bio-link -fancy" 
-                to="/profile/orders">ที่นี่</nuxt-link>
-            </small> -->
           </div>
           <!-- BACS -->
           <div 
@@ -32,7 +26,10 @@
             <div 
               v-for="(x, i) in $store.state.purchase.bankTransferAccounts" 
               :key="i" 
-              class="bio-message -dark _mgv-16px">
+              class="_mgv-16px _dp-f _alit-ct">
+              <div 
+                v-lazy:background-image="require(`~/assets/images/banks/${x.bankCode}.jpg`)" 
+                class="_h-48px _w-48px _bgs-ct _bgrp-nrp _mgr-12px"/>
               <h6 class="_lh-125pct">
                 ธนาคาร{{ x.bankTitle }}<br>
                 {{ x.accountTitle }}<br>

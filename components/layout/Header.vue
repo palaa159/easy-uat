@@ -27,7 +27,7 @@
                   class="_tal-ct _cl-white _lh-125pct" 
                   v-html="header"/>
                 <p 
-                  class="_tal-ct _cl-white _mgt-12px" 
+                  class="_tal-ct _cl-white _mgt-0px _fs-4" 
                   v-html="description"/>
               </div>
             </div>

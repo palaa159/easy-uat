@@ -38,10 +38,10 @@ export default {
   },
   computed: {
     _header () {
-      return 'About MakerStation'
+      return 'About us'
     },
     _description () {
-      return 'พวกเราเป็นใคร'
+      return 'พวกเราคือใคร?'
     }
   }
 }

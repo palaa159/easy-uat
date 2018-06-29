@@ -6,9 +6,6 @@
       :header="_header"
       :description="_description"
     />
-    <!-- <div class="_bdtw-1px breadcrumb _bdcl-neutral-200">
-      <Breadcrumbs />
-    </div> -->
     <!-- Content -->
     <main class="min-height _dp-f _alit-ct">
       <nuxt/>
@@ -43,7 +40,7 @@ export default {
     },
     _description () {
       const catSlug = this.$route.params.catSlug
-      if (!catSlug) return 'เราไม่ได้ขายของถูก แต่เราขายของดีมีคุณภาพเท่านั้น'
+      if (!catSlug) return 'คุณภาพสมราคา จากใจผู้ใช้จริง'
       return this.$store.state.product.categories.find(c => c.slug === catSlug).description
     }
   }

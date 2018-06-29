@@ -30,7 +30,9 @@
     </div>
     <!-- Total lineTotal -->
     <div>
-      <div class="_tal-r">THB</div>
+      <div class="_tal-r">
+        THB
+      </div>
       <h4 class="_lh-100pct">{{ (lineTotal).toLocaleString() }}</h4>
     </div>
   </div>

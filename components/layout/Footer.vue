@@ -1,10 +1,12 @@
 <template>
-  <footer class="_bgcl-neutral-100 _pst-rlt">
+  <footer class="_pst-rlt">
     <div class="container">
       <div class="row _pdv-16px _dp-f _jtfct-spbtw">
-        <div class="col-12 col-md-6 _tal-ct _tal-l-md _pdv-16px _pdv-24px-md"><img 
-          class="_h-32px" 
-          src="~/assets/images/other/dbd.png"></div>
+        <div class="col-12 col-md-6 _tal-ct _tal-l-md _pdv-16px _pdv-24px-md">
+          <!-- <img 
+            class="_h-32px" 
+            src="~/assets/images/other/dbd.png"> -->
+        </div>
         <div class="col-12 col-md-6 copyright _tal-ct _tal-r-md _pdv-8px _pdv-24px-md"><span>Copyright &copy;2018 Makerstation | </span>
           <nuxt-link 
             :to="`/terms-conditions`" 
@@ -55,6 +57,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+footer {
+  background: rgba(40, 40, 40, 1);
+}
 .menu-footer {
   border-top: 1px solid #e0e1e1;
   border-bottom: 1px solid #e0e1e1;

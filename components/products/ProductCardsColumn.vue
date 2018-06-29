@@ -14,6 +14,7 @@
           :image="p.image"
           :price="p.price_html"
           :slug="p.slug"
+          :badge="p"
         />
       </div>
     </div>
@@ -39,7 +40,7 @@ export default {
       type: String,
       default: 'col-6 col-sm-3 col-md-2'
     }
-  }
+  },
 }
 </script>
 

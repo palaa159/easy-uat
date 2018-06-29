@@ -39,12 +39,12 @@ export default {
   computed: {
     _header () {
       const catSlug = this.$route.params.catSlug
-      if (!catSlug) return 'Blog'
+      if (!catSlug) return 'แหล่งรวมความรู้'
       return `<a class="_cl-white" href="/blog">Blog</a> → <br>${this.$store.state.product.categories.find(c => c.slug === catSlug).name}`
     },
     _description () {
       const catSlug = this.$route.params.catSlug
-      if (!catSlug) return 'สาระดีๆจาก MakerStation'
+      if (!catSlug) return 'จากคอมมูนิตี้ของเมคเกอร์'
       return this.$store.state.product.categories.find(c => c.slug === catSlug).description
     }
   }

@@ -41,7 +41,9 @@
           class="cms-content" 
           v-html="product.description"/>
         <!-- Review Content -->
-        <div v-if="product.acf.related_content && product.acf.related_content.length">
+        <div 
+          v-if="product.acf.related_content && product.acf.related_content.length" 
+          id="relatedContent">
           <!-- {{ product.acf.related_content }} -->
           <div class="bio-message -dark _pdv-24px">
             <div class="bio-message-content">
@@ -173,7 +175,12 @@
                 class="_lh-100pct _fs-5 _fs-4-md"
               >
                 <span 
-                  v-if="currentProduct.price_html" 
+                  v-if="currentProduct.acf.deposit_price" 
+                >
+                  {{ currentProduct.acf.deposit_price | currency }}
+                </span>
+                <span 
+                  v-else-if="currentProduct.price_html" 
                   v-html="currentProduct.price_html"/>
                 <span 
                   v-else-if="currentProduct.price" 
@@ -275,6 +282,13 @@
                       v-scroll-to="'#description'" 
                       href="#">
                       <h5 class="_cl-primary _mgv-12px _fw-100">รายละเอียดสินค้า</h5>
+                    </a>
+                  </li>
+                  <li v-if="product.acf.related_content">
+                    <a 
+                      v-scroll-to="'#relatedContent'" 
+                      href="#">
+                      <h5 class="_cl-primary _mgv-12px _fw-100">เนื้อหาที่เกี่ยวข้อง</h5>
                     </a>
                   </li>
                   <li v-if="product.attributes.filter(a => a.visible).length">

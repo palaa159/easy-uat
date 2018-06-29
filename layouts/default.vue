@@ -1,12 +1,8 @@
 <template>
   <div>
     <Header/>
-    <!-- <div class="_bdtw-1px breadcrumb _bdcl-gray">
-      <Breadcrumbs />
-    </div> -->
-    <!-- Content -->
     <main 
-      class="min-height-100vh _dp-f _alit-ct _pdbt-128px">
+      class="min-height-100vh _dp-f _alit-ct">
       <nuxt/>
     </main>
     <Footer/>

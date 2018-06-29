@@ -49,11 +49,13 @@
                       :key="i" 
                       class="col-12 _mgbt-24px">
                       <Card
+                        v-if="p"
                         :key="i"
                         :title="p.name" 
                         :image="p.image"
                         :price="p.price_html"
                         :slug="p.slug"
+                        :badge="p"
                       />
                     </div>
                   </div>

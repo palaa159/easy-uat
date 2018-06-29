@@ -3,16 +3,13 @@
     <p 
       class="_mgt-16px" 
       v-html="$store.state.purchase.gateways.find(g => g.id ==='bacs').description"/>
-    <!-- <div class="_mgt-16px">
-      <button
-        v-for="(x, i) in banks" 
-        :key="i" 
-        :class="{'-positive': selectIndex === i, '-gray': selectIndex !== i}"
-        class="bio-button -outline _dp-ilb _mgr-8px _mgt-8px _w-30pct"
-        type="button"
-        @click="selectIndex = i"
-      >ธนาคาร{{ x.title }}</button>
-    </div> -->
+    <div class="_dp-f">
+      <div 
+        v-lazy:background-image="require(`~/assets/images/banks/${b.bankCode}.jpg`)" 
+        v-for="(b, i) in $store.state.purchase.bankTransferAccounts" 
+        :key="i"
+        class="_h-48px _w-48px _mgt-12px _mgr-12px _bgs-ct _bgrp-nrp _bgpst-ct"/>
+    </div>
     <button
       :class="{'-loading': isBtnLoading}"
       type="submit" 
