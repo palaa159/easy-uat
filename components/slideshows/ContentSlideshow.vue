@@ -20,7 +20,7 @@
                 <div 
                   v-lazy:background="slide.acf.assets.featured_image"
                   v-else
-                  class="_h-256px _bgrp-nrp _bgs-cv _bgpst-ct _mgv-24px"/>
+                  class="image _bgrp-nrp _bgs-cv _bgpst-ct _mgv-24px"/>
               </div>
               <div class="col-12 col-md-5">
                 <nuxt-link 
@@ -72,7 +72,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'assets/styles/variables';
 .slide {
   height: 350px;
+}
+.image {
+  height: 300px;
+  @include breakpoint(mobile) {
+    height: 200px;
+  }
 }
 </style>

@@ -4,7 +4,7 @@
       :heroImage="''"
     />
     <main 
-      class="min-height-100vh _dp-f _alit-ct">
+      class="min-height-100vh _dp-f _alit-ct _pdbt-64px">
       <nuxt/>
     </main>
     <Footer/>

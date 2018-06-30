@@ -14,20 +14,20 @@
     </nuxt-link>
     <!-- Detail -->
     <div class="_pdh-12px _pdv-8px">
-      <div 
-        class="_ovfy-hd" 
-        style="height: 34px;">
+      <div class="_h-48px">
         <nuxt-link 
           :to="`/store/product/${slug}`" 
         >
-          <h6 class="_lh-100pct _cl-neutral-800">{{ title | titleLang }}</h6>
+          <p 
+            v-line-clamp:18="2" 
+            class="_lh-150pct _fs-7 _cl-neutral-800">{{ title | titleLang }}</p>
         </nuxt-link>
       </div>
       <!-- <p v-if="salePrice !== '0'">
         <span class="currency">฿</span>
         <span>{{ salePrice }}</span>
       </p> -->
-      <p class="_mgbt-4px _mgt-8px _lh-100pct _fs-7">
+      <p class="_mgbt-4px _lh-100pct _fs-7 _fw-600">
         <span 
           v-if="badge.acf.full_price" 
         >

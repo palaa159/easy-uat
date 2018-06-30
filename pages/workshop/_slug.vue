@@ -7,7 +7,11 @@
       <div class="row _pst-rlt _zid-0">
         <div class="col-12 _h-256px _h-512px-md _cl-white _dp-f _alit-ct _jtfct-ct">
           <h1 class="_lh-125pct _fs-4 _fs-1-md">
-            <span class="_dp-ilb _fw-300">Workshops</span>
+            <nuxt-link 
+              class="_cl-white" 
+              to="/workshop">
+              <span class="_dp-ilb _fw-300">Workshops</span>
+            </nuxt-link>
             <span class="_dp-ilb _mgh-4px">
               <fa-icon 
                 :icon="['fas', 'chevron-right']" 

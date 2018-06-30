@@ -58,7 +58,7 @@ export default {
 
 <style lang="scss" scoped>
 footer {
-  background: rgba(40, 40, 40, 1);
+  background: rgba(0, 0, 0, 1);
 }
 .menu-footer {
   border-top: 1px solid #e0e1e1;

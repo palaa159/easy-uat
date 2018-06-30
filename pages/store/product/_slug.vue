@@ -137,11 +137,11 @@
             relative-element-selector="#product-content">
             <div>
               <h3 
-                class="_lh-100pct _fs-5 _fs-4-md" 
+                class="_lh-125pct _fs-5 _fs-4-md" 
                 v-html="_productName"/>
               <p 
                 v-if="product.categories.find(c => c.slug === 'pre-order')" 
-                class="_cl-accent">สินค้า Pre-Order</p>
+                class="_cl-accent _fw-600 _fs-4">สินค้า Pre-Order</p>
               <p class="_cl-neutral-500">รหัสสินค้า: 
                 <span 
                   class="_ttf-upc" 
@@ -170,28 +170,32 @@
               </div>
               <!-- ราคา -->
               <!-- <h3>THB {{ currentProduct.regular_price | currency }}</h3> -->
+              <!-- ราคาเต็ม -->
+              <div 
+                v-if="currentProduct.acf.full_price" 
+                class="_mgbt-8px">
+                <h6
+                  class="_lh-100pct _mgv-4px">ราคาเต็ม:</h6>
+                <h3 class="_lh-100pct">
+                  {{ currentProduct.acf.full_price | currency }}
+                </h3>
+              </div>
               <h6 class="_lh-100pct _mgbt-4px">{{ _productPriceLabel }}</h6>
               <h3 
                 class="_lh-100pct _fs-5 _fs-4-md"
               >
                 <span 
-                  v-if="currentProduct.acf.deposit_price" 
-                >
-                  {{ currentProduct.acf.deposit_price | currency }}
-                </span>
-                <span 
-                  v-else-if="currentProduct.price_html" 
+                  v-if="currentProduct.price_html" 
                   v-html="currentProduct.price_html"/>
                 <span 
-                  v-else-if="currentProduct.price" 
+                  v-else 
                 >{{ currentProduct.price | currency }}</span>
-                <span v-else>{{ product.acf.deposit_price | currency }}</span>
               </h3>
               <!-- If pre-order -->
               <div 
                 v-if="_isPreOrder" 
                 class="_mgt-12px">
-                <h6 class="_lh-100pct _mgbt-4px">ระยะเวลา:</h6>
+                <h6 class="_lh-100pct _mgbt-4px">ระยะเวลารอสินค้า:</h6>
                 <h3 
                   class="_lh-100pct _fs-5 _fs-4-md"
                 >

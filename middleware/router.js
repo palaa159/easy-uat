@@ -26,6 +26,6 @@ export default function ({
   if (process.browser) {
     setTimeout(() => {
       window.scrollTo(0, 0)
-    }, 2500)
+    }, 1000)
   }
 }

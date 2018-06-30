@@ -40,11 +40,11 @@ export default {
     _header () {
       const catSlug = this.$route.params.catSlug
       if (!catSlug) return 'Workshops & Events'
-      return `<a class="_cl-white" href="/workshop">Workshop & Events</a> → <br>${this.$store.state.product.categories.find(c => c.slug === catSlug).name}`
+      return `<a class="_cl-white" href="/workshop">Workshops & Events</a> → <br>${this.$store.state.product.categories.find(c => c.slug === catSlug).name}`
     },
     _description () {
       const catSlug = this.$route.params.catSlug
-      if (!catSlug) return 'เรียนรู้และลงมือทำ'
+      if (!catSlug) return 'เรียนรู้ ลงมือทำ นำมาถ่ายทอด'
       return this.$store.state.product.categories.find(c => c.slug === catSlug).description
     }
   }

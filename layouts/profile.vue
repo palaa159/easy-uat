@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :isSticky="false"/>
+    <Header :heroImage="''"/>
     <!-- Content -->
     <main class="min-height-100vh _dp-f _alit-fst">
       <div class="container _mgv-32px">

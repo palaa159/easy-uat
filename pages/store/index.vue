@@ -30,8 +30,9 @@
     <div class="container _mgt-32px">
       <!-- Each product cats -->
       <div 
+        v-scroll-reveal="{delay: i * 200}" 
         v-for="(cat, i) in categories" 
-        :key="i" 
+        :key="i"
         class="row _mgv-16px">
         <div class="col-12">
           <ProductsInCategory 

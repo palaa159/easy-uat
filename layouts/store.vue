@@ -35,7 +35,7 @@ export default {
   computed: {
     _header () {
       const catSlug = this.$route.params.catSlug
-      if (!catSlug) return 'MakerStore'
+      if (!catSlug) return 'MakerStore®'
       return `<a class="_cl-white" href="/store">MakerStore®</a> → <br>${this.$store.state.product.categories.find(c => c.slug === catSlug).name}`
     },
     _description () {

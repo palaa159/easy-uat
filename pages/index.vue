@@ -132,44 +132,41 @@ import ProductCardsColumn from '~/components/products/ProductCardsColumn'
 import HomeCategories from '~/components/categories/HomeCategories'
 import WorkshopCard from '~/components/workshop/WorkshopCard'
 export default {
-components: {
-Slideshow,
-ProductCardsColumn,
-HomeCategories,
-ContentSlideshow,
-WorkshopCard
-},
-head() {
-const siteTitle = this.$store.state.site.title
-return {
-title: `หน้าแรก ${siteTitle}`,
-meta: [
-{ hid: 'og:title', property: 'og:title', content: `หน้าแรก` },
-{ hid: 'og:description', name: 'og:description', content: `หน้าแรก` }
-]
-}
-},
-data: () => ({
-topSlides: [],
-featuredProducts: [],
-categories: [],
-contentSlides: [],
-workshops: []
-}),
-created() {
-this.$store.dispatch('content/getSlideshow', {
-slug: 'homepage-banner'
-}).then((topSlides) => this.topSlides = topSlides)
-this.$store.dispatch('product/getFeaturedProducts').then((featuredProducts) => this.featuredProducts = featuredProducts),
-this.$store.dispatch('content/getContent', { featured: true }).then((contentSlides) => this.contentSlides = contentSlides)
-this.$store.dispatch('workshop/getWorkshop', {}).then((workshops) => this.workshops = workshops)
-// const [topSlides, featuredProducts, contentSlides] = await Promise.all(
-//   promises
-// )
-
-}
+  components: {
+    Slideshow,
+    ProductCardsColumn,
+    HomeCategories,
+    ContentSlideshow,
+    WorkshopCard
+  },
+  head() {
+    const siteTitle = this.$store.state.site.title
+    return {
+      title: `หน้าแรก ${siteTitle}`,
+      meta: [
+        { hid: 'og:title', property: 'og:title', content: `หน้าแรก` },
+        { hid: 'og:description', name: 'og:description', content: `หน้าแรก` }
+      ]
+    }
+  },
+  data: () => ({
+    topSlides: [],
+    featuredProducts: [],
+    categories: [],
+    contentSlides: [],
+    workshops: []
+  }),
+  created() {
+    this.$store.dispatch('content/getSlideshow', {
+    slug: 'homepage-banner'
+    }).then((topSlides) => this.topSlides = topSlides)
+    this.$store.dispatch('product/getFeaturedProducts').then((featuredProducts) => this.featuredProducts = featuredProducts),
+    this.$store.dispatch('content/getContent', { featured: true }).then((contentSlides) => this.contentSlides = contentSlides)
+    this.$store.dispatch('workshop/getWorkshop', {}).then((workshops) => this.workshops = workshops)
+  }
 }
 </script>
+
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
 .top-slider {

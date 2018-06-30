@@ -24,14 +24,14 @@ button {
 
 .page-enter-active,
 .page-leave-active {
-  transition: .2s;
-  margin-top: 0px;
+  transition: 0.5s cubic-bezier(0.100, 0.485, 0.000, 0.9);
+  transform: translateY(0px);
 }
 
 .page-enter,
 .page-leave-to {
   opacity: 0;
-  margin-top: 20px;
+  transform: translateY(20px);
 }
 
 ::-webkit-input-placeholder {

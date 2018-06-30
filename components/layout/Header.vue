@@ -61,16 +61,17 @@
             <div class="_w-256px">
               <nuxt-link to="/">
                 <div 
-                  v-lazy:background="require(`~/assets/images/logo-white.png`)" 
-                  class="_h-32px _bgs-ct _bgrp-nrp"/>
+                  v-lazy:background="require(`~/assets/images/logo-full-white.svg`)" 
+                  class="_h-32px _h-48px-md _bgs-ct _bgrp-nrp"/>
               </nuxt-link>
             </div>
             <!-- Desktop Menu -->
             <div class="_dp-n _dp-f-md">
               <nuxt-link 
+                v-scroll-reveal="{delay: 100 * i, origin: 'right'}" 
                 v-for="(x, i) in menuItems" 
                 :key="i" 
-                :to="x.path" 
+                :to="x.path"
                 class="bio-link _mgl-48px _cl-white">
                 <h6>{{ x.title }}</h6>
               </nuxt-link>
@@ -94,6 +95,7 @@
                     <div class="container-fluid _pst-rlt">
                       <div class="row">
                         <nuxt-link 
+                          v-scroll-reveal="{delay: 100 * i}"
                           v-for="(x, i) in menuItems" 
                           :key="i" 
                           :to="x.path" 
@@ -164,7 +166,7 @@ export default {
     },
     heroImage: {
       type: String,
-      default: 'https://cms.makerstation.in.th/wp-content/uploads/2018/06/photo-1508873535684-277a3cbcc4e8.jpeg'
+      default: 'https://images.unsplash.com/photo-1513350375601-5040cae53a97?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5efadc872234c9b2f1d74bce061c42ad&auto=format&fit=crop&w=1650&q=80'
     }
   },
   data: () => ({

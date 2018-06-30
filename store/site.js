@@ -2,7 +2,7 @@ import pkg from '~/package'
 import urls from '~/services/apiUrl'
 
 export const state = () => ({
-  title: `– ${pkg.description}`,
+  title: `${pkg.title} – ${pkg.description}`,
   omisePublicKey: pkg.omisePublicKey,
   termCondition: [],
   privacyPolicy: [],
