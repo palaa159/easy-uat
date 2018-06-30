@@ -2,7 +2,7 @@
   var options = {
     facebook: '1956920341285869', // Facebook page ID
     line: '//line.me/R/ti/p/%40qnl1832i', // Line QR code URL
-    call_to_action: 'คุยกับเรา', // Call to action
+    // call_to_action: 'คุยกับเรา', // Call to action
     button_color: '#129BF4', // Color of button
     position: 'right', // Position may be 'right' or 'left'
     order: 'line,facebook' // Order of buttons

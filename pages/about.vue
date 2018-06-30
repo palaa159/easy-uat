@@ -52,7 +52,7 @@ export default {
     // console.log(content)
     return { page }
   },
-    head() {
+  head() {
     const siteTitle = this.$store.state.site.title
     return {
       title: `About us ${siteTitle}`,

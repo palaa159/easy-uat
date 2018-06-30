@@ -118,8 +118,26 @@
               class="_tal-ct _cl-white _lh-125pct" 
               v-html="header"/>
             <p 
-              class="_tal-ct _cl-white _mgt-0px _fs-4" 
+              class="_tal-ct _cl-white _mgt-0px _fs-5 _fs-4-md" 
               v-html="description"/>
+          </div>
+          <!-- Search -->
+          <div 
+            v-if="false" 
+            class="col-12 _mgbt-12px _mgt-0px _mgt-12px-md">
+            <form 
+              class="_mgh-at search-form" 
+              @submit.stop.prevent="submit">
+              <div class="bio-input _dp-f">
+                <input 
+                  type="text" 
+                  class="search-input _h-48px _bdtrrd-0px _bdbtrrd-0px _bdtlrd-16px _bdbtlrd-16px" 
+                  placeholder="ค้นหา">
+                <button 
+                  class="bio-button _pdh-24px _bdtlrd-0px _bdbtlrd-0px _bdtrrd-16px _bdbtrrd-16px" 
+                  type="submit">ค้นหา</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -181,6 +199,9 @@ export default {
     this.menuItems = JSON.parse(JSON.stringify(this.$store.state.menu.primaryMenu))
   },
   methods: {
+    async submit () {
+
+    },
     handleScroll() {
       // console.log(window.scrollY)
       if (window.scrollY > 200) {
@@ -195,6 +216,14 @@ export default {
 
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
+.search-form {
+  max-width: 360px;
+}
+.search-input {
+  max-width: 300px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 0px;
+}
 .is-sticky {
   .member {
     position: fixed;

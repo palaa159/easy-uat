@@ -14,9 +14,9 @@
             <div class="embed-responsive embed-responsive-16by9">
               <iframe 
                 class="embed-responsive-item" 
-                src="https://www.youtube.com/embed/ucHX_YXUpbA?autoplay=1" 
+                src="https://www.youtube.com/embed/ucHX_YXUpbA?autoplay=0" 
                 allowfullscreen
-                allow="autoplay encrypted-media allowfullscreen"
+                allow="autoplay; encrypted-media; allowfullscreen;"
               />
             </div>
           </div>

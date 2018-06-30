@@ -23,6 +23,20 @@ export default {
     }
     // console.log(content)
     return { page }
-  }
+  },
+  head() {
+    const siteTitle = this.$store.state.site.title
+    return {
+      title: `Contact ${siteTitle}`,
+      meta: [
+        { hid: 'og:title', property: 'og:title', content: `Contact` },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: `Contact`
+        }
+      ]
+    }
+  },
 }
 </script>

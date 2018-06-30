@@ -8,6 +8,7 @@ import moment from 'moment'
 require('moment/locale/th')
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
+import faYoutubeSquare from '@fortawesome/fontawesome-free-brands/faYoutubeSquare'
 import faFacebookSquare from '@fortawesome/fontawesome-free-brands/faFacebookSquare'
 import faSpinner from '@fortawesome/fontawesome-pro-solid/faSpinner'
 import faSearch from '@fortawesome/fontawesome-pro-solid/faSearch'
@@ -56,7 +57,7 @@ fontawesome.config = {
   autoAddCss: false
 }
 
-fontawesome.library.add(faFacebookSquare, faFrown, faMinus, faPlus, faSpinner, faSearch, faShoppingCart, faShoppingBag, faTimes, faHome, faUser, faUserCircle, faChevronRight, faLongArrowAltRight, faLongArrowAltLeft, faFileAlt, faClipboardList, faTruck, faCreditCard, faUndoAlt, faSignOutAlt, faLock, faCheck, faPaperPlane, faRepeat)
+fontawesome.library.add(faFacebookSquare, faFrown, faMinus, faPlus, faSpinner, faSearch, faShoppingCart, faShoppingBag, faTimes, faHome, faUser, faUserCircle, faChevronRight, faLongArrowAltRight, faLongArrowAltLeft, faFileAlt, faClipboardList, faTruck, faCreditCard, faUndoAlt, faSignOutAlt, faLock, faCheck, faPaperPlane, faRepeat, faYoutubeSquare)
 
 Vue.component('fa-icon', FontAwesomeIcon)
 // Init firebase
