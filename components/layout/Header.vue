@@ -113,7 +113,7 @@
       </div>
       <div class="container _f-1 _dp-f _alit-ct _jtfct-ct">
         <div class="row">
-          <div class="col-12">
+          <div class="col-12 _mgbt-32px">
             <h2 
               class="_tal-ct _cl-white _lh-125pct" 
               v-html="header"/>
