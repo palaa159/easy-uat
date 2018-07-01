@@ -7,7 +7,9 @@
       </div>
     </div>
     <!-- Team Members -->
-    <div class="row">
+    <div 
+      v-if="page.acf.team_members.length" 
+      class="row">
       <div class="col-12">
         <h3>Team</h3>
       </div>
@@ -22,11 +24,11 @@
           class="_w-100pct profile-image" 
           v-html="m.user_avatar"/>
       </div>
-      <div class="col-12 col-md-8">
+      <div class="col-12 col-md-8 _dp-f _alit-ct">
         <!-- Name -->
         <div class="_pdv-12px">
           <h5>{{ m.display_name }}</h5>
-          <a :href="`mailto:${m.user_email}`">{{ m.user_email }}</a>
+          <!-- <a :href="`mailto:${m.user_email}`">{{ m.user_email }}</a> -->
           <p 
             class="_mgt-12px" 
             v-html="m.user_description"/>

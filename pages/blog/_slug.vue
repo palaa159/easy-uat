@@ -16,7 +16,7 @@
           <iframe 
             :src="`${content.acf.assets.youtube_full}?rel=0`" 
             class="embed-responsive-item" 
-            allowfullscreen/>
+            />
         </div>
         <div 
           v-lazy:background="content.acf.assets.featured_image" 

@@ -68,11 +68,12 @@
             <!-- Desktop Menu -->
             <div class="_dp-n _dp-f-md">
               <nuxt-link 
-                v-scroll-reveal="{delay: 100 * i, origin: 'right'}" 
                 v-for="(x, i) in menuItems" 
                 :key="i" 
                 :to="x.path"
-                class="bio-link _mgl-48px _cl-white">
+                active-class="active"
+                exact
+                class="bio-link menu-item _mgl-48px _cl-white">
                 <h6>{{ x.title }}</h6>
               </nuxt-link>
             </div>
@@ -113,11 +114,13 @@
       </div>
       <div class="container _f-1 _dp-f _alit-ct _jtfct-ct">
         <div class="row">
-          <div class="col-12 _mgbt-32px">
+          <div class="col-12">
             <h2 
+              v-scroll-reveal="{delay: 100, origin: 'bottom'}" 
               class="_tal-ct _cl-white _lh-125pct" 
               v-html="header"/>
             <p 
+              v-scroll-reveal="{delay: 300, origin: 'bottom'}" 
               class="_tal-ct _cl-white _mgt-0px _fs-5 _fs-4-md" 
               v-html="description"/>
           </div>
@@ -216,6 +219,17 @@ export default {
 
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
+.menu-item {
+  opacity: 0.8;
+  > h6 {font-weight: 400;}
+  &.active {
+    opacity: 1;
+    > h6 {
+      font-weight: 600;
+      border-bottom: 1px solid #fff;
+    }
+  }
+}
 .search-form {
   max-width: 360px;
 }
@@ -228,7 +242,7 @@ export default {
   .member {
     position: fixed;
     width: 100%;
-    z-index: 1;
+    z-index: 9;
   }
 }
 // User Controls

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <Header/>
+    <Header
+      :heroImage="''"
+    />
     <!-- Content -->
     <main 
       :class="{'_mgt-48px': $store.state.menu.isUserSticky}"

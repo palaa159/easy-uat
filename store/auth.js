@@ -136,8 +136,12 @@ export const actions = {
     dispatch,
     commit
   }) {
-    JSCookie.remove('__session')
-    await commit('SET_TOKEN', null)
+    // Logout from session
+    const res = await this.$axios.$post(urls.logout)
+    if (res) {
+      JSCookie.remove('__session')
+      commit('SET_TOKEN', null)
+    }
     return window.location.href = '/'
   }
 }

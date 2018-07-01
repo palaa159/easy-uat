@@ -310,11 +310,11 @@
     axios-retry "^3.0.2"
     consola "^1.1.4"
 
-"@nuxtjs/component-cache@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/component-cache/-/component-cache-1.1.1.tgz#d94aa450e1b0df0451a2e938262234b534df9dfd"
+"@nuxtjs/component-cache@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/component-cache/-/component-cache-1.1.2.tgz#82cb138845d403bcf06024ff5f8f190f6aa20961"
   dependencies:
-    lru-cache "^4.1.1"
+    lru-cache "^4.1.2"
 
 "@nuxtjs/friendly-errors-webpack-plugin@^2.0.2":
   version "2.0.2"

@@ -1,6 +1,19 @@
 <template>
   <div class="container">
-    <div class="row _mgt-24px special-row">
+    <!-- Back -->
+    <div class="row _mgv-16px">
+      <div class="col-12">
+        <nuxt-link 
+          class="bio-link -fancy" 
+          to="/store">
+          <h6>
+            <fa-icon :icon="['fas', 'long-arrow-alt-left']"/>
+            ดูสินค้าทั้งหมด
+          </h6>
+        </nuxt-link>
+      </div>
+    </div>
+    <div class="row special-row">
       <div 
         id="product-content" 
         class="col-12 col-md-9">
@@ -35,7 +48,7 @@
           <iframe 
             :src="`${product.acf.review_link}?rel=0`" 
             class="embed-responsive-item" 
-            allowfullscreen/>
+          />
         </div>
         <div 
           class="cms-content" 
@@ -67,7 +80,7 @@
           v-if="product.attributes.filter(a => a.visible).length"
           id="specs" 
           class="_mgt-24px">
-          <h3 class="_cl-neutral-500">สเป็ค</h3>
+          <h3 class="_cl-neutral-500">สเป็คสินค้า</h3>
           <div 
             v-for="(x, i) in product.attributes.filter(a => a.visible)" 
             :key="i"
@@ -124,6 +137,28 @@
             class="cms-content" 
             v-html="product.acf.faqs"/>
         </div>
+        <!-- Similar Products -->
+        <div 
+          v-if="product.similar_products.length" 
+          id="similar-products" 
+          class="_mgv-32px">
+          <h3 class="_cl-neutral-500">สินค้าใกล้เคียงอื่นๆ</h3>
+          <div class="row">
+            <div 
+              v-for="(p, i) in product.similar_products" 
+              :key="i" 
+              class="col-6 col-md-3 _mgbt-24px">
+              <Card
+                :key="i"
+                :title="p.name" 
+                :image="p.image || p.image_id"
+                :price="p.price_html || p.price"
+                :slug="p.slug"
+                :badge="p"
+              />
+            </div>
+          </div>
+        </div>
       </div>
       <div 
         ref="cont" 
@@ -172,7 +207,7 @@
               <!-- <h3>THB {{ currentProduct.regular_price | currency }}</h3> -->
               <!-- ราคาเต็ม -->
               <div 
-                v-if="currentProduct.acf.full_price" 
+                v-if="currentProduct.acf && currentProduct.acf.full_price" 
                 class="_mgbt-8px">
                 <h6
                   class="_lh-100pct _mgv-4px">ราคาเต็ม:</h6>
@@ -299,7 +334,7 @@
                     <a 
                       v-scroll-to="'#specs'" 
                       href="#">
-                      <h5 class="_cl-primary _mgv-12px _fw-100">สเป็ค</h5>
+                      <h5 class="_cl-primary _mgv-12px _fw-100">สเป็คสินค้า</h5>
                     </a>                    
                   </li>
                   <li v-if="product.acf.buyers_guide">
@@ -322,6 +357,14 @@
                       href="#">
                       <h5 class="_cl-primary _mgv-12px _fw-100">คำถามที่พบบ่อย</h5>
                     </a>                    
+                  </li>
+                  <!-- Similar products -->
+                  <li v-if="product.similar_products && product.similar_products.length">
+                    <a 
+                      v-scroll-to="'#similar-products'" 
+                      href="#">
+                      <h5 class="_cl-primary _mgv-12px _fw-100">สินค้าใกล้เคียงอื่นๆ</h5>
+                    </a>    
                   </li>
                   <!-- <li>
                     <a 
@@ -346,8 +389,8 @@
 <script>
 import ProductThumb from '~/components/products/ProductThumb'
 import PageHeading from '~/components/text/PageHeading'
+import Card from '~/components/products/Card'
 import pkg from '~/package.json'
-import db from 'debounce'
 export default {
   async asyncData({ store, error, params }) {
     const product = await store.dispatch('product/getProductBySlug', {
@@ -361,7 +404,8 @@ export default {
   },
   components: {
     ProductThumb,
-    PageHeading
+    PageHeading,
+    Card
   },
   data: () => ({
     imageIndex: 0,

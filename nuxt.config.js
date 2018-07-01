@@ -54,17 +54,17 @@ module.exports = {
       {
         hid: 'og:image:width',
         property: 'og:image:width',
-        content: '135'
+        content: '200'
       },
       {
         hid: 'og:image:height',
         property: 'og:image:height',
-        content: '135'
+        content: '200'
       },
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://makerstation.in.th/images/og-logo-450x450.jpg'
+        content: 'https://makerstation.in.th/images/og-logo-200x200.jpg'
       },
       {
         hid: 'theme-color',
@@ -73,6 +73,9 @@ module.exports = {
       }
     ],
     script: [{
+      src: '/js/hotjar.js',
+      body: true
+    }, {
       src: '/js/contactWidget.js',
       body: true
     }],
@@ -155,6 +158,7 @@ module.exports = {
     [
       '@nuxtjs/toast',
     ],
+    '@nuxtjs/component-cache',
     ['nuxt-robots-module', {
       /* module options */
       UserAgent: '*',

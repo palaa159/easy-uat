@@ -2,7 +2,7 @@
   <div class="card _bgcl-white _ovf-hd _bdrd-2px">
     <!-- Badge -->
     <div 
-      v-if="badge.acf.full_price" 
+      v-if="badge.acf && badge.acf.full_price" 
       class="badge _fw-600 _fs-7">
       Pre-order
     </div>
@@ -29,13 +29,13 @@
       </p> -->
       <p class="_mgbt-4px _lh-100pct _fs-7 _fw-600">
         <span 
-          v-if="badge.acf.full_price" 
+          v-if="badge.acf && badge.acf.full_price" 
         >
           {{ badge.acf.full_price | currency }}
         </span>
         <span 
           v-else-if="price"
-          v-html="price"/>
+        >{{ price | currency }}</span>
         <span v-else>Pre-Order</span>
       </p>
     </div>

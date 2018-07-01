@@ -83,7 +83,9 @@
       </div>
     </div>
     <!-- Makerspace Workshop -->
-    <div class="container">
+    <div 
+      v-if="workshops.length" 
+      class="container">
       <div class="row">
         <div class="col-12">
           <div class="_pdv-12px _dp-f _jtfct-spbtw">
@@ -142,11 +144,7 @@ export default {
   head() {
     const siteTitle = this.$store.state.site.title
     return {
-      title: `หน้าแรก ${siteTitle}`,
-      meta: [
-        { hid: 'og:title', property: 'og:title', content: `หน้าแรก` },
-        { hid: 'og:description', name: 'og:description', content: `หน้าแรก` }
-      ]
+      title: `${siteTitle}`
     }
   },
   data: () => ({

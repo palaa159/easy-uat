@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div 
+      v-if="workshops.length" 
+      class="row">
       <div 
         v-for="(wk, i) in workshops" 
         :key="i" 
@@ -15,6 +17,10 @@
           :slug="wk.slug"
         />
       </div>
+    </div>
+    <!--  -->
+    <div v-else>
+      <h4 class="_tal-ct">พบกับ Workshop ดีๆได้ที่นี่ เร็วๆนี้...</h4>
     </div>
   </div>
 </template>
