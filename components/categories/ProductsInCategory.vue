@@ -23,7 +23,7 @@
             :key="i"
             :title="p.name" 
             :image="p.image"
-            :price="p.price_html"
+            :price="p.price || p.price_html"
             :slug="p.slug"
             :badge="p"
           />

@@ -16,7 +16,7 @@
           <iframe 
             :src="`${content.acf.assets.youtube_full}?rel=0`" 
             class="embed-responsive-item" 
-            />
+          />
         </div>
         <div 
           v-lazy:background="content.acf.assets.featured_image" 
@@ -53,7 +53,7 @@
                         :key="i"
                         :title="p.name" 
                         :image="p.image"
-                        :price="p.price_html"
+                        :price="p.price || p.price_html"
                         :slug="p.slug"
                         :badge="p"
                       />
