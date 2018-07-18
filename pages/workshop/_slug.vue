@@ -67,7 +67,6 @@
                 width="100%" 
                 height="250" 
                 frameborder="0" 
-                allowfullscreen="allowfullscreen"
               />
             </div>
           </div>
@@ -94,7 +93,7 @@ export default {
   head() {
     const siteTitle = this.$store.state.site.title
     return {
-      title: `${this.workshop.name} ${siteTitle}`,
+      title: `${this.workshop.name} – ${siteTitle}`,
       meta: [
         {
           hid: 'og:title',
@@ -109,7 +108,7 @@ export default {
         {
           hid: 'og:description',
           name: 'og:description',
-          content: `${this.workshop.description}`
+          content: `${siteTitle}`
         },
         {
           hid: 'og:image',

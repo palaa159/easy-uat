@@ -57,13 +57,13 @@ export default {
   head() {
     const siteTitle = this.$store.state.site.title
     return {
-      title: `MakerStore® ${siteTitle}`,
+      title: `MakerStore® – ${siteTitle}`,
       meta: [
         { hid: 'og:title', property: 'og:title', content: `MakerStore®` },
         {
           hid: 'og:description',
           name: 'og:description',
-          content: `MakerStore®`
+          content: `${siteTitle}`
         }
       ]
     }

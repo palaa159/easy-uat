@@ -14,10 +14,10 @@ export default {
   head () {
     const siteTitle = this.$store.state.site.title
     return { 
-      title: `เข้าสู่ระบบ ${siteTitle}`,
+      title: `เข้าสู่ระบบ – ${siteTitle}`,
       meta: [
         { hid: 'og:title', property: 'og:title', content: `เข้าสู่ระบบ` },
-        { hid: 'og:description', name: 'og:description', content: `เข้าสู่ระบบ` }
+        { hid: 'og:description', name: 'og:description', content: `${siteTitle}` }
       ]
     }
   },

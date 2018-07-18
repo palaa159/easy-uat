@@ -39,13 +39,13 @@ export default {
   head() {
     const siteTitle = this.$store.state.site.title
     return {
-      title: `Workshops & Events ${siteTitle}`,
+      title: `Workshops & Events – ${siteTitle}`,
       meta: [
         { hid: 'og:title', property: 'og:title', content: `Workshops & Events` },
         {
           hid: 'og:description',
           name: 'og:description',
-          content: `Workshops & Events`
+          content: `${siteTitle}`
         }
       ]
     }

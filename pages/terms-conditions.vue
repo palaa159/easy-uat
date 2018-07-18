@@ -38,10 +38,10 @@ export default {
   head () {
     const siteTitle = this.$store.state.site.title
     return { 
-      title: `ข้อกำหนดและเงื่อนไข ${siteTitle}`,
+      title: `ข้อกำหนดและเงื่อนไข – ${siteTitle}`,
       meta: [
         { hid: 'og:title', property: 'og:title', content: `ข้อกำหนดและเงื่อนไข` },
-        { hid: 'og:description', name: 'og:description', content: `ข้อกำหนดและเงื่อนไข` }
+        { hid: 'og:description', name: 'og:description', content: `${siteTitle}` }
       ]
     }
   }

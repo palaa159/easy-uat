@@ -15,8 +15,7 @@
               <iframe 
                 class="embed-responsive-item" 
                 src="https://www.youtube.com/embed/ucHX_YXUpbA?autoplay=0" 
-                allowfullscreen
-                allow="autoplay; encrypted-media; allowfullscreen;"
+                allow="autoplay; encrypted-media; fullscreen;"
               />
             </div>
           </div>
@@ -24,21 +23,7 @@
       </div>
     </div>
     <!-- สินค้าแนะนำ -->
-    <!-- Content -->
-    <div 
-      class="_w-100pct content-wrapper">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 _pdv-24px">
-            <!-- <h4 class="_pdt-12px">คอนเท๊นต์</h4> -->
-            <!-- Agile -->
-            <ContentSlideshow
-              :slides="contentSlides"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Store -->
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-3">
@@ -78,6 +63,21 @@
                 <fa-icon icon="long-arrow-alt-right"/>
               </button>
             </nuxt-link>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content -->
+    <div 
+      class="_w-100pct content-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 _pdv-24px">
+            <!-- <h4 class="_pdt-12px">คอนเท๊นต์</h4> -->
+            <!-- Agile -->
+            <ContentSlideshow
+              :slides="contentSlides"
+            />
           </div>
         </div>
       </div>
@@ -149,7 +149,6 @@ export default {
   },
   data: () => ({
     topSlides: [],
-    featuredProducts: [],
     categories: [],
     contentSlides: [],
     workshops: []
@@ -158,9 +157,12 @@ export default {
     this.$store.dispatch('content/getSlideshow', {
     slug: 'homepage-banner'
     }).then((topSlides) => this.topSlides = topSlides)
-    this.$store.dispatch('product/getFeaturedProducts').then((featuredProducts) => this.featuredProducts = featuredProducts),
     this.$store.dispatch('content/getContent', { featured: true }).then((contentSlides) => this.contentSlides = contentSlides)
     this.$store.dispatch('workshop/getWorkshop', {}).then((workshops) => this.workshops = workshops)
+  },
+  async asyncData({ store }) {
+    const featuredProducts = await store.dispatch('product/getFeaturedProducts')
+    return { featuredProducts }
   }
 }
 </script>

@@ -514,7 +514,7 @@ export default {
       this.isBtnLoading = true
       // console.log(this.currentProduct)
       await this.$store.dispatch('purchase/addToCart', {
-        id: this.product.id,
+        id: this.currentProduct.id || this.product.id,
         quantity: this.quantity,
         variationId: this.currentProduct.id,
         data: this.product
@@ -525,13 +525,14 @@ export default {
   },
   head() {
     const siteTitle = this.$store.state.site.title
+    const description = (this.product.description.replace(/<(?:.|\n)*?>/gm, '')).substr(0, 300)
     return {
-      title: `${this.product.name} ${siteTitle}`,
+      title: `${this.product.name} – ${siteTitle}`,
       meta: [
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `${this.product.name} ${siteTitle}`
+          content: `${this.product.name} – MakerStore®`
         },
         {
           hid: `og:url`,
@@ -539,9 +540,14 @@ export default {
           content: `${pkg.url}` + this.$route.fullPath
         },
         {
+          hid: 'description',
+          name: 'description',
+          content: description
+        },
+        {
           hid: 'og:description',
           name: 'og:description',
-          content: `${this.product.description}`
+          content: description
         },
         {
           hid: 'og:image',
@@ -562,7 +568,7 @@ export default {
   }
 }
 .image {
-  padding-top: 70%;
+  padding-top: 75%;
 }
 .image-item {
   div {

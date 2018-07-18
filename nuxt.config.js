@@ -1,5 +1,5 @@
 const pkg = require('./package')
-// const axios = require('axios')
+const axios = require('axios')
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const glob = require('glob-all')
@@ -104,10 +104,6 @@ module.exports = {
         rel: 'mask-icon',
         href: '/safari-pinned-tab.svg',
         color: '#5bbad5'
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Kanit:300,400,500,600&amp;subset=thai'
       }
     ]
   },
@@ -134,7 +130,6 @@ module.exports = {
    */
   plugins: [
     '~/plugins/ssr.js',
-    '~/plugins/persistedstate.js',
     '~/plugins/axios.js',
     {
       src: '~/plugins/no-ssr.js',
@@ -149,26 +144,37 @@ module.exports = {
    */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios', ['@nuxtjs/google-analytics', {
+    '@nuxtjs/axios', 
+    '@nuxtjs/sitemap',
+    '@nuxtjs/toast',
+    '@nuxtjs/component-cache',
+    ['@nuxtjs/google-analytics', {
       id: pkg.gaId,
       autoTracking: {
         pageviewOnLoad: false
       }
-    }],
-    [
-      '@nuxtjs/toast',
-    ],
-    '@nuxtjs/component-cache',
-    ['nuxt-robots-module', {
-      /* module options */
-      UserAgent: '*',
-      Disallow: '/profile',
-    }],
-    // ['@nuxtjs/pwa', { icon: false }] // doesn't work in firebase functions
+    }]
   ],
   /*
    ** Axios module configuration
    */
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: pkg.url,
+    cacheTime: 60 * 60 * 24, // hour,
+    gzip: true,
+    generate: true,
+    exclude: [
+      '/profile',
+      '/profile/**',
+      '/store/checkout',
+      '/store/checkout/**',
+    ],
+    routes () {
+      return axios.get('https://cms.makerstation.in.th/wp-json/api/v2/product?per_page=300')
+      .then(res => res.data.map(product =>  `/store/product/${product.slug}`))
+    }
+  },
   toast: {
     position: 'top-right'
   },

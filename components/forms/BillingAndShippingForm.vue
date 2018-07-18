@@ -41,39 +41,39 @@
                 >กรุณาใส่หมายเลขโทรศัพท์</small>
               </float-label>
               <float-label>
-                <input 
+                <textarea 
                   v-validate="{required: true}"
                   v-model="shipping.address1"
                   name="shipping.address1"
                   type="text" 
-                  placeholder="ที่อยู่">
+                  placeholder="ที่อยู่"/>
                 <small 
                   v-show="errors.has('shipping.address1')"
                   class="_cl-negative" 
                 >กรุณาใส่ที่อยู่</small>
               </float-label>
-              <float-label>
+              <!-- <float-label>
                 <input 
                   v-model="shipping.address2" 
                   name="shipping.address2"
                   type="text"
                   placeholder="ที่อยู่ (ต่อ)">
-              </float-label>
+              </float-label> -->
             </div>
             <!-- ที่อยู่ -->
             <div class="col-12 col-md-6 _mgt-32px _mgt-0px-md _pdh-0px _pdh-16px-md">
               <float-label
-                label="เขต / อำเภอ">
+                label="เขต และอำเภอ">
                 <input 
                   v-validate="{required: true}" 
                   v-model="shipping.city"
                   type="text"
                   name="shipping.city"
-                  placeholder="เขต / อำเภอ">
+                  placeholder="เขต และอำเภอ">
                 <small 
                   v-show="errors.has('shipping.city')"
                   class="_cl-negative" 
-                >กรุณาใส่เขต / อำเภอ</small>
+                >กรุณาใส่เขต และอำเภอ</small>
               </float-label>
               <float-label
                 label="จังหวัด">
@@ -189,39 +189,39 @@
                 >กรุณาใส่หมายเลขโทรศัพท์</small>
               </float-label>
               <float-label>
-                <input 
+                <textarea 
                   v-validate="{required: true}"
-                  v-model="billing.address1"
-                  name="billing.address1"
+                  v-model="shipping.address1"
+                  name="shipping.address1"
                   type="text" 
-                  placeholder="ที่อยู่">
+                  placeholder="ที่อยู่"/>
                 <small 
                   v-show="errors.has('billing.address1')"
                   class="_cl-negative" 
                 >กรุณาใส่ที่อยู่</small>
               </float-label>
-              <float-label>
+              <!-- <float-label>
                 <input 
                   v-model="billing.address2" 
                   name="address2"
                   type="text"
                   placeholder="ที่อยู่ (ต่อ)">
-              </float-label>
+              </float-label> -->
             </div>
             <!-- ที่อยู่ -->
             <div class="col-12 col-md-6 _mgt-32px _mgt-0px-md _pdh-0px _pdh-16px-md">
               <float-label
-                label="เขต / อำเภอ">
+                label="เขต และอำเภอ">
                 <input 
                   v-validate="{required: true}" 
                   v-model="billing.city"
                   type="text"
                   name="billing.city"
-                  placeholder="เขต / อำเภอ">
+                  placeholder="เขต และอำเภอ">
                 <small 
                   v-show="errors.has('billing.city')"
                   class="_cl-negative" 
-                >กรุณาใส่เขต / อำเภอ</small>
+                >กรุณาใส่เขต และอำเภอ</small>
               </float-label>
               <float-label
                 label="จังหวัด">

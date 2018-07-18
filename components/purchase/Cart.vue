@@ -42,7 +42,7 @@
                   <h4 class="_cl-dark _lh-100pct">
                     THB {{ totalCartPrice | currency }}
                   </h4>
-                  <small class="_cl-accent">(ยังไม่รวมค่าขนส่ง)</small>
+                  <small class="_cl-accent">(ซื้อครบ 1000 บาทส่งฟรี)</small>
                 </div>
                 <!-- Pay -->
                 <div>

@@ -17,17 +17,17 @@
     <div 
       v-for="(m, i) in page.acf.team_members" 
       :key="i" 
-      class="row _pdv-24px">
-      <div class="col-12 col-md-4">
+      class="row _pdv-24px _alit-ct">
+      <div class="col-12 col-md-3">
         <!-- Image -->
         <div 
-          class="_w-100pct profile-image" 
+          class="_w-50pct _w-100pct-md profile-image" 
           v-html="m.user_avatar"/>
       </div>
-      <div class="col-12 col-md-8 _dp-f _alit-ct">
+      <div class="col-12 col-md-9 _dp-f _alit-ct">
         <!-- Name -->
         <div class="_pdv-12px">
-          <h5>{{ m.display_name }}</h5>
+          <h5>{{ m.user_firstname }} {{ m.user_lastname }}</h5>
           <!-- <a :href="`mailto:${m.user_email}`">{{ m.user_email }}</a> -->
           <p 
             class="_mgt-12px" 
@@ -57,13 +57,13 @@ export default {
   head() {
     const siteTitle = this.$store.state.site.title
     return {
-      title: `About us ${siteTitle}`,
+      title: `About us – ${siteTitle}`,
       meta: [
         { hid: 'og:title', property: 'og:title', content: `About us` },
         {
           hid: 'og:description',
           name: 'og:description',
-          content: `About us`
+          content: `${siteTitle}`
         }
       ]
     }

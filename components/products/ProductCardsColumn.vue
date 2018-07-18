@@ -4,7 +4,6 @@
     class="container-fluid _pd-0px">
     <div class="row">
       <div 
-        v-scroll-reveal="{delay: 100 * i}" 
         v-for="(p, i) in products.slice(0, limit)"
         :key="i"
         :class="_class" 

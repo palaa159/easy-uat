@@ -55,10 +55,10 @@ export default {
   head() {
     const siteTitle = this.$store.state.site.title
     return {
-      title: `${this._parentCatName.name} ${siteTitle}`,
+      title: `${this._parentCatName.name} – ${siteTitle}`,
       meta: [
         { hid: 'og:title', property: 'og:title', content: this._parentCatName.name },
-        { hid: 'og:description', name: 'og:description', content: this._parentCatName.name }
+        { hid: 'og:description', name: 'og:description', content: siteTitle }
       ]
     }
   },
