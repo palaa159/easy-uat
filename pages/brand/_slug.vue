@@ -37,7 +37,7 @@
 
 <style lang="scss" scoped>
 .image {
-  height: 360px;
+  padding-top: 35%;
 }
 </style>
 
