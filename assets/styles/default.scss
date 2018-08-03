@@ -62,10 +62,19 @@ button {
   background-size: 150px !important;
   background-color: $light-grey;
   background-position: center center !important;
+  background-repeat: no-repeat !important;
 }
 
 [lazy=loaded] {
   opacity: 1;
   background-size: cover;
   transition: all 0.15s, background-image 0s !important;
+}
+
+.-wp {
+  img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100%;
+  }
 }

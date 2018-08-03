@@ -491,7 +491,8 @@ export default {
   methods: {
     getPrereqLink(item) {
       if (item.is_product) return `/store/product/${item.product.post_name}`
-      return `/tag/${item.tag_link[0].slug}`
+      if (item.tag_link) return `/tag/${item.tag_link[0].slug}`
+      return ''
     },
     checkMobile() {
       if (process.browser) {

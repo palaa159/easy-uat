@@ -27,11 +27,6 @@ module.exports = {
         content: pkg.fbAppId
       },
       {
-        hid: 'og:url',
-        property: 'og:url',
-        content: pkg.url
-      },
-      {
         hid: 'og:site_name',
         property: 'og:site_name',
         content: pkg.url
@@ -144,14 +139,14 @@ module.exports = {
    */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios', 
+    '@nuxtjs/axios',
     '@nuxtjs/sitemap',
     '@nuxtjs/toast',
-    '@nuxtjs/component-cache',
-    ['@nuxtjs/google-analytics', {
+    '@nuxtjs/component-cache', ['@nuxtjs/google-analytics', {
       id: pkg.gaId,
       autoTracking: {
-        pageviewOnLoad: false
+        pageviewOnLoad: false,
+        exception: true
       }
     }]
   ],
@@ -170,9 +165,9 @@ module.exports = {
       '/store/checkout',
       '/store/checkout/**',
     ],
-    routes () {
+    routes() {
       return axios.get('https://cms.makerstation.in.th/wp-json/api/v2/product?per_page=300')
-      .then(res => res.data.map(product =>  `/store/product/${product.slug}`))
+        .then(res => res.data.map(product => `/store/product/${product.slug}`))
     }
   },
   toast: {

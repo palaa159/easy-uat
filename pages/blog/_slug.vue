@@ -23,12 +23,6 @@
           v-else 
           class="image _bgrp-nrp _bgs-cv _mgv-24px _bgpst-ct"/>
         <ContentFromWP :content="content.acf.content" />
-        <!-- Comments -->
-        <h4>Comments</h4>
-        <!-- Products -->
-        <h4>Related Products</h4>
-        <!-- Explore more content -->
-        <h4>More content</h4>
       </div>
       <div class="col-12 col-md-2">
         <no-ssr>
@@ -71,18 +65,47 @@
 </template>
 
 <script>
+import pkg from '~/package.json'
 import ContentFromWP from '~/components/content/ContentFromWP'
 import Card from '~/components/products/Card'
 export default {
+  head() {
+    const siteTitle = this.$store.state.site.title
+    return {
+      title: `${this.content.post_title} – ${siteTitle}`,
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${this.content.post_title} ${siteTitle}`
+        },
+        {
+          hid: `og:url`,
+          property: 'og:url',
+          content: `${pkg.url}` + this.$route.fullPath
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: `${siteTitle}`
+        },
+        // {
+        //   hid: 'og:image',
+        //   name: 'og:image',
+        //   content: `${(this.content.acf.store_banner.url) || ''}`
+        // }
+      ]
+    }
+  },
   components: {
     ContentFromWP,
     Card
   },
   async asyncData({ store, params, redirect }) {
-    const slug = params.slug
+    const slug = encodeURI(params.slug)
     const content = await store.dispatch('content/getContent', { slug })
-    if (!content) {
-      // return redirect('400')
+    if (!content.length) {
+      return redirect('/400')
     }
     // console.log(content)
     return { content: content[0] }
