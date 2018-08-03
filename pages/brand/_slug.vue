@@ -5,7 +5,7 @@
         v-lazy:background-image="page.acf.cover_image.url" 
         class="image _w-100pct _bgs-cv _bgpst-ct _bgcl-black"/>
       <div 
-        class="_w-100pct" 
+        class="_w-100pct _mgv-32px" 
         v-html="page.content.rendered"/>
       <!-- Products -->
       <div class="container">
