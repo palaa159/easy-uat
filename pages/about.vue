@@ -18,13 +18,13 @@
       v-for="(m, i) in page.acf.team_members" 
       :key="i" 
       class="row _pdv-24px _alit-ct">
-      <div class="col-12 col-md-3">
+      <div class="col-12 col-md-2">
         <!-- Image -->
         <div 
-          class="_w-50pct _w-100pct-md profile-image" 
+          class="_w-30pct _w-100pct-md profile-image" 
           v-html="m.user_avatar"/>
       </div>
-      <div class="col-12 col-md-9 _dp-f _alit-ct">
+      <div class="col-12 col-md-10 _dp-f _alit-ct">
         <!-- Name -->
         <div class="_pdv-12px">
           <h5>{{ m.user_firstname }} {{ m.user_lastname }}</h5>

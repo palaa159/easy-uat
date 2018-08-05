@@ -11,6 +11,13 @@ export const mutations = {
 }
 
 export const actions = {
+  async getProductsByAttr({}, {
+    n = 100,
+    brandId
+  }) {
+    const products = await this.$axios.$get(`${urls.getProductsByAttr}?per_page=${n}${brandId? ('&brandId=' + brandId): ''}`)
+    return products
+  },
   async getProductBySlug({}, {
     slug,
     variations = false

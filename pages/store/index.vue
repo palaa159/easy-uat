@@ -26,6 +26,16 @@
         </div>
       </div>
     </div>
+    <!-- Brand Banners -->
+    <div class="container">
+      <div class="row">
+        <div v-for="(item, i) in brands" :key="i" class="col-12 col-md-6">
+          <nuxt-link :to="`/brand/${item.slug}`">
+            <div v-lazy:background-image="item.acf.store_banner.url" class="_bgs-cv store-banner-image _mgbt-24px" />
+          </nuxt-link>
+        </div>
+      </div>
+    </div>
     <!-- Products -->
     <div class="container _mgt-32px">
       <!-- Each product cats -->
@@ -84,16 +94,18 @@ export default {
   async asyncData({ store }) {
     const promises = [
       store.dispatch('product/getShopCategories'),
+      store.dispatch('page/getPage', { parent: 1120 }),
       store.dispatch('product/getFeaturedProducts'),
       store.dispatch('content/getSlideshow', {
         slug: 'shop-banner'
       })
     ]
-    const [categories, featuredProducts, topSlides] = await Promise.all(
+    const [categories, brands, featuredProducts, topSlides] = await Promise.all(
       promises
     )
     return {
       categories,
+      brands,
       featuredProducts,
       topSlides
     }
@@ -102,4 +114,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.store-banner-image {
+  padding-top: 43.75%;
+  background-position: center center;
+  transition: 0.25s;
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
 </style>

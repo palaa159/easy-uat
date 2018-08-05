@@ -23,6 +23,7 @@ export default {
   getProductBySlug: `${prefix}/api/v2/wc/product-slug`, // GET
   getProductVariations: `${prefix}/api/v1/wc/product_variations_by_id`, // GET
   getProductsByCatSlug: `${prefix}/api/v1/wc/products_by_cat_slug`,
+  getProductsByAttr: `${prefix}/api/v1/wc/products_by_attr`,
   // Workshop
   getWorkshop: `${prefix}/api/v2/workshop`,
   // Cart

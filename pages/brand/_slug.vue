@@ -1,9 +1,9 @@
 <template>
   <no-ssr>
     <div class="_w-100pct -wp">
-      <div 
+      <!-- <div 
         v-lazy:background-image="page.acf.cover_image.url" 
-        class="image _w-100pct _bgs-cv _bgpst-ct _bgcl-black"/>
+        class="image _w-100pct _bgs-cv _bgpst-ct _bgcl-black"/> -->
       <div 
         class="_w-100pct _mgv-32px" 
         v-html="page.content.rendered"/>
@@ -18,12 +18,12 @@
             <div 
               v-for="(p, i) in products" 
               :key="i" 
-              class="col-6 col-md-3 _mgbt-24px">
+              class="col-6 col-md-2 _mgbt-24px">
               <Card
                 :key="i"
                 :title="p.name" 
-                :image="p.image || p.image_id"
-                :price="p.price_html || p.price"
+                :image="p.image || p.image_id || (p.images && p.images[0])"
+                :price="p.price || p.price_html"
                 :slug="p.slug"
                 :badge="p"
               />
@@ -44,7 +44,11 @@
 
 <script>
 import pkg from '~/package.json'
+import Card from '~/components/products/Card'
 export default {
+  components: {
+    Card
+  },
   data: () => ({
     products: []
   }),
@@ -88,6 +92,12 @@ export default {
     return {
       page: page[0]
     }
+  },
+  async created () {
+    const products = await this.$store.dispatch('product/getProductsByAttr', {
+      brandId: this.page.acf.brand.term_id
+    })
+    this.products = products
   }
 }
 </script>
