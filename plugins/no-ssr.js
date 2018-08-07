@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueFloatLabel from 'vue-float-label'
-import VueCard from 'vue-credit-card'
 import VueAffix from 'vue-affix'
 import lineClamp from 'vue-line-clamp'
 import VueScrollReveal from 'vue-scroll-reveal'
@@ -17,7 +16,6 @@ Vue.use(VueScrollReveal, {
 Vue.use(VueAffix)
 Vue.use(VueFloatLabel)
 Vue.use(lineClamp)
-Vue.component('Card', VueCard)
 
 WebFont.load({
   google: {

@@ -14,12 +14,10 @@
 <script>
 import Header from '~/components/layout/Header'
 import Footer from '~/components/layout/Footer'
-import Breadcrumbs from '~/components/navigations/Breadcrumbs'
 export default {
   components: {
     Header,
     Footer,
-    Breadcrumbs
   }
 }
 </script>

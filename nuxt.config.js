@@ -67,13 +67,16 @@ module.exports = {
         content: '#2B2B2B'
       }
     ],
-    script: [{
-      src: '/js/hotjar.js',
-      body: true
-    }, {
-      src: '/js/contactWidget.js',
-      body: true
-    }],
+    script: [
+      // {
+      //   src: '/js/hotjar.js',
+      //   body: true
+      // },
+      // {
+      //   src: '/js/contactWidget.js',
+      //   body: true
+      // }
+    ],
     link: [{
         rel: 'apple-touch-icon',
         sizes: '120x120',
@@ -153,23 +156,23 @@ module.exports = {
   /*
    ** Axios module configuration
    */
-  sitemap: {
-    path: '/sitemap.xml',
-    hostname: pkg.url,
-    cacheTime: 60 * 60 * 24, // hour,
-    gzip: true,
-    generate: true,
-    exclude: [
-      '/profile',
-      '/profile/**',
-      '/store/checkout',
-      '/store/checkout/**',
-    ],
-    routes() {
-      return axios.get('https://cms.makerstation.in.th/wp-json/api/v2/product?per_page=300')
-        .then(res => res.data.map(product => `/store/product/${product.slug}`))
-    }
-  },
+  // sitemap: {
+  //   path: '/sitemap.xml',
+  //   hostname: pkg.url,
+  //   cacheTime: 60 * 60 * 24, // hour,
+  //   gzip: true,
+  //   generate: true,
+  //   exclude: [
+  //     '/profile',
+  //     '/profile/**',
+  //     '/store/checkout',
+  //     '/store/checkout/**',
+  //   ],
+  //   routes() {
+  //     return axios.get('https://cms.makerstation.in.th/wp-json/api/v2/product?per_page=300')
+  //       .then(res => res.data.map(product => `/store/product/${product.slug}`))
+  //   }
+  // },
   toast: {
     position: 'top-right'
   },

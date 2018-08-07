@@ -15,6 +15,11 @@ button {
   outline: none;
 }
 
+p,
+small {
+  line-height: 125%;
+}
+
 ._cs-pt {
   user-select: none !important;
 }
