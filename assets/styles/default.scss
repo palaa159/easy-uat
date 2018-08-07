@@ -11,6 +11,7 @@ h6,
 button {
   font-family: Kanit;
   font-weight: 400;
+  line-height: 125%;
   outline: none;
 }
 
@@ -24,7 +25,7 @@ button {
 
 .page-enter-active,
 .page-leave-active {
-  transition: 0.5s cubic-bezier(0.100, 0.485, 0.000, 0.9);
+  transition: 0.25s cubic-bezier(0.100, 0.485, 0.000, 0.9);
   transform: translateY(0px);
 }
 
@@ -72,6 +73,18 @@ button {
 }
 
 .-wp {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 125%;
+  }
+  ul {
+    line-height: 150%;
+    list-style: disc;
+  }
   img {
     width: auto !important;
     height: auto !important;

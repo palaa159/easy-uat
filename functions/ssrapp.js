@@ -23,7 +23,7 @@ const nuxt = new Nuxt(config)
 
 const handleRequest = (req, res) => {
   // Cache 12 hours if not cms calling
-  if (req.headers['x-original-url'].indexOf('/ping') === -1) {
+  if (req.headers['x-original-url'] && req.headers['x-original-url'].indexOf('/ping') === -1) {
     res.set('Cache-Control', 'public, max-age=30')
   }
   return new Promise((resolve, reject) => {

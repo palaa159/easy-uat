@@ -34,7 +34,6 @@ import faMinus from '@fortawesome/fontawesome-pro-regular/faMinus'
 import faPlus from '@fortawesome/fontawesome-pro-regular/faPlus'
 import faPaperPlane from '@fortawesome/fontawesome-pro-light/faPaperPlane'
 import faRepeat from '@fortawesome/fontawesome-pro-light/faRepeat'
-import * as Auth from '~/services/auth'
 
 Vue.use(VueScrollTo, {
   offset: -50
@@ -61,21 +60,10 @@ fontawesome.library.add(faFacebookSquare, faFrown, faMinus, faPlus, faSpinner, f
 
 Vue.component('fa-icon', FontAwesomeIcon)
 // Init firebase
-Auth.initFirebase()
 
 // Filters
 Vue.filter('currency', val => {
   val = parseFloat(val).toLocaleString()
   return val + ' ฿'
   // parseFloat(val) 
-})
-
-Vue.filter('titleLang', val => {
-  var re = new RegExp('[:' + 'th' + '](.*?)[:]')
-  // Returns first backreference
-  let x = val.match(re)
-  if (x) {
-    return x[1].substring(3, x[1].length - 1)
-  }
-  return val
 })
