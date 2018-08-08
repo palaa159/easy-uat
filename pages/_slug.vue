@@ -19,7 +19,6 @@
       <!-- products -->
       <div class="row _pdv-48px">
         <div 
-          v-scroll-reveal="{delay: i * 100}" 
           v-for="(item, i) in shop.posts" 
           :key="i"
           class="col-6 col-md-4 _mgbt-16px">
