@@ -59,7 +59,7 @@ module.exports = {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://makerstation.in.th/images/og-logo-200x200.jpg'
+        // content: 'https://makerstation.in.th/images/og-logo-200x200.jpg'
       },
       {
         hid: 'theme-color',
