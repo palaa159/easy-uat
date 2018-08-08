@@ -3,6 +3,7 @@ import VueFloatLabel from 'vue-float-label'
 import VueAffix from 'vue-affix'
 import lineClamp from 'vue-line-clamp'
 import VueScrollReveal from 'vue-scroll-reveal'
+import VTooltip from 'v-tooltip'
 import WebFont from 'webfontloader'
 
 Vue.use(VueScrollReveal, {
@@ -13,6 +14,7 @@ Vue.use(VueScrollReveal, {
   mobile: false
 })
 
+Vue.use(VTooltip)
 Vue.use(VueAffix)
 Vue.use(VueFloatLabel)
 Vue.use(lineClamp)

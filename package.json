@@ -47,6 +47,7 @@
     "js-cookie": "^2.2.0",
     "nuxt-edge": "2.0.0-25476008.ba5c979",
     "nuxt-robots-module": "^1.2.0",
+    "v-tooltip": "^2.0.0-rc.33",
     "vee-validate": "^2.0.6",
     "vue-affix": "^0.2.4",
     "vue-float-label": "^1.6.1",
