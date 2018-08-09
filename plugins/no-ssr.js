@@ -21,6 +21,6 @@ Vue.use(lineClamp)
 
 WebFont.load({
   google: {
-    families: ['Poppins', 'Kanit']
+    families: ['Rubik', 'Poppins']
   }
 })

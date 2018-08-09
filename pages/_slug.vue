@@ -1,12 +1,14 @@
 <template>
-  <section class="_w-100pct">
+  <section 
+    :style="`background: rgba(${shop.profileImage.colors.LightMuted._rgb.join(',')}, 0.15)`" 
+    class="_w-100pct">
     <div class="container">
       <!-- name -->
       <div class="row _pdt-24px">
         <div class="col-12">
           <div class="_tal-ct">
             <div 
-              v-lazy:background-image="shop.profileImage" 
+              v-lazy:background-image="shop.profileImage.src" 
               class="profile-image _bdrd-50pct _mgh-at"/>
             <div class="_pdt-24px">
               <h3 
@@ -22,7 +24,7 @@
                 class="line-it-button" 
                 data-lang="en" 
                 data-type="friend" 
-                data-lineid="@lineteamjp" 
+                data-lineid="@5lab" 
                 data-count="true" 
                 style="display: none;"/>
               <script 
@@ -36,31 +38,30 @@
       <!-- products -->
       <div class="row _pdv-32px">
         <div class="col-12 _mgv-12px">
-          <h4>Products</h4>
+          <h4>Posts</h4>
         </div>
         <div 
           v-for="(item, i) in shop.posts" 
           :key="i"
           class="col-6 col-md-4 _mgbt-24px">
-          <a 
-            class="item-link"
-            href="#">
+          <div 
+            class="item-link _cs-pt">
             <!-- image -->
             <!-- <div 
               v-lazy:background-image="item.imageUrl" 
               class="image _pst-rlt"> -->
             <div class="_pst-rlt _ovf-hd _bdrd-4px">
               <img 
-                :src="item.imageUrl" 
+                :src="item.image.src" 
                 class="_w-100pct"
                 alt="">
-              <article class="_pst-asl _t-0px _l-0px _w-100pct _h-100pct _ovfy-at">
+              <article class="_pst-asl _t-0px _l-0px _w-100pct _h-100pct _ovfy-at _dp-f _alit-ct _jtfct-ct">
                 <p 
                   class="_pdv-8px _fs-6 _wsp-pl caption _w-100pct" 
                   v-html="item.caption"/>
               </article>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </div>
