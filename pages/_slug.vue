@@ -1,6 +1,6 @@
 <template>
   <section 
-    :style="`background: rgba(${shop.profileImage.colors.LightMuted._rgb.join(',')}, 0.15)`" 
+    :style="`background: rgba(${shop.profileImage.colors['LightVibrant' || 'LightMuted']._rgb.join(',')}, 0.15)`" 
     class="_w-100pct">
     <div class="container">
       <!-- name -->
