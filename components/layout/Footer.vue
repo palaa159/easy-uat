@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 _pdv-48px">
-          <p class="_cl-white">IGSHOPPING.CO – A Manageless E-commerce Powered by Instagram.</p>
+          <p class="_cl-white">IGGU – Effortless website you already have</p>
         </div>
       </div>
     </div>
