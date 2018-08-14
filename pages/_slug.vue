@@ -70,10 +70,13 @@
 
 <script>
 export default {
-  async asyncData ({ params, app }) {
+  async asyncData ({ params, app, redirect }) {
     const slug = params.slug
     const shop = await app.$axios.$get(`/user/${slug}`)
-    return { shop }
+    if (!shop.result) {
+      return redirect(`/loading?redirect=${slug}`)
+    }
+    return { shop: shop.result }
   },
   computed: {
     _bgColor () {

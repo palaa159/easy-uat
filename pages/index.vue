@@ -41,7 +41,7 @@ export default {
   async asyncData ({ store }) {
     const hashtags = await store.dispatch('tag/getPosts', { q: 'jamateurwanderer', max: 8 })
     return {
-      hashtags
+      hashtags: hashtags.result
     }
   }
 }
