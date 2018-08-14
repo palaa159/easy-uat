@@ -1,6 +1,6 @@
 <template>
   <section 
-    :style="`background: rgba(${shop.profileImage.colors['LightVibrant' || 'LightMuted']._rgb.join(',')}, 0.15)`" 
+    :style="`background: rgba(${_bgColor}, 0.15)`" 
     class="_w-100pct">
     <div class="container">
       <!-- name -->
@@ -74,6 +74,17 @@ export default {
     const slug = params.slug
     const shop = await app.$axios.$get(`/user/${slug}`)
     return { shop }
+  },
+  computed: {
+    _bgColor () {
+      if (this.shop.profileImage.colors.LightMuted) {
+        return this.shop.profileImage.colors.LightMuted._rgb.join(',')
+      }
+      if (this.shop.profileImage.colors.Vibrant) {
+        return this.shop.profileImage.colors.Vibrant._rgb.join(',')
+      }
+      return '250, 250, 250'
+    }
   },
   head () {
     return {
