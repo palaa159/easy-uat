@@ -30,12 +30,6 @@
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
-    "@fortawesome/fontawesome": "^1.1.5",
-    "@fortawesome/fontawesome-free-brands": "^5.0.10",
-    "@fortawesome/fontawesome-pro-light": "^5.0.10",
-    "@fortawesome/fontawesome-pro-regular": "^5.0.10",
-    "@fortawesome/fontawesome-pro-solid": "^5.0.10",
-    "@fortawesome/vue-fontawesome": "^0.0.22",
     "@nuxtjs/axios": "^5.0.0",
     "@nuxtjs/component-cache": "^1.1.2",
     "@nuxtjs/google-analytics": "^2.0.2",
@@ -43,7 +37,6 @@
     "@nuxtjs/toast": "^3.0.1",
     "cookie": "^0.3.1",
     "express": "^4.15.3",
-    "firebase": "^4.12.1",
     "js-cookie": "^2.2.0",
     "nuxt-edge": "2.0.0-25476008.ba5c979",
     "nuxt-rfg-icon": "^0.4.3",
@@ -56,7 +49,6 @@
     "vue-lazyload": "^1.2.2",
     "vue-line-clamp": "^1.2.3",
     "vue-moment": "^3.2.0",
-    "vue-scroll": "^2.1.7",
     "vue-scroll-reveal": "^1.0.8",
     "vue-scrollto": "^2.11.0",
     "vue2-transitions": "^0.2.3",
