@@ -3,7 +3,6 @@ import VueFloatLabel from 'vue-float-label'
 import VueAffix from 'vue-affix'
 import lineClamp from 'vue-line-clamp'
 import VueScrollReveal from 'vue-scroll-reveal'
-import VTooltip from 'v-tooltip'
 import WebFont from 'webfontloader'
 
 Vue.use(VueScrollReveal, {
