@@ -116,6 +116,11 @@ module.exports = {
    */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
+    [
+      'nuxt-rfg-icon', {
+        masterPicture: 'static/images/favicon.png'
+      }
+    ],
     '@nuxtjs/axios',
     '@nuxtjs/sitemap',
     '@nuxtjs/toast',

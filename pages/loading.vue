@@ -25,7 +25,7 @@ export default {
   },
   mounted () {
     setTimeout(() => {
-      window.location.href = `/${this.$route.query.redirect}`
+      window.location.href = window.location.origin + `/${this.$route.query.redirect}`
     }, 1000 * 10)
   }
 }

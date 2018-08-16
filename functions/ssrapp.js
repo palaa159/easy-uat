@@ -23,7 +23,7 @@ const nuxt = new Nuxt(config)
 
 const handleRequest = (req, res) => {
   // Cache 12 hours if not cms calling
-  res.set('Cache-Control', 'public, max-age=3600')
+  // res.set('Cache-Control', 'public, max-age=3600')
   return new Promise((resolve, reject) => {
     nuxt.render(req, res, (promise) => {
       promise.then(resolve).catch(reject)
