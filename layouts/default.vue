@@ -1,13 +1,9 @@
 <template>
   <div>
-    <Header
-      :heroImage="''"
-    />
     <main 
       class="min-height-100vh _dp-f _alit-ct">
       <nuxt/>
     </main>
-    <Footer/>
   </div>
 </template>
 

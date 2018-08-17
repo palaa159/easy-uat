@@ -13,7 +13,6 @@ Vue.use(VueScrollReveal, {
   mobile: false
 })
 
-Vue.use(VTooltip)
 Vue.use(VueAffix)
 Vue.use(VueFloatLabel)
 Vue.use(lineClamp)
