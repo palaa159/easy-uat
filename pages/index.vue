@@ -9,10 +9,6 @@
   </div>
     <div class="container">
       <div class="row">
-<<<<<<< HEAD
-        <div class="col-12">
-           <nuxt-link to ="/about">go to about </nuxt-link>
-=======
         <div class="col-12 _pd-16px btn-create">
           <button type="button" class="bio-button"><nuxt-link to="/home">CREATE</nuxt-link></button>
         </div>
@@ -45,7 +41,6 @@
           <div class="box">
             F
           </div>
->>>>>>> a4a135400cbb00dacac67a5908f6800c1c06a7d9
         </div>
       </div>
     </div>

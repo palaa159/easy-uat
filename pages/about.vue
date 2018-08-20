@@ -1,59 +1,98 @@
 <template>
-<div> 
-   <div class="container-fluid ">
-        <div class="row">
-            <div class="col-12 ">
+<div class="container ">  
+  
+            
                  <!-- Normal Input -->
-<div class="bio-input">
-  <input type="text" placeholder="Type Something">
+<div class="bio-input _pd-16px">
+ Title <input type="text" placeholder="Type Something">
 </div>
 <!-- Normal Textarea -->
-<div class="bio-textarea">
-  <textarea rows="3" placeholder="Textarea"></textarea>
+<div class="bio-textarea _pd-16px">
+  Description <textarea rows="3" placeholder="Textarea"></textarea>
 </div>
+<div class="_dp-f _jtfct-fe">
+  <div class="bio-button -gray "><nuxt-link to="/addpage">Add page</nuxt-link></div>
+   <div class="bio-button   ">Save</div>
+  </div>      
+  <br>
+    <br>       
+      
+<table class="">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Tools</th>
+  </tr>
+  <tr>
+    <td>Peter</td>
+    <td>Griffin</td>
+    <td> <div class="_dp-f _jtfct-ct">
+              <div class="bio-button -accent">Delet</div>
+              <div class="bio-button -warning">Edit</div>
+              <div class="bio-button -dark">Print</div>
+          </div></td>
+  </tr>
+  <tr>
+    <td>Lois</td>
+    <td>Griffin</td>
+    <td> <div class=" _dp-f _jtfct-ct">
+              <div class="bio-button -accent">Delet</div>
+              <div class="bio-button -warning">Edit</div>
+              <div class="bio-button -dark">Print</div>
+          </div></td>
+  </tr>
+  <tr>
+    <td>Joe</td>
+    <td>Swanson</td>
+   
   
-</div>
-     </div>
-   <div class="col-12 " >  
-         description
-         <textarea name="text" id="text" cols="30" rows="10">
+       
+      <td>
+          <div class=" _dp-f _jtfct-ct">
+              <div class="bio-button -accent">Delet</div>
+              <div class="bio-button -warning">Edit</div>
+              <div class="bio-button -dark">Print</div>
+          </div>
 
-         </textarea>
+      </td> 
+         
+   
+  
+  </tr>
+  <tr>
+    <td>Cleveland</td>
+    <td>Brown</td>
+    <td> <div class="_dp-f _jtfct-ct">
+             <div class="bio-button -accent">Delet</div>
+              <div class="bio-button -warning">Edit</div>
+              <div class="bio-button -dark">Print</div>
+          </div></td>
+</tr>
+</table>
+
      </div>
-     <div class="col-12 ">
-    <button class="bio-button -positive"><nuxt-link to="/addpage">Add page</nuxt-link></button></div>
-        </div>
-<div class="container">
-  <h2>Bordered Table</h2>
-  <p>The .table-bordered class adds borders to a table:</p>            
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-        
-     </div>
-    </div>
+   
 </template>
+ <style lang="scss" scoped>
+          table {
+    border-collapse: collapse;
+    width: 100%;
+    border: #f2f2f2;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #FF3333;
+    color: white;
+}
+left{
+    margin-right: 250px;
+}
+          
+           </style> 
