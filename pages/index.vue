@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          x
+           <nuxt-link to ="/about">go to about </nuxt-link>
         </div>
       </div>
     </div>
