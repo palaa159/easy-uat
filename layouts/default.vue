@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header/>
     <main 
       class="min-height-100vh _dp-f _alit-ct">
       <nuxt/>
