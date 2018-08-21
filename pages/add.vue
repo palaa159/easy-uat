@@ -28,10 +28,17 @@
       <div>
         <div v-for="(item, i) in labels" :key="i">
           <p>{{ i + 1 }}</p>
-          <textarea v-model="item.description" id="" cols="30" rows="10"></textarea>
+          <textarea v-model="item.description" id="myInput" cols="180" rows="10"></textarea>
+          <div class="bn">
+          <button @click="deleteRow(item)">Delete</button></div>
         </div>
-      </div>
+      </div><br>
       <!-- end textarea -->
+      <!-- start bnt save -->
+      
+        <button class="bio-button -info bn">save</button>
+      
+      <!-- end bnt save -->
   </div>
 </template>
 <style>
@@ -41,10 +48,10 @@
   display: inline-block;
   margin-left: 30%;
 } 
-#picture {
-  width: 400px;
+/* #picture {
+  width: 600px;
   height: 400px;
-}
+} */
 
 .label-circle {
   width: 30px;
@@ -69,6 +76,9 @@
       onFileChange(e) {
         const file = e.target.files[0];
         this.url = URL.createObjectURL(file);
+      },
+      deleteRow(item) {
+      this.labels.splice(item,1)
       },
       addLabel (e) {
       var x = e.pageX
