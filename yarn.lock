@@ -180,12 +180,6 @@
     string-width "^2.0.0"
     strip-ansi "^4.0.0"
 
-"@nuxtjs/google-analytics@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/google-analytics/-/google-analytics-2.0.2.tgz#75353143628fd7697b41eb5aa7da38a513394eca"
-  dependencies:
-    vue-analytics "^5.4.0"
-
 "@nuxtjs/manifest@^1.6.0":
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/@nuxtjs/manifest/-/manifest-1.7.2.tgz#e78e3133af61bed0578bbb31f87fd1350c54bc0a"
@@ -9190,10 +9184,6 @@ vm-browserify@0.0.4:
 vue-affix@^0.2.4:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/vue-affix/-/vue-affix-0.2.4.tgz#4f599f10517cab95a2d628029f91edb83316afe7"
-
-vue-analytics@^5.4.0:
-  version "5.10.2"
-  resolved "https://registry.yarnpkg.com/vue-analytics/-/vue-analytics-5.10.2.tgz#0536bbb6fafe3dc111683143fc5d3347506c151f"
 
 vue-eslint-parser@^2.0.3:
   version "2.0.3"

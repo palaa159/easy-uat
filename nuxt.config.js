@@ -124,13 +124,7 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/sitemap',
     '@nuxtjs/toast',
-    '@nuxtjs/component-cache', ['@nuxtjs/google-analytics', {
-      id: pkg.gaId,
-      autoTracking: {
-        pageviewOnLoad: false,
-        exception: true
-      }
-    }]
+    '@nuxtjs/component-cache'
   ],
   /*
    ** Axios module configuration
