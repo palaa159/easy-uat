@@ -11,6 +11,24 @@
 //   min-height: calc(100vh - 100px);
 //   background: rgba(0, 0, 0, 0.02);
 // }
+.bg{
+  background-color: #FF3333;
+    
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.bn{
+  
+  margin-left: 90%
+  
+}
+.box1{
+ background-color: aqua;
+ width: 350px;
+  height: 200px;
+}
 
 .bgcl-blue {
   background-color: blue;
@@ -32,6 +50,22 @@
   align-items: center;
   justify-content: center;
   height: 300px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
 }
 
 // .width-100 {
