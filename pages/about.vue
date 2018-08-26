@@ -11,7 +11,7 @@
   Description <textarea rows="3" placeholder="Textarea"></textarea>
 </div>
 <div class="_dp-f _jtfct-fe">
-  <div class="bio-button -gray "><nuxt-link to="/addpage">Add page</nuxt-link></div>
+  <div class="bio-button -gray "><nuxt-link to="/add">Add page</nuxt-link></div>
    <div class="bio-button   ">Save</div>
   </div>      
   <br>
