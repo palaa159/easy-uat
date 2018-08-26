@@ -2,20 +2,20 @@
   <div class="container">
       <!-- start text -->
       <div class="bio-input">
-        Title<input type="text" placeholder="Type Something">
+        Title<input type="text" placeholder="Type Something" v-model="title">
       </div>
-      <!-- end textarea -->
+      <!-- end text -->
       <!-- start textarea -->
       <div class="bio-textarea">
-        Description<textarea rows="8" placeholder="Type Something"></textarea>
+        Description<textarea rows="8" placeholder="Type Something" v-model="des"></textarea>
       </div>
       <!-- end textarea -->
       <!-- start input file -->
       <div>
-          <input type="file" @change="onFileChange" >
+          <input type="file" @change="onFileChange">
           <br>
           <div id="preview" @click="addLabel">
-            <img v-if="url" :src="url" id="picture" >
+            <img v-if="url" :src="url" id="picture">
           </div>
       </div>
       <!-- end input file -->
@@ -28,10 +28,13 @@
       <div>
         <div v-for="(item, i) in labels" :key="i">
           <p>{{ i + 1 }}</p>
-          <textarea v-model="item.description" id="" cols="30" rows="10"></textarea>
+          <textarea v-model="item.description" id="" rows="10" cols="50"></textarea>
         </div>
       </div>
       <!-- end textarea -->
+      <p>
+    <button @click="save">Save</button>
+  </p>
   </div>
 </template>
 <style>
@@ -62,27 +65,77 @@
 <script>
   export default {
     data: () => ({
-      url: null,
-      labels: []
+      url: '',
+      labels: [],
+      newlabels:null,
+      title: '',
+      des: ''
     }),
+    // beforeMounted(){
+    //   var vm = this;
+    //   console.log("before mounted")
+    //   vm.get('img')
+    // },
+     mounted() {
+       var vm = this;
+       console.log("mounted");
+       vm.get('img')
+      if (localStorage.title) {
+        this.title = localStorage.title;
+      }
+      if (localStorage.textarea) {
+        this.des = localStorage.des;
+      }
+      if (localStorage.getItem('labels')) {
+      try {
+        this.labels = JSON.parse(localStorage.getItem('labels'));
+      } catch(e) {
+        localStorage.removeItem('labels');
+      }
+    }
+    },
     methods: {
       onFileChange(e) {
         const file = e.target.files[0];
         this.url = URL.createObjectURL(file);
       },
       addLabel (e) {
-      var x = e.pageX
-      var y = e.pageY
-
-      console.log(e,x,y)
-      var labelLength = this.labels.length
-       //console.log(labelLength)
-      this.labels.push({
-        x: x,
-        y: y,
-        description: ''
-      })
-    }
+        var x = e.pageX
+        var y = e.pageY
+      //console.log(e,x,y)
+        var labelLength = this.labels.length
+        //console.log(labelLength)
+        this.labels.push({
+           x: x,
+           y: y,
+          description: ''
+        })
+        if (!this.newlabels) {
+        return;
+      }
+      this.labels.push(this.newlabels);
+      this.newlabels = '';
+      // this.saveCats();
+      },
+       get(key){
+         this.url=localStorage.getItem(key);
+       },
+       set(key){
+         var vm = this
+         try{
+           localStorage.setItem(key,this.url);
+         }
+         catch(e){
+           console.log("failed");
+         }
+       },
+      save() {
+        localStorage.title = this.title;
+        localStorage.des = this.des;
+        const parsed = JSON.stringify(this.labels);
+        localStorage.setItem('labels', parsed);
+        console.log("finish");
+      }
     }
   }
 </script>
