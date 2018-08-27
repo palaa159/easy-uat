@@ -71,11 +71,11 @@
       title: '',
       des: ''
     }),
-    // beforeMounted(){
-    //   var vm = this;
-    //   console.log("before mounted")
-    //   vm.get('img')
-    // },
+     beforeMounted(){
+       var vm = this;
+       console.log("before mounted")
+       vm.get('img')
+     },
      mounted() {
        var vm = this;
        console.log("mounted");
