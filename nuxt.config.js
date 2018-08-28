@@ -76,6 +76,10 @@ module.exports = {
       //   src: '/js/contactWidget.js',
       //   body: true
       // }
+      {
+        src: 'https://www.gstatic.com/firebasejs/5.4.1/firebase.js',
+        body: true
+      }
     ],
     link: []
   },

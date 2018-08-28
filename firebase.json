@@ -6,9 +6,15 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [{
-      "source": "**",
-      "function": "ssrapp"
-    }]
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "ssrapp"
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   }
 }

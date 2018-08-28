@@ -64,7 +64,7 @@
 <br>
 <div class="container">
     <div class="texttd">
- <table >
+ <table>
   <tr class="">
     <th>Title</th>
     <th>Description</th>
@@ -72,7 +72,7 @@
   </tr>
   <tr>
     <td>Project 1</td>
-    <td><p>A witness gave a detailed description</p></td>
+    <td></td>
     <td > 
         <div >
               <ul class="bio-breadcrumb">
@@ -115,8 +115,10 @@
 </table>
 </div>
 </div>
-</div>  <!-- close div container bg -->
 
+</div>  <!-- close div container bg -->
+<!-- <div v-for="(project, i) in projects" :key='i'>
+  <div v-html="project.title_project"></div>
+</div> -->
 </div><!-- close div -->
 </template>
-

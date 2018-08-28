@@ -70,7 +70,7 @@
     
       <!-- end textarea -->
        <p>
-    <button @click="save" class="bio-button u-rise bn">Save</button>
+    <button class="bio-button u-rise bn">Save</button>
      
   </p>
 </div>
@@ -107,41 +107,17 @@
   export default {
     data: () => ({
       url: '',
-      labels: [],
-      newlabels:null,
-      title: '',
-      des: ''
+      labels: []
     }),
-     beforeMounted(){
-       var vm = this;
-       console.log("before mounted")
-       vm.get('img')
-     },
-     mounted() {
-       var vm = this;
-       console.log("mounted");
-       vm.get('img')
-      if (localStorage.title) {
-        this.title = localStorage.title;
-      }
-      if (localStorage.textarea) {
-        this.des = localStorage.des;
-      }
-      if (localStorage.getItem('labels')) {
-      try {
-        this.labels = JSON.parse(localStorage.getItem('labels'));
-      } catch(e) {
-        localStorage.removeItem('labels');
-      }
-    }
-    },
+    // beforeMounted(){
+    //   var vm = this;
+    //   console.log("before mounted")
+    //   vm.get('img')
+    // },
     methods: {
       onFileChange(e) {
         const file = e.target.files[0];
         this.url = URL.createObjectURL(file);
-      },
-      deleteRow(item) {
-      this.labels.splice(item,1)
       },
       addLabel (e) {
         var x = e.pageX
@@ -154,31 +130,6 @@
            y: y,
           description: ''
         })
-        if (!this.newlabels) {
-        return;
-      }
-      this.labels.push(this.newlabels);
-      this.newlabels = '';
-      // this.saveCats();
-      },
-       get(key){
-         this.url=localStorage.getItem(key);
-       },
-       set(key){
-         var vm = this
-         try{
-           localStorage.setItem(key,this.url);
-         }
-         catch(e){
-           console.log("failed");
-         }
-       },
-      save() {
-        localStorage.title = this.title;
-        localStorage.des = this.des;
-        const parsed = JSON.stringify(this.labels);
-        localStorage.setItem('labels', parsed);
-        console.log("finish");
       }
     }
   }
