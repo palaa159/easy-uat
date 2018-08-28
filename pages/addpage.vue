@@ -64,15 +64,15 @@
 <br>
 <div class="container">
     <div class="texttd">
- <table v-for="pro in project" v-bind:key="pro.id" >
+ <table>
   <tr class="">
     <th>Title</th>
     <th>Description</th>
     <th>Tools</th>
   </tr>
   <tr>
-    <td >{{pro.title_project}}</td>
-    <td><p>A witness gave a detailed description</p></td>
+    <td>Project 1</td>
+    <td></td>
     <td > 
         <div >
               <ul class="bio-breadcrumb">
@@ -88,34 +88,10 @@
 </table>
 </div>
 </div>
-</div>  <!-- close div container bg -->
 
+</div>  <!-- close div container bg -->
+<!-- <div v-for="(project, i) in projects" :key='i'>
+  <div v-html="project.title_project"></div>
+</div> -->
 </div><!-- close div -->
 </template>
-<script>
-import db from '~/pages/firebaseinit'
-export default {
-  data(){
-    return{
-      project:[]
-    }
-  },
-created (){
-db.collection('project').get().then
-(querySnapshot => {
-  querySnapshot.forEach(doc => {
-    // console.log(doc.data());
-    const data = {
-      'id': doc.id,
-      'title_project':doc.data().title_project,
-      'project_id':doc.data().project_id,
-      'des_pro':doc.data().des_pro
-    }
-    this.project.push(data)
-  })
-})
-}
-}
-</script>
-
-
