@@ -104,6 +104,8 @@
 }
 </style>
 <script>
+//manage databaseURL
+
   export default {
     data: () => ({
       url: '',

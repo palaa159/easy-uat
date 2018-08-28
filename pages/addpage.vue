@@ -64,14 +64,14 @@
 <br>
 <div class="container">
     <div class="texttd">
- <table >
+ <table v-for="pro in project" v-bind:key="pro.id" >
   <tr class="">
     <th>Title</th>
     <th>Description</th>
     <th>Tools</th>
   </tr>
   <tr>
-    <td>Project 1</td>
+    <td >{{pro.title_project}}</td>
     <td><p>A witness gave a detailed description</p></td>
     <td > 
         <div >
@@ -83,34 +83,7 @@
 </ul>
           </div></td>
   </tr>
-  <tr>
-    <td>Project 2</td>
-    <td><p>A witness gave a detailed description</p></td>
-    <td> <div >
-                <ul class="bio-breadcrumb">
-<li><a class="bio-link -negative" href="#">Delete</a></li>
-  <li><a class="bio-link -primary" href="#">Edit</a></li>
-  <li><a class="bio-link  " href="#">Print</a></li>
   
-</ul>
-          </div></td>
-  </tr>
-  <tr>
-    <td>Project 3</td>
-    <td><p>A witness gave a detailed description</p></td>
-   
-  <td>
-          <div >
-                <ul class="bio-breadcrumb">
-<li><a class="bio-link -negative" href="#">Delete</a></li>
-  <li><a class="bio-link -primary" href="#">Edit</a></li>
-  <li><a class="bio-link  " href="#">Print</a></li>
-  
-</ul>
-          </div>
-
-      </td> 
-</tr>
   
 </table>
 </div>
@@ -119,4 +92,30 @@
 
 </div><!-- close div -->
 </template>
+<script>
+import db from '~/pages/firebaseinit'
+export default {
+  data(){
+    return{
+      project:[]
+    }
+  },
+created (){
+db.collection('project').get().then
+(querySnapshot => {
+  querySnapshot.forEach(doc => {
+    // console.log(doc.data());
+    const data = {
+      'id': doc.id,
+      'title_project':doc.data().title_project,
+      'project_id':doc.data().project_id,
+      'des_pro':doc.data().des_pro
+    }
+    this.project.push(data)
+  })
+})
+}
+}
+</script>
+
 
