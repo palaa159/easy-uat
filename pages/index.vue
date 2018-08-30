@@ -20,7 +20,9 @@
                     <div class="bio-card h-100">
                         <img class="bio-card-cover" src="https://placehold.it/150x80?text=IMAGE" alt="image">
                             <div class="bio-card-title">
-                                <router-link v-bind:to="{name:'viewpage', params: {project_id: project.project_id}}"><strong>{{project.title_project}}</strong></router-link>
+                                <router-link v-bind:to="{name:'viewpage', params: {project_id: project.project_id}}">
+                                    <strong>{{project.title_project}}</strong>
+                                </router-link>
                             </div>
                             <div class="bio-card-subtitle">
                                 {{project.des_pro}}

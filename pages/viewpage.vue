@@ -45,26 +45,27 @@
     <td>{{page.des_page}}</td>
     <td > 
         <div >
-              <ul class="bio-breadcrumb" >
+                <ul class="bio-breadcrumb" >
                   <!-- v-for="project in projects" v-bind:key="project.id" -->
-                <li><a class="bio-link -negative" href="#">Delete</a></li>
-                <!-- <router-link v-bind:to="{name:'editpage', params: {project_id: project.project_id}}">
-                    <li class="bio-link -primary" >Edit</li>
-                </router-link> -->
-                <li><a class="bio-link  " href="#">Print</a></li>
+                    <li><a class="bio-link -negative" href="#">Delete</a></li>
+                        <!-- <router-link v-bind:to="{name:'editpage', params: {project_id: project.project_id}}">
+                            <p>Edit</p>
+                        </router-link> -->
+                    <li><a class="bio-link  " href="#">Print</a></li>
   
-</ul>
+                </ul>
           </div></td>
   </tr>
   
   
 </table>
+<!-- <router-link v-bind:to="{name:'editpage', params: {project_id: project.project_id}}">
+<p>Edit</p></router-link> -->
 </div>
 </div>
        
         </div>
     </div>
-
 </template>
 
 <script>
@@ -75,7 +76,7 @@ export default {
             project_id: null,
             title_project: null,
             des_pro: null,
-            pages: null
+            pages: null,
         }
     },
     beforeRouteEnter (to, from, next) {
