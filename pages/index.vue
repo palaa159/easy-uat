@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div><br>
-        <div class="bio-button u-rise _dp-il bn "><nuxt-link to="/addpage">Create Project</nuxt-link></div>
+        <div class="bio-button u-rise _dp-il bn "><nuxt-link to="/title">Create Project</nuxt-link></div>
 <br><br>
         <!-- open div container -->
         <div class="container _bgcl-neutral-300 _pd-16px">

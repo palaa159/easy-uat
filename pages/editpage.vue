@@ -1,6 +1,5 @@
 <template>
-<!-- open div -->
-<div class="_w-100pct">
+ <div class="_w-100pct">
     <div class="container _bgcl-neutral-100">
     <div class="container-fluid _bgcl-primary-300">
       <div class="row">
@@ -18,7 +17,7 @@
         <div class="col-12 _pd-16px">
           <!-- Normal Input -->
             <div class="bio-input _pd-16px">
-            <h5>Title</h5><input type="text" placeholder="Type Something " >
+            <h5>Title</h5><input type="text" placeholder="Type Something " v-model="title_project" >
             </div>
     </div>
      <!-- colse div col -->
@@ -27,7 +26,7 @@
            <!-- Normal Textarea -->
         <div class="bio-textarea _pd-16px">
           <h5>Description </h5>
-          <textarea rows="7" placeholder="Textarea"></textarea>
+          <textarea rows="7" v-model="des_pro"></textarea>
 </div>
      </div>
      <!-- colse div col -->
@@ -75,64 +74,50 @@
   </p>
 </div>
 </div><!-- close div -->
+
+  
 </template>
-<style>
- #preview {
-  position: relative;
-  border: 2px solid rgb(148, 146, 146);
-  display: inline-block;
-  /* width: 300px;
-  height: 300px; */
-    margin-left: 20%; 
-} 
- #picture {
-  width: 700px;
-  height: 600px; 
-    
-} 
-
-.label-circle {
-  width: 30px;
-  height: 30px;
-  background: red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  border-radius: 50%;
-  position: absolute;
-}
-</style>
+// firebase
 <script>
-//manage databaseURL
-
-  export default {
-    data: () => ({
-      url: '',
-      labels: []
-    }),
-    // beforeMounted(){
-    //   var vm = this;
-    //   console.log("before mounted")
-    //   vm.get('img')
-    // },
-    methods: {
-      onFileChange(e) {
-        const file = e.target.files[0];
-        this.url = URL.createObjectURL(file);
-      },
-      addLabel (e) {
-        var x = e.pageX
-        var y = e.pageY
-      //console.log(e,x,y)
-        var labelLength = this.labels.length
-        //console.log(labelLength)
-        this.labels.push({
-           x: x,
-           y: y,
-          description: ''
+import db from './firebaseInit'
+export default {
+    data () {
+        return {
+            project_id: null,
+            title_project: null,
+            des_pro: null,
+            pages: null
+        }
+    },
+    beforeRouteEnter (to, from, next) {
+        db.collection('project').where('project_id', '==', to.params.project_id).get()
+        .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                next(vm => {
+                    vm.project_id = doc.data().project_id
+                    vm.title_project = doc.data().title_project
+                    vm.des_pro = doc.data().des_pro
+                    vm.pages = doc.data().pages
+                })
+            })
         })
-      }
+    },
+    watch: {
+        '$route' : 'fetchData'
+    },
+    methods: {
+        fetchData() {
+            db.collection('project').where
+            ('project_id', '==', this.$route.params.project_id).get()
+            .then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    this.project_id = doc.data().project_id
+                    this.title_project = doc.data().title_project
+                    this.des_pro = doc.data().des_pro
+                    this.pages = doc.data().pages
+                })
+            })
+        }
     }
-  }
+}
 </script>
