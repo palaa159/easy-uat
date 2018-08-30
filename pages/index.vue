@@ -9,20 +9,23 @@
                 </div>
             </div>
         </div><br>
-        <div class="bio-button u-rise _dp-il bn "><nuxt-link to="/title">Create Project</nuxt-link></div>
+        <nuxt-link :to="{name:'title', params: {project_id: project_id}}">
+            <div class="bio-button u-rise _dp-il bn "> Create Project</div>
+        </nuxt-link>
 <br><br>
         <!-- open div container -->
         <div class="container _bgcl-neutral-300 _pd-16px">
             <!-- open div row -->
             <div class="row" >
                 <!-- open div col -->
-                <div class="col-4 _pd-16px" v-for="project in projects" v-bind:key="project.id">
+                <div class="col-4 _pd-16px" v-for="project in projects" v-bind:key="project.id" > 
+                    
                     <div class="bio-card h-100">
                         <img class="bio-card-cover" src="https://placehold.it/150x80?text=IMAGE" alt="image">
                             <div class="bio-card-title">
-                                <router-link v-bind:to="{name:'viewpage', params: {project_id: project.project_id}}">
+                                 <nuxt-link v-bind:to="{name:'viewpage', params: {project_id: project.project_id}}">
                                     <strong>{{project.title_project}}</strong>
-                                </router-link>
+                                </nuxt-link> 
                             </div>
                             <div class="bio-card-subtitle">
                                 {{project.des_pro}}
