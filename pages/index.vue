@@ -23,9 +23,9 @@
                     <div class="bio-card h-100">
                         <img class="bio-card-cover" src="https://placehold.it/150x80?text=IMAGE" alt="image">
                             <div class="bio-card-title">
-                                 <nuxt-link v-bind:to="{name:'viewpage', params: {project_id: project.project_id}}">
+                                <nuxt-link :to="{name:'viewpage', params: {project_id: project.project_id}}">
                                     <strong>{{project.title_project}}</strong>
-                                </nuxt-link> 
+                                </nuxt-link>
                             </div>
                             <div class="bio-card-subtitle">
                                 {{project.des_pro}}
