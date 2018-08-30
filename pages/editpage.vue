@@ -78,46 +78,46 @@
   
 </template>
 
-// <script>
-// import db from './firebaseInit'
-// export default {
-//     data () {
-//         return {
-//             project_id: null,
-//             title_project: null,
-//             des_pro: null,
-//             pages: null
-//         }
-//     },
-//     beforeRouteEnter (to, from, next) {
-//         db.collection('project').where('project_id', '==', to.params.project_id).get()
-//         .then(querySnapshot => {
-//             querySnapshot.forEach(doc => {
-//                 next(vm => {
-//                     vm.project_id = doc.data().project_id
-//                     vm.title_project = doc.data().title_project
-//                     vm.des_pro = doc.data().des_pro
-//                     vm.pages = doc.data().pages
-//                 })
-//             })
-//         })
-//     },
-//     watch: {
-//         '$route' : 'fetchData'
-//     },
-//     methods: {
-//         fetchData() {
-//             db.collection('project').where
-//             ('project_id', '==', this.$route.params.project_id).get()
-//             .then(querySnapshot => {
-//                 querySnapshot.forEach(doc => {
-//                     this.project_id = doc.data().project_id
-//                     this.title_project = doc.data().title_project
-//                     this.des_pro = doc.data().des_pro
-//                     this.pages = doc.data().pages
-//                 })
-//             })
-//         }
-//     }
-// }
-// </script>
+<script>
+import db from './firebaseInit'
+export default {
+    data () {
+        return {
+            project_id: null,
+            title_project: null,
+            des_pro: null,
+            pages: null
+        }
+    },
+    beforeRouteEnter (to, from, next) {
+        db.collection('project').where('project_id', '==', to.params.project_id).get()
+        .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                next(vm => {
+                    vm.project_id = doc.data().project_id
+                    vm.title_project = doc.data().title_project
+                    vm.des_pro = doc.data().des_pro
+                    vm.pages = doc.data().pages
+                })
+            })
+        })
+    },
+    watch: {
+        '$route' : 'fetchData'
+    },
+    methods: {
+        fetchData() {
+            db.collection('project').where
+            ('project_id', '==', this.$route.params.project_id).get()
+            .then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    this.project_id = doc.data().project_id
+                    this.title_project = doc.data().title_project
+                    this.des_pro = doc.data().des_pro
+                    this.pages = doc.data().pages
+                })
+            })
+        }
+    }
+}
+</script>
