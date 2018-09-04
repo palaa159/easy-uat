@@ -2,14 +2,14 @@
 <!-- open div -->
 <div class="_w-100pct">
     <div class="container _bgcl-neutral-100">
-        <div class="container-fluid _bgcl-primary-300">
+        <div class="container-fluproject_id _bgcl-primary-300">
             <div class="row">
                 <div class="col-12 myHeader">
                     <h1 class="text">Easy UAT</h1>  
                 </div>
             </div>
         </div><br>
-        <nuxt-link :to="{name:'title', params: {project_id: project_id}}">
+     <nuxt-link to="/title">
             <div class="bio-button u-rise _dp-il bn "> Create Project</div>
         </nuxt-link>
 <br><br>
@@ -18,7 +18,7 @@
             <!-- open div row -->
             <div class="row" >
                 <!-- open div col -->
-                <div class="col-4 _pd-16px" v-for="project in projects" v-bind:key="project.id" > 
+                <div class="col-4 _pd-16px" v-for="project in projects" v-bind:key="project.project_id" > 
                     
                     <div class="bio-card h-100">
                         <img class="bio-card-cover" src="https://placehold.it/150x80?text=IMAGE" alt="image">
@@ -56,7 +56,7 @@ export default {
           'project_id': doc.data().project_id,
           'title_project': doc.data().title_project,
           'des_pro': doc.data().des_pro,
-          'pages': doc.data().pages
+          'page': doc.data().page
         }
         this.projects.push(data)
         //console.log(this.projects)

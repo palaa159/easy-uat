@@ -1,7 +1,7 @@
 <template>
     <div class="_w-100pct">
         <div class="container _bgcl-neutral-100">
-            <div class="container-fluid _bgcl-primary-300">
+            <div class="container-fluproject_id _bgcl-primary-300">
                 <div class="row">
                     <div class="col-12 myHeader">
                         <h1 class="text">Easy UAT</h1>  
@@ -42,13 +42,13 @@
                                 <th>Description</th>
                                 <th>Tools</th>
                             </tr>
-                            <tr v-for="(page, i) in pages" :key="i">
-                                <td>{{page.title_page}}</td>
-                                <td>{{page.des_page}}</td>
+                            <tr v-for="(pages, i) in page" :key="i">
+                                <td>{{pages.title_page}}</td>
+                                <td>{{pages.des_page}}</td>
                                 <td > 
                                     <div >
                                         <ul class="bio-breadcrumb" >
-                                            <!-- v-for="project in projects" v-bind:key="project.id" -->
+                                            <!-- v-for="project in projects" v-bind:key="project.project_id" -->
                                             <li class="_cl-neutral-900 _cl-negative-hover">Delete</li>
                                             <nuxt-link :to="{name:'editpage', params: {project_id: project_id}}">
                                                 <li class="_cl-neutral-900 _cl-primary-500-hover">Edit</li>
@@ -73,10 +73,10 @@ import db from './firebaseInit'
 export default {
     data () {
         return {
-            project_id: null,
+            // project_id: null,
             title_project: null,
             des_pro: null,
-            pages: null,
+            page: null,
         }
   },
     beforeRouteEnter (to, from, next) {
@@ -84,10 +84,10 @@ export default {
         .then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 next(vm => {
-                    vm.project_id = doc.data().project_id
+                    vm.project_id = doc.project_id
                     vm.title_project = doc.data().title_project
                     vm.des_pro = doc.data().des_pro
-                    vm.pages = doc.data().pages
+                    vm.page = doc.data().page
                 })
             })
         })
@@ -101,10 +101,10 @@ export default {
             ('project_id', '==', this.$route.params.project_id).get()
             .then(querySnapshot => {
                 querySnapshot.forEach(doc => {
-                    this.project_id = doc.data().project_id
+                    this.project_id = doc.project_id
                     this.title_project = doc.data().title_project
                     this.des_pro = doc.data().des_pro
-                    this.pages = doc.data().pages
+                    this.page = doc.data().page
                 })
             })
         }
