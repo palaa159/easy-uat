@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div><br>
-     <nuxt-link to="/title">
+     <nuxt-link to="/create">
             <div class="bio-button u-rise _dp-il bn "> Create Project</div>
         </nuxt-link>
 <br><br>
@@ -23,7 +23,7 @@
                     <div class="bio-card h-100">
                         <img class="bio-card-cover" src="https://placehold.it/150x80?text=IMAGE" alt="image">
                             <div class="bio-card-title">
-                                <nuxt-link :to="{name:'viewpage', params: {project_id: project.project_id}}">
+                                <nuxt-link :to="{name:'create-id', params: {id: project.id}}">
                                     <strong>{{project.title_project}}</strong>
                                 </nuxt-link>
                             </div>
@@ -40,29 +40,31 @@
 </template>
 
 <script>
-import db from './firebaseInit'
+import db from "~/services/firebaseInit";
 export default {
-  data () {
+  data() {
     return {
-      projects:[]
-    }
+      projects: []
+    };
   },
-  created (){
-    db.collection('project').get().then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        //console.log(doc.data());
-        const data = {
-          'id': doc.id,
-          'project_id': doc.data().project_id,
-          'title_project': doc.data().title_project,
-          'des_pro': doc.data().des_pro,
-          'page': doc.data().page
-        }
-        this.projects.push(data)
-        //console.log(this.projects)
-      })
-    })
-
+  created() {
+    db
+      .collection("project")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          //console.log(doc.data());
+          const data = {
+            id: doc.id,
+            project_id: doc.data().project_id,
+            title_project: doc.data().title_project,
+            des_pro: doc.data().des_pro,
+            page: doc.data().page
+          };
+          this.projects.push(data);
+          //console.log(this.projects)
+        });
+      });
   }
-}
+};
 </script>

@@ -12,13 +12,13 @@
     <!-- open div row -->
     <div class="row">
         <!-- open div col --> 
-        <div class="col-12 _pd-16px">
+        <!-- <div class="col-12 _pd-16px">
            <div class="bio-input _pd-16px">
              
                           <h5>ID</h5>
                        <input type="text" v-model="project_id">
                     </div>
-                </div> 
+                </div>  -->
           <div class="col-12 _pd-16px">
            <div class="bio-input _pd-16px">
              
@@ -41,7 +41,7 @@
      <div >
          <!--  @click="saveData" -->
         
-    <div class="bio-button u-rise bn" @click="saveData"> <nuxt-link :to="{name:'viewpage', params: {project_id: project.project_id}}" >Save</nuxt-link></div> 
+    <div class="bio-button u-rise bn" @click="saveData" > Save</div> 
     
       
     </div>
@@ -49,58 +49,59 @@
 
 </template>
 <script>
-import db from './firebaseInit'
+import db from "~/services/firebaseInit";
 export default {
-  data () {
+  data() {
     return {
       title_project: null,
       des_pro: null,
-      project_id: null,
-      pro:[]
-    }
+      project_id: null
+      // project:[]
+    };
   },
 
-// computed: {
-//     randomNumber: function () {
-//    return  this.project_id + 1
-//     }
+  // computed: {
+  //     randomNumber: function () {
+  //    return  this.project_id + 1
+  //     }
 
-// },
+  // },
   methods: {
- 
-    saveData () {
-
-      db.collection('project').add({
-        project_id: this.project_id,
-        title_project: this.title_project,
-        des_pro: this.des_pro
-        
-      })
-      .then(docRef => this.$router.push('/'))
-      .catch(error => console.log(err))
-    },     
-    // randomNumber : function(){
-        
-    //   return Math.floor(Math.random() * (10 - 1 + 1)) + 1;
-    // }
-  },
-      created (){
-    db.collection('project').get().then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        //console.log(doc.data());
-        const data = {
-          'id': doc.id,
-          'project_id': doc.data().project_id,
-          'title_project': doc.data().title_project,
-          'des_pro': doc.data().des_pro,
-          'pages': doc.data().pages
-        }
-        this.pro.push(data)
-        console.log(this.pro)
-      })
-    })
+    saveData() {
+      db
+        .collection("project")
+        .add({
+          // project_id: this.project_id,
+          title_project: this.title_project,
+          des_pro: this.des_pro
+        })
+        .then(docRef => {
+          // console.log(docRef);
+          return this.$router.push("/create/" + docRef.id);
+        })
+        .catch(error => console.log(err));
+    },
+    randomNumber: function() {
+      return Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+    }
   }
-}
+  //     created (){
+  //   db.collection('project').get().then(querySnapshot => {
+  //     querySnapshot.forEach(doc => {
+  //       //console.log(doc.data());
+  //       const data = {
+  //         'id': doc.id,
+  //         'project_id': doc.data().project_id,
+  //         'title_project': doc.data().title_project,
+  //         'des_pro': doc.data().des_pro,
+  //         'pages': doc.data().pages
+  //       }
+  //       this.pro.push(data)
+  //       console.log(this.project)
+  //     })
+  //   })
+  // }
+};
 </script>
 
 

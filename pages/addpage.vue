@@ -12,7 +12,7 @@
   <br>
 
     <!-- open div container -->
-<div class="container _bgcl-neutral-200 _pd-16px" v-for="(project, i) in projects" :key="i" >
+<div class="container _bgcl-neutral-200 _pd-16px"  >
     <!-- open div row -->
     <div class="row">
          <!-- open div col -->
@@ -103,33 +103,50 @@
 </template>
 
 <script>
-import db from './firebaseInit'
+import db from "~/services/firebaseInit";
 export default {
-  data () {
+  data() {
     return {
-    // projects:[]
-      // title_project: null,
-      // des_pro: null,
-      //  project_id: null
-    }
+      project_id: null,
+      title_project: null,
+      des_pro: null,
+      page: null
+    };
   },
-  // created (){
-  //   db.collection('project').get().then(querySnapshot => {
-  //     querySnapshot.forEach(doc => {
-  //       //console.log(doc.data());
-  //       const data = {
-  //         'id': doc.id,
-  //         'project_id': doc.data().project_id,
-  //         'title_project': doc.data().title_project,
-  //         'des_pro': doc.data().des_pro,
-  //         // 'page': doc.data().page
-  //       }
-  //       this.projects.push(data)
-  //       console.log(this.projects)
-  //     })
-  //   })
-
-  // }
- 
-}
+  beforeRouteEnter(to, from, next) {
+    db
+      .collection("project")
+      .where("project_id", "==", to.params.project_id)
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          next(vm => {
+            vm.project_id = doc.project_id;
+            vm.title_project = doc.data().title_project;
+            vm.des_pro = doc.data().des_pro;
+            vm.page = doc.data().page;
+          });
+        });
+      });
+  },
+  watch: {
+    $route: "fetchData"
+  },
+  methods: {
+    fetchData() {
+      db
+        .collection("project")
+        .where("project_id", "==", this.$route.params.project_id)
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            this.project_id = doc.project_id;
+            this.title_project = doc.data().title_project;
+            this.des_pro = doc.data().des_pro;
+            this.page = doc.data().page;
+          });
+        });
+    }
+  }
+};
 </script>

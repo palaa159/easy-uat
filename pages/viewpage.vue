@@ -69,45 +69,50 @@
 </template>
 
 <script>
-import db from './firebaseInit'
+import db from "~/services/firebaseInit";
 export default {
-    data () {
-        return {
-            // project_id: null,
-            title_project: null,
-            des_pro: null,
-            page: null,
-        }
+  data() {
+    return {
+      project_id: null,
+      title_project: null,
+      des_pro: null,
+      page: null
+    };
   },
-    beforeRouteEnter (to, from, next) {
-        db.collection('project').where('project_id', '==', to.params.project_id).get()
+  beforeRouteEnter(to, from, next) {
+    db
+      .collection("project")
+      .where("project_id", "==", to.params.project_id)
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          next(vm => {
+            vm.project_id = doc.project_id;
+            vm.title_project = doc.data().title_project;
+            vm.des_pro = doc.data().des_pro;
+            vm.page = doc.data().page;
+          });
+        });
+      });
+  },
+  watch: {
+    $route: "fetchData"
+  },
+  methods: {
+    fetchData() {
+      db
+        .collection("project")
+        .where("project_id", "==", this.$route.params.project_id)
+        .get()
         .then(querySnapshot => {
-            querySnapshot.forEach(doc => {
-                next(vm => {
-                    vm.project_id = doc.project_id
-                    vm.title_project = doc.data().title_project
-                    vm.des_pro = doc.data().des_pro
-                    vm.page = doc.data().page
-                })
-            })
-        })
-    },
-    watch: {
-        '$route' : 'fetchData'
-    },
-    methods: {
-        fetchData() {
-            db.collection('project').where
-            ('project_id', '==', this.$route.params.project_id).get()
-            .then(querySnapshot => {
-                querySnapshot.forEach(doc => {
-                    this.project_id = doc.project_id
-                    this.title_project = doc.data().title_project
-                    this.des_pro = doc.data().des_pro
-                    this.page = doc.data().page
-                })
-            })
-        }
+          querySnapshot.forEach(doc => {
+            this.project_id = doc.project_id;
+            this.title_project = doc.data().title_project;
+            this.des_pro = doc.data().des_pro;
+            this.page = doc.data().page;
+          });
+        });
     }
-}
+  }
+};
 </script>
