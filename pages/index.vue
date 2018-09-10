@@ -10,7 +10,7 @@
             </div>
         </div><br>
      <nuxt-link to="/create">
-            <div class="bio-button u-rise _dp-il bn "> Create Project</div>
+            <div class="bio-button u-rise _dp-il bn "> Create</div>
         </nuxt-link>
 <br><br>
         <!-- open div container -->
@@ -23,7 +23,7 @@
                     <div class="bio-card h-100">
                         <img class="bio-card-cover" src="https://placehold.it/150x80?text=IMAGE" alt="image">
                             <div class="bio-card-title">
-                                <nuxt-link :to="{name:'create-id', params: {id: project.id}}">
+                                <nuxt-link :to="{name:'view-id', params: {id: project.id}}">
                                     <strong>{{project.title_project}}</strong>
                                 </nuxt-link>
                             </div>
@@ -56,7 +56,6 @@ export default {
           //console.log(doc.data());
           const data = {
             id: doc.id,
-            project_id: doc.data().project_id,
             title_project: doc.data().title_project,
             des_pro: doc.data().des_pro,
             page: doc.data().page
