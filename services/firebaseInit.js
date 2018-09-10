@@ -1,5 +1,6 @@
-import firebase from 'firebase'
-import 'firebase/firestore'
+// import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/firestore";
 
 const config = {
   apiKey: "AIzaSyC9V8o3vxwAxbZPfWwRCODil3ia4EcyI9c",
@@ -8,10 +9,10 @@ const config = {
   projectId: "test-easy-uat",
   storageBucket: "test-easy-uat.appspot.com",
   messagingSenderId: "1089349484996"
-}
+};
 
 if (!firebase.apps.length) {
-  firebase.initializeApp(config)
+  firebase.initializeApp(config);
 }
 
 const firestore = firebase.firestore();
