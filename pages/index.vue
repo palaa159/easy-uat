@@ -18,7 +18,7 @@
             <!-- open div row -->
             <div class="row" >
                 <!-- open div col -->
-                <div class="col-4 _pd-16px" v-for="project in projects" v-bind:key="project.project_id" > 
+                <div class="col-4 _pd-16px" v-for="project in projects" v-bind:key="project.id" > 
                     
                     <div class="bio-card h-100">
                         <img class="bio-card-cover" src="https://placehold.it/150x80?text=IMAGE" alt="image">

@@ -35,13 +35,14 @@
                    
                 </div>   
                  </div>   
-         </div>
+         </div>    <br>  
+         <div class="bio-button u-rise bn" @click="saveData" > Save</div> 
      </div>
      <br>
      <div >
          <!--  @click="saveData" -->
         
-    <div class="bio-button u-rise bn" @click="saveData" > Save</div> 
+ 
     
       
     </div>
@@ -80,10 +81,10 @@ export default {
           return this.$router.push("/create/" + docRef.id);
         })
         .catch(error => console.log(err));
-    },
-    randomNumber: function() {
-      return Math.floor(Math.random() * (10 - 1 + 1)) + 1;
     }
+    // randomNumber: function() {
+    //   return Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+    // }
   }
   //     created (){
   //   db.collection('project').get().then(querySnapshot => {

@@ -77,19 +77,18 @@
 </div><!-- close div -->
 </template>
 <style>
- #preview {
+#preview {
   position: relative;
   border: 2px solid rgb(148, 146, 146);
   display: inline-block;
   /* width: 300px;
   height: 300px; */
-    margin-left: 20%; 
-} 
- #picture {
+  margin-left: 20%;
+}
+#picture {
   width: 700px;
-  height: 600px; 
-    
-} 
+  height: 600px;
+}
 
 .label-circle {
   width: 30px;
@@ -106,33 +105,33 @@
 <script>
 //manage databaseURL
 
-  export default {
-    data: () => ({
-      url: '',
-      labels: []
-    }),
-    // beforeMounted(){
-    //   var vm = this;
-    //   console.log("before mounted")
-    //   vm.get('img')
-    // },
-    methods: {
-      onFileChange(e) {
-        const file = e.target.files[0];
-        this.url = URL.createObjectURL(file);
-      },
-      addLabel (e) {
-        var x = e.pageX
-        var y = e.pageY
+export default {
+  data: () => ({
+    url: "",
+    labels: []
+  }),
+  // beforeMounted(){
+  //   var vm = this;
+  //   console.log("before mounted")
+  //   vm.get('img')
+  // },
+  methods: {
+    onFileChange(e) {
+      const file = e.target.files[0];
+      this.url = URL.createObjectURL(file);
+    },
+    addLabel(e) {
+      var x = e.pageX;
+      var y = e.pageY;
       //console.log(e,x,y)
-        var labelLength = this.labels.length
-        //console.log(labelLength)
-        this.labels.push({
-           x: x,
-           y: y,
-          description: ''
-        })
-      }
+      var labelLength = this.labels.length;
+      //console.log(labelLength)
+      this.labels.push({
+        x: x,
+        y: y,
+        description: ""
+      });
     }
   }
+};
 </script>
