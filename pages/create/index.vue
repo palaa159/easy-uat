@@ -18,13 +18,6 @@
                   <input type="text" v-model="title_project">
               </div>
             </div> 
-          <div class="col-12 _pd-16px">
-           <div class="bio-input _pd-16px">
-             
-                          <h5>Title</h5>
-                            <input type="text" v-model="title_project">
-                    </div>
-                </div> 
              <div class="col-12 _pd-16px">
          <!-- Normal Textarea -->
                     <div class="bio-textarea _pd-16px" >

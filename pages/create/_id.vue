@@ -73,17 +73,17 @@
               </textarea>
             </div>
          </div>
-         <!-- <div>
+         <div>
            <input type="file" @change="onFileChange"> <br>
-            <div id="preview" @click="addLabel">
+            <!-- <div id="preview" @click="addLabel"> -->
              <img v-if="url" :src="url" id="picture" >
-           </div>
+           <!-- </div> -->
          </div>
-         <div class="label-circle" v-for="(label, i) in labels" 
+         <!-- <div class="label-circle" v-for="(label, i) in labels" 
               :key="i" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'">
                {{ i + 1 }}
-         </div>
-         <div class="container">
+         </div> -->
+         <!-- <div class="container">
            <div class="col-12">
              <div class="row">
                <div v-for="(item, i) in labels" :key="i">
@@ -92,7 +92,7 @@
                </div>
              </div>
            </div>
-         </div>  -->        
+         </div>          -->
          </div>
          <!-- <button @click="savePage">Save</button>   -->
          <div class="col-12 _pd-16px">
@@ -170,7 +170,7 @@ export default {
       title_page: doc.data().title_page,
       des_page: doc.data().des_page
       }
-      //this.page.push(data);
+      this.page.push(data);
     });
     // return { data };
   },
@@ -190,10 +190,11 @@ export default {
         des_page: " "
       });
     },
-    // onFileChange(e) {
-    //   const file = e.target.files[0];
-    //   this.url = URL.createObjectURL(file);
-    // },
+    onFileChange(e) {
+      //this.url = e.target.files[0]
+      const file = e.target.files[0];
+      this.url = URL.createObjectURL(file);
+    },
     // addLabel(e) {
     //   var x = e.pageX;
     //   var y = e.pageY;
@@ -230,7 +231,7 @@ export default {
         })
          //.then(docRef => {
         //   console.log(docRef);
-           return this.reload();
+           //return this.reload();
         // })
        // .catch(error => console.log(err));
     }

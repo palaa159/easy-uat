@@ -32,14 +32,14 @@
                                 <th>Tool</th>
                             </tr>
                             <tr v-for="(pages, i) in page" :key="i">
-                                <td>{{pages.pageid}}: {{pages.title_page}}</td>
+                                <td>{{pages.title_page}}</td>
                                 <td>{{pages.des_page}}</td>
                                 <td>
                                     <ul class="bio-breadcrumb">
-                                        <nuxt-link :to="{name:'view-id-p-pageId', params: { pageId: pages.pageid, id: $route.params.id}}">
+                                        <nuxt-link :to="{name:'view-id-p-id', params: { pageid: pages.id, id: $route.params.id}}">
                                             <li>View</li>
                                         </nuxt-link>
-                                        <nuxt-link :to="{name:'edit-id-e-pageId', params: { pageId: pages.pageid, id: $route.params.id}}">
+                                        <nuxt-link :to="{name:'edit-id-e-id', params: { pageid: pages.id, id: $route.params.id}}">
                                             <li>Edit</li>  
                                         </nuxt-link>
                                     </ul>
@@ -61,24 +61,35 @@ export default {
     project: null,
     title_project: null,
     des_pro: null,
-    page: null,
-    page_id: null,
-    title_page: null,
-    des_page: null
+    page:[]
   }),
   async created() {
     const id = this.$route.params.id;
-    //const pageid = this.$route.params.pageId;
-    //console.log(pageid);
     const snapshot = await db.collection("project").get();
     snapshot.forEach(doc => {
+      //console.log(doc.id, "=>", doc.data());
       if (doc.id === id) {
-        (this.title_project = doc.data().title_project),
-          (this.des_pro = doc.data().des_pro),
-          (this.page = doc.data().page),
-          (this.page_id = doc.data().page_id);
+        // (this.project = doc.data()),
+        (this.id = doc.id),
+          (this.title_project = doc.data().title_project),
+          (this.des_pro = doc.data().des_pro);
       }
     });
+    const snapshotpage = await db
+      .collection("project")
+      .doc(this.id)
+      .collection("page")
+      .get();
+    snapshotpage.forEach(doc => {
+      //console.log(doc.id, "=>", doc.data());
+      const data = {
+        id: doc.id,
+      title_page: doc.data().title_page,
+      des_page: doc.data().des_page
+      }
+      this.page.push(data);
+    });
+    // return { data };
   },
   methods: {
     async deleteData() {
