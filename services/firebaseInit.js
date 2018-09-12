@@ -1,6 +1,7 @@
 // import firebase from "firebase";
-import firebase from "firebase/app";
+import firebase, { storage } from "firebase/app";
 import "firebase/firestore";
+import "firebase/storage";
 
 const config = {
   apiKey: "AIzaSyC9V8o3vxwAxbZPfWwRCODil3ia4EcyI9c",
@@ -16,6 +17,7 @@ if (!firebase.apps.length) {
 }
 
 const firestore = firebase.firestore();
+//const ste = firebase.storage();
 
 firestore.settings({
   timestampsInSnapshots: true

@@ -21,7 +21,7 @@
                                 <div class="bio-textarea _pd-16px">
                                     <h5>Description : {{des_page}}</h5>
                                 </div>
-                        </div>  
+                        </div>
                     </div>
         </div>
     </div>
@@ -31,10 +31,11 @@
 import db from "~/services/firebaseInit";
 export default {
   data: () => ({
-   //page: []
-   id: null,
-   title_page: null,
-   des_page: null
+    //page: []
+    id: null,
+    title_page: null,
+    des_page: null,
+    url: ""
   }),
   async created() {
     const id = this.$route.params.id;
@@ -47,11 +48,12 @@ export default {
       .get();
     snapshotpage.forEach(doc => {
       //console.log(doc.id, "=>", doc.data());
-      if(doc.id == pageid){
-          //console.log(doc.id)
-          this.id = doc.id,
-      this.title_page = doc.data().title_page,
-      this.des_page = doc.data().des_page 
+      if (doc.id == pageid) {
+        console.log(doc.data().img);
+        (this.id = doc.id),
+          (this.title_page = doc.data().title_page),
+          (this.des_page = doc.data().des_page);
+        //this.url = Image.data().img
       }
     });
     //return { data };

@@ -75,11 +75,9 @@
             </div>
          </div>
          <div>
-       
-           <input type="file" @change="onFileChange"> 
+           <input type="file" @change="onFileChange" accept="image/*"> <br>
             <div id="preview" @click="addLabel">
-              <br>
-             <img v-if="url" :src="url" id="picture" >
+             <img v-if="url" v-bind:src="url" id="picture" >
            </div>
          </div>
          <div class="label-circle" v-for="(label, i) in labels" 
@@ -145,6 +143,7 @@ export default {
     des_pro: null,
     des_page: null,
     url: "",
+    img: "",
     labels: [],
     pages: [],
     page: []
@@ -175,17 +174,7 @@ export default {
       };
       this.page.push(data);
     });
-    // return { data };
   },
-  //   async processData() {
-  //     const projectCollection = await firebase.firestore().collection(`project`).get();
-  //     const pageCollection = await firebase.firestore().collection(`page`).get();
-  //     const clients = [];
-  //     clients.push(projectCollection);
-  //     clients.push(pageCollection);
-  //     const res = await Promise.all(clients);
-  //     // res should equal a combination of both querySnapshots
-  //   },
   methods: {
     addPage() {
       this.pages.push({
@@ -194,9 +183,17 @@ export default {
       });
     },
     onFileChange(e) {
-      //this.url = e.target.files[0]
       const file = e.target.files[0];
+      console.log(file);
+      //   let filename = files[0].name
+      //   const fileReader = new FileReader()
+      //   fileReader.addEventListener('load', () => {
+      //       this.url = fileReader.result
+      //   })
+      //   fileReader.readAsDataURL(files[0])
+      //   this.img = files[0]
       this.url = URL.createObjectURL(file);
+      console.log(this.url);
     },
     addLabel(e) {
       var x = e.pageX;
@@ -209,29 +206,20 @@ export default {
         y: y,
         description: ""
       });
+      console.log(this.labels);
     },
-    savePage() {
-      db
-        .collection("project")
-        .doc.id()
-        .set({
-          name: "Los Angeles",
-          state: "CA",
-          country: "USA"
-        });
-    },
-
     savePage() {
       db
         .collection("project")
         .doc(this.id)
         .collection("page")
         .add({
-          // project_id: this.project_id,
-          //id: this.id,
           title_page: this.title_page,
-          des_page: this.des_page
+          des_page: this.des_page,
+          img: this.url,
+          lables: this.labels
         });
+      //console.log(this.labels)
       //.then(docRef => {
       //   console.log(docRef);
       //return this.reload();
