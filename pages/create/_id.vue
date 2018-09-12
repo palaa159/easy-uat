@@ -74,16 +74,16 @@
             </div>
          </div>
          <div>
-           <input type="file" @change="onFileChange"> <br>
-            <!-- <div id="preview" @click="addLabel"> -->
-             <img v-if="url" :src="url" id="picture" >
-           <!-- </div> -->
+           <input type="file" @change="onFileChange" accept="image/*"> <br>
+            <div id="preview" @click="addLabel">
+             <img v-if="url" v-bind:src="url" id="picture" >
+           </div>
          </div>
-         <!-- <div class="label-circle" v-for="(label, i) in labels" 
+         <div class="label-circle" v-for="(label, i) in labels" 
               :key="i" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'">
                {{ i + 1 }}
-         </div> -->
-         <!-- <div class="container">
+         </div>
+         <div class="container">
            <div class="col-12">
              <div class="row">
                <div v-for="(item, i) in labels" :key="i">
@@ -92,7 +92,7 @@
                </div>
              </div>
            </div>
-         </div>          -->
+         </div>         
          </div>
          <!-- <button @click="savePage">Save</button>   -->
          <div class="col-12 _pd-16px">
@@ -142,6 +142,7 @@ export default {
     des_pro: null,
     des_page: null,
     url: "",
+    img: "",
     labels: [],
     pages: [],
     page: []
@@ -167,22 +168,12 @@ export default {
       //console.log(doc.id, "=>", doc.data());
       const data = {
         id: doc.id,
-      title_page: doc.data().title_page,
-      des_page: doc.data().des_page
-      }
+        title_page: doc.data().title_page,
+        des_page: doc.data().des_page
+      };
       this.page.push(data);
     });
-    // return { data };
   },
-  //   async processData() {
-  //     const projectCollection = await firebase.firestore().collection(`project`).get();
-  //     const pageCollection = await firebase.firestore().collection(`page`).get();
-  //     const clients = [];
-  //     clients.push(projectCollection);
-  //     clients.push(pageCollection);
-  //     const res = await Promise.all(clients);
-  //     // res should equal a combination of both querySnapshots
-  //   },
   methods: {
     addPage() {
       this.pages.push({
@@ -191,49 +182,48 @@ export default {
       });
     },
     onFileChange(e) {
-      //this.url = e.target.files[0]
       const file = e.target.files[0];
+      console.log(file);
+      //   let filename = files[0].name
+      //   const fileReader = new FileReader()
+      //   fileReader.addEventListener('load', () => {
+      //       this.url = fileReader.result
+      //   })
+      //   fileReader.readAsDataURL(files[0])
+      //   this.img = files[0]
       this.url = URL.createObjectURL(file);
+      console.log(this.url);
     },
-    // addLabel(e) {
-    //   var x = e.pageX;
-    //   var y = e.pageY;
-    //   //console.log(e,x,y)
-    //   var labelLength = this.labels.length;
-    //   //console.log(labelLength)
-    //   this.labels.push({
-    //     x: x,
-    //     y: y,
-    //     description: ""
-    //   });
-    // },
-    // savePage() {
-    //   db
-    //     .collection("project")
-    //     .doc.id()
-    //     .set({
-    //       name: "Los Angeles",
-    //       state: "CA",
-    //       country: "USA"
-    //     });
-    // }
-
+    addLabel(e) {
+      var x = e.pageX;
+      var y = e.pageY;
+      //console.log(e,x,y)
+      var labelLength = this.labels.length;
+      //console.log(labelLength)
+      this.labels.push({
+        x: x,
+        y: y,
+        description: ""
+      });
+      console.log(this.labels);
+    },
     savePage() {
       db
         .collection("project")
         .doc(this.id)
         .collection("page")
         .add({
-          // project_id: this.project_id,
-          //id: this.id,
           title_page: this.title_page,
-          des_page: this.des_page
-        })
-         //.then(docRef => {
-        //   console.log(docRef);
-           //return this.reload();
-        // })
-       // .catch(error => console.log(err));
+          des_page: this.des_page,
+          img: this.url,
+          lables: this.labels
+        });
+      //console.log(this.labels)
+      //.then(docRef => {
+      //   console.log(docRef);
+      //return this.reload();
+      // })
+      // .catch(error => console.log(err));
     }
   }
 };
