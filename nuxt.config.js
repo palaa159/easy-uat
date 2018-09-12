@@ -67,11 +67,10 @@ module.exports = {
         content: '#2B2B2B'
       }
     ],
-    script: [
-      // {
-      //   src: '/js/hotjar.js',
-      //   body: true
-      // },
+    script: [{
+        src: 'https://unpkg.com/jspdf@latest/dist/jspdf.min.js',
+        body: true
+      },
       // {
       //   src: '/js/contactWidget.js',
       //   body: true

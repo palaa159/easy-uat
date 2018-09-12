@@ -23,8 +23,10 @@
                                 </div>
                         </div>  
                     </div>
+                    <br>
                     <div class="container">
                         <div class="texttd">
+                            <br>
                         <table>
                             <tr class="">
                                 <th>Title</th>
@@ -39,9 +41,9 @@
                                         <nuxt-link :to="{name:'view-id-p-id', params: { pageid: pages.id, id: $route.params.id}}">
                                             <li>View</li>
                                         </nuxt-link>
-                                        <nuxt-link :to="{name:'edit-id-e-id', params: { pageid: pages.id, id: $route.params.id}}">
-                                            <li>Edit</li>  
-                                        </nuxt-link>
+                                      <li>   <nuxt-link :to="{name:'edit-id-e-id', params: { pageid: pages.id, id: $route.params.id}}">
+                                           Edit 
+                                        </nuxt-link></li> 
                                     </ul>
                                 </td>
                             </tr>
@@ -49,7 +51,10 @@
                         </div>
                     </div>
                     <br>
-       <button @click="deleteData">Delete Project</button>
+                    <div class="_dp-f bndelete">
+       <div @click="deleteData" class="bio-button u-rise bio-button -negative ">Delete Project</div>
+       <div  class="bio-button u-rise bio-button -gray">Print</div>
+       </div>
         </div>
     </div>
 </template>
@@ -61,7 +66,7 @@ export default {
     project: null,
     title_project: null,
     des_pro: null,
-    page:[]
+    page: []
   }),
   async created() {
     const id = this.$route.params.id;
@@ -84,9 +89,9 @@ export default {
       //console.log(doc.id, "=>", doc.data());
       const data = {
         id: doc.id,
-      title_page: doc.data().title_page,
-      des_page: doc.data().des_page
-      }
+        title_page: doc.data().title_page,
+        des_page: doc.data().des_page
+      };
       this.page.push(data);
     });
     // return { data };

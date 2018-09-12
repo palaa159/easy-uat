@@ -23,14 +23,15 @@
              </textarea> -->
            </div>
          </div>
-         </div>         
-          </div>
-            <div class="col-12 _pd-16px">
+         </div>     <div class="col-12 _pd-16px">
               <div class="_dp-f  bnsave ">
                 <div @click="addPage()" class="bio-button -gray u-rise "> Add Page</div>
               <!-- <div class="bio-button u-rise ">Save All</div>              -->
             </div>
-        </div>
+        </div>        
+          </div>
+        <br>
+       
         <div class="container">
            <div class="texttd">
                <no-ssr>
@@ -50,7 +51,7 @@
                      <ul class="bio-breadcrumb">
                        <li><a>Edit</a></li>
                        <li><a>Delete</a></li>
-                       <li><a>Print</a></li>
+                       
                      </ul>
                    </div>
                    </td>
@@ -74,29 +75,31 @@
             </div>
          </div>
          <div>
-           <input type="file" @change="onFileChange"> <br>
-            <!-- <div id="preview" @click="addLabel"> -->
+       
+           <input type="file" @change="onFileChange"> 
+            <div id="preview" @click="addLabel">
+              <br>
              <img v-if="url" :src="url" id="picture" >
-           <!-- </div> -->
+           </div>
          </div>
-         <!-- <div class="label-circle" v-for="(label, i) in labels" 
+         <div class="label-circle" v-for="(label, i) in labels" 
               :key="i" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'">
                {{ i + 1 }}
-         </div> -->
-         <!-- <div class="container">
+         </div>
+         <div class="container">
            <div class="col-12">
              <div class="row">
                <div v-for="(item, i) in labels" :key="i">
                  <p>{{ i + 1 }}</p>
-                 <textarea v-model="item.description" id="" rows="12" cols="170"></textarea>
+                 <textarea v-model="item.description" id="" rows="12" cols="130"></textarea>
                </div>
              </div>
            </div>
-         </div>          -->
+         </div>         
          </div>
          <!-- <button @click="savePage">Save</button>   -->
          <div class="col-12 _pd-16px">
-              <div class="_dp-f  bnsave ">
+              <div class="  bnsave ">
                 <!-- <div @click="addPage()" class="bio-button -gray u-rise "> Add Page</div> -->
               <div class="bio-button u-rise " @click="savePage">Save </div>             
             </div>
@@ -111,12 +114,12 @@
   display: inline-block;
   /* width: 300px;
   height: 300px; */
-  margin-left: 20%;
+  /* margin-left: 20%; */
 }
-#picture {
+/* #picture {
   width: 700px;
   height: 600px;
-}
+} */
 
 .label-circle {
   width: 30px;
@@ -167,9 +170,9 @@ export default {
       //console.log(doc.id, "=>", doc.data());
       const data = {
         id: doc.id,
-      title_page: doc.data().title_page,
-      des_page: doc.data().des_page
-      }
+        title_page: doc.data().title_page,
+        des_page: doc.data().des_page
+      };
       this.page.push(data);
     });
     // return { data };
@@ -195,28 +198,28 @@ export default {
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
     },
-    // addLabel(e) {
-    //   var x = e.pageX;
-    //   var y = e.pageY;
-    //   //console.log(e,x,y)
-    //   var labelLength = this.labels.length;
-    //   //console.log(labelLength)
-    //   this.labels.push({
-    //     x: x,
-    //     y: y,
-    //     description: ""
-    //   });
-    // },
-    // savePage() {
-    //   db
-    //     .collection("project")
-    //     .doc.id()
-    //     .set({
-    //       name: "Los Angeles",
-    //       state: "CA",
-    //       country: "USA"
-    //     });
-    // }
+    addLabel(e) {
+      var x = e.pageX;
+      var y = e.pageY;
+      //console.log(e,x,y)
+      var labelLength = this.labels.length;
+      //console.log(labelLength)
+      this.labels.push({
+        x: x,
+        y: y,
+        description: ""
+      });
+    },
+    savePage() {
+      db
+        .collection("project")
+        .doc.id()
+        .set({
+          name: "Los Angeles",
+          state: "CA",
+          country: "USA"
+        });
+    },
 
     savePage() {
       db
@@ -228,12 +231,12 @@ export default {
           //id: this.id,
           title_page: this.title_page,
           des_page: this.des_page
-        })
-         //.then(docRef => {
-        //   console.log(docRef);
-           //return this.reload();
-        // })
-       // .catch(error => console.log(err));
+        });
+      //.then(docRef => {
+      //   console.log(docRef);
+      //return this.reload();
+      // })
+      // .catch(error => console.log(err));
     }
   }
 };
