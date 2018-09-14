@@ -38,10 +38,10 @@
                                 <td>{{pages.des_page}}</td>
                                 <td>
                                     <ul class="bio-breadcrumb">
-                                        <nuxt-link :to="{name:'view-id-p-id', params: { pageid: pages.id, id: $route.params.id}}">
+                                        <nuxt-link :to="{name:'view-id-p-viewpageid', params: { pageid: pages.id, id: $route.params.id}}">
                                             <li>View</li>
                                         </nuxt-link>
-                                      <li>   <nuxt-link :to="{name:'edit-id-e-id', params: { pageid: pages.id, id: $route.params.id}}">
+                                      <li>   <nuxt-link :to="{name:'edit-id-e-editpageid', params: { pageid: pages.id, id: $route.params.id}}">
                                            Edit 
                                         </nuxt-link></li> 
                                     </ul>
@@ -53,7 +53,9 @@
                     <br>
                     <div class="_dp-f bndelete">
        <div @click="deleteData" class="bio-button u-rise bio-button -negative ">Delete Project</div>
-       <div  class="bio-button u-rise bio-button -gray">Print</div>
+       <nuxt-link :to="{name:'print-id', params: { id: $route.params.id}}">
+       <div  class="bio-button u-rise bio-button -gray">Print</div> 
+       </nuxt-link>
        </div>
         </div>
     </div>
