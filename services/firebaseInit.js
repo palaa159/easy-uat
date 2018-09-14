@@ -1,5 +1,7 @@
 // import firebase from "firebase";
-import firebase, { storage } from "firebase/app";
+import firebase, {
+  storage
+} from "firebase/app";
 import "firebase/firestore";
 import "firebase/storage";
 
@@ -17,10 +19,19 @@ if (!firebase.apps.length) {
 }
 
 const firestore = firebase.firestore();
+<<<<<<< HEAD
 const store = firebase.storage();
+=======
+//const store = firebase.storage();
+>>>>>>> 8eea83bcf68868833a582924a5746828a56b8b19
 
 firestore.settings({
   timestampsInSnapshots: true
 });
 
+<<<<<<< HEAD
 export { firestore, store };
+=======
+export default
+firestore;
+>>>>>>> 8eea83bcf68868833a582924a5746828a56b8b19

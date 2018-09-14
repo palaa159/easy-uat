@@ -78,7 +78,12 @@ module.exports = {
       {
         src: 'https://www.gstatic.com/firebasejs/5.4.1/firebase.js',
         body: true
+      },
+      {
+        src: 'https://jsfiddle.net/50wL7mdz/77812/',
+        body: true
       }
+
     ],
     link: []
   },
