@@ -53,8 +53,9 @@
             <br>
             <div class="_dp-f bndelete">
                 <div @click="deleteData" class="bio-button u-rise bio-button -negative ">Delete Project</div>
-                    
-                    <div  class="bio-button u-rise bio-button -gray">Print</div>
+                    <nuxt-link :to="{name:'print-id', params: { id: $route.params.id}}">
+                        <div  class="bio-button u-rise bio-button -gray">Print</div>
+                    </nuxt-link>
             </div>
         </div>
     </div>
