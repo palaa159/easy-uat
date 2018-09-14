@@ -1,109 +1,103 @@
 <template>
- <div class="_w-100pct">
-   <div class="container _bgcl-neutral-100">
-     <div class="container-fluid _bgcl-primary-300">
-       <div class="row">
-         <div class="col-12 myHeader">
-           <h1 class="text">Easy UAT</h1>
-         </div>
-       </div>
-     </div>
-     <div class="container _bgcl-neutral-200 _pd-16px">
-       <div class="row">
-         <div class="col-12 _pd-16px">
-           <div class="bio-input _pd-16px">
-             <h5>Title : {{title_project}}</h5>
-             <!-- <input type="text" v-model="title_project"> -->
-           </div>
-         </div>
-         <div class="col-12 _pd-16px">
-           <div class="bio-textarea _pd-16px">
-             <h5>Description : {{des_pro}}</h5>
-             <!-- <textarea name="" id="" cols="30" rows="10"  v-model="des_pro">
-             </textarea> -->
-           </div>
-         </div>
-         </div>     <div class="col-12 _pd-16px">
-              <div class="_dp-f  bnsave ">
-                <div @click="addPage()" class="bio-button -gray u-rise "> Add Page</div>
-              <!-- <div class="bio-button u-rise ">Save All</div>              -->
+    <div class="_w-100pct">
+        <div class="container _bgcl-neutral-100">
+            <div class="container-fluid _bgcl-primary-300">
+                <div class="row">
+                    <div class="col-12 myHeader">
+                    <h1 class="text">Easy UAT</h1>
+                    </div>
+                </div>
             </div>
-        </div>        
-          </div>
-        <br>
-       
-        <div class="container">
-           <div class="texttd">
-               <no-ssr>
-             <table>
-               <tr>
-                 <th>Title</th>
-                 <th>Description</th>
-                 <th>Tools</th>
-               </tr>
-               <tr v-for="p in page" v-bind:key="p.id">
-                 <!-- <td>จองตั๋ว</td>
-                 <td>ผู้ใช้สามารถจองตั๋วรถข้ามจังหวัด</td> -->
-                 <td><div>{{p.title_page}}</div></td>
-                 <td><div> {{p.des_page}}</div></td>
-                 <td>
-                   <div>
-                     <ul class="bio-breadcrumb">
-                       <li><a>Edit</a></li>
-                       <li><a>Delete</a></li>
-                       
-                     </ul>
-                   </div>
-                   </td>
-               </tr>
-             </table>
-             </no-ssr>
-           </div>
-         </div>
-         <div v-for="(page, i) in pages" :key="i">
-           <div class="col-12 _pd-16px">
-             <div class="bio-input _pd-16px">
-              <h5>Title</h5>
-                <input type="text" v-model="title_page">
-              </div>
-           </div>
-           <div class="col-12 _pd-16px">
-            <div class="bio-textarea _pd-16px">
-              <h5>Description</h5>
-              <textarea name="" id="" cols="30" rows="10" v-model="des_page">
-              </textarea>
+            <div class="container _bgcl-neutral-200 _pd-16px">
+                <div class="row">
+                    <div class="col-12 _pd-16px">
+                        <div class="bio-input _pd-16px">
+                            <h5>Title : {{title_project}}</h5>
+                            <!-- <input type="text" v-model="title_project"> -->
+                        </div>
+                    </div>
+                    <div class="col-12 _pd-16px">
+                    <div class="bio-textarea _pd-16px">
+                        <h5>Description : {{des_pro}}</h5>
+                        <!-- <textarea name="" id="" cols="30" rows="10"  v-model="des_pro">
+                        </textarea> -->
+                    </div>
+                    </div>
+                </div>     
+                    <div class="col-12 _pd-16px">
+                        <div class="_dp-f  bnsave ">
+                            <div @click="addPage()" class="bio-button -gray u-rise "> Add Page</div>
+                        <!-- <div class="bio-button u-rise ">Save All</div>              -->
+                        </div>
+                    </div>
             </div>
-         </div>
-         <div>
-           <input type="file" @change="onFileChange" accept="image/*"> <br>
-            <div id="preview" @click="addLabel">
-             <img v-if="url" v-bind:src="url" id="picture" >
-           </div>
-         </div>
-         <div class="label-circle" v-for="(label, i) in labels" 
-              :key="i" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'">
-               {{ i + 1 }}
-         </div>
-         <div class="container">
-           <div class="col-12">
-             <div class="row">
-               <div v-for="(item, i) in labels" :key="i">
-                 <p>{{ i + 1 }}</p>
-                 <textarea v-model="item.description" id="" rows="12" cols="130"></textarea>
-               </div>
-             </div>
-           </div>
-         </div>         
-         </div>
-         <!-- <button @click="savePage">Save</button>   -->
-         <div class="col-12 _pd-16px">
-              <div class="  bnsave ">
-                <!-- <div @click="addPage()" class="bio-button -gray u-rise "> Add Page</div> -->
-              <div class="bio-button u-rise " @click="savePage">Save </div>             
+            <br>
+            <div class="container">
+            <div class="texttd">
+                <no-ssr>
+                        <table>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Tools</th>
+                        </tr>
+                        <tr v-for="p in page" v-bind:key="p.id">
+                            <td><div>{{p.title_page}}</div></td>
+                            <td><div> {{p.des_page}}</div></td>
+                            <td>
+                            <div>
+                                <ul class="bio-breadcrumb">
+                                <li><a>Edit</a></li>
+                                <li><a>Delete</a></li>
+                                </ul>
+                            </div>
+                            </td>
+                        </tr>
+                        </table>
+                    </no-ssr>
             </div>
             </div>
-   </div>
- </div>
+            <div v-for="(page, i) in pages" :key="i">
+                <div class="col-12 _pd-16px">
+                    <div class="bio-input _pd-16px">
+                        <h5>Title</h5>
+                            <input type="text" v-model="title_page">
+                    </div>
+                </div>
+                <div class="col-12 _pd-16px">
+                    <div class="bio-textarea _pd-16px">
+                        <h5>Description</h5>
+                        <textarea name="" id="" cols="30" rows="10" v-model="des_page"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <input type="file" @change="onFileChange" accept="image/*"> <br>
+                        <div id="preview" @click="addLabel">
+                            <img :src="previewimage" id="picture" >
+                        </div>
+                </div>
+                <div class="label-circle" v-for="(label, i) in labels"
+                    :key="i" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'">
+                    {{ i + 1 }}
+                </div>
+                <div class="container">
+                    <div class="col-12">
+                        <div class="row">
+                            <div v-for="(item, i) in labels" :key="i">
+                                <p>{{ i + 1 }}</p>
+                                <textarea v-model="item.description" id="" rows="12" cols="130"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 _pd-16px">
+                <div class="  bnsave ">
+                    <div class="bio-button u-rise " @click="savePage">Save </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 <style>
 #preview {
@@ -111,7 +105,7 @@
   border: 2px solid rgb(148, 146, 146);
   display: inline-block;
   /* width: 300px;
-  height: 300px; */
+    height: 300px; */
   /* margin-left: 20%; */
 }
 /* #picture {
@@ -133,7 +127,7 @@
 </style>
 
 <script>
-import db from "~/services/firebaseInit";
+import { firestore as db, store } from "~/services/firebaseInit";
 
 export default {
   data: () => ({
@@ -142,11 +136,13 @@ export default {
     title_project: null,
     des_pro: null,
     des_page: null,
-    url: "",
+    previewimage: "",
     img: "",
+    imageurl: "",
     labels: [],
     pages: [],
-    page: []
+    page: [],
+    downloadURL: null
   }),
   async created() {
     const id = this.$route.params.id;
@@ -154,7 +150,6 @@ export default {
     snapshot.forEach(doc => {
       //console.log(doc.id, "=>", doc.data());
       if (doc.id === id) {
-        // (this.project = doc.data()),
         (this.id = doc.id),
           (this.title_project = doc.data().title_project),
           (this.des_pro = doc.data().des_pro);
@@ -184,16 +179,24 @@ export default {
     },
     onFileChange(e) {
       const file = e.target.files[0];
-      console.log(file);
-      //   let filename = files[0].name
-      //   const fileReader = new FileReader()
-      //   fileReader.addEventListener('load', () => {
-      //       this.url = fileReader.result
-      //   })
-      //   fileReader.readAsDataURL(files[0])
-      //   this.img = files[0]
-      this.url = URL.createObjectURL(file);
-      console.log(this.url);
+      const metadata = {
+        contentType: file.type
+      };
+      const task = store
+        .ref()
+        .child(file.name)
+        .put(file);
+      task.then(snapshot => {
+        snapshot.ref.getDownloadURL().then(url => {
+          console.log(url);
+          this.downloadURL = url;
+        });
+      });
+      const reader = new FileReader();
+      reader.onload = e => {
+        this.previewimage = e.target.result;
+      };
+      reader.readAsDataURL(file);
     },
     addLabel(e) {
       var x = e.pageX;
@@ -216,7 +219,7 @@ export default {
         .add({
           title_page: this.title_page,
           des_page: this.des_page,
-          img: this.url,
+          img: this.downloadURL,
           lables: this.labels
         });
       //console.log(this.labels)

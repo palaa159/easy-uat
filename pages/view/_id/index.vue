@@ -8,59 +8,59 @@
                     </div>
                 </div>
             </div>
-                    <div class="container _bgcl-neutral-200 _pd-16px">    
-                        <div class="row">
-                            <div class="col-12 _pd-16px">
-                                <div class="bio-input _pd-16px">
-                                    <h5>Title : {{title_project}}</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 _pd-16px">
-                            <!-- Normal Textarea -->
-                                <div class="bio-textarea _pd-16px">
-                                    <h5>Description : {{des_pro}} </h5>
-                                </div>
-                        </div>  
-                    </div>
-                    <br>
-                    <div class="container">
-                        <div class="texttd">
-                            <br>
-                        <table>
-                            <tr class="">
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Tool</th>
-                            </tr>
-                            <tr v-for="(pages, i) in page" :key="i">
-                                <td>{{pages.title_page}}</td>
-                                <td>{{pages.des_page}}</td>
-                                <td>
-                                    <ul class="bio-breadcrumb">
-                                        <nuxt-link :to="{name:'view-id-p-id', params: { pageid: pages.id, id: $route.params.id}}">
-                                            <li>View</li>
-                                        </nuxt-link>
-                                      <li>   <nuxt-link :to="{name:'edit-id-e-id', params: { pageid: pages.id, id: $route.params.id}}">
-                                           Edit 
-                                        </nuxt-link></li> 
-                                    </ul>
-                                </td>
-                            </tr>
-                        </table>
+            <div class="container _bgcl-neutral-200 _pd-16px">    
+                <div class="row">
+                    <div class="col-12 _pd-16px">
+                        <div class="bio-input _pd-16px">
+                            <h5>Title : {{title_project}}</h5>
                         </div>
                     </div>
-                    <br>
-                    <div class="_dp-f bndelete">
-       <div @click="deleteData" class="bio-button u-rise bio-button -negative ">Delete Project</div>
-       <div  class="bio-button u-rise bio-button -gray">Print</div>
-       </div>
+                </div>
+                <div class="col-12 _pd-16px">
+                <!-- Normal Textarea -->
+                    <div class="bio-textarea _pd-16px">
+                        <h5>Description : {{des_pro}} </h5>
+                    </div>
+                </div>  
+            </div>
+            <br>
+            <div class="container">
+                <div class="texttd">
+                <br>
+                <table>
+                    <tr class="">
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Tool</th>
+                    </tr>
+                    <tr v-for="(pages, i) in page" :key="i">
+                        <td>{{pages.title_page}}</td>
+                        <td>{{pages.des_page}}</td>
+                        <td>
+                            <ul class="bio-breadcrumb">
+                                <nuxt-link :to="{name:'view-id-p-id', params: { pageid: pages.id, id: $route.params.id}}">
+                                    <li>View</li>
+                                </nuxt-link>
+                                <nuxt-link :to="{name:'edit-id-e-id', params: { pageid: pages.id, id: $route.params.id}}">
+                                    <li>Edit</li>  
+                                </nuxt-link>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+            <br>
+            <div class="_dp-f bndelete">
+                <div @click="deleteData" class="bio-button u-rise bio-button -negative ">Delete Project</div>
+                    <div  class="bio-button u-rise bio-button -gray">Print</div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import db from "~/services/firebaseInit";
+import { firestore as db, store } from "~/services/firebaseInit";
 export default {
   data: () => ({
     project: null,
@@ -99,12 +99,14 @@ export default {
   methods: {
     async deleteData() {
       const id = this.$route.params.id;
-      //console.log(pageid);
+      //console.log(id);
       const snapshot = await db.collection("project").get();
       snapshot.forEach(doc => {
+        console.log(doc.id, "=>", doc.data());
         if (doc.id === id) {
-          //console.log(doc.data());
+          console.log(doc.data());
           doc.ref.delete();
+          //console.log(doc.ref);
           return this.$router.push("/");
         }
       });

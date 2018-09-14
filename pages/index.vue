@@ -9,17 +9,16 @@
                 </div>
             </div>
         </div><br>
-     <nuxt-link to="/create">
+        <nuxt-link to="/create">
             <div class="bio-button u-rise _dp-il bn "> Create</div>
         </nuxt-link>
-<br><br>
+        <br><br>
         <!-- open div container -->
         <div class="container _bgcl-neutral-300 _pd-16px">
             <!-- open div row -->
             <div class="row" >
                 <!-- open div col -->
                 <div class="col-4 _pd-16px" v-for="project in projects" v-bind:key="project.id" > 
-                    
                     <div class="bio-card h-100">
                         <img class="bio-card-cover" src="https://placehold.it/150x80?text=IMAGE" alt="image">
                             <div class="bio-card-title">
@@ -40,7 +39,7 @@
 </template>
 
 <script>
-import db from "~/services/firebaseInit";
+import { firestore as db, store } from "~/services/firebaseInit";
 export default {
   data() {
     return {

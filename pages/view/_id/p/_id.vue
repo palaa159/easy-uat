@@ -8,27 +8,27 @@
                     </div>
                 </div>
             </div>
-                    <div class="container _bgcl-neutral-200 _pd-16px">    
-                        <div class="row">
-                            <div class="col-12 _pd-16px">
-                                <div class="bio-input _pd-16px">
-                                    <h5>Title : {{title_page}}</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 _pd-16px">
-                            <!-- Normal Textarea -->
-                                <div class="bio-textarea _pd-16px">
-                                    <h5>Description : {{des_page}}</h5>
-                                </div>
+            <div class="container _bgcl-neutral-200 _pd-16px">    
+                <div class="row">
+                    <div class="col-12 _pd-16px">
+                        <div class="bio-input _pd-16px">
+                            <h5>Title : {{title_page}}</h5>
                         </div>
                     </div>
+                </div>
+                <div class="col-12 _pd-16px">
+                <!-- Normal Textarea -->
+                    <div class="bio-textarea _pd-16px">
+                        <h5>Description : {{des_page}}</h5>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import db from "~/services/firebaseInit";
+import { firestore as db, store } from "~/services/firebaseInit";
 export default {
   data: () => ({
     //page: []
@@ -58,5 +58,26 @@ export default {
     });
     //return { data };
   }
+  //   methods: {
+  //     async deleteData() {
+  //       const id = this.$route.params.id;
+  //       const pageid = this.$route.params.pageid;
+  //       //console.log(id);
+  //       const snapshot = await db
+  //         .collection("project")
+  //         .doc(id)
+  //         .collection("page")
+  //         .get();
+  //       snapshot.forEach(doc => {
+  //         console.log(doc.id, "=>", doc.data());
+  //         if (doc.id === id) {
+  //           console.log(doc.data());
+  //           doc.ref.delete();
+  //           //console.log(doc.ref);
+  //           return this.$router.push("/");
+  //         }
+  //       });
+  //     }
+  //   }
 };
 </script>
