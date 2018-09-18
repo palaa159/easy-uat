@@ -27,7 +27,7 @@
                                 </nuxt-link>
                             </div>
                             <div class="bio-card-subtitle">
-                                {{project.des_pro}}
+                                {{project.des_project}}
                             </div>
                     </div>
                 </div>
@@ -56,8 +56,8 @@ export default {
           const data = {
             id: doc.id,
             title_project: doc.data().title_project,
-            des_pro: doc.data().des_pro,
-            page: doc.data().page
+            des_project: doc.data().des_project
+            // page: doc.data().page
           };
           this.projects.push(data);
           //console.log(this.projects)

@@ -26,12 +26,12 @@
             
             <div class="col-12 _pd-16px">
                 <div id="preview">
-                    <img :src="image" alt="" id="picture">
+                    <img :src="previewimage" alt="" id="picture" >
                 </div>
                     
                 <!-- <div id="picture"></div> -->
                 <div v-for="(label, i) in labels" :key="i">
-                    <div class="label-circle" :style="'left: ' + label.x + 'px; top: ' + (label.y/600)*100 + 'px'" >
+                    <div class="label-circle" :style="'left: ' + (label.x/4000)*936 + 'px; top: ' + (label.y/2667)*1032 + 'px'" >
                     {{i+1}}
                     </div>
                     <div class="bio-textarea _pd-16px">
@@ -39,6 +39,10 @@
                     </div> 
                 </div>
             </div>
+            <div class="_dp-f bndelete">
+                <div @click="deletePage" class="bio-button u-rise bio-button -negative ">Delete Page</div>
+            </div>
+            
         </div>
     </div>
 </template>
@@ -61,12 +65,12 @@
   display: inline-block;
   /* width: 300px;
     height: 300px; */
-//    margin-left: 20%;
+  //    margin-left: 20%;
 }
 #picture {
   width: 700px;
   height: 600px;
-  //   background-image: url("image");
+  //   background-previewimage: url("previewimage");
 }
 </style>
 
@@ -78,8 +82,10 @@ export default {
     id: null,
     title_page: null,
     des_page: null,
-    image: null,
-    labels: []
+    previewimage: null,
+    labels: [],
+    width: null,
+    height: null
   }),
   async created() {
     const id = this.$route.params.id;
@@ -97,11 +103,42 @@ export default {
         (this.id = doc.id),
           (this.title_page = doc.data().title_page),
           (this.des_page = doc.data().des_page),
-          (this.image = doc.data().img),
+          (this.previewimage = doc.data().img),
           (this.labels = doc.data().label);
       }
     });
+    var img = new Image();
+    var width, height;
+    img.src = this.previewimage;
+    img.onload = function() {
+      width = this.width;
+      height = this.height;
+      alert(this.width + " " + this.height);
+      //console.log(width);
+      //return { width: width, height: height };
+    };
+
+    console.log("x");
+    console.log(width);
+
     //return { data };
+  },
+  methods: {
+    async deletePage() {
+      const id = this.$route.params.id;
+      const pageid = this.$route.params.pageid;
+      console.log(pageid);
+      const snapshot = await db
+        .collection("project")
+        .doc(id)
+        .collection("page")
+        .doc(pageid)
+        .delete()
+        .then(function() {
+          //return this.$router.push("/view/" + id);
+        })
+        .catch(function(error) {});
+    }
   }
 };
 </script>

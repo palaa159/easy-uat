@@ -18,8 +18,8 @@
                     </div>
                     <div class="col-12 _pd-16px">
                     <div class="bio-textarea _pd-16px">
-                        <h5>Description : {{des_pro}}</h5>
-                        <!-- <textarea name="" id="" cols="30" rows="10"  v-model="des_pro">
+                        <h5>Description : {{des_project}}</h5>
+                        <!-- <textarea name="" id="" cols="30" rows="10"  v-model="des_project">
                         </textarea> -->
                     </div>
                     </div>
@@ -39,19 +39,10 @@
                         <tr>
                             <th>Title</th>
                             <th>Description</th>
-                            <th>Tools</th>
                         </tr>
                         <tr v-for="p in page" v-bind:key="p.id">
                             <td><div>{{p.title_page}}</div></td>
                             <td><div> {{p.des_page}}</div></td>
-                            <td>
-                            <div>
-                                <ul class="bio-breadcrumb">
-                                <li><a>Edit</a></li>
-                                <li><a>Delete</a></li>
-                                </ul>
-                            </div>
-                            </td>
                         </tr>
                         </table>
                     </no-ssr>
@@ -134,11 +125,10 @@ export default {
     id: null,
     title_page: null,
     title_project: null,
-    des_pro: null,
+    des_project: null,
     des_page: null,
     previewimage: "",
     img: "",
-    imageurl: "",
     labels: [],
     pages: [],
     page: [],
@@ -152,7 +142,7 @@ export default {
       if (doc.id === id) {
         (this.id = doc.id),
           (this.title_project = doc.data().title_project),
-          (this.des_pro = doc.data().des_pro);
+          (this.des_project = doc.data().des_project);
       }
     });
     const snapshotpage = await db
@@ -222,6 +212,7 @@ export default {
           img: this.downloadURL,
           label: this.labels
         });
+      //return this.$router.push("/create/" + this.id);
       //console.log(this.labels)
       //.then(docRef => {
       //   console.log(docRef);
