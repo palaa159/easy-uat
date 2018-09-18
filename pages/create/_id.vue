@@ -69,10 +69,7 @@
                     <input type="file" @change="onFileChange" accept="image/*"> <br>
                         <div id="preview" @click="addLabel">
                             <img :src="previewimage" id="picture" >
-                        </div>
-                
-               
-                
+                        </div>                
                 <div class="label-circle" v-for="(label, i) in labels"
                     :key="i" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'">
                     {{ i + 1 }}

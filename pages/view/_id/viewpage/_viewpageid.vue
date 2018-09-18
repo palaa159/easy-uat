@@ -31,7 +31,7 @@
                     
                 <!-- <div id="picture"></div> -->
                 <div v-for="(label, i) in labels" :key="i">
-                    <div  class="label-circle" :style="'left: ' + (label.x)+ 'px; top: ' + (label.y)+ 'px'" >
+                    <div  class="label-circle" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'" >
                     {{i+1}}
                     </div>
                     <div class="bio-textarea _pd-16px">
@@ -85,7 +85,8 @@ export default {
     previewimage: null,
     labels: [],
     width: null,
-    height: null
+    height: null,
+    doct: null
   }),
   async created() {
     const id = this.$route.params.id;
@@ -107,18 +108,22 @@ export default {
           (this.labels = doc.data().label);
       }
     });
+
     var img = new Image();
     var width, height;
+    var doct;
+
     img.src = this.previewimage;
     img.onload = function() {
       width = this.width;
       height = this.height;
       alert(this.width + " " + this.height);
+
       //console.log(width);
       //return { width: width, height: height };
     };
 
-    console.log("x");
+    console.log(height);
     console.log(width);
 
     //return { data };
