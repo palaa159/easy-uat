@@ -38,10 +38,10 @@
                         <td>{{pages.des_page}}</td>
                         <td>
                             <ul class="bio-breadcrumb">
-                                <nuxt-link :to="{name:'view-id-viewpage-viewpageid', params: { pageid: pages.id, id: $route.params.id}}">
+                                <nuxt-link :to="{name:'view-id-viewpage-viewpageid', params: { viewpageid: pages.id, id: $route.params.id}}">
                                     <li>View</li>
                                 </nuxt-link>
-                                <nuxt-link :to="{name:'edit-id-editpage-editpageid', params: { pageid: pages.id, id: $route.params.id}}">
+                                <nuxt-link :to="{name:'edit-id-editpage-editpageid', params: { editpageid: pages.id, id: $route.params.id}}">
                                     <li>Edit</li>  
                                 </nuxt-link>
                             </ul>

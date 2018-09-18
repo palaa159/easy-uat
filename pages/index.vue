@@ -20,7 +20,7 @@
                 <!-- open div col -->
                 <div class="col-4 _pd-16px" v-for="project in projects" v-bind:key="project.id" > 
                     <div class="bio-card h-100">
-                        <img class="bio-card-cover" src="https://placehold.it/150x80?text=IMAGE" alt="image">
+                        <img :src="previewimage" alt="" id="picture" >
                             <div class="bio-card-title">
                                 <nuxt-link :to="{name:'view-id', params: {id: project.id}}">
                                     <strong>{{project.title_project}}</strong>
@@ -38,31 +38,46 @@
 </div><!-- close div -->
 </template>
 
+<style>
+#picture {
+  width: 247px;
+  height: 200px;
+}
+</style>
+
 <script>
 import { firestore as db, store } from "~/services/firebaseInit";
 export default {
   data() {
     return {
-      projects: []
+      previewimage: null,
+      projects: [],
+      id: null
     };
   },
-  created() {
-    db
+  async created() {
+    const snapshot = await db.collection("project").get();
+    snapshot.forEach(doc => {
+      //console.log(doc.data());
+      this.id = doc.id;
+      const data = {
+        id: doc.id,
+        title_project: doc.data().title_project,
+        des_project: doc.data().des_project
+        // page: doc.data().page
+      };
+      this.projects.push(data);
+      //console.log(this.id);
+    });
+    const snapshotpage = await db
       .collection("project")
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          //console.log(doc.data());
-          const data = {
-            id: doc.id,
-            title_project: doc.data().title_project,
-            des_project: doc.data().des_project
-            // page: doc.data().page
-          };
-          this.projects.push(data);
-          //console.log(this.projects)
-        });
-      });
+      .doc(this.id)
+      .collection("page")
+      .get();
+    snapshotpage.forEach(doc => {
+      //console.log(doc.data().img);
+      this.previewimage = doc.data().img;
+    });
   }
 };
 </script>

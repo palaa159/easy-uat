@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="col-12 _pd-16px">
-            <!-- Normal Textarea -->
+                <!-- Normal Textarea -->
                     <div class="bio-textarea _pd-16px" >
                          <h5>Description </h5>
                         <textarea rows="7" v-model="des_project"></textarea>
@@ -47,19 +47,14 @@ export default {
       db
         .collection("project")
         .add({
-          // project_id: this.project_id,
           title_project: this.title_project,
           des_project: this.des_project
         })
         .then(docRef => {
-          // console.log(docRef);
           return this.$router.push("/create/" + docRef.id);
         })
         .catch(error => console.log(err));
     }
-    // randomNumber: function() {
-    //   return Math.floor(Math.random() * (10 - 1 + 1)) + 1;
-    // }
   }
 };
 </script>

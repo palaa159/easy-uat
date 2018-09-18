@@ -90,7 +90,7 @@ export default {
   }),
   async created() {
     const id = this.$route.params.id;
-    const pageid = this.$route.params.pageid;
+    const pageid = this.$route.params.viewpageid;
     const snapshotpage = await db
       .collection("project")
       .doc(id)
@@ -117,8 +117,7 @@ export default {
     img.onload = function() {
       width = this.width;
       height = this.height;
-      alert(this.width + " " + this.height);
-
+      //alert(this.width + " " + this.height);
       //console.log(width);
       //return { width: width, height: height };
     };
@@ -131,7 +130,7 @@ export default {
   methods: {
     async deletePage() {
       const id = this.$route.params.id;
-      const pageid = this.$route.params.pageid;
+      const pageid = this.$route.params.viewpageid;
       console.log(pageid);
       const snapshot = await db
         .collection("project")
@@ -143,6 +142,7 @@ export default {
           //return this.$router.push("/view/" + id);
         })
         .catch(function(error) {});
+      return this.$router.push("/view/" + id);
     }
   }
 };
