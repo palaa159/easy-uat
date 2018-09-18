@@ -23,9 +23,52 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="col-12 _pd-16px">
+                <div id="preview">
+                    <img :src="image" alt="" id="picture">
+                </div>
+                    
+                <!-- <div id="picture"></div> -->
+                <div v-for="(label, i) in labels" :key="i">
+                    <div class="label-circle" :style="'left: ' + label.x + 'px; top: ' + (label.y/600)*100 + 'px'" >
+                    {{i+1}}
+                    </div>
+                    <div class="bio-textarea _pd-16px">
+                        <h5>{{i+1}} : {{labels[i].description}}</h5>
+                    </div> 
+                </div>
+            </div>
         </div>
     </div>
 </template>
+
+<style lang="scss" scoped>
+.label-circle {
+  width: 30px;
+  height: 30px;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+}
+#preview {
+  position: relative;
+  border: 2px solid rgb(148, 146, 146);
+  display: inline-block;
+  /* width: 300px;
+    height: 300px; */
+//    margin-left: 20%;
+}
+#picture {
+  width: 700px;
+  height: 600px;
+  //   background-image: url("image");
+}
+</style>
 
 <script>
 import { firestore as db, store } from "~/services/firebaseInit";
@@ -35,12 +78,12 @@ export default {
     id: null,
     title_page: null,
     des_page: null,
-    url: ""
+    image: null,
+    labels: []
   }),
   async created() {
     const id = this.$route.params.id;
     const pageid = this.$route.params.pageid;
-    //console.log(pageid);
     const snapshotpage = await db
       .collection("project")
       .doc(id)
@@ -48,36 +91,17 @@ export default {
       .get();
     snapshotpage.forEach(doc => {
       //console.log(doc.id, "=>", doc.data());
-      if (doc.id == pageid) {
-        console.log(doc.data().img);
+      //console.log(doc.id);
+      if (doc.id === pageid) {
+        //console.log(doc.data().img);
         (this.id = doc.id),
           (this.title_page = doc.data().title_page),
-          (this.des_page = doc.data().des_page);
-        //this.url = Image.data().img
+          (this.des_page = doc.data().des_page),
+          (this.image = doc.data().img),
+          (this.labels = doc.data().label);
       }
     });
     //return { data };
   }
-  //   methods: {
-  //     async deleteData() {
-  //       const id = this.$route.params.id;
-  //       const pageid = this.$route.params.pageid;
-  //       //console.log(id);
-  //       const snapshot = await db
-  //         .collection("project")
-  //         .doc(id)
-  //         .collection("page")
-  //         .get();
-  //       snapshot.forEach(doc => {
-  //         console.log(doc.id, "=>", doc.data());
-  //         if (doc.id === id) {
-  //           console.log(doc.data());
-  //           doc.ref.delete();
-  //           //console.log(doc.ref);
-  //           return this.$router.push("/");
-  //         }
-  //       });
-  //     }
-  //   }
 };
 </script>
