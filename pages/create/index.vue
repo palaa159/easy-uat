@@ -22,7 +22,7 @@
             <!-- Normal Textarea -->
                     <div class="bio-textarea _pd-16px" >
                          <h5>Description </h5>
-                        <textarea rows="7" v-model="des_pro"></textarea>
+                        <textarea rows="7" v-model="des_project"></textarea>
                     </div>
 
                 </div>
@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       title_project: null,
-      des_pro: null,
+      des_project: null,
       project_id: null
     };
   },
@@ -49,7 +49,7 @@ export default {
         .add({
           // project_id: this.project_id,
           title_project: this.title_project,
-          des_pro: this.des_pro
+          des_project: this.des_project
         })
         .then(docRef => {
           // console.log(docRef);

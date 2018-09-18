@@ -19,7 +19,7 @@
                 <div class="col-12 _pd-16px">
                 <!-- Normal Textarea -->
                     <div class="bio-textarea _pd-16px">
-                        <h5>Description : {{des_pro}} </h5>
+                        <h5>Description : {{des_project}} </h5>
                     </div>
                 </div>  
             </div>
@@ -38,10 +38,10 @@
                         <td>{{pages.des_page}}</td>
                         <td>
                             <ul class="bio-breadcrumb">
-                                <nuxt-link :to="{name:'view-id-p-viewpageid', params: { pageid: pages.id, id: $route.params.id}}">
+                                <nuxt-link :to="{name:'view-id-viewpage-viewpageid', params: { pageid: pages.id, id: $route.params.id}}">
                                     <li>View</li>
                                 </nuxt-link>
-                                <nuxt-link :to="{name:'edit-id-e-editpageid', params: { pageid: pages.id, id: $route.params.id}}">
+                                <nuxt-link :to="{name:'edit-id-editpage-editpageid', params: { pageid: pages.id, id: $route.params.id}}">
                                     <li>Edit</li>  
                                 </nuxt-link>
                             </ul>
@@ -51,11 +51,14 @@
                 </div>
             </div>
             <br>
-            <div class="_dp-f bndelete">
-                <div @click="deleteData" class="bio-button u-rise bio-button -negative ">Delete Project</div>
+            <div class=" col-12 _dp-f ">
+                <div @click="deleteProject" class="bio-button u-rise bio-button -negative ">Delete Project</div>
                     <nuxt-link :to="{name:'print-id', params: { id: $route.params.id}}">
                         <div  class="bio-button u-rise bio-button -gray">Print</div>
                     </nuxt-link>
+                    <nuxt-link :to="{name: 'create-id', params: {id: $route.params.id}}">
+                        <div class="bio-button u-rise  ">Add Page</div>
+                    </nuxt-link>   
             </div>
         </div>
     </div>
@@ -67,7 +70,7 @@ export default {
   data: () => ({
     project: null,
     title_project: null,
-    des_pro: null,
+    des_project: null,
     page: []
   }),
   async created() {
@@ -79,7 +82,7 @@ export default {
         // (this.project = doc.data()),
         (this.id = doc.id),
           (this.title_project = doc.data().title_project),
-          (this.des_pro = doc.data().des_pro);
+          (this.des_project = doc.data().des_project);
       }
     });
     const snapshotpage = await db
@@ -99,9 +102,24 @@ export default {
     // return { data };
   },
   methods: {
-    async deleteData() {
+    async deleteProject() {
       const id = this.$route.params.id;
-      //console.log(id);
+      console.log(id);
+      const snapshotpage = await db
+        .collection("project")
+        .doc(id)
+        .collection("page")
+        .get();
+      snapshotpage.forEach(doc => {
+        //console.log(doc.id, "=>", doc.data());
+        if (doc.id !== id) {
+          console.log(doc.data());
+          doc.ref.delete();
+          //console.log(doc.ref);
+          //return this.$router.push("/");
+        }
+        //return this.$router.push("/");
+      });
       const snapshot = await db.collection("project").get();
       snapshot.forEach(doc => {
         console.log(doc.id, "=>", doc.data());

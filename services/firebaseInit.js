@@ -4,12 +4,12 @@ import "firebase/firestore";
 import "firebase/storage";
 
 const config = {
-  apiKey: "AIzaSyC9V8o3vxwAxbZPfWwRCODil3ia4EcyI9c",
-  authDomain: "test-easy-uat.firebaseapp.com",
-  databaseURL: "https://test-easy-uat.firebaseio.com",
-  projectId: "test-easy-uat",
-  storageBucket: "test-easy-uat.appspot.com",
-  messagingSenderId: "1089349484996"
+  apiKey: "AIzaSyDNcNewPPfarxEDujgygVFrmZNZhfc9eDo",
+  authDomain: "easy-uat.firebaseapp.com",
+  databaseURL: "https://easy-uat.firebaseio.com",
+  projectId: "easy-uat",
+  storageBucket: "easy-uat.appspot.com",
+  messagingSenderId: "276141307751"
 };
 
 if (!firebase.apps.length) {

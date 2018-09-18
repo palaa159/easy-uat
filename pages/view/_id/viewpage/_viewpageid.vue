@@ -26,7 +26,7 @@
             
             <div class="col-12 _pd-16px">
                 <div id="preview">
-                    <img :src="image" alt="" id="picture">
+                    <img :src="previewimage" alt="" id="picture" >
                 </div>
                     
                 <!-- <div id="picture"></div> -->
@@ -39,6 +39,10 @@
                     </div> 
                 </div>
             </div>
+            <div class="_dp-f bndelete">
+                <div @click="deletePage" class="bio-button u-rise bio-button -negative ">Delete Page</div>
+            </div>
+            
         </div>
     </div>
 </template>
@@ -66,8 +70,7 @@
 #picture {
   width: 700px;
   height: 600px;
-
-  //   background-image: url("image");
+  //   background-previewimage: url("previewimage");
 }
 </style>
 
@@ -79,10 +82,10 @@ export default {
     id: null,
     title_page: null,
     des_page: null,
-    image: null,
+    previewimage: null,
     labels: [],
     width: null,
-    highe: null
+    height: null
   }),
   async created() {
     const id = this.$route.params.id;
@@ -100,11 +103,42 @@ export default {
         (this.id = doc.id),
           (this.title_page = doc.data().title_page),
           (this.des_page = doc.data().des_page),
-          (this.image = doc.data().img),
+          (this.previewimage = doc.data().img),
           (this.labels = doc.data().label);
       }
     });
+    var img = new Image();
+    var width, height;
+    img.src = this.previewimage;
+    img.onload = function() {
+      width = this.width;
+      height = this.height;
+      alert(this.width + " " + this.height);
+      //console.log(width);
+      //return { width: width, height: height };
+    };
+
+    console.log("x");
+    console.log(width);
+
     //return { data };
+  },
+  methods: {
+    async deletePage() {
+      const id = this.$route.params.id;
+      const pageid = this.$route.params.pageid;
+      console.log(pageid);
+      const snapshot = await db
+        .collection("project")
+        .doc(id)
+        .collection("page")
+        .doc(pageid)
+        .delete()
+        .then(function() {
+          //return this.$router.push("/view/" + id);
+        })
+        .catch(function(error) {});
+    }
   }
 };
 </script>
