@@ -33,6 +33,7 @@
             </div>
             <br>
             <div class="container">
+                <div class="col-12">
             <div class="texttd">
                 <no-ssr>
                         <table>
@@ -57,6 +58,9 @@
                     </no-ssr>
             </div>
             </div>
+            </div>
+            
+               
             <div v-for="(page, i) in pages" :key="i">
                 <div class="col-12 _pd-16px">
                     <div class="bio-input _pd-16px">
@@ -70,16 +74,19 @@
                         <textarea name="" id="" cols="30" rows="10" v-model="des_page"></textarea>
                     </div>
                 </div>
-                <div>
+                
                     <input type="file" @change="onFileChange" accept="image/*"> <br>
                         <div id="preview" @click="addLabel">
                             <img :src="previewimage" id="picture" >
                         </div>
-                </div>
+                
+               
+                
                 <div class="label-circle" v-for="(label, i) in labels"
                     :key="i" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'">
                     {{ i + 1 }}
                 </div>
+                
                 <div class="container">
                     <div class="col-12">
                         <div class="row">
@@ -88,14 +95,18 @@
                                 <textarea v-model="item.description" id="" rows="12" cols="130"></textarea>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div> 
             </div>
+            </div>
+            
+
             <div class="col-12 _pd-16px">
                 <div class="  bnsave ">
                     <div class="bio-button u-rise " @click="savePage">Save </div>
                 </div>
             </div>
+           
+           
         </div>
     </div>
 </template>

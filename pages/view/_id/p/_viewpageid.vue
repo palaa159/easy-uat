@@ -31,7 +31,7 @@
                     
                 <!-- <div id="picture"></div> -->
                 <div v-for="(label, i) in labels" :key="i">
-                    <div class="label-circle" :style="'left: ' + label.x + 'px; top: ' + (label.y/600)*100 + 'px'" >
+                    <div  class="label-circle" :style="'left: ' + (label.x)+ 'px; top: ' + (label.y)+ 'px'" >
                     {{i+1}}
                     </div>
                     <div class="bio-textarea _pd-16px">
@@ -61,11 +61,12 @@
   display: inline-block;
   /* width: 300px;
     height: 300px; */
-//    margin-left: 20%;
+  //    margin-left: 20%;
 }
 #picture {
   width: 700px;
   height: 600px;
+
   //   background-image: url("image");
 }
 </style>
@@ -79,7 +80,9 @@ export default {
     title_page: null,
     des_page: null,
     image: null,
-    labels: []
+    labels: [],
+    width: null,
+    highe: null
   }),
   async created() {
     const id = this.$route.params.id;
