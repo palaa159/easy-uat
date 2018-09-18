@@ -99,7 +99,7 @@
         </div>
     </div>
 </template>
-<style>
+<style lang="scss" scoped>
 #preview {
   position: relative;
   border: 2px solid rgb(148, 146, 146);
@@ -108,10 +108,10 @@
     height: 300px; */
   /* margin-left: 20%; */
 }
-/* #picture {
+#picture {
   width: 700px;
   height: 600px;
-} */
+}
 
 .label-circle {
   width: 30px;
@@ -220,7 +220,7 @@ export default {
           title_page: this.title_page,
           des_page: this.des_page,
           img: this.downloadURL,
-          lables: this.labels
+          label: this.labels
         });
       //console.log(this.labels)
       //.then(docRef => {

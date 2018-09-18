@@ -22,7 +22,7 @@ export default {
     const id = this.$route.params.id;
     const snapshot = await db.collection("project").get();
     snapshot.forEach(doc => {
-      console.log(doc.id, "=>", doc.data());
+      //console.log(doc.id, "=>", doc.data());
       if (doc.id === id) {
         // (this.project = doc.data()),
         (this.id = doc.id),
