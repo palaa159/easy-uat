@@ -29,11 +29,11 @@
             
             <div class="col-12 _pd-16px">
                 <input type="file" @change="onFileChange" accept="image/*"> <br>
-                <div id="preview">
+                <div id="preview" @click="addLabel">
                     <img :src="previewimage" alt="" id="picture">
                 </div>
                     
-                <!-- <div id="picture"></div> -->
+                <div id="picture"></div>
                 <div v-for="(label, i) in labels" :key="i">
                     <div class="label-circle" :style="'left: ' + label.x + 'px; top: ' + (label.y/600)*100 + 'px'" >
                     {{i+1}}
@@ -42,6 +42,11 @@
                         <h5>{{i+1}}</h5>
                         <textarea v-model="labels[i].description" id="" rows="12" cols="130"></textarea>
                     </div> 
+                </div>
+            </div>
+             <div class="col-12 _pd-16px">
+                <div class="  bnsave ">
+                    <div class="bio-button u-rise " @click="savePage">Save </div>
                 </div>
             </div>
         </div>
@@ -86,11 +91,11 @@ export default {
     previewimage: null,
     labels: [],
     downloadURL: null,
-    previewimage: ""
+    img: null
   }),
   async created() {
     const id = this.$route.params.id;
-    const pageid = this.$route.params.pageid;
+    const pageid = this.$route.params.editpageid;
     const snapshotpage = await db
       .collection("project")
       .doc(id)
@@ -100,7 +105,7 @@ export default {
       //console.log(doc.id, "=>", doc.data());
       //console.log(doc.id);
       if (doc.id === pageid) {
-        //console.log(doc.data().img);
+        //console.log(doc.data().title_page);
         (this.id = doc.id),
           (this.title_page = doc.data().title_page),
           (this.des_page = doc.data().des_page),
@@ -131,6 +136,35 @@ export default {
         this.previewimage = e.target.result;
       };
       reader.readAsDataURL(file);
+    },
+    addLabel(e) {
+      var x = e.clientX;
+      var y = e.clientY;
+      console.log(e, x, y);
+      var labelLength = this.labels.length;
+      console.log(labelLength);
+      this.labels.push({
+        x: x,
+        y: y,
+        description: ""
+      });
+      console.log(this.labels);
+    },
+    savePage() {
+      const id = this.$route.params.id;
+      const pageid = this.$route.params.editpageid;
+      db
+        .collection("project")
+        .doc(id)
+        .collection("page")
+        .doc(pageid)
+        .update({
+          title_page: this.title_page,
+          des_page: this.des_page,
+          img: this.downloadURL,
+          label: this.labels
+        });
+      return this.$router.push("/view/" + id);
     }
   }
 };

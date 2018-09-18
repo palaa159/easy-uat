@@ -212,13 +212,7 @@ export default {
           img: this.downloadURL,
           label: this.labels
         });
-      //return this.$router.push("/create/" + this.id);
-      //console.log(this.labels)
-      //.then(docRef => {
-      //   console.log(docRef);
-      //return this.reload();
-      // })
-      // .catch(error => console.log(err));
+      return location.reload();
     }
   }
 };
