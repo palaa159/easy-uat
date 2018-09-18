@@ -31,7 +31,7 @@
                     
                 <!-- <div id="picture"></div> -->
                 <div v-for="(label, i) in labels" :key="i">
-                    <div class="label-circle" :style="'left: ' + (label.x/4000)*936 + 'px; top: ' + (label.y/2667)*1032 + 'px'" >
+                    <div  class="label-circle" :style="'left: ' + (label.x)+ 'px; top: ' + (label.y)+ 'px'" >
                     {{i+1}}
                     </div>
                     <div class="bio-textarea _pd-16px">
