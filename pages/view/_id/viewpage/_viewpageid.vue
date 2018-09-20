@@ -27,13 +27,12 @@
             <div class="col-12 _pd-16px">
                 <div id="preview">
                     <img :src="previewimage" alt="" id="picture" >
-                </div>
-                    
-                <!-- <div id="picture"></div> -->
-                <div v-for="(label, i) in labels" :key="i">
-                    <div  class="label-circle" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'" >
-                    {{i+1}}
+                       <div v-for="(label, i) in labels" :key="i" class="label-circle" :style="'left: ' + label.x+ 'px; top: ' + (label.y) + 'px'" >
+                        {{i+1}}
                     </div>
+                </div>
+                <!-- <div id="picture"></div> -->
+                <div v-for="(label, i) in labels" :key="i">                 
                     <div class="bio-textarea _pd-16px">
                         <h5>{{i+1}} : {{labels[i].description}}</h5>
                     </div> 
