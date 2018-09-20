@@ -94,11 +94,11 @@
     height: 1px;
     page-break-after: avoid;
   }
-}
-.center {
-  top: 40%;
-  left: 25%;
-  position: fixed;
+  .center {
+    top: 40%;
+    left: 25%;
+    position: fixed;
+  }
 }
 </style>
 
@@ -112,7 +112,7 @@ export default {
     page: []
   }),
   async created() {
-    const id = this.$route.params.uatid;
+    const id = this.$route.params.manualid;
     const snapshot = await db.collection("project").get();
     snapshot.forEach(doc => {
       if (doc.id === id) {

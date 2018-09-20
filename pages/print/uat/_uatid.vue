@@ -16,12 +16,47 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 _pd-16px">
-                <!-- Normal Textarea -->
-                    <div class="bio-textarea _pd-16px">
-                        <h5>Description : {{des_project}} </h5>
-                    </div>
-                </div>  
+            </div>
+             <div class="container" v-for="(pages, i) in page" :key="i">
+                <div class="texttd" >
+                <br>
+                <table>
+                    <tr class="">
+                        <th>ชื่อการทำงาน</th>
+                        <td>{{pages.title_page}}</td>
+                        <th>วันที่ทดสอบ</th>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+                    </tr>
+                    <tr>
+                        <th>ผลที่คาดหวัง</th>
+                        
+                        <td></td>
+                        <th>ผู้ทดสอบ</th>
+                        <td width=20%></td>
+                          
+                    </tr>
+                    <tr>
+                        <th>เงื่อนไขก่อนทำงาน</th>
+                        <td colspan="4"></td>
+                    </tr>
+                </table>
+                </div>
+                <br>
+                <table>
+                        <tr>
+                            <th colspan="4">กรณีข้อมูลครบถ้วน</th>
+                            
+                        
+                        <tr>
+                            <th>การทดสอบ</th>
+                            <th>ผลที่ควรจะได้</th>
+                            <th>ผลการทดสอบ</th>
+                            <th>หมายเหตุ</th>
+                        </tr>
+                        
+                </table>
+                <br>
             </div>
             <div class="col-12 _pd-16px" v-for="(pages, i) in page" :key="i">
                 <div class="bio-input _pd-16px">
@@ -30,12 +65,6 @@
                 <div class="bio-textarea _pd-16px">
                     <h5>Description page : {{pages.des_page}}</h5>
                </div>
-                <div id="preview">
-                    <img :src="pages.previewimage" alt="" id="picture" >
-                        <div  v-for="(label, i) in pages.labels" :key="i" class="label-circle" :style="'left: ' + (label.x)+ 'px; top: ' + (label.y)+ 'px'" >
-                        {{i+1}}
-                        </div>
-                </div>
                 <div v-for="(label, i) in pages.labels" :key="i">
                     <div class="bio-textarea _pd-16px">
                         <h5>{{i+1}} : {{label.description}}</h5>
@@ -67,6 +96,12 @@
   width: 700px;
   height: 600px;
 }
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
 </style>
 
 <script>
@@ -79,7 +114,7 @@ export default {
     page: []
   }),
   async created() {
-    const id = this.$route.params.manualid;
+    const id = this.$route.params.uatid;
     const snapshot = await db.collection("project").get();
     snapshot.forEach(doc => {
       if (doc.id === id) {

@@ -56,10 +56,10 @@
                     <div class="bio-button u-rise  ">Add Page</div>
                 </nuxt-link> 
                 <div @click="deleteProject" class="bio-button u-rise bio-button -negative ">Delete Project</div>
-                <nuxt-link :to="{name:'print-manualid', params: { manualid: $route.params.id}}">
+                <nuxt-link :to="{name:'print-manual-manualid', params: { manualid: $route.params.id}}">
                     <div  class="bio-button u-rise bio-button -gray">Print Manual</div>
                 </nuxt-link>
-                <nuxt-link :to="{name:'print-uatid', params: { uatid: $route.params.id}}">
+                <nuxt-link :to="{name:'print-uat-uatid', params: { uatid: $route.params.id}}">
                     <div  class="bio-button u-rise bio-button -gray">Print UAT</div>
                 </nuxt-link>   
             </div>
