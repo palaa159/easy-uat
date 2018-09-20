@@ -76,7 +76,10 @@
                         <div class="row">
                             <div v-for="(item, i) in labels" :key="i">
                                 <p>{{ i + 1 }}</p>
-                                <textarea v-model="item.description" id="" rows="12" cols="130"></textarea>
+                                <p>Test</p>
+                                 <textarea v-model="item.description" id="" rows="8" cols="130"></textarea>
+                                 <p>Result</p>
+                                <textarea v-model="item.test_result" id="" rows="8" cols="130"></textarea>
                             </div>
                         </div>
                     </div> 
@@ -197,7 +200,8 @@ export default {
       this.labels.push({
         x: x,
         y: y,
-        description: ""
+        description: "",
+        test_result: ""
       });
       console.log(this.labels);
     },
