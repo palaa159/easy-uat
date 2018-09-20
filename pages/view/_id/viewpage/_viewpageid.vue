@@ -23,16 +23,14 @@
                     </div>
                 </div>
             </div>
-            
             <div class="col-12 _pd-16px">
                 <div id="preview">
                     <img :src="previewimage" alt="" id="picture" >
-                       <div v-for="(label, i) in labels" :key="i" class="label-circle" :style="'left: ' + label.x+ 'px; top: ' + (label.y) + 'px'" >
-                        {{i+1}}
-                    </div>
                 </div>
-                <!-- <div id="picture"></div> -->
-                <div v-for="(label, i) in labels" :key="i">                 
+                <div v-for="(label, i) in labels" :key="i">
+                    <div  class="label-circle" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'" >
+                    {{i+1}}
+                    </div>
                     <div class="bio-textarea _pd-16px">
                         <h5>{{i+1}} : {{labels[i].description}}</h5>
                     </div> 
@@ -62,14 +60,10 @@
   position: relative;
   border: 2px solid rgb(148, 146, 146);
   display: inline-block;
-  /* width: 300px;
-    height: 300px; */
-  //    margin-left: 20%;
 }
 #picture {
   width: 700px;
   height: 600px;
-  //   background-previewimage: url("previewimage");
 }
 </style>
 
@@ -77,15 +71,11 @@
 import { firestore as db, store } from "~/services/firebaseInit";
 export default {
   data: () => ({
-    //page: []
     id: null,
     title_page: null,
     des_page: null,
     previewimage: null,
-    labels: [],
-    width: null,
-    height: null,
-    doct: null
+    labels: []
   }),
   async created() {
     const id = this.$route.params.id;
@@ -96,10 +86,7 @@ export default {
       .collection("page")
       .get();
     snapshotpage.forEach(doc => {
-      //console.log(doc.id, "=>", doc.data());
-      //console.log(doc.id);
       if (doc.id === pageid) {
-        //console.log(doc.data().img);
         (this.id = doc.id),
           (this.title_page = doc.data().title_page),
           (this.des_page = doc.data().des_page),
@@ -107,24 +94,6 @@ export default {
           (this.labels = doc.data().label);
       }
     });
-
-    var img = new Image();
-    var width, height;
-    var doct;
-
-    img.src = this.previewimage;
-    img.onload = function() {
-      width = this.width;
-      height = this.height;
-      //alert(this.width + " " + this.height);
-      //console.log(width);
-      //return { width: width, height: height };
-    };
-
-    console.log(height);
-    console.log(width);
-
-    //return { data };
   },
   methods: {
     async deletePage() {
@@ -137,9 +106,7 @@ export default {
         .collection("page")
         .doc(pageid)
         .delete()
-        .then(function() {
-          //return this.$router.push("/view/" + id);
-        })
+        .then(function() {})
         .catch(function(error) {});
       return this.$router.push("/view/" + id);
     }

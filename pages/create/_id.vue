@@ -17,46 +17,44 @@
                         </div>
                     </div>
                     <div class="col-12 _pd-16px">
-                    <div class="bio-textarea _pd-16px">
-                        <h5>Description : {{des_project}}</h5>
-                        <!-- <textarea name="" id="" cols="30" rows="10"  v-model="des_project">
-                        </textarea> -->
-                    </div>
-                    </div>
-                </div>     
-                    <div class="col-12 _pd-16px">
-                        <div class="_dp-f  bnsave ">
-                            <div @click="addPage()" class="bio-button -gray u-rise "> Add Page</div>
-                        <!-- <div class="bio-button u-rise ">Save All</div>              -->
+                        <div class="bio-textarea _pd-16px">
+                            <h5>Description : {{des_project}}</h5>
+                            <!-- <textarea name="" id="" cols="30" rows="10"  v-model="des_project">
+                            </textarea> -->
                         </div>
                     </div>
+                </div>     
+                <div class="col-12 _pd-16px">
+                    <div class="_dp-f  bnsave ">
+                        <div @click="addPage()" class="bio-button -gray u-rise "> Add Page</div>
+                        <!-- <div class="bio-button u-rise ">Save All</div>              -->
+                    </div>
+                </div>
             </div>
             <br>
             <div class="container">
                 <div class="col-12">
-            <div class="texttd">
-                <no-ssr>
-                        <table>
-                        <tr>
-                            <th>Title</th>
-                            <th>Description</th>
-                        </tr>
-                        <tr v-for="p in page" v-bind:key="p.id">
-                            <td><div>{{p.title_page}}</div></td>
-                            <td><div> {{p.des_page}}</div></td>
-                        </tr>
-                        </table>
-                    </no-ssr>
+                    <div class="texttd">
+                        <no-ssr>
+                            <table>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr v-for="p in page" v-bind:key="p.id">
+                                    <td><div>{{p.title_page}}</div></td>
+                                    <td><div> {{p.des_page}}</div></td>
+                                </tr>
+                            </table>
+                        </no-ssr>
+                    </div>
+                </div>
             </div>
-            </div>
-            </div>
-            
-               
             <div v-for="(page, i) in pages" :key="i">
                 <div class="col-12 _pd-16px">
                     <div class="bio-input _pd-16px">
                         <h5>Title</h5>
-                            <input type="text" v-model="title_page">
+                        <input type="text" v-model="title_page">
                     </div>
                 </div>
                 <div class="col-12 _pd-16px">
@@ -65,15 +63,14 @@
                         <textarea name="" id="" cols="30" rows="10" v-model="des_page"></textarea>
                     </div>
                 </div>
-                
-                    <input type="file" @change="onFileChange" accept="image/*"> <br>
-                        <div id="preview" @click="addLabel">
-                            <img :src="previewimage" id="picture" >
-                        </div>                
-                <div class="label-circle" v-for="(label, i) in labels"
-                    :key="i" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'">
-                    {{ i + 1 }}
-                </div>
+                <input type="file" @change="onFileChange" accept="image/*"> <br>
+                    <div id="preview" @click="addLabel">
+                        <img :src="previewimage" id="picture" >
+                            <div class="label-circle" v-for="(label, i) in labels"
+                        :key="i" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'">
+                        {{ i + 1 }}
+                            </div>
+                    </div>
                 
                 <div class="container">
                     <div class="col-12">
@@ -84,17 +81,13 @@
                             </div>
                         </div>
                     </div> 
+                </div>
             </div>
-            </div>
-            
-
             <div class="col-12 _pd-16px">
                 <div class="  bnsave ">
                     <div class="bio-button u-rise " @click="savePage">Save </div>
                 </div>
             </div>
-           
-           
         </div>
     </div>
 </template>
@@ -187,7 +180,7 @@ export default {
       task.then(snapshot => {
         snapshot.ref.getDownloadURL().then(url => {
           console.log(url);
-          this.downloadURL = url;
+          this.previewimage = url;
         });
       });
       const reader = new FileReader();
@@ -197,9 +190,9 @@ export default {
       reader.readAsDataURL(file);
     },
     addLabel(e) {
-      var x = e.pageX;
-      var y = e.pageY;
-      //console.log(e,x,y)
+      var x = e.offsetX;
+      var y = e.offsetY;
+      console.log(e, x, y);
       var labelLength = this.labels.length;
       //console.log(labelLength)
       this.labels.push({
@@ -217,7 +210,7 @@ export default {
         .add({
           title_page: this.title_page,
           des_page: this.des_page,
-          img: this.downloadURL,
+          img: this.previewimage,
           label: this.labels
         });
       return location.reload();
