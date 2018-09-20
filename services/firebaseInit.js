@@ -1,5 +1,7 @@
 // import firebase from "firebase";
-import firebase, { storage } from "firebase/app";
+import firebase, {
+  storage
+} from "firebase/app";
 import "firebase/firestore";
 import "firebase/storage";
 
@@ -23,4 +25,7 @@ firestore.settings({
   timestampsInSnapshots: true
 });
 
-export { firestore, store };
+export {
+  firestore,
+  store
+};

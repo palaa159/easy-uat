@@ -28,7 +28,7 @@
                     <img :src="previewimage" alt="" id="picture" >
                 </div>
                 <div v-for="(label, i) in labels" :key="i">
-                    <div  class="label-circle" :style="'left: ' + (label.x)+ 'px; top: ' + (label.y)+ 'px'" >
+                    <div  class="label-circle" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'" >
                     {{i+1}}
                     </div>
                     <div class="bio-textarea _pd-16px">
@@ -75,7 +75,14 @@ export default {
     title_page: null,
     des_page: null,
     previewimage: null,
+<<<<<<< HEAD
     labels: []
+=======
+    labels: [],
+    width: null,
+    height: null,
+    doct: null
+>>>>>>> 597684c059074d84cfa1d2f23d79ae1f6209fe7f
   }),
   async created() {
     const id = this.$route.params.id;
