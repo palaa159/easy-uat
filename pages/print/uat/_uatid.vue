@@ -1,71 +1,61 @@
 <template>
     <div class="_w-100pct">
         <div class="container _bgcl-neutral-100">
-            <div class="container-fluproject_id _bgcl-primary-300 center">
-                <div class="row ">
-                    <div class="col-12 myHeader  " id="text">
-                        <h1 >{{title_project}}</h1>  
-                        <h2 >USER ACCEPTANCE TEST</h2>
-                        <h1 >{{des_project}}</h1>
-                    </div>
+            <div class="container" v-for="(pages, i) in page" :key="i">
+                <div>
+                    <table class="testtable">
+                        <tr>
+                            <th width=30%>ชื่อการทำงาน</th>
+                            <td>{{pages.title_page}}</td>
+                            <th>วันที่ทดสอบ</th>
+                            <td width=20%></td>
+                        </tr>
+                        <tr>
+                            <th width=30%>ผลที่คาดหวัง</th>
+                            <td></td>
+                            <th>ชื่อผู้ทดสอบ</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th width=30%>เงื่อนไขก่อนการทำงาน</th>
+                            <td colspan="3"></td>
+                        </tr>
+                    </table>
+                <br>
                 </div>
-            </div>
-          
-                <div class="container" v-for="(pages, i) in page" :key="i">
-                    <div>
-                    <br>
-                        <table class="testtable">
-                            <tr>
-                                <th width=30%>ชื่อการทำงาน</th>
-                                <td>{{pages.title_page}}</td>
-                                <th>วันที่ทดสอบ</th>
-                                <td width=20%></td>
-                            </tr>
-                            <tr>
-                                <th width=30%>ผลที่คาดหวัง</th>
-                                <td></td>
-                                <th>ชื่อผู้ทดสอบ</th>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th width=30%>เงื่อนไขก่อนการทำงาน</th>
-                                <td colspan="3"></td>
-                            </tr>
-                        </table>
-                    <br>
-                    </div>
-                    <div>
-                        <table class="testtable">
-                            <tr>
-                                <th class="txt">การทดสอบ</th>
-                                <th class="txt">ผลที่ควรจะได้</th>
-                                <th class="txt">ผลการทดสอบ</th>
-                                <th class="txt">หมายเหตุ</th>
-                            </tr>
-                            <tr v-for="(label, i) in pages.labels" :key="i">
-                                <td>{{i+1}}. {{label.description}}</td>
-                                <td>{{label.test_result}}</td>
-                                <td width=15%>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <div class="triangle"></div> ผ่าน
-                                            </li>
-                                            <li>
-                                                <div class="triangle"></div> ไม่ผ่าน
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </td>
-                                <td width=20%></td>
-                            </tr>
-                        </table>
-                        <div class="page-break "></div>
-                    </div>
+                <div>
+                    <table class="testtable">
+                        <tr>
+                            <th class="txt">การทดสอบ</th>
+                            <th class="txt">ผลที่ควรจะได้</th>
+                            <th class="txt">ผลการทดสอบ</th>
+                            <th class="txt">หมายเหตุ</th>
+                        </tr>
+                        <tr v-for="(label, i) in pages.labels" :key="i">
+                            <td>{{i+1}}. {{label.description}}</td>
+                            <td>{{label.test_result}}</td>
+                            <td width=15%>
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <div class="triangle"></div> ผ่าน
+                                        </li>
+                                        <li>
+                                            <div class="triangle"></div> ไม่ผ่าน
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td width=20%></td>
+                        </tr>
+                    </table>
+                    <p align="right">{{i+1}}</p>
+                    <div class="page-break "></div>
                 </div>
             </div>
         </div>
-    
+        
+    </div>
 </template>
 
 <style lang="scss" scoped>

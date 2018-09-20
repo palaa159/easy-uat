@@ -12,6 +12,7 @@
             </div>
            <div class="page-break "></div>
             <div class="col-12 _pd-16px" v-for="(pages, i) in page" :key="i">
+                <p align="right">{{i+1}}</p>
                 <div class="bio-input _pd-16px" id="text">
                     <h5>Title page : {{pages.title_page}} </h5>
                 </div>

@@ -31,9 +31,11 @@
                     <div  class="label-circle" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'" >
                     {{i+1}}
                     </div>
-                    <div class="bio-textarea _pd-16px">
-                        <h5>{{i+1}} : {{labels[i].description}}</h5>
-                    </div> 
+                    <p>{{ i + 1 }}</p>
+                <p>Test</p>
+                <textarea v-model="labels[i].description" id="" rows="12" cols="130"></textarea>
+                <p>Result</p>
+                <textarea v-model="labels[i].test_result" id="" rows="12" cols="130"></textarea>
                 </div>
             </div>
             <div class="_dp-f bndelete">
@@ -62,7 +64,7 @@
   display: inline-block;
 }
 #picture {
-  width: 700px;
+  width: 1020px;
   height: 600px;
 }
 </style>
