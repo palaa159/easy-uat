@@ -32,10 +32,13 @@
                     </div>
                 </div>
                 <!-- colse div col -->
-            </div><!-- close div row -->
-        </div><!-- close div container -->
+            </div>
+            <!-- close div row -->
+        </div>
+        <!-- close div container -->
     </div>
-</div><!-- close div -->
+</div>
+<!-- close div -->
 </template>
 
 <style>
@@ -58,16 +61,13 @@ export default {
   async created() {
     const snapshot = await db.collection("project").get();
     snapshot.forEach(doc => {
-      //console.log(doc.data());
       this.id = doc.id;
       const data = {
         id: doc.id,
         title_project: doc.data().title_project,
         des_project: doc.data().des_project
-        // page: doc.data().page
       };
       this.projects.push(data);
-      //console.log(this.id);
     });
     const snapshotpage = await db
       .collection("project")
@@ -75,7 +75,6 @@ export default {
       .collection("page")
       .get();
     snapshotpage.forEach(doc => {
-      //console.log(doc.data().img);
       this.previewimage = doc.data().img;
     });
   }

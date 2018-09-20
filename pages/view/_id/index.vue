@@ -52,13 +52,13 @@
             </div>
             <br>
             <div class=" col-12 _dp-f ">
+                <nuxt-link :to="{name: 'create-id', params: {id: $route.params.id}}">
+                    <div class="bio-button u-rise  ">Add Page</div>
+                </nuxt-link> 
                 <div @click="deleteProject" class="bio-button u-rise bio-button -negative ">Delete Project</div>
-                    <nuxt-link :to="{name:'print-id', params: { id: $route.params.id}}">
-                        <div  class="bio-button u-rise bio-button -gray">Print</div>
-                    </nuxt-link>
-                    <nuxt-link :to="{name: 'create-id', params: {id: $route.params.id}}">
-                        <div class="bio-button u-rise  ">Add Page</div>
-                    </nuxt-link>   
+                <nuxt-link :to="{name:'print-id', params: { id: $route.params.id}}">
+                    <div  class="bio-button u-rise bio-button -gray">Print</div>
+                </nuxt-link>  
             </div>
         </div>
     </div>
@@ -77,9 +77,7 @@ export default {
     const id = this.$route.params.id;
     const snapshot = await db.collection("project").get();
     snapshot.forEach(doc => {
-      //console.log(doc.id, "=>", doc.data());
       if (doc.id === id) {
-        // (this.project = doc.data()),
         (this.id = doc.id),
           (this.title_project = doc.data().title_project),
           (this.des_project = doc.data().des_project);
@@ -91,7 +89,6 @@ export default {
       .collection("page")
       .get();
     snapshotpage.forEach(doc => {
-      //console.log(doc.id, "=>", doc.data());
       const data = {
         id: doc.id,
         title_page: doc.data().title_page,
@@ -99,7 +96,6 @@ export default {
       };
       this.page.push(data);
     });
-    // return { data };
   },
   methods: {
     async deleteProject() {
@@ -111,14 +107,10 @@ export default {
         .collection("page")
         .get();
       snapshotpage.forEach(doc => {
-        //console.log(doc.id, "=>", doc.data());
         if (doc.id !== id) {
           console.log(doc.data());
           doc.ref.delete();
-          //console.log(doc.ref);
-          //return this.$router.push("/");
         }
-        //return this.$router.push("/");
       });
       const snapshot = await db.collection("project").get();
       snapshot.forEach(doc => {
@@ -126,7 +118,6 @@ export default {
         if (doc.id === id) {
           console.log(doc.data());
           doc.ref.delete();
-          //console.log(doc.ref);
           return this.$router.push("/");
         }
       });
