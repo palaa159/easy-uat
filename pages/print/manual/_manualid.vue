@@ -11,21 +11,6 @@
                 </div>
             </div>
            <div class="page-break "></div>
-            <!-- <div class="container _bgcl-neutral-200 _pd-16px">    
-                <div class="row">
-                    <div class="col-12 _pd-16px">
-                        <div class="bio-input _pd-16px">
-                            <h5>Title : {{title_project}}</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 _pd-16px">
-                Normal Textarea
-                    <div class="bio-textarea _pd-16px">
-                        <h5>Description : {{des_project}} </h5>
-                    </div>
-                </div>  
-            </div> -->
             <div class="col-12 _pd-16px" v-for="(pages, i) in page" :key="i">
                 <div class="bio-input _pd-16px" id="text">
                     <h5>Title page : {{pages.title_page}} </h5>
@@ -134,7 +119,7 @@ export default {
         labels: doc.data().label
       };
       this.page.push(data);
-      console.log(this.page);
+      //console.log(this.page);
     });
   }
 };

@@ -25,7 +25,7 @@
                         <th>ชื่อการทำงาน</th>
                         <td>{{pages.title_page}}</td>
                         <th>วันที่ทดสอบ</th>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td></td>
 
                     </tr>
                     <tr>
