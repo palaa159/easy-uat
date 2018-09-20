@@ -9,7 +9,20 @@
           <div v-for="p in page" v-bind:key="p.id">
             <h5>Title{{p.title_page}}</h5><br>
              <h5>Description {{p.des_page}}</h5><br>
-             <img class="bio-card-cover" src="https://placehold.it/150x80?text=IMAGE" alt="image">
+               <div class="col-12 _pd-16px">
+                <div id="preview">
+                    <img :src="previewimage" alt="" id="picture" >
+                       <div v-for="(label, i) in labels" :key="i" class="label-circle" :style="'left: ' + label.x+ 'px; top: ' + (label.y) + 'px'" >
+                        {{i+1}}
+                    </div>
+                </div>
+                <!-- <div id="picture"></div> -->
+                <div v-for="(label, i) in labels" :key="i">                 
+                    <div class="bio-textarea _pd-16px">
+                        <h5>{{i+1}} : {{labels[i].description}}</h5>
+                    </div> 
+                </div>
+            </div>
                 </div>
               </div>
              </div>
@@ -66,8 +79,32 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="scss" scoped>
 .txt {
   text-align: center;
+}
+.label-circle {
+  width: 30px;
+  height: 30px;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+}
+#preview {
+  position: relative;
+  border: 2px solid rgb(148, 146, 146);
+  display: inline-block;
+  /* width: 300px;
+    height: 300px; */
+  //    margin-left: 20%;
+}
+#picture {
+  width: 700px;
+  height: 600px;
+  //   background-previewimage: url("previewimage");
 }
 </style>
