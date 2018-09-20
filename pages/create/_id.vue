@@ -103,7 +103,7 @@
   /* margin-left: 20%; */
 }
 #picture {
-  width: 700px;
+  width: 1020px;
   height: 600px;
 }
 

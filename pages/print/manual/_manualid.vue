@@ -1,7 +1,7 @@
 <template>
     <div class="_w-100pct">
         <div class="container _bgcl-neutral-100">
-            <div class="container-fluproject_id _bgcl-primary-300 center">
+            <!-- <div class="container-fluproject_id _bgcl-primary-300 center">
                 <div class="row ">
                     <div class="col-12 myHeader  " id="text">
                         <h1 >{{title_project}}</h1>  
@@ -9,7 +9,7 @@
                         <h1 >{{des_project}}</h1>
                     </div>
                 </div>
-            </div>
+            </div> -->
            <div class="page-break "></div>
             <div class="col-12 _pd-16px" v-for="(pages, i) in page" :key="i">
                 <div class="bio-input _pd-16px" id="text">
