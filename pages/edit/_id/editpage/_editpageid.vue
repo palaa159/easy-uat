@@ -32,11 +32,10 @@
                 <input type="file" @change="onFileChange" accept="image/*"> <br>
                 <div id="preview" @click="addLabel">
                     <img :src="previewimage" alt="" id="picture">
-                    <div v-for="(label, i) in labels" :key="i">
-                        <div class="label-circle" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'" >
-                        {{i+1}}
+                        <div class="label-circle" v-for="(label, i) in labels"
+                            :key="i" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'">
+                            {{ i + 1 }}
                         </div>
-                    </div>
                 </div>
             </div>
 
@@ -140,8 +139,8 @@ export default {
       reader.readAsDataURL(file);
     },
     addLabel(e) {
-      var x = e.screenX;
-      var y = e.screenY;
+      var x = e.offsetX;
+      var y = e.offsetY;
       console.log(e, x, y);
       var labelLength = this.labels.length;
       console.log(labelLength);

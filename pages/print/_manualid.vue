@@ -12,34 +12,36 @@
                 <div class="row">
                     <div class="col-12 _pd-16px">
                         <div class="bio-input _pd-16px">
-                            <h5>Title : {{title_page}}</h5>
+                            <h5>Title : {{title_project}}</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 _pd-16px">
                 <!-- Normal Textarea -->
                     <div class="bio-textarea _pd-16px">
-                        <h5>Description : {{des_page}}</h5>
+                        <h5>Description : {{des_project}} </h5>
                     </div>
-                </div>
+                </div>  
             </div>
-            <div class="col-12 _pd-16px">
-                <div id="preview">
-                    <img :src="previewimage" alt="" id="picture" >
+            <div class="col-12 _pd-16px" v-for="(pages, i) in page" :key="i">
+                <div class="bio-input _pd-16px">
+                    <h5>Title page : {{pages.title_page}} </h5>
                 </div>
-                <div v-for="(label, i) in labels" :key="i">
-                    <div  class="label-circle" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'" >
-                    {{i+1}}
-                    </div>
+                <div class="bio-textarea _pd-16px">
+                    <h5>Description page : {{pages.des_page}}</h5>
+               </div>
+                <div id="preview">
+                    <img :src="pages.previewimage" alt="" id="picture" >
+                        <div  v-for="(label, i) in pages.labels" :key="i" class="label-circle" :style="'left: ' + (label.x)+ 'px; top: ' + (label.y)+ 'px'" >
+                        {{i+1}}
+                        </div>
+                </div>
+                <div v-for="(label, i) in pages.labels" :key="i">
                     <div class="bio-textarea _pd-16px">
-                        <h5>{{i+1}} : {{labels[i].description}}</h5>
+                        <h5>{{i+1}} : {{label.description}}</h5>
                     </div> 
                 </div>
             </div>
-            <div class="_dp-f bndelete">
-                <div @click="deletePage" class="bio-button u-rise bio-button -negative ">Delete Page</div>
-            </div>
-            
         </div>
     </div>
 </template>
@@ -71,45 +73,36 @@
 import { firestore as db, store } from "~/services/firebaseInit";
 export default {
   data: () => ({
-    id: null,
-    title_page: null,
-    des_page: null,
-    previewimage: null,
-    labels: []
+    project: null,
+    title_project: null,
+    des_project: null,
+    page: []
   }),
   async created() {
-    const id = this.$route.params.id;
-    const pageid = this.$route.params.viewpageid;
+    const id = this.$route.params.manualid;
+    const snapshot = await db.collection("project").get();
+    snapshot.forEach(doc => {
+      if (doc.id === id) {
+        (this.id = doc.id),
+          (this.title_project = doc.data().title_project),
+          (this.des_project = doc.data().des_project);
+      }
+    });
     const snapshotpage = await db
       .collection("project")
-      .doc(id)
+      .doc(this.id)
       .collection("page")
       .get();
     snapshotpage.forEach(doc => {
-      if (doc.id === pageid) {
-        (this.id = doc.id),
-          (this.title_page = doc.data().title_page),
-          (this.des_page = doc.data().des_page),
-          (this.previewimage = doc.data().img),
-          (this.labels = doc.data().label);
-      }
+      const data = {
+        title_page: doc.data().title_page,
+        des_page: doc.data().des_page,
+        previewimage: doc.data().img,
+        labels: doc.data().label
+      };
+      this.page.push(data);
+      console.log(this.page);
     });
-  },
-  methods: {
-    async deletePage() {
-      const id = this.$route.params.id;
-      const pageid = this.$route.params.viewpageid;
-      console.log(pageid);
-      const snapshot = await db
-        .collection("project")
-        .doc(id)
-        .collection("page")
-        .doc(pageid)
-        .delete()
-        .then(function() {})
-        .catch(function(error) {});
-      return this.$router.push("/view/" + id);
-    }
   }
 };
 </script>

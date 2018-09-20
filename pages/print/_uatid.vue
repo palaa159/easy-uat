@@ -32,9 +32,9 @@
                </div>
                 <div id="preview">
                     <img :src="pages.previewimage" alt="" id="picture" >
-                    <div  v-for="(label, i) in pages.labels" :key="i" class="label-circle" :style="'left: ' + (label.x)+ 'px; top: ' + (label.y)+ 'px'" >
-                    {{i+1}}
-                    </div>
+                        <div  v-for="(label, i) in pages.labels" :key="i" class="label-circle" :style="'left: ' + (label.x)+ 'px; top: ' + (label.y)+ 'px'" >
+                        {{i+1}}
+                        </div>
                 </div>
                 <div v-for="(label, i) in pages.labels" :key="i">
                     <div class="bio-textarea _pd-16px">
@@ -79,7 +79,7 @@ export default {
     page: []
   }),
   async created() {
-    const id = this.$route.params.id;
+    const id = this.$route.params.uatid;
     const snapshot = await db.collection("project").get();
     snapshot.forEach(doc => {
       if (doc.id === id) {

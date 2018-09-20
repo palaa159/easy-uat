@@ -71,7 +71,6 @@
                         {{ i + 1 }}
                             </div>
                     </div>
-                
                 <div class="container">
                     <div class="col-12">
                         <div class="row">
