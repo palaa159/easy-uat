@@ -40,10 +40,12 @@
             </div>
 
             <div class="bio-textarea _pd-16px" v-for="(label, i) in labels" :key="i">
-                <h5>{{i+1}}</h5>
+                <p>{{ i + 1 }}</p>
+                <p>Test</p>
                 <textarea v-model="labels[i].description" id="" rows="12" cols="130"></textarea>
+                <p>Result</p>
+                <textarea v-model="labels[i].test_result" id="" rows="12" cols="130"></textarea>
             </div> 
-
             <div class="col-12 _pd-16px">
                 <div class="  bnsave ">
                     <div class="bio-button u-rise " @click="savePage">Save </div>

@@ -20,7 +20,7 @@
                 <!-- open div col -->
                 <div class="col-4 _pd-16px" v-for="project in projects" v-bind:key="project.id" > 
                     <div class="bio-card h-100">
-                        <img :src="previewimage" alt="" id="picture" >
+                        <!-- <img :src="previewimage" alt="" id="picture" > -->
                             <div class="bio-card-title">
                                 <nuxt-link :to="{name:'view-id', params: {id: project.id}}">
                                     <strong>{{project.title_project}}</strong>
