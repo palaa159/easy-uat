@@ -35,7 +35,7 @@
                </div>
                 <div id="preview">
                     <img :src="pages.previewimage" alt="" id="picture" >
-                    <div  v-for="(label, i) in pages.labels" :key="i" class="label-circle cir" :style="'left: ' + (label.x)+ 'px; top: ' + (label.y)+ 'px'"  >
+                    <div  v-for="(label, i) in pages.labels" :key="i" class="label-circle" :style="'left: ' + (label.x)+ 'px; top: ' + (label.y)+ 'px'"  >
                     {{i+1}}
                     </div>
                 </div>
@@ -94,9 +94,6 @@
     height: 1px;
     page-break-after: avoid;
   }
-  .cir {
-    background: red;
-  }
 }
 .center {
   top: 40%;
@@ -115,7 +112,7 @@ export default {
     page: []
   }),
   async created() {
-    const id = this.$route.params.id;
+    const id = this.$route.params.uatid;
     const snapshot = await db.collection("project").get();
     snapshot.forEach(doc => {
       if (doc.id === id) {
