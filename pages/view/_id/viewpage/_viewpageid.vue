@@ -16,12 +16,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 _pd-16px">
-                <!-- Normal Textarea -->
-                    <div class="bio-textarea _pd-16px">
-                        <h5>Description : {{des_page}}</h5>
-                    </div>
-                </div>
             </div>
             <div class="col-12 _pd-16px">
                 <div id="preview">
@@ -32,8 +26,10 @@
                     {{i+1}}
                     </div>
                     <p>{{ i + 1 }}</p>
+                <p>Manual</p>
+                <textarea v-model="labels[i].manual" id="" rows="12" cols="130"></textarea>
                 <p>Test</p>
-                <textarea v-model="labels[i].description" id="" rows="12" cols="130"></textarea>
+                <textarea v-model="labels[i].test" id="" rows="12" cols="130"></textarea>
                 <p>Result</p>
                 <textarea v-model="labels[i].test_result" id="" rows="12" cols="130"></textarea>
                 </div>
@@ -91,7 +87,6 @@ export default {
       if (doc.id === pageid) {
         (this.id = doc.id),
           (this.title_page = doc.data().title_page),
-          (this.des_page = doc.data().des_page),
           (this.previewimage = doc.data().img),
           (this.labels = doc.data().label);
       }

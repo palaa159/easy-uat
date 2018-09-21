@@ -16,9 +16,6 @@
                 <div class="bio-input _pd-16px" id="text">
                     <h5>Title page : {{pages.title_page}} </h5>
                 </div>
-                <div class="bio-textarea _pd-16px" >
-                    <h5>Description page : {{pages.des_page}}</h5>
-               </div>
                 <div id="preview">
                     <img :src="pages.previewimage" alt="" id="picture" >
                     <div  v-for="(label, i) in pages.labels" :key="i" class="label-circle" :style="'left: ' + (label.x)+ 'px; top: ' + (label.y)+ 'px'"  >
@@ -27,7 +24,7 @@
                 </div>
                 <div v-for="(label, i) in pages.labels" :key="i">
                     <div class="bio-textarea _pd-16px">
-                        <h5>{{i+1}} : {{label.description}}</h5>
+                        <h5>{{i+1}} . {{label.manual}}</h5>
                     </div> 
                 </div>
                 <div class="page-break"></div>
@@ -55,7 +52,7 @@
   display: inline-block;
 }
 #picture {
-  width: 700px;
+  width: 1020px;
   height: 600px;
 }
 #text {
@@ -115,7 +112,6 @@ export default {
     snapshotpage.forEach(doc => {
       const data = {
         title_page: doc.data().title_page,
-        des_page: doc.data().des_page,
         previewimage: doc.data().img,
         labels: doc.data().label
       };

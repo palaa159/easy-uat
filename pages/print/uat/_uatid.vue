@@ -32,18 +32,12 @@
                             <th class="txt">หมายเหตุ</th>
                         </tr>
                         <tr v-for="(label, i) in pages.labels" :key="i">
-                            <td>{{i+1}}. {{label.description}}</td>
-                            <td>{{label.test_result}}</td>
+                            <td width=30%>{{i+1}}. {{label.test}}</td>
+                            <td width=30%>{{label.test_result}}</td>
                             <td width=15%>
                                 <div>
-                                    <ul>
-                                        <li>
-                                            <div class="triangle"></div> ผ่าน
-                                        </li>
-                                        <li>
-                                            <div class="triangle"></div> ไม่ผ่าน
-                                        </li>
-                                    </ul>
+                                    <div class="triangle" style="display: inline">ผ่าน</div> 
+                                    <div class="triangle" style="display: inline"></div> ไม่ผ่าน
                                 </div>
                             </td>
                             <td width=20%></td>
@@ -151,7 +145,6 @@ export default {
     snapshotpage.forEach(doc => {
       const data = {
         title_page: doc.data().title_page,
-        des_page: doc.data().des_page,
         previewimage: doc.data().img,
         labels: doc.data().label
       };
