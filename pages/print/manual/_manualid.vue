@@ -1,34 +1,38 @@
+<!--
+    File Name: _manualid.vue
+    Description: หน้าแบบฟอร์มพิมพ์แบบ Manual
+    Folder: pages/print/manual/_manualid.vue 
+-->
 <template>
     <div class="_w-100pct">
         <div class="container ">
-            <!-- <div class="container-fluproject_id _bgcl-primary-300 center">
-                <div class="row ">
-                    <div class="col-12 myHeader  " id="text">
-                        <h1 >{{title_project}}</h1>  
-                        <h2 >USER MANUAL</h2>
-                        <h1 >{{des_project}}</h1>
-                    </div>
-                </div>
-            </div> -->
            <div class="page-break "></div>
+           <!-- ******************************* start output page  ******************************* -->
             <div class="col-12 _pd-16px" v-for="(pages, i) in page" :key="i">
                 <p align="right">{{i+1}}</p>
+                <!-- start titlepage  -->
                 <div class="bio-input _pd-16px" id="text">
                     <h5> {{pages.title_page}} </h5>
                 </div>
+                <!-- start titlepage  -->
+                <!-- start image and label  -->
                 <div id="preview">
                     <img :src="pages.previewimage" alt="" id="picture" >
                     <div  v-for="(label, i) in pages.labels" :key="i" class="label-circle" :style="'left: ' + (label.x)+ 'px; top: ' + (label.y)+ 'px'"  >
                     {{i+1}}
                     </div>
                 </div>
+                <!-- end image and label  -->
+                <!-- start textarea  -->
                 <div v-for="(label, i) in pages.labels" :key="i">
                     <div class="bio-textarea _pd-16px">
                         <h5>{{i+1}} . {{label.manual}}</h5>
                     </div> 
                 </div>
+                <!-- end textarea  -->
                 <div class="page-break"></div>
-            </div>     
+            </div>
+            <!-- ******************************* end output page  ******************************* -->     
         </div>
     </div>
 </template>
@@ -53,7 +57,7 @@
 }
 #picture {
   width: 1020px;
-  height: 600px;
+  height: 500px;
 }
 #text {
   text-align: center;
@@ -96,6 +100,7 @@ export default {
   }),
   async created() {
     const id = this.$route.params.manualid;
+    //collection project
     const snapshot = await db.collection("project").get();
     snapshot.forEach(doc => {
       if (doc.id === id) {
@@ -104,6 +109,7 @@ export default {
           (this.des_project = doc.data().des_project);
       }
     });
+    //collection page
     const snapshotpage = await db
       .collection("project")
       .doc(this.id)
@@ -116,7 +122,6 @@ export default {
         labels: doc.data().label
       };
       this.page.push(data);
-      //console.log(this.page);
     });
   }
 };

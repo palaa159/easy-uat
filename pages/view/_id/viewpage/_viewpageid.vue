@@ -1,6 +1,12 @@
+<!--
+    File Name: _viewpageid.vue
+    Description: หน้าแสดงรายละเอียดของ page
+    Folder: pages/view/_id/viewpage/_viewpageid.vue
+-->
 <template>
     <div class="_w-100pct">
         <div class="container _bgcl-neutral-100">
+<!-- ******************************* start head website  ******************************* -->
             <div class="container-fluproject_id _bgcl-primary-300">
                 <div class="row">
                     <div class="col-12 myHeader">
@@ -8,6 +14,8 @@
                     </div>
                 </div>
             </div>
+<!-- ******************************* end head website  ******************************* -->
+<!-- ******************************* start output page  ******************************* -->
             <div class="container _bgcl-neutral-200 _pd-16px">    
                 <div class="row">
                     <div class="col-12 _pd-16px">
@@ -17,27 +25,40 @@
                     </div>
                 </div>
             </div>
+<!-- ******************************* end output page  ******************************* -->
+<!-- ******************************* start output image, label and textarea  ******************************* -->
             <div class="col-12 _pd-16px">
+                <!-- start output image -->
                 <div id="preview">
                     <img :src="previewimage" alt="" id="picture" >
+                    <!-- start circlel  -->
+                        <div  class="label-circle" 
+                        :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'" >
+                            {{i+1}}
+                        </div>
+                    <!-- end circlel  -->
                 </div>
+                <!-- end output image -->
+                <!-- start output label  -->
                 <div v-for="(label, i) in labels" :key="i">
-                    <div  class="label-circle" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'" >
-                    {{i+1}}
-                    </div>
-                    <p>{{ i + 1 }}</p>
-                <p>Manual</p>
-                <textarea v-model="labels[i].manual" id="" rows="12" cols="130"></textarea>
-                <p>Test</p>
-                <textarea v-model="labels[i].test" id="" rows="12" cols="130"></textarea>
-                <p>Result</p>
-                <textarea v-model="labels[i].test_result" id="" rows="12" cols="130"></textarea>
+                    <!-- start textarea  -->
+                        <p>{{ i + 1 }}</p>
+                            <p>Manual</p>
+                                <textarea v-model="labels[i].manual" id="" rows="12" cols="130"></textarea>
+                            <p>Test</p>
+                                <textarea v-model="labels[i].test" id="" rows="12" cols="130"></textarea>
+                            <p>Result</p>
+                                <textarea v-model="labels[i].test_result" id="" rows="12" cols="130"></textarea>
+                    <!-- end textarea  -->
                 </div>
+                <!-- end output label  -->
             </div>
+<!-- ******************************* end output image, label and textarea  ******************************* -->
+            <!-- start Delete Page button -->
             <div class="_dp-f bndelete">
                 <div @click="deletePage" class="bio-button u-rise bio-button -negative ">Delete Page</div>
             </div>
-            
+            <!-- end Delete Page button -->
         </div>
     </div>
 </template>
@@ -61,7 +82,7 @@
 }
 #picture {
   width: 1020px;
-  height: 600px;
+  height: 500px;
 }
 </style>
 
@@ -78,6 +99,7 @@ export default {
   async created() {
     const id = this.$route.params.id;
     const pageid = this.$route.params.viewpageid;
+    //collection page
     const snapshotpage = await db
       .collection("project")
       .doc(id)
@@ -93,6 +115,7 @@ export default {
     });
   },
   methods: {
+    //function deletepage
     async deletePage() {
       const id = this.$route.params.id;
       const pageid = this.$route.params.viewpageid;
