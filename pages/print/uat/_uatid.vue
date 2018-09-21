@@ -31,8 +31,8 @@
                             <th class="txt">หมายเหตุ</th>
                         </tr>
                         <tr v-for="(label, i) in pages.labels" :key="i">
-                            <td>{{i+1}}. {{label.description}}</td>
-                            <td>{{label.test_result}}</td>
+                            <td width=30%>{{i+1}}. {{label.test}}</td>
+                            <td width=30%>{{label.test_result}}</td>
                             <td width=15%>
                                 <div>
                                     <!-- <ul>
@@ -157,7 +157,6 @@ export default {
     snapshotpage.forEach(doc => {
       const data = {
         title_page: doc.data().title_page,
-        des_page: doc.data().des_page,
         previewimage: doc.data().img,
         labels: doc.data().label
       };

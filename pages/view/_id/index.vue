@@ -30,12 +30,10 @@
                 <table>
                     <tr class="">
                         <th>Title</th>
-                        <th>Description</th>
                         <th>Tool</th>
                     </tr>
                     <tr v-for="(pages, i) in page" :key="i">
                         <td>{{pages.title_page}}</td>
-                        <td>{{pages.des_page}}</td>
                         <td>
                             <ul class="bio-breadcrumb">
                                 <nuxt-link :to="{name:'view-id-viewpage-viewpageid', params: { viewpageid: pages.id, id: $route.params.id}}">
@@ -94,8 +92,7 @@ export default {
     snapshotpage.forEach(doc => {
       const data = {
         id: doc.id,
-        title_page: doc.data().title_page,
-        des_page: doc.data().des_page
+        title_page: doc.data().title_page
       };
       this.page.push(data);
     });

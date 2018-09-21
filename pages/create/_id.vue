@@ -43,7 +43,6 @@
                                 </tr>
                                 <tr v-for="p in page" v-bind:key="p.id">
                                     <td><div>{{p.title_page}}</div></td>
-                                    <td><div> {{p.des_page}}</div></td>
                                 </tr>
                             </table>
                         </no-ssr>
@@ -55,12 +54,6 @@
                     <div class="bio-input _pd-16px">
                         <h5>Title</h5>
                         <input type="text" v-model="title_page">
-                    </div>
-                </div>
-                <div class="col-12 _pd-16px">
-                    <div class="bio-textarea _pd-16px">
-                        <h5>Description</h5>
-                        <textarea name="" id="" cols="30" rows="10" v-model="des_page"></textarea>
                     </div>
                 </div>
                 <input type="file" @change="onFileChange" accept="image/*"> <br>
@@ -76,9 +69,11 @@
                         <div class="row">
                             <div v-for="(item, i) in labels" :key="i">
                                 <p>{{ i + 1 }}</p>
+                                <p>Manual</p>
+                                <textarea v-model="item.manual" id="" rows="8" cols="130"></textarea>
                                 <p>Test</p>
-                                 <textarea v-model="item.description" id="" rows="8" cols="130"></textarea>
-                                 <p>Result</p>
+                                <textarea v-model="item.test" id="" rows="8" cols="130"></textarea>
+                                <p>Result</p>
                                 <textarea v-model="item.test_result" id="" rows="8" cols="130"></textarea>
                             </div>
                         </div>
@@ -129,7 +124,6 @@ export default {
     title_page: null,
     title_project: null,
     des_project: null,
-    des_page: null,
     previewimage: "",
     img: "",
     labels: [],
@@ -157,8 +151,7 @@ export default {
       //console.log(doc.id, "=>", doc.data());
       const data = {
         id: doc.id,
-        title_page: doc.data().title_page,
-        des_page: doc.data().des_page
+        title_page: doc.data().title_page
       };
       this.page.push(data);
     });
@@ -166,8 +159,7 @@ export default {
   methods: {
     addPage() {
       this.pages.push({
-        title_page: " ",
-        des_page: " "
+        title_page: " "
       });
     },
     onFileChange(e) {
@@ -200,7 +192,8 @@ export default {
       this.labels.push({
         x: x,
         y: y,
-        description: "",
+        manual: "",
+        test: "",
         test_result: ""
       });
       console.log(this.labels);
@@ -212,7 +205,6 @@ export default {
         .collection("page")
         .add({
           title_page: this.title_page,
-          des_page: this.des_page,
           img: this.previewimage,
           label: this.labels
         });
