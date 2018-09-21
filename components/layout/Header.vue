@@ -1,5 +1,5 @@
 <template>
-  <header class="_w-100pct _bgcl-black">
+  <header class="_w-100pct ">
     <div class="container">
       <div class="row">
         <div class="col-12 _pdv-8px _tal-ct">

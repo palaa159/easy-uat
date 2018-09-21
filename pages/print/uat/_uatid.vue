@@ -1,6 +1,6 @@
 <template>
     <div class="_w-100pct">
-        <div class="container _bgcl-neutral-100">
+        <div class="container ">
             <div class="container" v-for="(pages, i) in page" :key="i">
                 <div>
                     <table class="testtable">
@@ -21,12 +21,11 @@
                             <td colspan="3"></td>
                         </tr>
                     </table>
+                </div>     
                 <br>
-                </div>
-                <div>
                     <table class="testtable">
                         <tr>
-                            <th class="txt">การทดสอบ</th>
+                            <th width =20% class="txt">การทดสอบ</th>
                             <th class="txt">ผลที่ควรจะได้</th>
                             <th class="txt">ผลการทดสอบ</th>
                             <th class="txt">หมายเหตุ</th>
@@ -36,22 +35,29 @@
                             <td>{{label.test_result}}</td>
                             <td width=15%>
                                 <div>
-                                    <ul>
+                                    <!-- <ul>
                                         <li>
-                                            <div class="triangle"></div> ผ่าน
+                                            <div class="triangle"> </div>
+                                            <p>ผ่าน</p>
+                                        
+                                            <div class="triangle"></div>
+                                            <p>ไม่ผ่าน</p> 
                                         </li>
-                                        <li>
-                                            <div class="triangle"></div> ไม่ผ่าน
-                                        </li>
-                                    </ul>
+                                    </ul> -->
+                                    <input type="checkbox" id="scales" name="feature"
+               value="scales"  />ผ่าน
+               <br>
+                 <input type="checkbox" id="scales" name="feature"
+               value="scales"  />ไม่ผ่าน
                                 </div>
                             </td>
                             <td width=20%></td>
                         </tr>
                     </table>
-                    <p align="right">{{i+1}}</p>
+                    <br>
+                    <!-- <p align="right">{{i+1}}</p> -->
                     <div class="page-break "></div>
-                </div>
+               
             </div>
         </div>
         
