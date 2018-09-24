@@ -10,7 +10,11 @@
             <div class="container-fluproject_id _bgcl-primary-300">
                 <div class="row">
                     <div class="col-12 myHeader">
-                        <h1 class="text">Easy UAT</h1>  
+                        <h1 class="text">
+                            <nuxt-link to="/">
+                                Easy UAT
+                            </nuxt-link> 
+                        </h1>  
                     </div>
                 </div>
             </div>
