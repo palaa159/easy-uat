@@ -1,8 +1,8 @@
-@import 'assets/styles/variables';
-@import 'assets/styles/biomatic.full.min.scss';
-@import 'assets/styles/_grid.scss';
-@import 'assets/styles/_embed.scss';
-@import 'assets/styles/default';
+@import "assets/styles/variables";
+@import "assets/styles/biomatic.full.min.scss";
+@import "assets/styles/_grid.scss";
+@import "assets/styles/_embed.scss";
+@import "assets/styles/default";
 // https://github.com/FortAwesome/vue-fontawesome/issues/14
 // @import '@fortawesome/fontawesome/styles.css';
 /* Begin your default styles here */
@@ -12,7 +12,7 @@
 //   background: rgba(0, 0, 0, 0.02);
 // }
 .bg {
-  background-color: #FF3333;
+  background-color: #ff3333;
 
   display: flex;
   align-items: center;
@@ -21,8 +21,7 @@
 }
 
 .bn {
-
-  margin-left: 92%
+  margin-left: 92%;
 }
 
 .box1 {
@@ -44,27 +43,16 @@
 }
 
 .bnsave {
-  margin-left: 85%
+  margin-left: 85%;
 }
 
 .bndelete {
-  margin-left: 80%
+  margin-left: 80%;
 }
 
 .bg-black {
   background-color: black;
 }
-
-.box {
-  background-color: rgb(255, 0, 128);
-  color: white;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 300px;
-}
-
 
 table {
   border-collapse: collapse;
@@ -78,21 +66,16 @@ td {
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2
+  background-color: #f2f2f2;
 }
 
 th {
-  background-color: #C4281C;
-  color: white;
+  background-color: #b0e0e6;
+  color: black;
 }
-
 
 .texttd {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-// .width-100 {
-//   width: 100%;
-// }

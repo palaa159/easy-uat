@@ -1,6 +1,12 @@
+<!--
+    File Name: _editpageid.vue
+    Description: หน้าแก้ไข page
+    Folder: pages/edit/_id/editpage/_editpageid.vue 
+-->
 <template>
     <div class="_w-100pct">
         <div class="container _bgcl-neutral-100">
+<!-- ******************************* start head website  ******************************* -->
             <div class="container-fluproject_id _bgcl-primary-300">
                 <div class="row">
                     <div class="col-12 myHeader">
@@ -8,7 +14,8 @@
                     </div>
                 </div>
             </div>
-
+<!-- ******************************* end head website  ******************************* -->
+<!-- ******************************* start input page  ******************************* -->
             <div class="container _bgcl-neutral-200 _pd-16px">    
                 <div class="row">
                     <div class="col-12 _pd-16px">
@@ -19,7 +26,9 @@
                     </div>
                 </div>
             </div>
-            
+<!-- ******************************* end input page  ******************************* -->
+<!-- ******************************* start input image, label and textarea  ******************************* -->        
+            <!-- start input image and label -->
             <div class="col-12 _pd-16px">
                 <input type="file" @change="onFileChange" accept="image/*"> <br>
                 <div id="preview" @click="addLabel">
@@ -30,7 +39,8 @@
                         </div>
                 </div>
             </div>
-
+            <!-- end input image and label -->
+            <!-- start input textarea -->
             <div class="bio-textarea _pd-16px" v-for="(label, i) in labels" :key="i">
                 <p>{{ i + 1 }}</p>
                 <p>Manual</p>
@@ -39,13 +49,16 @@
                 <textarea v-model="labels[i].test" id="" rows="12" cols="130"></textarea>
                 <p>Result</p>
                 <textarea v-model="labels[i].test_result" id="" rows="12" cols="130"></textarea>
-            </div> 
+            </div>
+            <!-- end input textarea -->
+<!-- ******************************* start input image, label and textarea  ******************************* -->
+            <!-- start Save button -->
             <div class="col-12 _pd-16px">
                 <div class="  bnsave ">
-                    <div class="bio-button u-rise " @click="savePage">Save </div>
+                    <div class="bio-button u-rise " @click="savePage">Save</div>
                 </div>
             </div>
-            
+            <!-- end Save button -->
         </div>
     </div>
 </template>
@@ -66,14 +79,10 @@
   position: relative;
   border: 2px solid rgb(148, 146, 146);
   display: inline-block;
-  /* width: 300px;
-    height: 300px; */
-  //    margin-left: 20%;
 }
 #picture {
   width: 1020px;
   height: 500px;
-  //   background-image: url("image");
 }
 </style>
 
@@ -81,7 +90,6 @@
 import { firestore as db, store } from "~/services/firebaseInit";
 export default {
   data: () => ({
-    //page: []
     id: null,
     title_page: null,
     previewimage: null,
@@ -92,25 +100,23 @@ export default {
   async created() {
     const id = this.$route.params.id;
     const pageid = this.$route.params.editpageid;
+    //collection page
     const snapshotpage = await db
       .collection("project")
       .doc(id)
       .collection("page")
       .get();
     snapshotpage.forEach(doc => {
-      //console.log(doc.id, "=>", doc.data());
-      //console.log(doc.id);
       if (doc.id === pageid) {
-        //console.log(doc.data().title_page);
         (this.id = doc.id),
           (this.title_page = doc.data().title_page),
           (this.previewimage = doc.data().img),
           (this.labels = doc.data().label);
       }
     });
-    //return { data };
   },
   methods: {
+    //function choose file and save in storage
     onFileChange(e) {
       const file = e.target.files[0];
       const metadata = {
@@ -122,7 +128,6 @@ export default {
         .put(file);
       task.then(snapshot => {
         snapshot.ref.getDownloadURL().then(url => {
-          console.log(url);
           this.previewimage = url;
         });
       });
@@ -132,12 +137,11 @@ export default {
       };
       reader.readAsDataURL(file);
     },
+    //function addlabel -> circle and textarea
     addLabel(e) {
       var x = e.offsetX;
       var y = e.offsetY;
-      console.log(e, x, y);
       var labelLength = this.labels.length;
-      console.log(labelLength);
       this.labels.push({
         x: x,
         y: y,
@@ -145,8 +149,8 @@ export default {
         test: "",
         test_result: ""
       });
-      console.log(this.labels);
     },
+    //function save document subcollection page
     savePage() {
       const id = this.$route.params.id;
       const pageid = this.$route.params.editpageid;
