@@ -32,7 +32,7 @@
                 <div id="preview">
                     <img :src="previewimage" alt="" id="picture" >
                     <!-- start circlel  -->
-                        <div  class="label-circle" 
+                        <div  class="label-circle" v-for="(label, i) in labels" :key="i" 
                         :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'" >
                             {{i+1}}
                         </div>
@@ -42,13 +42,9 @@
                 <!-- start output label  -->
                 <div v-for="(label, i) in labels" :key="i">
                     <!-- start textarea  -->
-                        <p>{{ i + 1 }}</p>
-                            <p>Manual</p>
-                                <textarea v-model="labels[i].manual" id="" rows="12" cols="130"></textarea>
-                            <p>Test</p>
-                                <textarea v-model="labels[i].test" id="" rows="12" cols="130"></textarea>
-                            <p>Result</p>
-                                <textarea v-model="labels[i].test_result" id="" rows="12" cols="130"></textarea>
+                        <p>{{ i + 1 }}.  Manual: {{labels[i].manual}}</p>
+                            <p>Test: {{labels[i].test}}</p>
+                            <p>Result: {{labels[i].test_result}}</p> <br>
                     <!-- end textarea  -->
                 </div>
                 <!-- end output label  -->
