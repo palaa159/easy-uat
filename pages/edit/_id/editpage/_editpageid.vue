@@ -72,7 +72,7 @@
 }
 #picture {
   width: 1020px;
-  height: 600px;
+  height: 500px;
   //   background-image: url("image");
 }
 </style>

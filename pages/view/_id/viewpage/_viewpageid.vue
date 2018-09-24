@@ -20,11 +20,12 @@
             <div class="col-12 _pd-16px">
                 <div id="preview">
                     <img :src="previewimage" alt="" id="picture" >
+                    <div class="label-circle" v-for="(label, i) in labels"
+                            :key="i" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'">
+                            {{ i + 1 }}
+                        </div>
                 </div>
                 <div v-for="(label, i) in labels" :key="i">
-                    <div  class="label-circle" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'" >
-                    {{i+1}}
-                    </div>
                     <p>{{ i + 1 }}</p>
                 <p>Manual</p>
                 <textarea v-model="labels[i].manual" id="" rows="12" cols="130"></textarea>
@@ -61,7 +62,7 @@
 }
 #picture {
   width: 1020px;
-  height: 600px;
+  height: 500px;
 }
 </style>
 

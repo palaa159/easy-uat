@@ -53,7 +53,7 @@
 }
 #picture {
   width: 1020px;
-  height: 600px;
+  height: 500px;
 }
 #text {
   text-align: center;

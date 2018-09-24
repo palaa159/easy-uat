@@ -45,10 +45,10 @@
                                         </li>
                                     </ul> -->
                                     <input type="checkbox" id="scales" name="feature"
-               value="scales"  />ผ่าน
+               value="scales" />   ผ่าน
                <br>
-                 <input type="checkbox" id="scales" name="feature"
-               value="scales"  />ไม่ผ่าน
+                 <input type="checkbox" id="scales" name="feature" 
+               value="scales"  />   ไม่ผ่าน
                                 </div>
                             </td>
                             <td width=20%></td>
