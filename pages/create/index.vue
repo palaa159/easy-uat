@@ -1,6 +1,6 @@
 <!--
     File Name: index.vue
-    Description: หน้าเพิ่มโปรเจกต์
+    Description: Create project
     Folder: pages/create/index.vue 
 -->
 <template>

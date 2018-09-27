@@ -1,6 +1,6 @@
 <!--
     File Name: _manualid.vue
-    Description: หน้าแบบฟอร์มพิมพ์แบบ Manual
+    Description: Form for print manual
     Folder: pages/print/manual/_manualid.vue 
 -->
 <template>

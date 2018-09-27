@@ -1,6 +1,6 @@
 <!--
     File Name: _viewpageid.vue
-    Description: หน้าแสดงรายละเอียดของ page
+    Description: Show description page
     Folder: pages/view/_id/viewpage/_viewpageid.vue
 -->
 <template>

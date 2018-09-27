@@ -1,6 +1,6 @@
 <!--
     File Name: _editpageid.vue
-    Description: หน้าแก้ไข page
+    Description: Edit page
     Folder: pages/edit/_id/editpage/_editpageid.vue 
 -->
 <template>

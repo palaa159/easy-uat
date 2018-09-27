@@ -1,6 +1,6 @@
 <!--
     File Name: index.vue
-    Description: หน้าแสดงรายละเอียดของโปรเจกต์
+    Description: Shoe description project
     Folder: pages/view/_id/index.vue
 -->
 <template>

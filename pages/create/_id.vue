@@ -1,6 +1,6 @@
 <!--
     File Name: _id.vue
-    Description: หน้าเพิ่ม page
+    Description: Create page
     Folder: pages/create/_id.vue 
 -->
 <template>

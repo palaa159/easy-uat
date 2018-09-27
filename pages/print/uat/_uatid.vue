@@ -1,6 +1,6 @@
 <!--
     File Name: _uatid.vue
-    Description: หน้าแบบฟอร์มพิมพ์แบบ UAT
+    Description: Form for print UAT
     Folder: pages/print/uat/_uatid.vue 
 -->
 <template>

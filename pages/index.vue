@@ -1,11 +1,11 @@
 <!--
     File Name: index.vue
-    Description: หน้าแรกแสดงโปรเจกต์ทั้งหมด
+    Description: Show all projects
     Folder: pages/index.vue 
 -->
 <template>
     <div class="_w-100pct">
-        <div class="container _bgcl-neutral-100">
+        <div class="container _bgcl-neutral-100 is-preload" >
 <!-- ******************************* start head website  ******************************* -->
             <div class="container-fluproject_id _bgcl-primary-300">
                 <div class="row">
