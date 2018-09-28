@@ -50,19 +50,11 @@
     </div>
 </template>
 
-<style>
-#picture {
-  width: 247px;
-  height: 200px;
-}
-</style>
-
 <script>
 import { firestore as db, store } from "~/services/firebaseInit";
 export default {
   data() {
     return {
-      previewimage: null,
       projects: [],
       id: null
     };
@@ -78,15 +70,6 @@ export default {
         des_project: doc.data().des_project
       };
       this.projects.push(data);
-    });
-    //collection page
-    const snapshotpage = await db
-      .collection("project")
-      .doc(this.id)
-      .collection("page")
-      .get();
-    snapshotpage.forEach(doc => {
-      this.previewimage = doc.data().img;
     });
   }
 };

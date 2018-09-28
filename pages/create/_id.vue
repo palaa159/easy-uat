@@ -108,6 +108,7 @@
         </div>
     </div>
 </template>
+
 <style lang="scss" scoped>
 #preview {
   position: relative;
