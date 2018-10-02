@@ -119,7 +119,6 @@ export default {
     async deletePage() {
       const id = this.$route.params.id;
       const pageid = this.$route.params.viewpageid;
-      console.log(pageid);
       const snapshot = await db
         .collection("project")
         .doc(id)

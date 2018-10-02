@@ -10,19 +10,19 @@
                 <!-- start 1st table output title_page-->
                 <table class="testtable">
                     <tr>
-                        <th width=30%>ชื่อการทำงาน</th>
+                        <th width=30%>Name</th>
                         <td>{{pages.title_page}}</td>
-                        <th>วันที่ทดสอบ</th>
+                        <th>Date</th>
                         <td width=20%></td>
                     </tr>
                     <tr>
-                        <th width=30%>ผลที่คาดหวัง</th>
+                        <th width=30%>Expected Results</th>
                         <td></td>
-                        <th>ชื่อผู้ทดสอบ</th>
+                        <th>Tester</th>
                         <td></td>
                     </tr>
                     <tr>
-                        <th width=30%>เงื่อนไขก่อนการทำงาน</th>
+                        <th width=30%>Conditions</th>
                         <td colspan="3"></td>
                     </tr>
                 </table>
@@ -31,19 +31,18 @@
                 <!-- start 2nd table output label-->
                 <table class="testtable">
                     <tr>
-                        <th width =20% class="txt">การทดสอบ</th>
-                        <th class="txt">ผลที่ควรจะได้</th>
-                        <th class="txt">ผลการทดสอบ</th>
-                        <th class="txt">หมายเหตุ</th>
+                        <th width =20% class="txt">Test</th>
+                        <th class="txt" colspan="2">Result</th>
+                        <th class="txt">Note</th>
                     </tr>
                     <tr v-for="(label, i) in pages.labels" :key="i">
                         <td width=30%>{{i+1}}. {{label.test}}</td>
                         <td width=30%>{{label.test_result}}</td>
                         <td width=15%>
                             <div>
-                                <input type="checkbox" id="scales" name="feature" value="scales"/>  ผ่าน
+                                <input type="checkbox" id="scales" name="feature" value="scales"/>  Yes
                                 <br>
-                                <input type="checkbox" id="scales" name="feature" value="scales"/>  ไม่ผ่าน
+                                <input type="checkbox" id="scales" name="feature" value="scales"/>  No
                             </div>
                         </td>
                         <td width=20%></td>

@@ -74,7 +74,7 @@
                 <nuxt-link :to="{name: 'create-id', params: {id: $route.params.id}}">
                     <div class="bio-button u-rise  ">Add Page</div>
                 </nuxt-link> 
-                <!-- end Link to view -->
+                <!-- end Link to create/_id.vue -->
                 <!-- start Delete Project button -->
                 <div @click="deleteProject" class="bio-button u-rise bio-button -negative ">
                     Delete Project
@@ -134,7 +134,6 @@ export default {
     //function deleteproject
     async deleteProject() {
       const id = this.$route.params.id;
-      console.log(id);
       // delete project
       const snapshotpage = await db
         .collection("project")
@@ -149,7 +148,6 @@ export default {
       // delete page
       const snapshot = await db.collection("project").get();
       snapshot.forEach(doc => {
-        console.log(doc.id, "=>", doc.data());
         if (doc.id === id) {
           doc.ref.delete();
           return this.$router.push("/");
