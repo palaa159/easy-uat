@@ -8,8 +8,7 @@
         <div class="container ">
            <div class="page-break "></div>
            <!-- ******************************* start output page  ******************************* -->
-            <div class="col-12 _pd-16px" v-for="(pages, i) in page" :key="i">
-                <p align="right">{{i+1}}</p>
+            <div class="col-12 _pd-16px" v-for="(pages, i) in pages_Object" :key="i">
                 <!-- start titlepage  -->
                 <div class="bio-input _pd-16px" id="text">
                     <h5> {{pages.title_page}} </h5>
@@ -18,15 +17,15 @@
                 <!-- start image and label  -->
                 <div id="preview">
                     <img :src="pages.previewimage" alt="" id="picture" >
-                    <div  v-for="(label, i) in pages.labels" :key="i" class="label-circle" :style="'left: ' + (label.x)+ 'px; top: ' + (label.y)+ 'px'"  >
+                    <div  v-for="(labels, i) in pages.labels_data" :key="i" class="label-circle" :style="'left: ' + (labels.x)+ 'px; top: ' + (labels.y)+ 'px'"  >
                     {{i+1}}
                     </div>
                 </div>
                 <!-- end image and label  -->
                 <!-- start textarea  -->
-                <div v-for="(label, i) in pages.labels" :key="i">
+                <div v-for="(labels, i) in pages.labels_data" :key="i">
                     <div class="bio-textarea _pd-16px">
-                        <h5>{{i+1}} . {{label.manual}}</h5>
+                        <h5>{{i+1}} . {{labels.manual}}</h5>
                     </div> 
                 </div>
                 <!-- end textarea  -->
@@ -96,7 +95,7 @@ export default {
     project: null,
     title_project: null,
     des_project: null,
-    page: []
+    pages_Object: []
   }),
   async created() {
     const id = this.$route.params.manualid;
@@ -119,9 +118,9 @@ export default {
       const data = {
         title_page: doc.data().title_page,
         previewimage: doc.data().img,
-        labels: doc.data().label
+        labels_data: doc.data().label
       };
-      this.page.push(data);
+      this.pages_Object.push(data);
     });
   }
 };

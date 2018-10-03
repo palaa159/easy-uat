@@ -6,7 +6,7 @@
 <template>
     <div class="_w-100pct">
         <div class="container ">
-            <div class="container" v-for="(pages, i) in page" :key="i">
+            <div class="container" v-for="(pages, i) in pages_Object" :key="i">
                 <!-- start 1st table output title_page-->
                 <table class="testtable">
                     <tr>
@@ -16,14 +16,10 @@
                         <td width=20%></td>
                     </tr>
                     <tr>
-                        <th width=30%>Expected Results</th>
-                        <td></td>
+                        <th width=30%>Conditions</th>
+                        <td>{{pages.condition}}</td>
                         <th>Tester</th>
                         <td></td>
-                    </tr>
-                    <tr>
-                        <th width=30%>Conditions</th>
-                        <td colspan="3"></td>
                     </tr>
                 </table>
                 <!-- end 1st table output title_page-->   
@@ -33,11 +29,11 @@
                     <tr>
                         <th width =20% class="txt">Test</th>
                         <th class="txt" colspan="2">Result</th>
-                        <th class="txt">Note</th>
+                        
                     </tr>
-                    <tr v-for="(label, i) in pages.labels" :key="i">
-                        <td width=30%>{{i+1}}. {{label.test}}</td>
-                        <td width=30%>{{label.test_result}}</td>
+                    <tr v-for="(labels, i) in pages.labels_data" :key="i">
+                        <td width=30%>{{i+1}}. {{labels.test}}</td>
+                        <td width=30%>{{labels.test_result}}</td>
                         <td width=15%>
                             <div>
                                 <input type="checkbox" id="scales" name="feature" value="scales"/>  Yes
@@ -45,7 +41,6 @@
                                 <input type="checkbox" id="scales" name="feature" value="scales"/>  No
                             </div>
                         </td>
-                        <td width=20%></td>
                     </tr>
                 </table>
                 <!-- end 2nd table output label-->
@@ -126,7 +121,7 @@ export default {
     project: null,
     title_project: null,
     des_project: null,
-    page: []
+    pages_Object: []
   }),
   async created() {
     const id = this.$route.params.uatid;
@@ -148,10 +143,11 @@ export default {
     snapshotpage.forEach(doc => {
       const data = {
         title_page: doc.data().title_page,
+        condition: doc.data().condition,
         previewimage: doc.data().img,
-        labels: doc.data().label
+        labels_data: doc.data().label
       };
-      this.page.push(data);
+      this.pages_Object.push(data);
     });
   }
 };

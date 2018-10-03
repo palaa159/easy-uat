@@ -50,9 +50,24 @@
                         <table>
                             <tr>
                                 <th >Title</th>
+                                <th>Tool</th>
                             </tr>
-                            <tr v-for="p in page" v-bind:key="p.id">
-                                <td><div>{{p.title_page}}</div></td>
+                            <tr v-for="(pages, i) in pages_Object" :key="i">
+                                <td><div>{{pages.title_page}}</div></td>
+                                <td>
+                                <ul class="bio-breadcrumb">
+                                    <li>
+                                        <nuxt-link :to="{name:'view-id-viewpage-viewpageid', params: { viewpageid: pages.id, id: $route.params.id}}"> 
+                                            View
+                                        </nuxt-link>
+                                    </li>
+                                    <li>
+                                        <nuxt-link :to="{name:'edit-id-editpage-editpageid', params: { editpageid: pages.id, id: $route.params.id}}">
+                                            Edit
+                                        </nuxt-link>
+                                    </li>  
+                                </ul>
+                            </td>
                             </tr>
                         </table>
                     </div>
@@ -60,12 +75,14 @@
             </div>
 <!-- ******************************* start output page (table)  ******************************* -->
 <!-- ******************************* start form page  ******************************* -->
-            <div v-for="(page, i) in pages" :key="i">
+            <div v-for="(pages, i) in pages_Object" :key="i">
                 <!-- start input title page -->
                 <div class="col-12 _pd-16px">
                     <div class="bio-input _pd-16px">
                         <h5>Title</h5>
                         <input type="text" v-model="title_page">
+                        <h5>Condition for test</h5>
+                        <input type="text" v-model="condition">
                     </div>
                 </div>
                 <!-- end input title page -->
@@ -73,8 +90,8 @@
                 <input type="file" @change="onFileChange" accept="image/*"><br>
                     <div id="preview" @click="addLabel">
                         <img :src="previewimage" id="picture" >
-                            <div class="label-circle" v-for="(label, i) in labels"
-                        :key="i" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'">
+                            <div class="label-circle" v-for="(labels, i) in labels_data"
+                        :key="i" :style="'left: ' + labels.x + 'px; top: ' + labels.y + 'px'">
                         {{ i + 1 }}
                             </div>
                     </div>
@@ -83,7 +100,7 @@
                     <div class="container">
                         <div class="col-12">
                             <div class="row">
-                                <div v-for="(item, i) in labels" :key="i">
+                                <div v-for="(item, i) in labels_data" :key="i">
                                     <p>{{ i + 1 }}</p>
                                     <p>Manual</p>
                                     <textarea v-model="item.manual" id="" rows="8" cols="130"></textarea>
@@ -95,16 +112,17 @@
                             </div>
                         </div> 
                     </div>
-                    <!-- end input textarea -->
+                    <!-- end input textarea -->            
+                    <!-- start Save button -->
+                    <div class="col-12 _pd-16px">
+                        <div class="  bnsave ">
+                            <div class="bio-button u-rise " @click="savePage">Save </div>
+                        </div>
+                    </div>
+                    <!-- end Save button -->
             </div>
 <!-- ******************************* end form page  ******************************* -->
-            <!-- start Save button -->
-            <div class="col-12 _pd-16px">
-                <div class="  bnsave ">
-                    <div class="bio-button u-rise " @click="savePage">Save </div>
-                </div>
-            </div>
-            <!-- end Save button -->
+
         </div>
     </div>
 </template>
@@ -140,13 +158,14 @@ export default {
   data: () => ({
     id: null,
     title_page: null,
+    condition: null,
     title_project: null,
     des_project: null,
     previewimage: "",
     img: "",
-    labels: [],
-    pages: [],
-    page: [],
+    labels_data: [],
+    pages_add: [],
+    pages_Object: [],
     downloadURL: null
   }),
   async created() {
@@ -169,16 +188,18 @@ export default {
     snapshotpage.forEach(doc => {
       const data = {
         id: doc.id,
-        title_page: doc.data().title_page
+        title_page: doc.data().title_page,
+        condition: doc.data().condition
       };
-      this.page.push(data);
+      this.pages_Object.push(data);
     });
   },
   methods: {
     //function addpage
     addPage() {
-      this.pages.push({
-        title_page: " "
+      this.pages_add.push({
+        title_page: " ",
+        condition: ""
       });
     },
     //function choose file and save in storage
@@ -206,8 +227,8 @@ export default {
     addLabel(e) {
       var x = e.offsetX;
       var y = e.offsetY;
-      var labelLength = this.labels.length;
-      this.labels.push({
+      var labelLength = this.labels_data.length;
+      this.labels_data.push({
         x: x,
         y: y,
         manual: "",
@@ -223,8 +244,9 @@ export default {
         .collection("page")
         .add({
           title_page: this.title_page,
+          condition: this.condition,
           img: this.previewimage,
-          label: this.labels
+          label: this.labels_data
         });
       return location.reload();
     }

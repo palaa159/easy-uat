@@ -26,6 +26,8 @@
                         <div class="bio-input _pd-16px">
                             <h5>Title Page</h5>  
                             <input type="text" v-model="title_page">
+                            <h5>Condition for test</h5>
+                            <input type="text" v-model="condition">
                         </div>
                     </div>
                 </div>
@@ -37,22 +39,22 @@
                 <input type="file" @change="onFileChange" accept="image/*"> <br>
                 <div id="preview" @click="addLabel">
                     <img :src="previewimage" alt="" id="picture">
-                        <div class="label-circle" v-for="(label, i) in labels"
-                            :key="i" :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'">
+                        <div class="label-circle" v-for="(labels, i) in labels_data"
+                            :key="i" :style="'left: ' + labels.x + 'px; top: ' + labels.y + 'px'">
                             {{ i + 1 }}
                         </div>
                 </div>
             </div>
             <!-- end input image and label -->
             <!-- start input textarea -->
-            <div class="bio-textarea _pd-16px" v-for="(label, i) in labels" :key="i">
+            <div class="bio-textarea _pd-16px" v-for="(labels, i) in labels_data" :key="i">
                 <p>{{ i + 1 }}</p>
                 <p>Manual</p>
-                <textarea v-model="labels[i].manual" id="" rows="12" cols="130"></textarea>
+                <textarea v-model="labels_data[i].manual" id="" rows="12" cols="130"></textarea>
                 <p>Test</p>
-                <textarea v-model="labels[i].test" id="" rows="12" cols="130"></textarea>
+                <textarea v-model="labels_data[i].test" id="" rows="12" cols="130"></textarea>
                 <p>Result</p>
-                <textarea v-model="labels[i].test_result" id="" rows="12" cols="130"></textarea>
+                <textarea v-model="labels_data[i].test_result" id="" rows="12" cols="130"></textarea>
             </div>
             <!-- end input textarea -->
 <!-- ******************************* start input image, label and textarea  ******************************* -->
@@ -96,8 +98,9 @@ export default {
   data: () => ({
     id: null,
     title_page: null,
+    condition: null,
     previewimage: null,
-    labels: [],
+    labels_data: [],
     downloadURL: null,
     img: null
   }),
@@ -114,8 +117,9 @@ export default {
       if (doc.id === pageid) {
         (this.id = doc.id),
           (this.title_page = doc.data().title_page),
+          (this.condition = doc.data().condition),
           (this.previewimage = doc.data().img),
-          (this.labels = doc.data().label);
+          (this.labels_data = doc.data().label);
       }
     });
   },
@@ -145,8 +149,8 @@ export default {
     addLabel(e) {
       var x = e.offsetX;
       var y = e.offsetY;
-      var labelLength = this.labels.length;
-      this.labels.push({
+      var labelLength = this.labels_data.length;
+      this.labels_data.push({
         x: x,
         y: y,
         manual: "",
@@ -165,8 +169,9 @@ export default {
         .doc(pageid)
         .update({
           title_page: this.title_page,
+          condition: this.condition,
           img: this.previewimage,
-          label: this.labels
+          label: this.labels_data
         });
       return this.$router.push("/view/" + id);
     }

@@ -43,10 +43,12 @@
                 <br>
                     <table>
                         <tr class="">
+                            <th>No.</th>
                             <th>Title</th>
                             <th>Tool</th>
                         </tr>
-                        <tr v-for="(pages, i) in page" :key="i">
+                        <tr v-for="(pages, i) in pages_Object" :key="i">
+                            <td>{{i+1}}</td>
                             <td>{{pages.title_page}}</td>
                             <td>
                                 <ul class="bio-breadcrumb">
@@ -103,7 +105,7 @@ export default {
     project: null,
     title_project: null,
     des_project: null,
-    page: []
+    pages_Object: []
   }),
   async created() {
     //collection project
@@ -127,7 +129,7 @@ export default {
         id: doc.id,
         title_page: doc.data().title_page
       };
-      this.page.push(data);
+      this.pages_Object.push(data);
     });
   },
   methods: {

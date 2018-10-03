@@ -25,6 +25,7 @@
                     <div class="col-12 _pd-16px">
                         <div class="bio-input _pd-16px">
                             <h5>Title : {{title_page}}</h5>
+                            <h5>Condition : {{condition}}</h5>
                         </div>
                     </div>
                 </div>
@@ -36,19 +37,19 @@
                 <div id="preview">
                     <img :src="previewimage" alt="" id="picture" >
                     <!-- start circlel  -->
-                        <div  class="label-circle" v-for="(label, i) in labels" :key="i" 
-                        :style="'left: ' + label.x + 'px; top: ' + label.y + 'px'" >
+                        <div  class="label-circle" v-for="(labels, i) in labels_data" :key="i" 
+                        :style="'left: ' + labels.x + 'px; top: ' + labels.y + 'px'" >
                             {{i+1}}
                         </div>
                     <!-- end circlel  -->
                 </div>
                 <!-- end output image -->
                 <!-- start output label  -->
-                <div v-for="(label, i) in labels" :key="i">
+                <div v-for="(labels, i) in labels_data" :key="i">
                     <!-- start textarea  -->
-                        <p>{{ i + 1 }}.  Manual: {{labels[i].manual}}</p>
-                            <p>Test: {{labels[i].test}}</p>
-                            <p>Result: {{labels[i].test_result}}</p> <br>
+                        <p>{{ i + 1 }}.  Manual: {{labels_data[i].manual}}</p>
+                            <p>Test: {{labels_data[i].test}}</p>
+                            <p>Result: {{labels_data[i].test_result}}</p> <br>
                     <!-- end textarea  -->
                 </div>
                 <!-- end output label  -->
@@ -92,9 +93,10 @@ export default {
   data: () => ({
     id: null,
     title_page: null,
+    condition: null,
     des_page: null,
     previewimage: null,
-    labels: []
+    labels_data: []
   }),
   async created() {
     const id = this.$route.params.id;
@@ -109,8 +111,9 @@ export default {
       if (doc.id === pageid) {
         (this.id = doc.id),
           (this.title_page = doc.data().title_page),
+          (this.condition = doc.data().condition),
           (this.previewimage = doc.data().img),
-          (this.labels = doc.data().label);
+          (this.labels_data = doc.data().label);
       }
     });
   },

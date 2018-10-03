@@ -29,17 +29,17 @@
 <!-- ******************************* start output project  ******************************* -->
             <div class="container _bgcl-neutral-300 _pd-16px">
                 <div class="row" >
-                    <div class="col-4 _pd-16px" v-for="project in projects" v-bind:key="project.id" > 
+                    <div class="col-4 _pd-16px" v-for="(projects, i) in projects_Object" :key="i"> 
                         <div class="bio-card h-100">
                             <div class="bio-card-title">
                                 <!-- start Link to view/_id/index.vue -->
-                                <nuxt-link :to="{name:'view-id', params: {id: project.id}}">
-                                    <strong>{{project.title_project}}</strong>
+                                <nuxt-link :to="{name:'view-id', params: {id: projects.id}}">
+                                    <strong>{{projects.title_project}}</strong>
                                 </nuxt-link>
                                 <!-- end Link to view -->
                             </div>
                             <div class="bio-card-subtitle">
-                                {{project.des_project}}
+                                {{projects.des_project}}
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@ import { firestore as db, store } from "~/services/firebaseInit";
 export default {
   data() {
     return {
-      projects: [],
+      projects_Object: [],
       id: null
     };
   },
@@ -69,7 +69,7 @@ export default {
         title_project: doc.data().title_project,
         des_project: doc.data().des_project
       };
-      this.projects.push(data);
+      this.projects_Object.push(data);
     });
   }
 };
