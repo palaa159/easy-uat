@@ -56,7 +56,7 @@
 }
 #picture {
   width: 1020px;
-  height: 500px;
+  height: 600px;
 }
 #text {
   text-align: center;

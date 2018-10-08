@@ -33,41 +33,36 @@
                         </div>
                     </div>
                 </div>
-                <!-- start add page button -->     
-                <div class="col-12 _pd-16px">
-                    <div class="_dp-f  bnsave ">
-                        <div @click="addPage()" class="bio-button -gray u-rise "> Add Page</div>
-                    </div>
-                </div>
-                <!-- end add page button -->  
             </div>
 <!-- ******************************* start output project  ******************************* -->
             <br>
 <!-- ******************************* start output page (table)  ******************************* -->
-            <div class="container">
+            <div class="container" >
                 <div class="col-12">
                     <div class="texttd">
                         <table>
                             <tr>
-                                <th >Title</th>
+                                <th>No.</th>
+                                <th>Title</th>
                                 <th>Tool</th>
                             </tr>
                             <tr v-for="(pages, i) in pages_Object" :key="i">
-                                <td><div>{{pages.title_page}}</div></td>
+                                <td>{{i+1}}</td>
+                                <td>{{pages.title_page}}</td>
                                 <td>
-                                <ul class="bio-breadcrumb">
-                                    <li>
-                                        <nuxt-link :to="{name:'view-id-viewpage-viewpageid', params: { viewpageid: pages.id, id: $route.params.id}}"> 
-                                            View
-                                        </nuxt-link>
-                                    </li>
-                                    <li>
-                                        <nuxt-link :to="{name:'edit-id-editpage-editpageid', params: { editpageid: pages.id, id: $route.params.id}}">
-                                            Edit
-                                        </nuxt-link>
-                                    </li>  
-                                </ul>
-                            </td>
+                                    <ul class="bio-breadcrumb">
+                                        <li>
+                                            <nuxt-link :to="{name:'view-id-viewpage-viewpageid', params: { viewpageid: pages.id, id: $route.params.id}}"> 
+                                                View
+                                            </nuxt-link>
+                                        </li>
+                                        <li>
+                                            <nuxt-link :to="{name:'edit-id-editpage-editpageid', params: { editpageid: pages.id, id: $route.params.id}}">
+                                                Edit
+                                            </nuxt-link>
+                                        </li>  
+                                    </ul>
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -75,7 +70,7 @@
             </div>
 <!-- ******************************* start output page (table)  ******************************* -->
 <!-- ******************************* start form page  ******************************* -->
-            <div v-for="(pages, i) in pages_Object" :key="i">
+            <div>
                 <!-- start input title page -->
                 <div class="col-12 _pd-16px">
                     <div class="bio-input _pd-16px">
@@ -122,7 +117,6 @@
                     <!-- end Save button -->
             </div>
 <!-- ******************************* end form page  ******************************* -->
-
         </div>
     </div>
 </template>
@@ -164,9 +158,10 @@ export default {
     previewimage: "",
     img: "",
     labels_data: [],
-    pages_add: [],
+    pages: [],
     pages_Object: [],
-    downloadURL: null
+    downloadURL: null,
+    toggle: true
   }),
   async created() {
     const id = this.$route.params.id;
@@ -196,12 +191,11 @@ export default {
   },
   methods: {
     //function addpage
-    addPage() {
-      this.pages_add.push({
-        title_page: " ",
-        condition: ""
-      });
-    },
+    // addPage() {
+    //   this.pages.push({
+    //     title_page: " "
+    //   });
+    // },
     //function choose file and save in storage
     onFileChange(e) {
       const file = e.target.files[0];
