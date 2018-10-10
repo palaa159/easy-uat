@@ -36,7 +36,7 @@
 <!-- ******************************* start input image, label and textarea  ******************************* -->        
             <!-- start input image and label -->
             <input type="file" @change="onFileChange" accept="image/*"> <br>
-                <div id="preview">
+                <div id="preview" @click="addLabel">
                     <img :src="previewimage" id="picture">
                         <div class="label-circle" v-for="(labels, i) in labels_data"
                         :key="i" :style="'left: ' + labels.x + 'px; top: ' + labels.y + 'px'">

@@ -6,6 +6,12 @@
 <template>
     <div class="_w-100pct">
         <div class="container ">
+            <div class="cover">
+                <h2>User Acceptance Testing</h2>
+                <h2>{{title_project}}</h2>
+                <h2>{{des_project}}</h2>
+            </div>
+            <div class="page-break "></div>
             <div class="container" v-for="(pages, i) in pages_Object" :key="i">
                 <!-- start 1st table output title_page-->
                 <table class="testtable">
@@ -44,15 +50,14 @@
                     </tr>
                 </table>
                 <!-- end 2nd table output label-->
-                <br>
-                <div class="footer">
-                <p>ลงชื่อ.......................................................................</p>
-                <br>
-                <p>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</p>
-                <br>
-                <p>ผู้ทดสอบ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                </div>
-                <br>
+                    <div class="footer">
+                        <p>ลงชื่อ.......................................................................</p>
+                        <br>
+                        <p>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</p>
+                        <br>
+                        <p>ผู้ทดสอบ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    </div>
+                    <br>
                 <div class="page-break "></div>
             </div>
         </div>
@@ -120,10 +125,14 @@ td {
     position: fixed;
   }
   .footer {
-    position: fixed;
+    margin-top: 15%;
     left: 0;
     bottom: 0;
     width: 100%;
+    text-align: right;
+  }
+  .cover {
+    margin-top: 60%;
     text-align: right;
   }
 }

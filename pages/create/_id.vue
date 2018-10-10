@@ -83,7 +83,7 @@
                 <!-- end input title page -->
                 <!-- start input image and label -->
                 <input type="file" @change="onFileChange" accept="image/*"><br>
-                    <div id="preview">
+                    <div id="preview" @click="addLabel">
                         <img :src="previewimage" id="picture" >
                             <div class="label-circle" v-for="(labels, i) in labels_data"
                             :key="i" :style="'left: ' + labels.x + 'px; top: ' + labels.y + 'px'">
@@ -226,10 +226,14 @@ export default {
     },
     //function save document subcollection page
     savePage() {
+      var pagesLength = this.pages_Object.length;
+      const pageid = pagesLength + 1;
+      console.log(pageid);
       db.collection("project")
         .doc(this.id)
         .collection("page")
-        .add({
+        .doc(pageid + "Page ")
+        .set({
           title_page: this.title_page,
           condition: this.condition,
           img: this.previewimage,

@@ -6,6 +6,11 @@
 <template>
     <div class="_w-100pct">
         <div class="container ">
+            <div class="cover">
+                <h1>Manual</h1>
+                <h1>{{title_project}}</h1>
+                <h1>{{des_project}}</h1>
+            </div>
            <div class="page-break "></div>
            <!-- ******************************* start output page  ******************************* -->
             <div class="col-12 _pd-16px" v-for="(pages, i) in pages_Object" :key="i">
@@ -84,6 +89,10 @@
     top: 40%;
     left: 25%;
     position: fixed;
+  }
+  .cover {
+    margin-top: 60%;
+    text-align: right;
   }
 }
 </style>
