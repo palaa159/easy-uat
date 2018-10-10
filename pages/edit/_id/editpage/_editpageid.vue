@@ -35,16 +35,14 @@
 <!-- ******************************* end input page  ******************************* -->
 <!-- ******************************* start input image, label and textarea  ******************************* -->        
             <!-- start input image and label -->
-            <div class="col-12 _pd-16px">
-                <input type="file" @change="onFileChange" accept="image/*"> <br>
-                <div id="preview" @click="addLabel">
-                    <img :src="previewimage" alt="" id="picture">
+            <input type="file" @change="onFileChange" accept="image/*"> <br>
+                <div id="preview">
+                    <img :src="previewimage" id="picture">
                         <div class="label-circle" v-for="(labels, i) in labels_data"
-                            :key="i" :style="'left: ' + labels.x + 'px; top: ' + labels.y + 'px'">
-                            {{ i + 1 }}
+                        :key="i" :style="'left: ' + labels.x + 'px; top: ' + labels.y + 'px'">
+                         {{ i + 1 }}
                         </div>
                 </div>
-            </div>
             <!-- end input image and label -->
             <!-- start input textarea -->
             <div class="bio-textarea _pd-16px" v-for="(labels, i) in labels_data" :key="i">
@@ -162,8 +160,7 @@ export default {
     savePage() {
       const id = this.$route.params.id;
       const pageid = this.$route.params.editpageid;
-      db
-        .collection("project")
+      db.collection("project")
         .doc(id)
         .collection("page")
         .doc(pageid)

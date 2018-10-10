@@ -83,11 +83,11 @@
                 <!-- end input title page -->
                 <!-- start input image and label -->
                 <input type="file" @change="onFileChange" accept="image/*"><br>
-                    <div id="preview" @click="addLabel">
+                    <div id="preview">
                         <img :src="previewimage" id="picture" >
                             <div class="label-circle" v-for="(labels, i) in labels_data"
-                        :key="i" :style="'left: ' + labels.x + 'px; top: ' + labels.y + 'px'">
-                        {{ i + 1 }}
+                            :key="i" :style="'left: ' + labels.x + 'px; top: ' + labels.y + 'px'">
+                            {{ i + 1 }}
                             </div>
                     </div>
                     <!-- end input image and label -->
@@ -190,12 +190,6 @@ export default {
     });
   },
   methods: {
-    //function addpage
-    // addPage() {
-    //   this.pages.push({
-    //     title_page: " "
-    //   });
-    // },
     //function choose file and save in storage
     onFileChange(e) {
       const file = e.target.files[0];
@@ -232,8 +226,7 @@ export default {
     },
     //function save document subcollection page
     savePage() {
-      db
-        .collection("project")
+      db.collection("project")
         .doc(this.id)
         .collection("page")
         .add({
