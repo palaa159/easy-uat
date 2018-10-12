@@ -6,11 +6,13 @@
 <template>
     <div class="_w-100pct">
         <div class="container ">
+            <!-- ******************************* start cover  ******************************* -->
             <div class="cover">
                 <h2>User Acceptance Testing</h2>
                 <h2>{{title_project}}</h2>
                 <h2>{{des_project}}</h2>
             </div>
+            <!-- ******************************* end cover  ******************************* --> 
             <div class="page-break "></div>
             <div class="container" v-for="(pages, i) in pages_Object" :key="i">
                 <!-- start 1st table output title_page-->
@@ -27,6 +29,7 @@
                         <th>Tester</th>
                         <td></td>
                     </tr>
+                    
                 </table>
                 <!-- end 1st table output title_page-->   
                 <br>

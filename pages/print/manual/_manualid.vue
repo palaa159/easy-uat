@@ -6,17 +6,19 @@
 <template>
     <div class="_w-100pct">
         <div class="container ">
+            <!-- ******************************* start cover  ******************************* -->
             <div class="cover">
                 <h1>Manual</h1>
                 <h1>{{title_project}}</h1>
                 <h1>{{des_project}}</h1>
             </div>
+            <!-- ******************************* end cover  ******************************* -->
            <div class="page-break "></div>
            <!-- ******************************* start output page  ******************************* -->
             <div class="col-12 _pd-16px" v-for="(pages, i) in pages_Object" :key="i">
                 <!-- start titlepage  -->
                 <div class="bio-input _pd-16px" id="text">
-                    <h5> {{pages.title_page}} </h5>
+                    <h5>{{i+1}}. {{pages.title_page}} </h5>
                 </div>
                 <!-- start titlepage  -->
                 <!-- start image and label  -->
@@ -27,6 +29,10 @@
                     </div>
                 </div>
                 <!-- end image and label  -->
+                <div class="name_picture">
+                    <p>ภาพที่ {{i+1}} ภาพ{{pages.title_page}}</p>
+                </div>
+                <br>
                 <!-- start textarea  -->
                 <div v-for="(labels, i) in pages.labels_data" :key="i">
                     <div class="bio-textarea _pd-16px">
@@ -65,6 +71,10 @@
 }
 #text {
   text-align: center;
+}
+.name_picture {
+  text-align: center;
+  margin-top: 2%;
 }
 @media all {
   .page-break {
