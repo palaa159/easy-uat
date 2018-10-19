@@ -68,6 +68,7 @@
 </template>
 
 <style lang="scss" scoped>
+//circle
 .label-circle {
   width: 30px;
   height: 30px;
@@ -79,27 +80,25 @@
   border-radius: 50%;
   position: absolute;
 }
+//picture border
 #preview {
   position: relative;
   border: 2px solid rgb(148, 146, 146);
   display: inline-block;
 }
+//picture
 #picture {
   width: 700px;
   height: 600px;
 }
+// header table
 .txt {
   text-align: center;
 }
+//table border
 table,
 th,
 td {
-  border: 1px solid black;
-}
-.triangle {
-  float: left;
-  width: 10px;
-  height: 10px;
   border: 1px solid black;
 }
 

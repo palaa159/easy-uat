@@ -68,6 +68,7 @@
 </template>
 
 <style lang="scss" scoped>
+//circle
 .label-circle {
   width: 30px;
   height: 30px;
@@ -79,11 +80,13 @@
   border-radius: 50%;
   position: absolute;
 }
+//picture border
 #preview {
   position: relative;
   border: 2px solid rgb(148, 146, 146);
   display: inline-block;
 }
+//picture
 #picture {
   width: 1020px;
   height: 500px;
