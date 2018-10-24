@@ -98,11 +98,11 @@
                                 <div v-for="(item, i) in labels_data" :key="i">
                                     <p>{{ i + 1 }}</p>
                                     <p>Manual</p>
-                                    <textarea v-model="item.manual" id="" rows="8" cols="130"></textarea>
+                                    <textarea v-model="item.manual" id="" rows="8" cols="130" class="col-12"></textarea>
                                     <p>Test</p>
-                                    <textarea v-model="item.test" id="" rows="8" cols="130"></textarea>
+                                    <textarea v-model="item.test" id="" rows="8" cols="130" class="col-12"></textarea>
                                     <p>Result</p>
-                                    <textarea v-model="item.test_result" id="" rows="8" cols="130"></textarea>
+                                    <textarea v-model="item.test_result" id="" rows="8" cols="130" class="col-12"></textarea>
                                 </div>
                             </div>
                         </div> 
