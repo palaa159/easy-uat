@@ -17,7 +17,7 @@
            <!-- ******************************* start output page  ******************************* -->
             <div class="col-12 _pd-16px" v-for="(pages, i) in pages_Object" :key="i">
                 <!-- start titlepage  -->
-                <div class="bio-input _pd-16px" id="text">
+                <div class="_pd-16px" id="text">
                     <h5>{{i+1}}. {{pages.title_page}} </h5>
                 </div>
                 <!-- start titlepage  -->
