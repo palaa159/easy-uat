@@ -18,7 +18,7 @@
             <div class="col-12 _pd-16px" v-for="(pages, i) in pages_Object" :key="i">
                 <!-- start titlepage  -->
                 <div class="_pd-16px" id="text">
-                    <h5>{{i+1}}. {{pages.title_page}} </h5>
+                    <h5>{{pages.title_page}} </h5>
                 </div>
                 <!-- start titlepage  -->
                 <!-- start image and label  -->
@@ -29,9 +29,6 @@
                     </div>
                 </div>
                 <!-- end image and label  -->
-                <div class="name_picture">
-                    <p>ภาพที่ {{i+1}} ภาพ{{pages.title_page}}</p>
-                </div>
                 <br>
                 <!-- start textarea  -->
                 <div v-for="(labels, i) in pages.labels_data" :key="i">
